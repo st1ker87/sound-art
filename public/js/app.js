@@ -50053,9 +50053,15 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\salvo\Documents\_docs\02_CODING\BOOLEAN\03_Classe26\progetto_finale\sound-art\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\salvo\Documents\_docs\02_CODING\BOOLEAN\03_Classe26\progetto_finale\sound-art\resources\sass\app.scss */"./resources/sass/app.scss");
 
+=======
+__webpack_require__(/*! C:\Users\enric\Desktop\Boolean\Cartella\Esercizi\PHP\progetto-finale\sound-art\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\enric\Desktop\Boolean\Cartella\Esercizi\PHP\progetto-finale\sound-art\resources\sass\app.scss */"./resources/sass/app.scss");
+/*ciao a tutti*/
+>>>>>>> ea5cb708aa7ab13e50472ca239a3323d7d1a28dc
 
 /***/ })
 
