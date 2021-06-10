@@ -50053,14 +50053,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\Users\salvo\Documents\_docs\02_CODING\BOOLEAN\03_Classe26\progetto_finale\sound-art\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\salvo\Documents\_docs\02_CODING\BOOLEAN\03_Classe26\progetto_finale\sound-art\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! /Users/ste 1 2/Documents/Boolean/Esercizi/Corso/progetto_finale/sound-art/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/ste 1 2/Documents/Boolean/Esercizi/Corso/progetto_finale/sound-art/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> 7ab290e0e1300227a04169ce7b63b590da032985
-
+__webpack_require__(/*! C:\Users\enric\Desktop\Boolean\Cartella\Esercizi\PHP\progetto-finale\sound-art\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\enric\Desktop\Boolean\Cartella\Esercizi\PHP\progetto-finale\sound-art\resources\sass\app.scss */"./resources/sass/app.scss");
+/*ciao*/
 
 /***/ })
 
