@@ -12,4 +12,6 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+	.disableSuccessNotifications()	// solo notifiche con errore
+	.options({processCssUrls:false}); // no gestione path delle immagini in css da parte di MIX
