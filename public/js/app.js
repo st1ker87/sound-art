@@ -50053,13 +50053,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\salvo\Documents\_docs\02_CODING\BOOLEAN\03_Classe26\progetto_finale\sound-art\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\salvo\Documents\_docs\02_CODING\BOOLEAN\03_Classe26\progetto_finale\sound-art\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! /home/yuri/Documenti/sound-art/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/yuri/Documenti/sound-art/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> b58a8f52c3fadbc4db2249c3c7d8d4004b54c377
 
 
 /***/ })
