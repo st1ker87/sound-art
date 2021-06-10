@@ -12,4 +12,8 @@ npm-debug.log
 yarn-error.log
 /public/js
 /public/css
+<<<<<<< HEAD
 /public/fonts
+=======
+/public/fonts
+>>>>>>> 7ab290e0e1300227a04169ce7b63b590da032985
