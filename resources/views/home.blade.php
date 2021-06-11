@@ -6,6 +6,9 @@
 	ex laravel welcome page: contenuto da eliminare
 		
 	rifare da zero con layout togliendo poco alla volta
+
+	PER DISTRUGGERLA FARE UN BACKUP (ORIGINALE_home.blade.php)
+	
 ------------------------------------------------------------------}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -77,7 +80,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
