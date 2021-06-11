@@ -25,9 +25,6 @@ use Illuminate\Notifications\Notifiable;
 		Controllers/Admin/UserController
 */
 
-
-
-
 class User extends Authenticatable
 {
     use Notifiable;
