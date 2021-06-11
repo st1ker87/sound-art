@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// % GUEST ROUTES % 
+/**
+ * ! http://localhost:8000/
+ */
 
-Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// % ADMIN ROUTES % 
+/**
+ * ! http://localhost:8000/admin (da confermare /admin)
+ */
+
+Auth::routes(); // signup presente in guest home
+// Auth::routes(['register'=>false]); // disattivazione signup in guest home 
+
+// Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
+// 	->namespace('Admin')	// ubicazione Controller admin /app/Http/Controllers/Admin/
+// 	->middleware('auth')	// controllore autenticazione
+// 	->group(function () {	// rotte specifiche admin
+// 		Route::get('/', 'HomeController@index')->name('admin-home');
+// 	});
