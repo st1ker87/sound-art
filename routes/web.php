@@ -38,3 +38,10 @@ Auth::routes(); // signup presente in guest home
 // 	->group(function () {	// rotte specifiche admin
 // 		Route::get('/', 'HomeController@index')->name('admin-home');
 // 	});
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+// %         OTHER ROUTES        % 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+/**
+ * ! 
+ */
