@@ -25,3 +25,9 @@
 
 
 ------------------------------------------------------------------}}
+@extends('layouts.app')
+
+@section('title','dashboard')
+@section('content')
+	<h1>SONO DASHBOARD</h1>
+@endsection

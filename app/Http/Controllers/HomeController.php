@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * ! GUEST HOME
+     * ! HOME
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
         return view('home');
+    }
+
+	/**
+     * ! DASHBOARD
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function admin_index()
+    {
+        return view('admin.dashboard');
     }
 }
