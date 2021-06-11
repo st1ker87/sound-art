@@ -13,16 +13,18 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// % GUEST ROUTES % 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+// %         GUEST ROUTES        % 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 /**
  * ! http://localhost:8000/
  */
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
-// % ADMIN ROUTES % 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+// %         ADMIN ROUTES        % 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 /**
  * ! http://localhost:8000/admin (da confermare /admin)
  */
