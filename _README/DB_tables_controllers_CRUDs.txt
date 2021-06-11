@@ -1,0 +1,109 @@
+------------------------------------------------------------------------------------
+TABLE			MODEL / MIGRATIONS
+
+				User 
+users			create_users_tabe (MODIFICARE!!!)
+				/////////////////////////////////////////////////////////////////////////////////////
+				profile() 	{ return $this->hasOne('App\Profile'); }
+
+				categories(){ return $this->belongsToMany('App\Category'); }
+				genres() 	{ return $this->belongsToMany('App\Genre'); }
+				offers() 	{ return $this->belongsToMany('App\Offer'); }
+
+				contracts() { return $this->hasMany('App\Contract'); }
+				reviews()	{ return $this->hasMany('App\Review') }
+				messages()	{ return $this->hasMany('App\Message') }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD:
+					YES > utente registrato: dettaglio SE STESSO, delete SOLO SE STESSO (eventualmente)
+					Controllers/Admin/UserController
+
+				Profile
+profiles		create_profiles_table
+				fk: user_id (***)
+				/////////////////////////////////////////////////////////////////////////////////////
+				user()	 	{ return $this->belongsTo('App\User'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD: 
+					YES > utente registrato: elenco, dettaglio, crea, modifica, delete
+					Controllers/Admin/ProfileController
+
+				Category
+categories		create_categories_table
+user_category	create_user_category_table
+				/////////////////////////////////////////////////////////////////////////////////////
+				users()		{ return $this->belongsToMany('App\User'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD: NO > utente registrato non tocca (accesso solo sviluppatori)
+
+				Genre
+genres			create_genres_table
+user_genre		create_user_genre_table
+				/////////////////////////////////////////////////////////////////////////////////////
+				users()	{ return $this->belongsToMany('App\User'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD: NO > utente registrato non tocca (accesso solo sviluppatori)
+
+				Offer
+offers			create_offers_table
+user_offer		create_user_offer_table
+				/////////////////////////////////////////////////////////////////////////////////////
+				users()	{ return $this->belongsToMany('App\User'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD: NO > utente registrato non tocca (accesso solo sviluppatori)
+
+				Contract
+contracts		create_contracts_table
+				/////////////////////////////////////////////////////////////////////////////////////
+				user()			{ return $this->belongsTo('App\User'); }
+				sponsorship()	{ return $this->belongsTo('App\Sponsorship'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD: 
+					YES solo create/store per admin
+					Controllers/Admin/ContractController
+
+				Sponsorship
+sponsorships	create_sponsorships_table
+				/////////////////////////////////////////////////////////////////////////////////////
+				contracts()	{ return $this->hasMany('App\Contract'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD: YES solo index mostra elenco prodotti (no show)
+					Controllers/Admin/SponsorshipController
+
+				Review
+reviews			create_reviews_table
+				/////////////////////////////////////////////////////////////////////////////////////
+				user() { return $this->belongsTo('App\User'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD: 
+					YES solo create/store per guest e admin
+					Controllers/ReviewController@create
+
+				Message
+messages		create_messages_table
+				/////////////////////////////////////////////////////////////////////////////////////
+				user() { return $this->belongsTo('App\User'); }
+				/////////////////////////////////////////////////////////////////////////////////////
+				CRUD:
+					YES solo create/store per guest e admin
+					Controllers/MessageController@create
+
+
+
+
+https://laravel.com/docs/8.x/eloquent-relationships#one-to-one
+------------------------------------------------------------------------------------
+(***) 
+        Schema::create('profiles', function (Blueprint $table) {
+
+			/* 
+			 * creo colonna id + colonna FK
+			 */  
+            $table->id();
+			$table->foreign('user_id')->references('id')->on('users');
+
+        });
+------------------------------------------------------------------------------------
+
+
+

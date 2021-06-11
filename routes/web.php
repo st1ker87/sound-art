@@ -22,12 +22,17 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'HomeController@index')->name('home');
 
+
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 // %         ADMIN ROUTES        % 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 /**
  * ! http://localhost:8000/admin (da confermare /admin)
  */
+
+// # DASHBOARD base (poi vediamo) # 
+Route::get('/dashboard', 'HomeController@admin_index')->name('dashboard')->middleware('auth');
+
 
 Auth::routes(); // signup presente in guest home
 // Auth::routes(['register'=>false]); // disattivazione signup in guest home 
@@ -39,9 +44,3 @@ Auth::routes(); // signup presente in guest home
 // 		Route::get('/', 'HomeController@index')->name('admin-home');
 // 	});
 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-// %         OTHER ROUTES        % 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-/**
- * ! 
- */
