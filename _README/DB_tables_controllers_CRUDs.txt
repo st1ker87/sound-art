@@ -2,7 +2,7 @@
 TABLE			MODEL / MIGRATIONS
 
 				User 
-users			create_users_tabe (MODIFICARE!!!)
+users			create_users_tabe
 				/////////////////////////////////////////////////////////////////////////////////////
 				profile() 	{ return $this->hasOne('App\Profile'); }
 
