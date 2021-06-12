@@ -3,3 +3,21 @@
 QUESTO E' HEADER
 
 */
+header {
+    background-color: #010101;
+}
+ul.navbar-nav {
+    flex-direction: row;
+    li:not(:first-child) {
+        margin-left: 20px;
+    }
+}
+
+#logo-link {
+    display: block;
+    width: 30%;
+    max-width: 100px;
+}
+#logo {
+    width: 100%;
+}
