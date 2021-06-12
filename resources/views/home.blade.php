@@ -3,7 +3,19 @@
 @section('title', 'Homepage')
 
 @section('content')
+    <section class="jumbotron-container">
+        <div class="title">
+            <h1>Hire you artist</h1>
+            <p>
+                If you are looking for music artists, session drummers, vocalists,
+                audio editing, mixing engineers, producers and more,
+                or you just want to have your private lessons, you can find all of that with us.
+            </p>
+        </div>
+    </section>
+    <section class="badges">
 
+    </section>
 @endsection
 
 

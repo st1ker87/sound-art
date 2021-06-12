@@ -1,0 +1,27 @@
+.jumbotron-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    background-image: url('../img/singer.jpg');
+    background-position: 100% 50%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    .title {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        width: 60ch;
+        background-color: rgba(255, 255, 255, 0.137);
+        h1 {
+            font-size: 5rem;
+        }
+        p {
+            width: 60ch;
+        }
+    }
+}
+.badges {
+    padding: 40px;
+    
+}
