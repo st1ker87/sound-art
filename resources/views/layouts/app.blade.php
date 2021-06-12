@@ -29,7 +29,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>@yield('title') | Sound Art</title>
 </head>
 <body>
     <div id="app">

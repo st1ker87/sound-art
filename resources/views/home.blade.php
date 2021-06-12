@@ -1,3 +1,35 @@
+@extends('layouts.app')
+
+@section('title', 'Homepage')
+
+@section('content')
+
+@endsection
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {{------------------------------------------------------------------
 	HOME PER TUTTI
 	
@@ -10,7 +42,7 @@
 	PER DISTRUGGERLA FARE UN BACKUP (ORIGINALE_home.blade.php)
 	
 ------------------------------------------------------------------}}
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -23,6 +55,7 @@
 
     </head>
     <body>
+
         {{-- <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -38,5 +71,7 @@
                 </div>
             @endif
         </div> --}}
-    </body>
-</html>
+
+        {{-- @extends('partials.footer') --}}
+    {{--</body>
+</html> --}}
