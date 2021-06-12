@@ -1,6 +1,7 @@
 <header>
 
 	<nav class="navbar navbar-expand-lg">
+		<img src="{{ asset('img/logo_transparent.png') }}" alt="">
 		  <ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
 			@guest
