@@ -1,5 +1,22 @@
-/* 
-
-QUESTO E' FOOTER
-
-*/
+.card-body {
+  background-color: black;
+  .cont-70 {
+    height: 30vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  h3 {
+    width: 20%;
+    color: #8e8e8e;
+  }
+  li {
+    color: #8e8e8e;
+  }
+  .social-icons {
+    i {
+    color: #8e8e8e;
+    margin: 0 5px;
+    }
+  }
+}
