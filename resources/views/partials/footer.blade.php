@@ -1,6 +1,6 @@
 <footer>
   <div class="card">
-    <div class="card-body">
+    <div class="card-body my-color">
       <div class="cont-70">
         <h3>SoundArt is a curated marketplace of the world’s top music production talent</h3>
         <ul>
