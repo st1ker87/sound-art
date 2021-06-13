@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
 	/**
-	 * ! User<11>Profile !
+	 * ! User <11> Profile !
 	 * 
 	 * Each User has only 1 Profile
 	 * >>> profile() singular
@@ -48,18 +48,72 @@ class User extends Authenticatable
 		return $this->hasOne('App\Profile');
 	}
 
+	/**
+	 * ! User <1N> Message !
+	 * 
+	 * Each User has many messages
+	 * >>> messages() plural
+	 */
+	public function messages()
+	{
+		return $this->hasMany('App\Message');
+	}
 
+	/**
+	 * ! User <1N> Review !
+	 * 
+	 * Each User has many reviews
+	 * >>> reviews() plural
+	 */
+	public function reviews()
+	{
+		return $this->hasMany('App\Review');
+	}
+
+	/**
+	 * ! User <NM> Category !
+	 * 
+	 * Each User belongs to many categories
+	 * >>> categories() plural
+	 */
+	public function categories()
+	{
+		return $this->belongsToMany('App\Category');
+	}
+
+	/**
+	 * ! User <NM> Genre !
+	 * 
+	 * Each User belongs to many genres
+	 * >>> genres() plural
+	 */
+	public function genres()
+	{
+		return $this->belongsToMany('App\Genre');
+	}
+
+	/**
+	 * ! User <NM> Offer !
+	 * 
+	 * Each User belongs to many offers
+	 * >>> offers() plural
+	 */
+	public function offers()
+	{
+		return $this->belongsToMany('App\Offer');
+	}
+
+	/**
+	 * ! User <1N> Contract !
+	 * 
+	 * Each User has many contracts
+	 * >>> contracts() plural
+	 */
+	public function contracts()
+	{
+		return $this->hasMany('App\Contract');
+	}
 
 }
-
-/*
-	categories(){ return $this->belongsToMany('App\Category'); }
-	genres() 	{ return $this->belongsToMany('App\Genre'); }
-	offers() 	{ return $this->belongsToMany('App\Offer'); }
-
-	contracts() { return $this->hasMany('App\Contract'); }
-	reviews()	{ return $this->hasMany('App\Review') }
-	messages()	{ return $this->hasMany('App\Message') }
-*/
 
 

@@ -1,0 +1,13 @@
+
+API docs	: https://developer.paypal.com/braintree/docs
+			: https://developer.paypal.com/braintree/docs/start/overview
+
+email		: path381492@gmail.com
+identity	: Riccardo Martino
+user		: proj26-team-1
+pwd			: proj26-team-1 
+
+Merchant ID	: ct6s84gcw9cmkv8y
+Public Key	: 6kb2fp2f64c886gk
+Private Key	: 6c65a8532a3d982fe758048074e17dcf
+

@@ -7,93 +7,98 @@ TABLE			MODEL / MIGRATIONS
 
 				User 
 users			create_users_tabe
-				/////////////////////////////////////////////////////////////////////////////////////
-				profile() 	{ return $this->hasOne('App\Profile'); }
-
-				categories(){ return $this->belongsToMany('App\Category'); }
-				genres() 	{ return $this->belongsToMany('App\Genre'); }
-				offers() 	{ return $this->belongsToMany('App\Offer'); }
-
-				contracts() { return $this->hasMany('App\Contract'); }
-				reviews()	{ return $this->hasMany('App\Review') }
-				messages()	{ return $this->hasMany('App\Message') }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD:
-					YES > utente registrato: dettaglio SE STESSO, delete SOLO SE STESSO (eventualmente)
-					Controllers/Admin/UserController
+				///////////////////////////////////////////////////////////
+				ramo PROFILE
+					profile() 	{ return $this->hasOne('App\Profile'); }
+				ramo TAG
+					categories(){ return $this->belongsToMany('App\Category'); }
+					genres() 	{ return $this->belongsToMany('App\Genre'); }
+					offers() 	{ return $this->belongsToMany('App\Offer'); }
+				ramo FEEDBACK
+					reviews()	{ return $this->hasMany('App\Review') }
+					messages()	{ return $this->hasMany('App\Message') }
+				ramo SPONSORSHIP
+					contracts() { return $this->hasMany('App\Contract'); }
+				///////////////////////////////////////////////////////////
+				!CRUD: NO!
+					utente registrato: dettaglio solo SE STESSO quando vede profilo
 
 				Profile
 profiles		create_profiles_table
 				fk: user_id (***)
-				/////////////////////////////////////////////////////////////////////////////////////
+				///////////////////////////////////////////////////////////
 				user()	 	{ return $this->belongsTo('App\User'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD: 
-					YES > utente registrato: elenco, dettaglio, crea, modifica, delete
+				///////////////////////////////////////////////////////////
+				*CRUD: YES* 
+					utente registrato: elenco, dettaglio, crea, modifica, delete
 					Controllers/Admin/ProfileController
-
-				Category
-categories		create_categories_table
-user_category	create_user_category_table
-				/////////////////////////////////////////////////////////////////////////////////////
-				users()		{ return $this->belongsToMany('App\User'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD: NO > utente registrato non tocca (accesso solo sviluppatori)
-
-				Genre
-genres			create_genres_table
-user_genre		create_user_genre_table
-				/////////////////////////////////////////////////////////////////////////////////////
-				users()	{ return $this->belongsToMany('App\User'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD: NO > utente registrato non tocca (accesso solo sviluppatori)
-
-				Offer
-offers			create_offers_table
-user_offer		create_user_offer_table
-				/////////////////////////////////////////////////////////////////////////////////////
-				users()	{ return $this->belongsToMany('App\User'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD: NO > utente registrato non tocca (accesso solo sviluppatori)
-
-				Contract
-contracts		create_contracts_table
-				/////////////////////////////////////////////////////////////////////////////////////
-				user()			{ return $this->belongsTo('App\User'); }
-				sponsorship()	{ return $this->belongsTo('App\Sponsorship'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD: 
-					YES solo create/store per admin
-					Controllers/Admin/ContractController
-
-				Sponsorship
-sponsorships	create_sponsorships_table
-				/////////////////////////////////////////////////////////////////////////////////////
-				contracts()	{ return $this->hasMany('App\Contract'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD: YES solo index mostra elenco prodotti (no show)
-					Controllers/Admin/SponsorshipController
 
 				Review
 reviews			create_reviews_table
-				/////////////////////////////////////////////////////////////////////////////////////
+				///////////////////////////////////////////////////////////
 				user() { return $this->belongsTo('App\User'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD: 
-					YES solo create/store per guest e admin
+				///////////////////////////////////////////////////////////
+				*CRUD: YES*
+					solo create/store per guest e admin
 					Controllers/ReviewController@create
 
 				Message
 messages		create_messages_table
-				/////////////////////////////////////////////////////////////////////////////////////
+				///////////////////////////////////////////////////////////
 				user() { return $this->belongsTo('App\User'); }
-				/////////////////////////////////////////////////////////////////////////////////////
-				CRUD:
-					YES solo create/store per guest e admin
+				///////////////////////////////////////////////////////////
+				*CRUD: YES*
+					solo create/store per guest e admin
 					Controllers/MessageController@create
 
+				Category
+categories		create_categories_table
+user_category	create_user_category_table
+				///////////////////////////////////////////////////////////
+				users()		{ return $this->belongsToMany('App\User'); }
+				///////////////////////////////////////////////////////////
+				!CRUD: NO!
+					utente registrato non tocca (accesso solo sviluppatori)
 
-relazioni, vedi:
+				Genre
+genres			create_genres_table
+user_genre		create_user_genre_table
+				///////////////////////////////////////////////////////////
+				users()	{ return $this->belongsToMany('App\User'); }
+				///////////////////////////////////////////////////////////
+				!CRUD: NO!
+					utente registrato non tocca (accesso solo sviluppatori)
+
+				Offer
+offers			create_offers_table
+user_offer		create_user_offer_table
+				///////////////////////////////////////////////////////////
+				users()	{ return $this->belongsToMany('App\User'); }
+				///////////////////////////////////////////////////////////
+				!CRUD: NO!
+					utente registrato non tocca (accesso solo sviluppatori)
+
+				Contract
+contracts		create_contracts_table
+				///////////////////////////////////////////////////////////
+				user()			{ return $this->belongsTo('App\User'); }
+				sponsorship()	{ return $this->belongsTo('App\Sponsorship'); }
+				///////////////////////////////////////////////////////////
+				*CRUD: YES*
+					solo create/store per admin
+					Controllers/Admin/ContractController
+
+				Sponsorship
+sponsorships	create_sponsorships_table
+				///////////////////////////////////////////////////////////
+				contracts()	{ return $this->hasMany('App\Contract'); }
+				///////////////////////////////////////////////////////////
+				*CRUD: YES* 
+					solo index mostra elenco prodotti (no show)
+					Controllers/Admin/SponsorshipController
+
+
+relazioni tra tabelle, vedi:
 https://laravel.com/docs/8.x/eloquent-relationships#one-to-one
 
 (***) 
@@ -106,6 +111,169 @@ relazione 1-1 users-profiles, separiamo id profile da user_id
 
 	});
 ------------------------------------------------------------------
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%       ELENCO MODEL + GUEST/ADMIN CONTROLLER + CRUD moethods        %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+				GUEST			 		ADMIN
+
+User			N.A. 					N.A.
+
+Profile			ProfileController 		Admin/ProfileController
+				index 					(index)
+				show					(show)
+										create
+										edit
+										delete
+
+Message 		MessageController		Admin/MessageController
+				create					index
+										show
+
+Review			ReviewController 		Admin/ReviewController
+				create					index
+										show
+
+Category		N.A. 					N.A.
+
+Genre			N.A. 					N.A.
+
+Offer			N.A. 					N.A.
+
+Contract		N.A. 					Admin/ContractController
+										create
+
+Sponsorship		N.A. 					Admin/SponsorshipController
+										index
+										(show)
+
+! DELLE TABELLE PONTE NON CI SONO MODEL/CONTROLLER, MA CI SONO MIGRATION !
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%   CREAZIONE MODEL + MIGRATION + SEEDER + GUEST/ADMIN CONTROLLER    %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+----------------------------------------------------- tabelle con CRUD
+
+1. Profile 
+
+php artisan make:model Profile -rcms
+*Profile
+*create_profiles_table
+*ProfileSeeder
+*ProfileController
+php artisan make:controller Admin/ProfileController
+*/Admin/ProfileController
+
+2. Message 
+
+php artisan make:model Message -rcms
+*Message
+*create_messages_table
+*MessageSeeder
+*MessageController
+php artisan make:controller Admin/MessageController
+*/Admin/MessageController
+
+2. Review
+
+php artisan make:model Review -rcms
+*Review
+*create_reviews_table
+*ReviewSeeder
+*ReviewController
+php artisan make:controller Admin/ReviewController
+*/Admin/ReviewController
+
+---------------------------------------- tabelle TAG + ponte | NO CRUD
+
+3. Category
+
+php artisan make:model Category -ms
+*Category
+*create_categories_table
+*CategorySeeder
+
+4. Genre
+
+php artisan make:model Genre -ms
+*Genre
+*create_genres_table
+*GenreSeeder
+
+5. Offer
+
+php artisan make:model Offer -ms
+*Offer
+*create_offers_table
+*OfferSeeder
+
+6. User-Category 
+
+php artisan make:migration create_user_category_table
+*create_user_category_table
+
+7. User-Genre
+
+php artisan make:migration create_user_genre_table
+*create_user_genre_table
+
+8. User-Offer
+
+php artisan make:migration create_user_offer_table
+*create_user_offer_table
+
+-------------------------------------------- ramo sponsorship con CRUD
+
+9. Sponsorship
+
+php artisan make:model Sponsorship -rcms
+*Sponsorship
+*create_sponsorships_table
+*SponsorshipSeeder
+*DELETE_SponsorshipController > DELETE !
+php artisan make:controller Admin/SponsorshipController
+*/Admin/SponsorshipController
+
+10. Contract
+
+php artisan make:model Contract -rcms
+*Contract
+*create_contracts_table
+*ContractSeeder
+*DELETE_ContractController > DELETE !
+php artisan make:controller Admin/ContractController
+*/Admin/ContractController
+
+----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
@@ -173,103 +341,3 @@ relazione 1-1 users-profiles, separiamo id profile da user_id
 			modifica tuo profilo > [Admin/ProfileController@edit]
 	
 
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-%       ELENCO MODEL + GUEST/ADMIN CONTROLLER + CRUD moethods        %
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-
-				GUEST			 		ADMIN
-
-User			N.A. 					N.A.
-
-Profile			ProfileController 		Admin/ProfileController
-				index 					(index)
-				show					(show)
-										create
-										edit
-										delete
-
-Message 		MessageController		Admin/MessageController
-				create					index
-										show
-										create
-
-Review			ReviewController 		Admin/ReviewController
-				create					index
-										show
-										create
-
-Category
-
-Genre
-
-Offer
-
-Sponsorship
-
-Contract
-
-! DELLE TABELLE PONTE NON CI SONO MODEL/CONTROLLER, MA CI SONO MIGRATION !
-
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-%   CREAZIONE MODEL + MIGRATION + SEEDER + GUEST/ADMIN CONTROLLER    %
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-
-1. Profile 
-
-php artisan make:model Profile -rcms
-*Profile
-*create_profiles_table
-*ProfileSeeder
-*ProfileController
-php artisan make:controller Admin/ProfileController
-*/Admin/ProfileController
-
-2. Message 
-
-php artisan make:model Message -rcms
-*Message
-*create_messages_table
-*MessageSeeder
-*MessageController
-php artisan make:controller Admin/MessageController
-*/Admin/MessageController
-
-2. Review
-
-php artisan make:model Review -rcms
-*Review
-*create_reviews_table
-*ReviewSeeder
-*ReviewController
-php artisan make:controller Admin/ReviewController
-*/Admin/ReviewController
-
------
-
-3. Category
-
-4. Genre
-
-5. Offer
-
-6. migration user_category_table
-
-7. migration user_genre_table
-
-8. migration user_offer_table
-
------
-
-9. Sponsorship
-
-10. Contract
-
-
-
-
-
-
-<img style="max-width:600px;" src="{{asset('storage/'.$post->image)}}" alt="">
