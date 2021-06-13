@@ -2,7 +2,7 @@
 	<div class="container">
 		<nav class="navbar justify-content-between">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
-				<img id="logo" src="{{ asset('img/logo_transparent.png') }}" alt="Sound Art logo">
+				<img id="logo" src="{{ asset('img/logo-transp.png') }}" alt="Sound Art logo">
 			</a>
 			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->

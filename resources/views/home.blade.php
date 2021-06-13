@@ -13,7 +13,70 @@
             </p>
         </div>
     </section>
-    <section class="badges">
+    <section class="container badges">
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <div>
+                    <img src="{{ asset('img/badge-best.svg') }}" alt="Imagine of a black star">
+                </div>
+                <div>
+                    <h3 id="ciao">The world's best</h3>
+                    <p>Work with winners from around the globe</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div>
+                    <img src="{{ asset('img/badge-approved.svg') }}" alt="Imagine of a checked box">
+                </div>
+                <div>
+                    <h3>Trusted platform</h3>
+                    <p>Safe and secure with tens of thousands of verified reviews</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div>
+                    <img src="{{ asset('img/badge-sound.svg') }}" alt="Imagine of sound barriers">
+                </div>
+                <div>
+                    <h3>Sound your best</h3>
+                    <p>
+                        Radio singles, YouTube hits and chart-topping albums,
+                        all made on SoundArt.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="want-to-work">
+        <div class="container">
+            <h3>Want to work with <span>BTS's songwriter ?</span></h3>
+            <p>Now you can, through SoundArt</p>
+        </div>
+    </section>
+    <section class="artist-in-evidence">
+        <h1>In Evidence</h1>
+        <p>In attesa...</p>
+    </section>
+    <section class="how-it-works">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 relative-60">
+                    <article class="descriptions">
+                        <h3>How SoundArt works:</h3>
+                        <ol>
+                            <li>Describe your project in seconds</li>
+                            <li>Get free proposals from top professionals</li>
+                            <li>Hire a pro and get awesome sounding tracks</li>
+                        </ol>
+                    </article>
+                </div>
+                <div class="col-sm-12 col-md-6 relative-60 descriptions-images">
+                    <!-- Da completare -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="get-started">
 
     </section>
 @endsection
