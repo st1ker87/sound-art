@@ -1,8 +1,10 @@
+
+// Jumbotron section
 .jumbotron-container {
     position: relative;
     width: 100%;
     height: 60vh;
-    background-image: url('../img/singer.jpg');
+    background-image: url('../img/jumb-singer.jpg');
     background-position: 100% 50%;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -12,7 +14,7 @@
         left: 10%;
         transform: translateY(-50%);
         width: 60ch;
-        background-color: rgba(255, 255, 255, 0.137);
+        background-color: #ffffff23;
         h1 {
             font-size: 5rem;
         }
@@ -21,7 +23,115 @@
         }
     }
 }
+
+// Badges section
 .badges {
-    padding: 40px;
-    
+    text-align: center;
+    img {
+        width: 30%;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    p {
+        margin: 0 auto;
+        max-width: 50ch;
+        font-size: 1rem;
+    }
 }
+
+// Want to work section
+.want-to-work {
+    h3 {
+        margin: 0 auto;
+        font-size: 2.8rem;
+        width: 15ch;
+        text-align: center;
+        span {
+            color: #858585;
+        }
+    }
+    p {
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    background-color: #ececec;
+}
+
+// Artisti in evidenza
+.artist-in-evidence {
+    height: 30vh;
+    background-color: #858585;
+    text-align: center;
+}
+
+
+// How it works section
+.how-it-works {
+    background-color: $primaryBlack;
+    padding: 0;
+}
+.relative-60 {
+    @extend %relative;
+    height: 60vh;
+}
+.descriptions {
+    
+    h3 {
+        font-size: 2.5rem;
+        white-space: nowrap;
+        color: $primaryWhite;
+    }
+    ol {
+        counter-reset: listItem;
+        margin-top: 40px;
+        padding-left: 0;
+        li {
+            color: $primaryGray;
+            display: flex;
+            align-items: center;
+            line-height: 30px;
+            transition: color ease-out 500ms;
+        }:not(:last-child) {          
+            margin-bottom: 20px;    
+        }
+        li::before {
+            counter-increment: listItem;
+            content: counter(listItem);
+            width: 2.5em;
+            height: 2.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            border: 2px solid $primaryGray;
+            transition: border-color ease-out 500ms;
+        }
+        li:hover,
+        li:focus {
+            color: $primaryWhite;
+            &::before {
+                border-color: $primaryWhite;
+            }
+        }
+        // li:hover::before {
+        //     border: 2px solid $primaryWhite;
+        // }
+    }
+    @extend %centered
+}
+.descriptions-images {
+    background-image: url('../img/mixing.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+/*              *
+ * IMPROVEMENTS * 
+ *              */
+ // ripeto font size 1rem nei p element
+ /* cercare di essere più generali e dinamici nei font size, 
+ magari con delle media queries*/
+ //Aggiustare font wheights
