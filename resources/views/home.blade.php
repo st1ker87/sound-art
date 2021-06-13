@@ -71,10 +71,13 @@
                     </article>
                 </div>
                 <div class="col-sm-12 col-md-6 relative-60 descriptions-images">
-                    
+                    <!-- Da completare -->
                 </div>
             </div>
         </div>
+    </section>
+    <section class="get-started">
+
     </section>
 @endsection
 

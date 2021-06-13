@@ -1,30 +1,40 @@
 <footer>
-  <div class="card">
-    <div class="card-body my-color">
-      <div class="cont-70">
-        <h3>SoundArt is a curated marketplace of the world’s top music production talent</h3>
-        <ul>
-          <a href="#"><li>Sign up as Provider</li></a>
-          <a href="#"><li>Sign in</li></a>
-          <a href="#"><li>About Us</li></a>
-          <a href="#"><li>User Review</li></a>
-          <a href="#"><li>FAQ</li></a>
-        </ul>
-        <ul>
-          <a href="#"></a><li>Terms</li></a>
-          <a href="#"><li>Tutorial</li></a>
-          <a href="#"><li>Privacy</li></a>
-          <a href="#"><li>Contact Us</li></a>
-        </ul>
-        <div class="social-icons">
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-youtube"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-facebook-square"></i>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-3">       
+        <p>
+          SoundArt is a curated marketplace of the world's top
+          music production talent.
+        </p>
       </div>
-      
+      <div class="col-sm-12 col-lg-3">
+        <h5>Abou Us</h5>
+        <ul>
+          <li><a href="#">Sign up as a provider</a></li>
+          <li><a href="#">Sign in</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">User reviews</a></li>
+          <li><a href="#">FAQ</a></li> 
+        </ul>
+      </div>
+      <div class="col-sm-12 col-lg-3">
+        <h5>Terms & Conditions</h5>
+        <ul>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Tutorials</a></li>
+          <li><a href="#">Provacy</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-12 col-lg-3">
+        <h5>Contacts</h5>
+        <ul class="connect">
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
     </div>
   </div>
-	
 </footer>

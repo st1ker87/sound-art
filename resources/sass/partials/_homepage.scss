@@ -24,6 +24,8 @@
     }
 }
 
+/* END JUMBOTRON */
+
 // Badges section
 .badges {
     text-align: center;
@@ -39,6 +41,8 @@
         font-size: 1rem;
     }
 }
+
+/* END BADGES */
 
 // Want to work section
 .want-to-work {
@@ -59,6 +63,8 @@
     background-color: #ececec;
 }
 
+/* END WANT TO WORK */
+
 // Artisti in evidenza
 .artist-in-evidence {
     height: 30vh;
@@ -66,6 +72,7 @@
     text-align: center;
 }
 
+/* END ARTISTI */
 
 // How it works section
 .how-it-works {
@@ -84,6 +91,7 @@
         color: $primaryWhite;
     }
     ol {
+        // Counter for pseudo element
         counter-reset: listItem;
         margin-top: 40px;
         padding-left: 0;
@@ -93,10 +101,11 @@
             align-items: center;
             line-height: 30px;
             transition: color ease-out 500ms;
-            &:not(:last-child) {          
+        &:not(:last-child) {          
             margin-bottom: 20px;
             }    
         }
+        // Numbering
         li::before {
             counter-increment: listItem;
             content: counter(listItem);
@@ -117,9 +126,6 @@
                 border-color: $primaryWhite;
             }
         }
-        // li:hover::before {
-        //     border: 2px solid $primaryWhite;
-        // }
     }
     @extend %centered
 }
@@ -128,6 +134,13 @@
     background-position: center;
     background-size: cover;
 }
+
+//Get Started
+.get-started {
+    //Da finire
+}
+
+
 
 /*              *
  * IMPROVEMENTS * 
