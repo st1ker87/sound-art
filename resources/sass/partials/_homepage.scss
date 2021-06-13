@@ -93,8 +93,9 @@
             align-items: center;
             line-height: 30px;
             transition: color ease-out 500ms;
-        }:not(:last-child) {          
-            margin-bottom: 20px;    
+            &:not(:last-child) {          
+            margin-bottom: 20px;
+            }    
         }
         li::before {
             counter-increment: listItem;
