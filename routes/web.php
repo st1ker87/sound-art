@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// ############################### 
+// #         DEV  ROUTES         # 
+// ############################### 
+
+Route::get('/search', 'HomeController@search')->name('search'); //  {{ route('search') }}
+
+
+
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 // %         GUEST ROUTES        % 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 

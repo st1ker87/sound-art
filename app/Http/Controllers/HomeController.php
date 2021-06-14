@@ -25,4 +25,16 @@ class HomeController extends Controller
     {
         return view('admin.dashboard');
     }
+
+
+	/**
+     * ! ADVANCED SEARCH
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function search()
+    {
+        return view('guest.profiles.search'); // CRUD index profiles 
+    }
+
 }

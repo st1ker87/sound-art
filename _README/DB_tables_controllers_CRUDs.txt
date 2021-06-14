@@ -147,7 +147,6 @@ Contract		N.A. 					Admin/ContractController
 
 Sponsorship		N.A. 					Admin/SponsorshipController
 										index
-										(show)
 
 ! DELLE TABELLE PONTE NON CI SONO MODEL/CONTROLLER, MA CI SONO MIGRATION !
 
@@ -156,7 +155,7 @@ Sponsorship		N.A. 					Admin/SponsorshipController
 %   CREAZIONE MODEL + MIGRATION + SEEDER + GUEST/ADMIN CONTROLLER    %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
------------------------------------------------------ tabelle con CRUD
+---------------------------------------- tabelle con CRUD più completa
 
 1. Profile 
 

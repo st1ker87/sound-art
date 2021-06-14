@@ -1,13 +1,33 @@
 
+
+
 API docs	: https://developer.paypal.com/braintree/docs
 			: https://developer.paypal.com/braintree/docs/start/overview
+
+Sandbox dashboard: https://sandbox.braintreegateway.com/merchants/ct6s84gcw9cmkv8y/home
+
+Transactiom: https://developer.paypal.com/braintree/docs/guides/transactions
+
+Basic installation guide: https://developer.paypal.com/braintree/docs/start/overview
+
+
+Environment	: sandbox (test) oppure production (non ci interessa)
+Public key	: BT user-specific public identifier
+Private key	: BT user-specific private identifier
+Merchant ID	: unique identifier for your entire gateway account
+
 
 email		: path381492@gmail.com
 identity	: Riccardo Martino
 user		: proj26-team-1
 pwd			: proj26-team-1 
 
+CREDENTIALS
+Environment	: sandbox (test) 
 Merchant ID	: ct6s84gcw9cmkv8y
 Public Key	: 6kb2fp2f64c886gk
 Private Key	: 6c65a8532a3d982fe758048074e17dcf
+
+
+
 
