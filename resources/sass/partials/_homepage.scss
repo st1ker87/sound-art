@@ -1,25 +1,66 @@
 
 // Jumbotron section
 .jumbotron-container {
-    position: relative;
     width: 100%;
     height: 60vh;
-    background-image: url('../img/jumb-singer.jpg');
+    background-image: url('../img/cello.png');
     background-position: 100% 50%;
-    background-size: 100%;
     background-repeat: no-repeat;
-    .title {
-        position: absolute;
-        top: 50%;
-        left: 10%;
-        transform: translateY(-50%);
+    .jumbotron-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 60ch;
-        background-color: #ffffff23;
+        color: $primaryWhite;
         h1 {
             font-size: 5rem;
         }
         p {
             width: 60ch;
+        }
+        .search-cnt {
+            position: relative;
+            .search {
+                display: block;
+                color: $primaryBlack;
+                position: absolute;
+                display: flex;
+                left: 100%;
+                top: 0;
+                border: 1px solid black;
+                border-radius: 0 0 2em 2em;
+                background-color: $primaryWhite;
+                ul {
+                    padding: 0;
+                    height: 25vh;
+                    overflow: auto;
+                    li {
+                        line-height: 30px;
+
+                    }
+                }
+                .categories-cnt ,
+                .genres-cnt {
+                    width: 200px;
+                    padding: 20px;
+                    background-color: $primaryWhite;
+                }
+                .categories-cnt {
+                    border-radius: 0 0 0 2em;
+                }
+                .genres-cnt {
+                    border-radius: 0 0 2em 0;
+                }
+                input {
+                    border: none;
+                    width: 100%;
+                    background-color: $primaryWhite;
+                    text-align: start;
+                    &:hover {
+                        background-color: $primaryGray;
+                    }
+                }
+            }
         }
     }
 }
@@ -137,7 +178,7 @@
 
 //Get Started
 .get-started {
-    //Da finire
+    //Da deffinire
 }
 
 
