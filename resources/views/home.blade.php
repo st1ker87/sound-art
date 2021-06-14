@@ -3,16 +3,57 @@
 @section('title', 'Homepage')
 
 @section('content')
+
+    <!-- Jumbotron -->
     <section class="jumbotron-container">
-        <div class="title">
-            <h1>Hire you artist</h1>
-            <p>
-                If you are looking for music artists, session drummers, vocalists,
-                audio editing, mixing engineers, producers and more,
-                or you just want to have your private lessons, you can find all of that with us.
-            </p>
+        <div class="container">
+            <div class="jumbotron-title">
+                <h1>Hire you artist</h1>
+                <p>
+                    If you are looking for music artists, session drummers, vocalists,
+                    audio editing, mixing engineers, producers and more,
+                    or you just want to have your private lessons, you can find all of that with us.
+                </p>
+                <div class="search-cnt">
+                    <button type="button" class="btn btn-dark">Search for artists <i class="fas fa-caret-right"></i></i></button>
+                    <div v-if="searchHome" class="search">
+                        <div class="categories-cnt">
+                            <h5>Categories</h5>
+                            <ul>
+                                <li><input type="submit" role="button" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                            </ul>
+                        </div>
+                        <div class="genres-cnt">
+                            <h5>Genres</h5>
+                            <ul>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                                <li><input type="submit" value="Lorem"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Badges -->
     <section class="container badges">
         <div class="row">
             <div class="col-sm-12 col-md-4">
@@ -47,6 +88,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Want to work -->
     <section class="want-to-work">
         <div class="container">
             <h3>Want to work with <span>BTS's songwriter ?</span></h3>
@@ -76,6 +119,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Get started -->
     <section class="get-started">
 
     </section>
