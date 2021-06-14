@@ -31,5 +31,10 @@ const app = new Vue({
     el: '#app',
     data: {
         searchHome : false
+    },
+    methods: {
+        showSearch : function() {
+            this.searchHome = !this.searchHome
+        }
     }
 });
