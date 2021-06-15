@@ -1,10 +1,34 @@
 <h2>PAGINA PER TESTARE CODICE</h2>
 
-@foreach ($categories as $category)
 
-	@dump($category->name)
+{{-- TEST DATI TABLE --}}
+@foreach ($profiles as $profile)
+	
+	@php
+		$cats = $profile->user->categories
+	@endphp
+	@dump($profile->user->name)
+	@foreach($cats as $cat)
+		@dump($cat->name)
+	@endforeach
 
 @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @php
 
