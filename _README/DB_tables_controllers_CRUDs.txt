@@ -121,23 +121,26 @@ relazione 1-1 users-profiles, separiamo id profile da user_id
 
 User			N.A. 					N.A.
 
-Profile			ProfileController 		Admin/ProfileController
-										X dashboard (index)
-				X index (search)		X create						1 form da creare in blade BE
-				X show					X edit
-										X delete
+Profile			ProfileController 		Admin/ProfileController SOLO SE STESSO
+				search(index)			dashboard 	(index)
+				search_from_home(index)	create 		(form vuoto)
+				show					store
+										edit 		(form compilato da Profile)
+										update
+										delete 		(pulsante messo da qualche parte...?)
 
-index (search.blade.php) : elenco profili con dettagli minimi (quelli della card ma messi a caso)
-show.blade.php : dettaglio profilo che capisco dopo form 
+[route fatta] index (search.blade.php) : elenco profili con dettagli minimi (quelli della card ma messi a caso)
+[route fatta] show.blade.php : dettaglio profilo che capisco dopo form 
 
-admin/dshboard.blade.php : pulsante crea profilo, pulsante modifica profilo, (un giorno potrò metter dettagli del MIO profilo)
-admin/create.blade.php : form vuoto 
-admin/edit.blade.php : form compilato 
+[route fatta] admin/dshboard.blade.php : pulsante crea profilo, pulsante modifica profilo, (un giorno potrò metter dettagli del MIO profilo)
+[route fatta] admin/create.blade.php : form vuoto 
+[route fatta] admin/edit.blade.php : form compilato 
 
 
 Message 		MessageController		Admin/MessageController
 				create					index
-										show
+				store					show
+										delete
 
 Review			ReviewController 		Admin/ReviewController
 				create					index
