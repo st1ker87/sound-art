@@ -18,26 +18,25 @@ class CategorySeeder extends Seeder
 		// ];
 
 		$categories = [
-			// mestieri generali
-			'Band',
-			'Singer',
-			'Vocalist',
-			'Composer',
-			'Lyricist',
-			'Mixer/Engineer',
-			'Record Company',
-			'Disc Jockey',
-			// strumnetisti
-			'Bassist',
-			'Guitarist',
-			'Drummer',
-			'Accordionist',
-			'Clarinetist',
-			'Flautist',
-			'Classical Guitarist',
-			'Saxophonist',
-			'Trumpeter',
-			'Violinist',
+			'band',
+			'singer',
+			'vocalist',
+			'composer',
+			'lyricist',
+			'mixer',
+			'engineer',
+			'record company',
+			'disc jockey',
+			'bassist',
+			'guitarist',
+			'drummer',
+			'accordionist',
+			'clarinetist',
+			'flautist',
+			'classical guitarist',
+			'saxophonist',
+			'trumpeter',
+			'violinist',
 		];
 
 		foreach($categories as $category) {
