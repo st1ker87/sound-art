@@ -70,14 +70,14 @@ class HomeController extends Controller
     public function search_from_home(Request $request)
     {
         $form_data = $request->all();
+        $search_from_home = [];
+        $search_from_home['id'] = $form_data['id'];
         if (array_key_exists('category', $form_data)) {
-            $search_from_home = $form_data['category'];
-            
+            $search_from_home['category'] = $form_data['category'];   
         }
         else {
-            $search_from_home = $form_data['genre'];
+            $search_from_home['genre'] = $form_data['genre'];
         }
-        
 		$data = [
 			'users' 		=> User::all(),			// $users > Collection
 			'profiles' 		=> Profile::all(),		// $profiles >>>> $profile->user_id->categories
