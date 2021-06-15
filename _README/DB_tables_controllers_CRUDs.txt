@@ -249,23 +249,32 @@ php artisan make:controller Admin/ContractController
 
 ----------------------------------------------------------------------
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                SEED DATABASE (no ramo sponsorship)                 %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
+------------------------------------------ popolamento singola tabella
 
+1. php artisan make:seeder XXXSeeder
+*crea seeder
+2. compilazione XXXSeeder
+3. php artisan db:seed --class=XXXSeeder
+*popola tabella
 
+-------------------------------------------------- popolamento tabelle
 
+1. preprazione dei seeder
+2. compilazione DatabaseSeeder.php
+3. composer dump-autoload (se serve)
+4. php artisan db:seed 
 
+------------------------------------------------- seed intero database
 
-
-
-
-
-
-
-
-
-
-
-
+1. cancellazione e ricreazione db_sound_art
+2. preparazione 12 migration base
+3. php artisan migrate
+4. preparazione DatabaseSeeder.php con 10 seed base (no ramo sponsorhip)
+5. php artisan db:seed
 
 
 

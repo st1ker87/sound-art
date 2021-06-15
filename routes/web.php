@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 // ############################### 
 
 Route::get('/search', 'HomeController@search')->name('search'); //  {{ route('search') }}
+Route::get('/test', 'HomeController@test')->name('test');  // ! SOLO PER TESTARE CODICE 
 
 
 

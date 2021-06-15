@@ -37,4 +37,15 @@ class HomeController extends Controller
         return view('guest.profiles.search'); // CRUD index profiles 
     }
 
+
+	/**
+     * ! TEST PAGE
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function test()
+    {
+        return view('test'); 
+    }
+
 }

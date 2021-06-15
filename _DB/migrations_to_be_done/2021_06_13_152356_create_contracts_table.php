@@ -30,6 +30,13 @@ class CreateContractsTable extends Migration
 			// date_end: created_at + sponsorships hour_duration
 			$table->dateTime('date_end', 0);
 
+			/** 
+			 * ! ************************************* !
+			 * !                                       !
+			 * !   DA DEFINIRE DOPO STUDIATE API BT    !
+			 * !                                       !
+			 * ! ************************************* !
+			 */
 			// transaction_status (Brain Tree Payments)
 			$table->string('transaction_status'); // ??? formato? contenuti? ???
 
