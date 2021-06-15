@@ -32,17 +32,42 @@
             </div>
             <div class="filter-show d-inline-block">
               <div class="my-set btn-category">
-                <h3>Categories</h3>
+                <div class="box">
+                  <select>
+                    <option><h3>Categories</h3></option>
+                    <option value="band">Band</option>
+                    <option value="bass">Bass</option>
+                    <option value="cello">Cello</option>
+                    <option value="drums">Drums</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="filter-show d-inline-block">
               <div class="my-set btn-category">
-                <h3>Genres</h3>
+                <div class="box">
+                  <select>
+                    <option><h3>Genrs</h3></option>
+                    <option value="rock">Rock</option>
+                    <option value="punk">Punk</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="hip-hop">Hip-Hop</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="filter-show d-inline-block">
               <div class="my-set btn-category">
-                <h3>Votes</h3>
+                <div class="box">
+                  <select>
+                    <option><h3>Votes</h3></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="filter-show d-inline-block">

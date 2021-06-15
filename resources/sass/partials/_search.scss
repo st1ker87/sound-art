@@ -1,9 +1,10 @@
+
+//jumbo e testo
 .jumbotron-container-search {
   position: relative;
   width: 100%;
   height: 40vh;
   background-color: #212949;
-  //se manteniamo questa foto bsogna ritoccarla con PS
     .title-search {
       position: absolute;
       top: 50%;
@@ -14,24 +15,23 @@
           color: white;
       }
       p {
-          width: 100ch;
           font-size: 2em;
           color: white;
       }
   }
 }
 
+//barra ricerca
 .my-color-search {
   background-color: white;
   border-bottom: 0.5px solid #9da7ba;
-
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
   .search-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 8vh;
     width: 100%;
-    // background-color: green;
     .btn-filter {
       padding: 0 20px;
       line-height: 8vh;
@@ -39,6 +39,24 @@
       background-color: white;
       border-right: 0.5px solid #9da7ba;
       cursor: pointer;
+    }
+    // dropdown
+    .filter-show {
+      .box {
+        max-height: 100px;
+        select {
+          background-color: white;
+          color: #9da7ba;
+          padding: 12px;
+          border: none;
+          font-size: 1.3em;
+          overflow: hidden;
+          font-weight: bolder;
+          -webkit-appearance: button;
+          appearance: button;
+          outline: none;
+        }
+      }
     }
     .my-set {
       padding: 0 20px;
@@ -52,3 +70,5 @@
     }
   }
 }
+
+
