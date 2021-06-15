@@ -18,10 +18,10 @@ class OfferSeeder extends Seeder
 		// ];
 
 		$offers = [
-			'Teaching',
-			'Live Exhibition', 
-			'Collaboration',
-			'Recording',
+			'teaching',
+			'live Exhibition', 
+			'collaboration',
+			'recording',
 		];
 
 		foreach($offers as $offer) {
