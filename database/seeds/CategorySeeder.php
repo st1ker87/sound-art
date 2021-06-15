@@ -18,6 +18,7 @@ class CategorySeeder extends Seeder
 		// ];
 
 		$categories = [
+			// mestieri generali
 			'Band',
 			'Singer',
 			'Vocalist',
@@ -26,6 +27,7 @@ class CategorySeeder extends Seeder
 			'Mixer/Engineer',
 			'Record Company',
 			'Disc Jockey',
+			// strumnetisti
 			'Bassist',
 			'Guitarist',
 			'Drummer',

@@ -268,13 +268,14 @@ php artisan make:controller Admin/ContractController
 3. composer dump-autoload (se serve)
 4. php artisan db:seed 
 
-------------------------------------------------- seed intero database
+------------------------------------------------- seed INTERO database
 
-1. cancellazione e ricreazione db_sound_art
-2. preparazione 12 migration base
+1. cancellazione e ricreazione db_sound_art (la scatola ci deve essere)
+2. preparazione 12 migration base nel path giusto
 3. php artisan migrate
-4. preparazione DatabaseSeeder.php con 10 seed base (no ramo sponsorhip)
-5. php artisan db:seed
+4. controllo DatabaseSeeder.php con 10 seed base (no ramo sponsorhip)
+5. composer dump-autoload (se serve)
+6. php artisan db:seed
 
 
 
