@@ -18,8 +18,6 @@ use Illuminate\Support\Facades\Auth;
 // #         DEV  ROUTES         # 
 // ############################### 
 
-Route::get('/search', 'HomeController@search')->name('search'); //  {{ route('search') }}
-Route::post('/search', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search') }}
 Route::get('/test', 'HomeController@test')->name('test');  // ! SOLO PER TESTARE CODICE 
 
 
@@ -31,7 +29,14 @@ Route::get('/test', 'HomeController@test')->name('test');  // ! SOLO PER TESTARE
  * ! http://localhost:8000/
  */
 
+// # home page 
 Route::get('/', 'HomeController@index')->name('home');
+
+// # ricerca avanzata - atterraggio diretto senza filtri 
+Route::get('/search', 'HomeController@search')->name('search'); //  {{ route('search') }}
+
+// # ricerca avanzata - atterraggio da home page con filtri 
+Route::post('/search', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search') }}
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -41,12 +46,17 @@ Route::get('/', 'HomeController@index')->name('home');
  * ! http://localhost:8000/admin (da confermare /admin)
  */
 
+Auth::routes(); // signup presente in guest home
+// Auth::routes(['register'=>false]); // disattivazione signup in guest home 
+
 // # DASHBOARD base (poi vediamo) # 
 Route::get('/dashboard', 'HomeController@admin_index')->name('dashboard')->middleware('auth');
 
 
-Auth::routes(); // signup presente in guest home
-// Auth::routes(['register'=>false]); // disattivazione signup in guest home 
+
+
+
+
 
 // Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 // 	->namespace('Admin')	// ubicazione Controller admin /app/Http/Controllers/Admin/
