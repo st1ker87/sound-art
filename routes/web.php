@@ -29,15 +29,28 @@ Route::get('/test', 'HomeController@test')->name('test');  // ! SOLO PER TESTARE
  * ! http://localhost:8000/
  */
 
-// # home page 
+// # home page con ricerca semplice 
 Route::get('/', 'HomeController@index')->name('home');
 
-// # ricerca avanzata - atterraggio diretto senza filtri 
-Route::get('/search', 'HomeController@search')->name('search'); //  {{ route('search') }}
+// // # ricerca avanzata - atterraggio diretto senza filtri 
+// Route::get('/search', 'HomeController@search')->name('search'); //  {{ route('search') }}
 
-// # ricerca avanzata - atterraggio da home page con filtri 
-Route::post('/search', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search') }}
+// // # ricerca avanzata - atterraggio da home page con filtri 
+// Route::post('/search', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search') }}
 
+/**
+ * ! http://localhost:8000/search
+ */
+Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
+	->group(function () {	// rotte specifiche search
+
+		// # ricerca avanzata - atterraggio diretto senza filtri 
+		Route::get('/', 'HomeController@search')->name('search'); //  {{ route('search') }}
+
+		// # ricerca avanzata - atterraggio da home page con filtri 
+		Route::post('/', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search_from_home') }}
+
+	});
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 // %         ADMIN ROUTES        % 
