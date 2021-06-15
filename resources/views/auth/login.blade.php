@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    @include('partials.header_home')
+    @include('partials.header_search')
 @endsection
 
 @section('content')
@@ -17,12 +17,14 @@
 
                         <div class="form-group row">
                             <div class="col-md-8 offset-md-2 text-center">
-                                <button type="" class="btn btn-primary btn-lg btn-block">
-                                    <div class="col-xs-3">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        {{ __('SIGN IN WITH SPOTIFY') }}
+                                <button type="" class="btn btn-facebook btn-lg btn-block">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            {{ __('SIGN IN WITH FACEBOOK') }}
+                                        </div>
                                     </div>
                                 </button>
                             </div>
@@ -30,9 +32,15 @@
 
                         <div class="form-group row">
                             <div class="col-md-8 offset-md-2 text-center">
-                                <button type="" class="btn btn-primary btn-lg btn-block">
-                                    <i class="fab fa-spotify"></i>
-                                    {{ __('SIGN IN WITH FACEBOOK') }}
+                                <button type="" class="btn btn-spotify btn-lg btn-block">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="fab fa-spotify"></i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            {{ __('SIGN IN WITH SPOTIFY') }}
+                                        </div>
+                                    </div>
                                 </button>
                             </div>
                         </div>
@@ -85,7 +93,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-2 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                <button type="submit" class="btn btn-login btn-lg btn-block">
                                     {{ __('SIGN IN WITH EMAIL') }}
                                 </button>
 
@@ -113,5 +121,5 @@
 @endsection
 
 @section('footer')
-    @include('partials.footer_home')
+    @include('partials.footer_search')
 @endsection
