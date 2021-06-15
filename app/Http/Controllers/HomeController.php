@@ -28,22 +28,23 @@ class HomeController extends Controller
         return view('home',$data);
     }
 
-	/**
-     * ! DASHBOARD
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function admin_index()
-    {
-		$data = [
-			'users' 		=> User::all(),
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
- 		];
-        return view('admin.dashboard',$data);
-    }
+	// ! dismessa da qua e inserita in Admin/HomeController@dashboard
+	// /**
+    //  * ! DASHBOARD
+    //  *
+    //  * @return \Illuminate\Contracts\Support\Renderable
+    //  */
+    // public function dashboard()
+    // {
+	// 	$data = [
+	// 		'users' 		=> User::all(),
+	// 		'profiles' 		=> Profile::all(),
+	// 		'categories' 	=> Category::all(),
+	// 		'genres' 		=> Genre::all(),
+	// 		'offers' 		=> Offer::all(),
+ 	// 	];
+    //     return view('admin.dashboard',$data);
+    // }
 
 	/**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

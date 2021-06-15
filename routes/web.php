@@ -25,18 +25,12 @@ Route::get('/test', 'HomeController@test')->name('test');  // ! SOLO PER TESTARE
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 // %         GUEST ROUTES        % 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
 /**
  * ! http://localhost:8000/
  */
-
 // # home page con ricerca semplice 
 Route::get('/', 'HomeController@index')->name('home');
-
-// // # ricerca avanzata - atterraggio diretto senza filtri 
-// Route::get('/search', 'HomeController@search')->name('search'); //  {{ route('search') }}
-
-// // # ricerca avanzata - atterraggio da home page con filtri 
-// Route::post('/search', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search') }}
 
 /**
  * ! http://localhost:8000/search
@@ -51,30 +45,64 @@ Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
 		Route::post('/', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search_from_home') }}
 
 	});
-
+	
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 // %         ADMIN ROUTES        % 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-/**
- * ! http://localhost:8000/admin (da confermare /admin)
- */
 
 Auth::routes(); // signup presente in guest home
 // Auth::routes(['register'=>false]); // disattivazione signup in guest home 
 
-// # DASHBOARD base (poi vediamo) # 
-Route::get('/dashboard', 'HomeController@admin_index')->name('dashboard')->middleware('auth');
+/**
+ * ! http://localhost:8000/admin
+ */
+Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
+	->namespace('Admin')	// ubicazione dei Controller admin /app/Http/Controllers/Admin/...
+	->middleware('auth')	// controllore autenticazione
+	->group(function () {	// rotte specifiche admin
+
+		// # DASHBOARD base (poi vediamo) # 
+		Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 
 
 
+		/**
+		 * Home Page utente loggato
+		 */
+		// Route::get('/', 'HomeController@index')->name('admin-home');
+		/**
+		 * Post CRUD
+		 */
+		// Route::resource('/posts', PostController::class)->names([
+		// 	'index' 	=> 'admin.posts.index',
+		// 	'show' 		=> 'admin.posts.show',
+		// 	'create' 	=> 'admin.posts.create',
+		// 	'store' 	=> 'admin.posts.store',
+		// 	'edit' 		=> 'admin.posts.edit',
+		// 	'update' 	=> 'admin.posts.update',
+		// 	'destroy' 	=> 'admin.posts.destroy',
+		// ]);
+		/**
+		 * Category CRUD
+		 */
+		// Route::resource('/categories', CategoryController::class)->names([
+		// 	'index' 	=> 'admin.categories.index',
+		// 	'show' 		=> 'admin.categories.show',
+		// 	'create' 	=> 'admin.categories.create',
+		// 	'store' 	=> 'admin.categories.store',
+		// 	'edit' 		=> 'admin.categories.edit',
+		// 	'update' 	=> 'admin.categories.update',
+		// 	'destroy' 	=> 'admin.categories.destroy',
+		// ]);
+		/**
+		 * API con token
+		 * pannello generazione token utente loggato
+		 * generazione token 
+		 */
+		// Route::get('/profile', 'HomeController@profile')->name('admin-profile');
+		// Route::post('/profile/generate-token', 'HomeController@generateToken')->name('admin.generate_token');
+	});
 
 
-
-// Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
-// 	->namespace('Admin')	// ubicazione Controller admin /app/Http/Controllers/Admin/
-// 	->middleware('auth')	// controllore autenticazione
-// 	->group(function () {	// rotte specifiche admin
-// 		Route::get('/', 'HomeController@index')->name('admin-home');
-// 	});
 
