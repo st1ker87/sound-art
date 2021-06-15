@@ -28,12 +28,34 @@ class HomeController extends Controller
         return view('home',$data);
     }
 
+	// ! dismessa da qua e inserita in Admin/HomeController@dashboard
+	// /**
+    //  * ! DASHBOARD
+    //  *
+    //  * @return \Illuminate\Contracts\Support\Renderable
+    //  */
+    // public function dashboard()
+    // {
+	// 	$data = [
+	// 		'users' 		=> User::all(),
+	// 		'profiles' 		=> Profile::all(),
+	// 		'categories' 	=> Category::all(),
+	// 		'genres' 		=> Genre::all(),
+	// 		'offers' 		=> Offer::all(),
+ 	// 	];
+    //     return view('admin.dashboard',$data);
+    // }
+
 	/**
-     * ! DASHBOARD
-     *
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %   ADVANCED SEARCH no filter   %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 *  
+	 * ! equivale alla CRUD profiles > index, devo metterla in ProfileController@search ? 
+	 * 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function admin_index()
+    public function search(Request $request)
     {
 		$data = [
 			'users' 		=> User::all(),
@@ -42,55 +64,52 @@ class HomeController extends Controller
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
  		];
-        return view('admin.dashboard',$data);
-    }
-
-	/**
-     * ! ADVANCED SEARCH
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function search(Request $request)
-    {
-		$data = [
-			'users' 		=> User::all(),			// $users > Collection
-			'profiles' 		=> Profile::all(),		// $profiles >>>> $profile->user_id->categories
-			'categories' 	=> Category::all(),		// $categories
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
- 		];
-        return view('guest.profiles.search',$data); // CRUD index profiles 
+        return view('guest.profiles.search',$data);
     }
 
     /**
-     * ! SEARCH FROM HOME
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %  ADVANCED SEARCH with filter  %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function search_from_home(Request $request)
     {
         $form_data = $request->all();
-        $search_from_home = [];
-        $search_from_home['id'] = $form_data['id'];
-        if (array_key_exists('category', $form_data)) {
-            $search_from_home['category'] = $form_data['category'];   
-        }
-        else {
-            $search_from_home['genre'] = $form_data['genre'];
-        }
+		
+		// ! tutto questo va pensato in funzione delle info GIÀ MONTATE necessarie in pagina
+		// ! non ne abbiamo ancora un'idea chiara 
+        // $search_from_home = [];
+        // $search_from_home['id'] = $form_data['id'];
+        // if (array_key_exists('category', $form_data)) {
+        //     $search_from_home['category'] = $form_data['category'];   
+        // }
+        // else {
+        //     $search_from_home['genre'] = $form_data['genre'];
+        // }
+
+		// ! cosa serve qua da passare alla pagina ?
+
 		$data = [
-			'users' 		=> User::all(),			// $users > Collection
-			'profiles' 		=> Profile::all(),		// $profiles >>>> $profile->user_id->categories
-			'categories' 	=> Category::all(),		// $categories
+			// ! parte generica: tabelle DB disaccoppiate
+			// ! con queste si può fare tutto, ma lato pagina
+			'users' 		=> User::all(),
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
-            'search_from_home' => $search_from_home
+			// ! parte specifica: info DB GIÀ ASSEMBLATE
+			// ! da definire 
+            // 'search_from_home' => $search_from_home
  		];
         return view('guest.profiles.search',$data); // CRUD index profiles 
     }
 
 	/**
-     * ! TEST PAGE
+	 * #################################
+	 * #         CODE TEST PAGE        #
+	 * #################################
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

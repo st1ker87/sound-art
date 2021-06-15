@@ -78,7 +78,7 @@ class User extends Authenticatable
 	 */
 	public function categories()
 	{
-		return $this->belongsToMany('App\Category');
+		return $this->belongsToMany('App\Category','user_category');
 	}
 
 	/**
@@ -89,7 +89,7 @@ class User extends Authenticatable
 	 */
 	public function genres()
 	{
-		return $this->belongsToMany('App\Genre');
+		return $this->belongsToMany('App\Genre','user_genre');
 	}
 
 	/**
@@ -100,7 +100,7 @@ class User extends Authenticatable
 	 */
 	public function offers()
 	{
-		return $this->belongsToMany('App\Offer');
+		return $this->belongsToMany('App\Offer','user_offer');
 	}
 
 	/**
