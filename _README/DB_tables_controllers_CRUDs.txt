@@ -122,11 +122,18 @@ relazione 1-1 users-profiles, separiamo id profile da user_id
 User			N.A. 					N.A.
 
 Profile			ProfileController 		Admin/ProfileController
-				index 					(index)
-				show					(show)
-										create
-										edit
-										delete
+										X dashboard (index)
+				X index (search)		X create						1 form da creare in blade BE
+				X show					X edit
+										X delete
+
+index (search.blade.php) : elenco profili con dettagli minimi (quelli della card ma messi a caso)
+show.blade.php : dettaglio profilo che capisco dopo form 
+
+admin/dshboard.blade.php : pulsante crea profilo, pulsante modifica profilo, (un giorno potrò metter dettagli del MIO profilo)
+admin/create.blade.php : form vuoto 
+admin/edit.blade.php : form compilato 
+
 
 Message 		MessageController		Admin/MessageController
 				create					index
@@ -136,11 +143,11 @@ Review			ReviewController 		Admin/ReviewController
 				create					index
 										show
 
-Category		N.A. 					N.A.
+Category		N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
 
-Genre			N.A. 					N.A.
+Genre			N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
 
-Offer			N.A. 					N.A.
+Offer			N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
 
 Contract		N.A. 					Admin/ContractController
 										create
@@ -276,6 +283,26 @@ php artisan make:controller Admin/ContractController
 4. controllo DatabaseSeeder.php con 10 seed base (no ramo sponsorhip)
 5. composer dump-autoload (se serve)
 6. php artisan db:seed
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                               CRUD                                 %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+
+profiles
+
+messages
+
+reviews
+
+
+
+
+
+
+
+
 
 
 

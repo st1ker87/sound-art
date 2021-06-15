@@ -14,7 +14,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        // risultato ricerca semplice - elenco profili
     }
 
     /**
@@ -46,7 +46,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+        // dettaglio profilo 
     }
 
     /**
