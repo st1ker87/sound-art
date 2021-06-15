@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Profile;
+use App\Category;
+use App\Genre;
+use App\Offer;
 
 class HomeController extends Controller
 {
@@ -13,7 +18,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+		$data = [
+			'users' 		=> User::all(),
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+ 		];
+        return view('home',$data);
     }
 
 	/**
@@ -23,9 +35,15 @@ class HomeController extends Controller
      */
     public function admin_index()
     {
-        return view('admin.dashboard');
+		$data = [
+			'users' 		=> User::all(),
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+ 		];
+        return view('admin.dashboard',$data);
     }
-
 
 	/**
      * ! ADVANCED SEARCH
@@ -34,9 +52,15 @@ class HomeController extends Controller
      */
     public function search()
     {
-        return view('guest.profiles.search'); // CRUD index profiles 
+		$data = [
+			'users' 		=> User::all(),			// $users > Collection
+			'profiles' 		=> Profile::all(),		// $profiles >>>> $profile->user_id->categories
+			'categories' 	=> Category::all(),		// $categories
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+ 		];
+        return view('guest.profiles.search',$data); // CRUD index profiles 
     }
-
 
 	/**
      * ! TEST PAGE
@@ -45,7 +69,14 @@ class HomeController extends Controller
      */
     public function test()
     {
-        return view('test'); 
+		$data = [
+			'users' 		=> User::all(),		
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+ 		];
+        return view('test',$data); 
     }
 
 }
