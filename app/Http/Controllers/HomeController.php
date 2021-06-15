@@ -50,7 +50,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function search()
+    public function search(Request $request)
     {
 		$data = [
 			'users' 		=> User::all(),			// $users > Collection
@@ -58,6 +58,33 @@ class HomeController extends Controller
 			'categories' 	=> Category::all(),		// $categories
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
+ 		];
+        return view('guest.profiles.search',$data); // CRUD index profiles 
+    }
+
+    /**
+     * ! SEARCH FROM HOME
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function search_from_home(Request $request)
+    {
+        $form_data = $request->all();
+        $search_from_home = [];
+        $search_from_home['id'] = $form_data['id'];
+        if (array_key_exists('category', $form_data)) {
+            $search_from_home['category'] = $form_data['category'];   
+        }
+        else {
+            $search_from_home['genre'] = $form_data['genre'];
+        }
+		$data = [
+			'users' 		=> User::all(),			// $users > Collection
+			'profiles' 		=> Profile::all(),		// $profiles >>>> $profile->user_id->categories
+			'categories' 	=> Category::all(),		// $categories
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+            'search_from_home' => $search_from_home
  		];
         return view('guest.profiles.search',$data); // CRUD index profiles 
     }

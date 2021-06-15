@@ -1,10 +1,19 @@
 <h2>PAGINA PER TESTARE CODICE</h2>
-	
+
+@foreach ($categories as $category)
+
+	@dump($category->name)
+
+@endforeach
+
 @php
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> FRONT-END-branch
 /////////////////////////////////////////////
 
 // use App\User;
