@@ -51,6 +51,8 @@ class HomeController extends Controller
 	 * %   ADVANCED SEARCH no filter   %
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	 *  
+	 * ! equivale alla CRUD profiles > index, devo metterla in ProfileController@search ? 
+	 * 
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function search(Request $request)
@@ -62,7 +64,7 @@ class HomeController extends Controller
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
  		];
-        return view('guest.profiles.search',$data); // CRUD index profiles 
+        return view('guest.profiles.search',$data);
     }
 
     /**

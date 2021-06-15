@@ -27,25 +27,59 @@ Route::get('/test', 'HomeController@test')->name('test');  // ! SOLO PER TESTARE
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 /**
- * ! http://localhost:8000/
+ * HOME
+ * http://localhost:8000/
  */
 // # home page con ricerca semplice 
 Route::get('/', 'HomeController@index')->name('home');
 
 /**
- * ! http://localhost:8000/search
+ * SEARCH
+ * http://localhost:8000/search
  */
 Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
 	->group(function () {	// rotte specifiche search
 
 		// # ricerca avanzata - atterraggio diretto senza filtri 
-		Route::get('/', 'HomeController@search')->name('search'); //  {{ route('search') }}
+		Route::get('/', 'HomeController@search')->name('search'); 		// ! index() deve puntare a view('guest.profiles.search')
 
 		// # ricerca avanzata - atterraggio da home page con filtri 
 		Route::post('/', 'HomeController@search_from_home')->name('search_from_home'); //  {{ route('search_from_home') }}
 
 	});
-	
+
+/**
+ * Profile CRUD - parte guest (index, show)
+ * http://localhost:8000/profiles
+ */
+Route::prefix('profiles')
+	->group(function() {
+
+		// versione 1
+		Route::get('/', 'ProfileController@index')->name('profiles.index');		// ! index() deve puntare a view('guest.profiles.search')
+		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show');	// ! show()  deve puntare a view('guest.profiles.show')
+		
+		// versione 2
+		Route::resource('/', ProfileController::class)->names([
+				'index' 	=> 'profiles.index',
+				'show' 		=> 'profiles.show',
+				// 'create' => 'admin.posts.create',
+				// 'store' 	=> 'admin.posts.store',
+				// 'edit' 	=> 'admin.posts.edit',
+				// 'update' => 'admin.posts.update',
+				// 'destroy' => 'admin.posts.destroy',
+			]);
+		
+	});	
+
+
+
+
+
+
+
+
+
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 // %         ADMIN ROUTES        % 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -53,36 +87,42 @@ Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
 Auth::routes(); // signup presente in guest home
 // Auth::routes(['register'=>false]); // disattivazione signup in guest home 
 
-/**
- * ! http://localhost:8000/admin
- */
 Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 	->namespace('Admin')	// ubicazione dei Controller admin /app/Http/Controllers/Admin/...
 	->middleware('auth')	// controllore autenticazione
 	->group(function () {	// rotte specifiche admin
 
-		// # DASHBOARD base (poi vediamo) # 
+		// # DASHBOARD # 
+		/**
+		 * questa è la home dell'utente loggato! definita in laravel qua:
+		 * 
+		 * /app/Http/Providers/RouteServiceProvider
+		 *		public const HOME = '/admin/dashboard';
+		 *
+		 * http://localhost:8000/admin/dashboard
+		 */
 		Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
-
-
-
+		// # PROFILES # 
 		/**
-		 * Home Page utente loggato
+		 * Profile CRUD - parte admin (create, edit, delete)
+		 * http://localhost:8000/admin/profiles
 		 */
-		// Route::get('/', 'HomeController@index')->name('admin-home');
-		/**
-		 * Post CRUD
-		 */
-		// Route::resource('/posts', PostController::class)->names([
+		Route::resource('/profiles', ProfileController::class)->names([
 		// 	'index' 	=> 'admin.posts.index',
 		// 	'show' 		=> 'admin.posts.show',
-		// 	'create' 	=> 'admin.posts.create',
-		// 	'store' 	=> 'admin.posts.store',
-		// 	'edit' 		=> 'admin.posts.edit',
-		// 	'update' 	=> 'admin.posts.update',
-		// 	'destroy' 	=> 'admin.posts.destroy',
-		// ]);
+			'create' 	=> 'admin.posts.create',
+			'store' 	=> 'admin.posts.store',
+			'edit' 		=> 'admin.posts.edit',
+			'update' 	=> 'admin.posts.update',
+			'destroy' 	=> 'admin.posts.destroy',
+		]);
+
+
+
+
+
+
 		/**
 		 * Category CRUD
 		 */
