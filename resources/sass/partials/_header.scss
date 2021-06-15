@@ -3,9 +3,23 @@
 QUESTO E' HEADER
 
 */
-header {
+/* Header Home */
+.header-home {
     background-color: $primaryBlack;
+    .nav-link {
+        color: $primaryWhite;
+        &:hover {
+            color: $primaryWhite;
+            text-decoration: underline;
+        }
+    }
 }
+
+/* Header Search */
+.header-search {
+    background-color: $primaryDarkBlue;
+}
+
 ul.navbar-nav {
     flex-direction: row;
     li:not(:first-child) {

@@ -2,6 +2,10 @@
 
 @section('title', 'Homepage')
 
+@section('header')
+    @include('partials.header_home')
+@endsection
+
 @section('content')
 
     <!-- Jumbotron -->
@@ -39,7 +43,7 @@
                                     <form action="" method="post">
                                         @csrf
                                         @method('POST')
-                                        <input type="hidden" id="category" name="category" value="lorem">
+                                        <input type="hidden" id="genre" name="genre" value="lorem">
                                         <input type="submit" value="Lorem">
                                     </form>
                                 </li>

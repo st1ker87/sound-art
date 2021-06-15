@@ -1,9 +1,10 @@
-<header>
+<header class="header-home">
 	<div class="container">
 		<nav class="navbar justify-content-between">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
 				<img id="logo" src="{{ asset('img/logo-transp.png') }}" alt="Sound Art logo">
 			</a>
+			<a class="nav-link" href="{{ route('search') }}">Explore</a>
 			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
 			@guest

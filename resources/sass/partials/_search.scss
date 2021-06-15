@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 40vh;
-  background-color: #212949;
+  background-color: $primaryDarkBlue;
   //se manteniamo questa foto bsogna ritoccarla con PS
     .title-search {
       position: absolute;
@@ -11,19 +11,19 @@
       width: 100ch;
       h1 {
           font-size: 5rem;
-          color: white;
+          color: $primaryWhite;
       }
       p {
           width: 100ch;
           font-size: 2em;
-          color: white;
+          color: $primaryWhite;
       }
   }
 }
 
 .my-color-search {
-  background-color: white;
-  border-bottom: 0.5px solid #9da7ba;
+  background-color: $primaryWhite;
+  border-bottom: 0.5px solid $lightGray;
 
   .search-nav {
     display: flex;
@@ -36,16 +36,16 @@
       padding: 0 20px;
       line-height: 8vh;
       height: 100%;
-      background-color: white;
-      border-right: 0.5px solid #9da7ba;
+      background-color: $primaryWhite;
+      border-right: 0.5px solid $lightGray;
       cursor: pointer;
     }
     .my-set {
       padding: 0 20px;
-      border-right: 0.5px solid #b4bfd3;
+      border-right: 0.5px solid $lightGray;
     }
     h3 {
-      color: #9da7ba;
+      color: $lightGray;
       line-height: 8vh;
       font-size: 1.3em;
       font-weight: bolder;

@@ -10,7 +10,11 @@
 @extends('layouts.app')
 
 @section('title', 'Search')
-    
+
+@section('header')
+  @include('partials.header_search')
+@endsection
+
 @section('content')
   <main>
     {{-- jumbo con testi --}}
