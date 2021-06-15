@@ -2,6 +2,10 @@
 
 @section('title', 'Homepage')
 
+@section('header')
+    @include('partials.header_home')
+@endsection
+
 @section('content')
 
     <!-- Jumbotron -->
@@ -15,36 +19,34 @@
                     or you just want to have your private lessons, you can find all of that with us.
                 </p>
                 <div class="search-cnt">
-                    <button type="button" class="btn btn-dark">Search for artists <i class="fas fa-caret-right"></i></i></button>
+                    <button v-on:click="showSearch" type="button" class="btn btn-dark">
+                        Search for artists <i class="fas fa-caret-right"></i>
+                    </button>
                     <div v-if="searchHome" class="search">
                         <div class="categories-cnt">
                             <h5>Categories</h5>
                             <ul>
-                                <li><input type="submit" role="button" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
+                                <li>
+                                    <form action="" method="post">
+                                        @csrf
+                                        @method('POST')
+                                        <input type="hidden" id="category" name="category" value="lorem">
+                                        <input type="submit" value="Lorem">
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                         <div class="genres-cnt">
                             <h5>Genres</h5>
                             <ul>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
-                                <li><input type="submit" value="Lorem"></li>
+                                <li>
+                                    <form action="" method="post">
+                                        @csrf
+                                        @method('POST')
+                                        <input type="hidden" id="genre" name="genre" value="lorem">
+                                        <input type="submit" value="Lorem">
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     </div>
