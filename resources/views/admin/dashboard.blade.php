@@ -28,6 +28,15 @@
 @extends('layouts.app')
 
 @section('title','dashboard')
+
+@section('header')
+    @include('partials.header_home')
+@endsection
+
 @section('content')
 	<h1>SONO DASHBOARD</h1>
+@endsection
+
+@section('footer')
+    @include('partials.footer_home')
 @endsection

@@ -1,4 +1,4 @@
-<footer class="search-footer">
+<footer class="footer-home">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-lg-3">       

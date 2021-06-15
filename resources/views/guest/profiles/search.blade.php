@@ -91,3 +91,7 @@
   </main>
 
 @endsection
+
+@section('footer')
+    @include('partials.footer_search')
+@endsection

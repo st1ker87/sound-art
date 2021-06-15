@@ -126,6 +126,12 @@
     <section class="get-started">
 
     </section>
+
+@endsection
+
+
+@section('footer')
+    @include('partials.footer_home')
 @endsection
 
 
