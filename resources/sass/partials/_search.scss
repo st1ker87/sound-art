@@ -44,9 +44,8 @@
     // dropdown
     .filter-show {
       .box {
-        max-height: 100px;
         select {
-          background-color: white;
+          background-color: $primaryWhite;
           color: #9da7ba;
           padding: 12px;
           border: none;
@@ -71,5 +70,3 @@
     }
   }
 }
-
-

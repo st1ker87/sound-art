@@ -39,7 +39,7 @@
               <div class="my-set btn-category">
                 <div class="box">
                   <select>
-                    <option><h3>Categories</h3></option>
+                    <option disabled selected><h3>-- Categories --</h3></option>
                     <option value="band">Band</option>
                     <option value="bass">Bass</option>
                     <option value="cello">Cello</option>
@@ -52,9 +52,18 @@
               <div class="my-set btn-category">
                 <div class="box">
                   <select>
-                    <option><h3>Genrs</h3></option>
+                    <option disabled selected><h3>-- Genrs --</h3></option>
                     <option value="rock">Rock</option>
                     <option value="punk">Punk</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jazz">Jazz</option>
                     <option value="jazz">Jazz</option>
                     <option value="hip-hop">Hip-Hop</option>
                   </select>
@@ -65,7 +74,7 @@
               <div class="my-set btn-category">
                 <div class="box">
                   <select>
-                    <option><h3>Votes</h3></option>
+                    <option disabled selected><h3>-- Votes--</h3></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
