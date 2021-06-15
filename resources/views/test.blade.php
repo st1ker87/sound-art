@@ -1,39 +1,47 @@
 <h2>PAGINA PER TESTARE CODICE</h2>
-	
+
+@foreach ($categories as $category)
+
+	@dump($category->name)
+
+@endforeach
+
 @php
+
+
 
 /////////////////////////////////////////////
 
-use App\User;
-use App\Category;
+// use App\User;
+// use App\Category;
 
-		$users = User::All();
-		$categories = Category::All();
+// 		$users = User::All();
+// 		$categories = Category::All();
 
-		$tag_ids = [];
-		foreach ($categories as $category)
-			$tag_ids[] = $category['id'];
+// 		$tag_ids = [];
+// 		foreach ($categories as $category)
+// 			$tag_ids[] = $category['id'];
 			
-		foreach ($users as $user) {
+// 		foreach ($users as $user) {
 				
-			shuffle($tag_ids);
-			@dump($tag_ids);
-			$tag_num = random_int(1,3);
+// 			shuffle($tag_ids);
+// 			@dump($tag_ids);
+// 			$tag_num = random_int(1,3);
 
-			for ($i=0; $i<$tag_num; $i++) {
+// 			for ($i=0; $i<$tag_num; $i++) {
 
-				$user_category = ['user_id'=>'','category_id'=>''];
-				$user_category['user_id'] = $user['id'];
-				$user_category['category_id'] = $tag_ids[$i];
-				@dump($user_category);
+// 				$user_category = ['user_id'=>'','category_id'=>''];
+// 				$user_category['user_id'] = $user['id'];
+// 				$user_category['category_id'] = $tag_ids[$i];
+// 				@dump($user_category);
 
-				// DB::table('user_category')->insert([
-        		// 	'user_id'	 	=> $user['id'],  
-        		// 	'category_id' 	=> $tag_ids[$i],
-    			// ]);
+// 				// DB::table('user_category')->insert([
+//         		// 	'user_id'	 	=> $user['id'],  
+//         		// 	'category_id' 	=> $tag_ids[$i],
+//     			// ]);
 
-			}
-		}
+// 			}
+// 		}
 
 
 /////////////////////////////////////////////

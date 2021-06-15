@@ -93,3 +93,7 @@
     </div>
 </div>
 @endsection
+
+@section('footer')
+    @include('partials.footer_home')
+@endsection

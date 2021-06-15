@@ -12,7 +12,7 @@
     <section class="jumbotron-container">
         <div class="container">
             <div class="jumbotron-title">
-                <h1>Hire you artist</h1>
+                <h1>Hire your artist</h1>
                 <p>
                     If you are looking for music artists, session drummers, vocalists,
                     audio editing, mixing engineers, producers and more,
@@ -26,27 +26,31 @@
                         <div class="categories-cnt">
                             <h5>Categories</h5>
                             <ul>
+                                @foreach($categories as $category)
                                 <li>
-                                    <form action="" method="post">
+                                    <form action="{{ route('search') }}" method="post">
                                         @csrf
                                         @method('POST')
-                                        <input type="hidden" id="category" name="category" value="lorem">
-                                        <input type="submit" value="Lorem">
+                                        <input type="hidden" id="category" name="category" value="{{$category->name}}">
+                                        <input type="submit" role="button" value="{{$category->name}}">
                                     </form>
                                 </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="genres-cnt">
                             <h5>Genres</h5>
                             <ul>
+                                @foreach($genres as $genre)
                                 <li>
-                                    <form action="" method="post">
+                                    <form action="{{ route('search') }}" method="post">
                                         @csrf
                                         @method('POST')
-                                        <input type="hidden" id="genre" name="genre" value="lorem">
-                                        <input type="submit" value="Lorem">
+                                        <input type="hidden" id="genre" name="genre" value="{{$genre->name}}">
+                                        <input type="submit" value="{{$genre->name}}">
                                     </form>
                                 </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
