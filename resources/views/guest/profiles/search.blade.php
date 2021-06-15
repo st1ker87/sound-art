@@ -16,7 +16,6 @@
 @endsection
 
 @section('content')
-@dd($search_from_home)
   <main>
     {{-- jumbo con testi --}}
     <div class="jumbotron-container-search">
