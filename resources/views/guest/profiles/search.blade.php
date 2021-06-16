@@ -27,7 +27,7 @@
       </div>
     </section>
     {{-- barra ricerca --}}
-   <section class="container-fluid my-color-search">
+   <div class="container-fluid my-color-search">
      <div class="row">
        <div class="container">
           <div class="search-nav">
@@ -96,7 +96,7 @@
           </div>
        </div>
      </div>
-   </section>
+    </div>
 
 
    <!-- PROFILES -->
