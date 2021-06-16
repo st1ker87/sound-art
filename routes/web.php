@@ -55,8 +55,8 @@ Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
 Route::prefix('messages')   // prefisso URI raggruppamento sezione /messages/...
 	->group(function () {	// rotte specifiche messages
 
-		Route::get('/', 'MessageController@create')->name('messages.create'); // ! return view('guest.messages.create');
-		Route::post('/', 'MessageController@store')->name('messages.store');  // ! return redirect()->route('NON LO SO')->with('status','Message sent');
+		Route::get('/create',	'MessageController@create')->name('messages.create'); // ! return view('guest.messages.create');
+		Route::post('/',		'MessageController@store')->name('messages.store');  // ! return redirect()->route('NON LO SO')->with('status','Message sent');
 		
 	});
 
@@ -69,8 +69,8 @@ Route::prefix('messages')   // prefisso URI raggruppamento sezione /messages/...
 Route::prefix('reviews')   // prefisso URI raggruppamento sezione /reviews/...
 	->group(function () {	// rotte specifiche reviews
 
-		Route::get('/', 'ReviewController@create')->name('reviews.create'); // ! return view('guest.reviews.create');
-		Route::post('/', 'ReviewController@store')->name('reviews.store');  // ! return redirect()->route('NON LO SO')->with('status','Review sent');
+		Route::get('/create',	'ReviewController@create')->name('reviews.create'); // ! return view('guest.reviews.create');
+		Route::post('/', 		'ReviewController@store')->name('reviews.store');  // ! return redirect()->route('NON LO SO')->with('status','Review sent');
 		
 	});
 
@@ -88,19 +88,16 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 	->group(function () {	// rotte specifiche admin
 
 		/**
-		 * # PROFILES = DASHBOARD #
+		 * # DASHBOARD #
 		 * 
-		 * Profile CRUD: parte admin (index) SOLO IL PROPRIO PROFILE
-		 * questa è la home dell'utente loggato! definita in laravel qua:
+		 * home dell'utente loggato >>> definita in laravel qua:
 		 * 
 		 * /app/Http/Providers/RouteServiceProvider
 		 *		public const HOME = '/admin/dashboard';
 		 *
 		 * http://localhost:8000/admin/dashboard
 		 */
-		Route::get('/dashboard', 'ProfileController@dashboard')->name('dashboard'); // ! ->name('admin.profiles.index') || return view('admin.dashboard');
-		// servirà questa SOLO se ognuno vede il dettaglio del proprio profilo DIVERSAMENTE da come lo vede chiunque
-		// Route::get('/dashboard/{slug}', 'ProfileController@show')->name('admin.profiles.show');  // ! return view('admin.profiles.show');
+		Route::get('/dashboard', 'HomeController@index')->name('dashboard'); // ! return view('admin.dashboard');
 
 		/**
 		 * # PROFILES #
@@ -109,11 +106,13 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * http://localhost:8000/admin/profiles
 		 */
 		Route::resource('/profiles', ProfileController::class)->names([
-			'create' 	=> 'admin.posts.create',	// ! return view('admin.profiles.create');
-			'store' 	=> 'admin.posts.store',		// ! return redirect()->route('dashboard')->with('status','Profilo creato correttamente');
-			'edit' 		=> 'admin.posts.edit',		// ! return view('admin.profiles.edit');
-			'update' 	=> 'admin.posts.update',	// ! return redirect()->route('dashboard')->with('status','Profilo aggiornato correttamente');
-			'destroy' 	=> 'admin.posts.destroy',	// ! return redirect()->route('dashboard')->with('status','Profilo eliminato correttamente');
+			'index'		=> 'admin.profiles.index',		// ! GET'/profiles'				return view('admin.profiles.index'); >>>>>>>>>>>>> È DIVERSA DALLA DASHBOARD !!!
+			'show'		=> 'admin.profiles.show',		// ! GET'/profiles/{slug}'		return view('admin.profiles.show'); >>>>>>>>>>>>>> CI ARRIVI CON {slug}
+			'create' 	=> 'admin.profiles.create',		// ! GET'/profiles/create'		return view('admin.profiles.create');
+			'store' 	=> 'admin.profiles.store',		// ! POST'/profiles'			return redirect()->route('dashboard')->with('status','Profile created');
+			'edit' 		=> 'admin.profiles.edit',		// ! GET'profiles/{slug}/edit'	return view('admin.profiles.edit');
+			'update' 	=> 'admin.profiles.update',		// ! PUT'profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile udated');
+			'destroy' 	=> 'admin.profiles.destroy',	// ! DEL'profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile deleted');
 		]);
 
 		/**
@@ -122,11 +121,9 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * Message CRUD: parte admin (index,show,destroy) SOLO I PROPRI MESSAGGI RICEVUTI
 		 * http://localhost:8000/admin/messages
 		 */
-		Route::resource('/messages', MessageController::class)->names([
-			'index' 	=> 'admin.messages.index',	// ! return view('admin.messages.index');
-			'show' 		=> 'admin.messages.show',	// ! return view('admin.messages.show');
-			'destroy'	=> 'admin.messages.destroy',// ! return redirect()->route('dashboard')->with('status','Profilo eliminato correttamente');
-		]);
+		Route::get('/messages',			'MessageController@index')->name('admin.messages.index'); 		// ! return view('admin.messages.index');
+		Route::get('/messages/{slug}',	'MessageController@show')->name('admin.messages.show'); 		// ! return view('admin.messages.show');
+		Route::get('/messages',			'MessageController@destroy')->name('admin.messages.destroy'); 	// ! return redirect()->route('dashboard')->with('status','Message deleted');
 
 		/**
 		 * # REVIEWS #
@@ -134,7 +131,10 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * Review CRUD: parte admin (index,show) SOLO LE PROPRIE RECENSIONI RICEVUTE 
 		 * http://localhost:8000/admin/reviews
 		 */
-		Route::resource('/reviews', ReviewController::class)->names([
+		// Route::get('/reviews',			'ReviewController@index')->name('admin.reviews.index'); // ! return view('admin.reviews.index');
+		// Route::get('/reviews/{slug}',	'ReviewController@show')->name('admin.reviews.show'); 	// ! return view('admin.reviews.show');
+
+		 Route::resource('/reviews', ReviewController::class)->names([
 			'index' 	=> 'admin.reviews.index', 	// ! return view('admin.reviews.index');
 			'show' 		=> 'admin.reviews.show',	// ! return view('admin.reviews.show');
 		]);

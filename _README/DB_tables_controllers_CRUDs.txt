@@ -1,4 +1,32 @@
 
+
+
+
+
+singolo profilo
+	[tutta riga della tabella profiles] array
+	nome (users)
+	nognome (users)
+	[categorie del profilo] array (users-categories)
+	[genres del profilo] array (users-genres)
+	[offers del profilo] array (users-offers)
+	[messages del profile] array (users-messages)
+		email
+		nome
+		titolo
+		testo
+		
+
+
+
+
+
+
+
+
+
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 %            ELENCO TABLE + MODEL + RELAZIONI + ipotesi CRUD         %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
