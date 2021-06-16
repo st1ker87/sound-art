@@ -14,7 +14,7 @@
 					<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
 				</li>
 				@if (Route::has('register'))
-					<li class="nav-item" >
+					<li class="nav-item">
 						<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
 					</li>
 				@endif

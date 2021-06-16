@@ -42,8 +42,6 @@ const app = new Vue({
         //metodo per lo scroll
         updateScroll() {
           this.scrollPosition = window.scrollY
-          console.log(this.scrollPosition)
-
        }
     },
     mounted() {
