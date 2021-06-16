@@ -30,7 +30,9 @@
   }
 
 @endphp
+
   <main>  
+    {{-- pensavo di mettere la foto nel jumbo come da sito  --}}
     <section class="jumbotron-container-show">
       <div class="container">
         <div class="title-search">
@@ -45,23 +47,47 @@
         @endforeach
           </p>
           <div class="votes">
-            {{-- <i v-for="i in vote(best.vote_average)" class="fas fa-star"></i> --}}
-
               @if ($average_vote)
                 @for ($i = 0; $i < $average_vote; $i++)
                   <i class='fas fa-star'></i>   
                 @endfor      
-              @endif         
+              @endif 
+              <p>{{$profile->work_town}}</p>
           </div>
-
+        </div>
+      </div>
+    </section>
+    {{-- per i standard da noi dati il div sottostante dovrebbe essere una section 
+    ma anche per questa sezione usero un div <3 --}}
+    <div class="bar_under_jumbo container-fluid">
+      <div class="row search-nav">
+        <div class="container">
+          <button class="btn btn-primary">Contact {{$profile->user->name}}</button>
+        </div>
+      </div>
+    </div>
+    <section class="container main-show">
+      <div class="row">
+        <div class="description">
+          <h2>About me</h2>
+          <p>{{$profile->bio_text1}}</p>
+          <p>{{$profile->bio_text2}}</p>
+        </div>
+        <div class="row">
+          <div class="genrs">
+            <h2>My favorite music</h2>
+            @foreach($profile->user->genres as $genre)
+            @if($loop->last)
+              {{$genre->name}}
+            @else
+            {{$genre->name . ','}}
+            @endif
+        @endforeach
+          </div>
         </div>
       </div>
     </section>
   </main>
-
-
-
-
 
 
 @endsection
