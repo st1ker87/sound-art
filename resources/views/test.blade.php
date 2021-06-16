@@ -1,7 +1,7 @@
 <h2>PAGINA PER TESTARE CODICE</h2>
 
 
-{{-- TEST DATI TABLE --}}
+{{-- TEST DATI TABLE
 @foreach ($profiles as $profile)
 	
 	@php
@@ -12,9 +12,7 @@
 		@dump($cat->name)
 	@endforeach
 
-@endforeach
-
-
+@endforeach --}}
 
 
 
@@ -31,6 +29,26 @@
 
 
 @php
+
+
+
+
+
+
+use App\Profile;
+$id = 10;
+
+// il profilo in questione
+$profile = Profile::find($id);
+@dump($profile);
+
+// $id è id del profile
+// ? quale è il suo user_id 
+$user_id = $profile->user_id;
+@dump($user_id);
+
+
+
 
 
 

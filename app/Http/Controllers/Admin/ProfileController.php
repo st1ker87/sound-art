@@ -110,6 +110,9 @@ class ProfileController extends Controller
         $form_data = $request->all();
 		
 		// fa cose per salvare i dati 
+
+
+		// slug: lo creo da users-name/surname e controllo unicità in DB
 		
 		return redirect()->route('dashboard')->with('status','Profile created');
     }
@@ -150,6 +153,10 @@ class ProfileController extends Controller
     }
 
     /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %            UPDATE             %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -158,17 +165,50 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+		// faccio cose
+
+
+        // alla fine torno in dashboard
+		return redirect()->route('dashboard')->with('status','Profile udated');
     }
 
     /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %            DESTROY            %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
      * Remove the specified resource from storage.
      *
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profile)
+    public function destroy($id) // originale: destroy(Profile $profile)
     {
-        //
+		// il profile in questione
+		$profile = Profile::find($id);
+
+		// il corrispondente user_id ($id è l'id del profile!)
+		$user_id = $profile->user_id;
+		@dd($user_id);
+
+		// lo user corrispondente a questo profile
+		$user = User::where('id',$user_id)->first();
+
+		// cancellare le relazioni user-tag presenti nelle pivot
+		// boolpress: $post->tags()->sync([]);
+		$user->categories()->sync([]);
+		$user->genres()->sync([]);
+		$user->offers()->sync([]);
+
+		// cancellare il profile $id
+		// boolpress: $post->delete();
+		$profile->delete();
+
+		// ! lo user non ha più un profile 
+		// ! ma potrebbe ancora avere messages e reviews (collegati a user)
+		// ! che fare?
+
+ 		// alla fine torno in dashboard
+		return redirect()->route('dashboard')->with('status','Profile deleted');
     }
 }

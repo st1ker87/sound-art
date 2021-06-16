@@ -106,8 +106,8 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * http://localhost:8000/admin/profiles
 		 */
 		Route::resource('/profiles', ProfileController::class)->names([
-			'index'		=> 'admin.profiles.index',		// ! GET'/profiles'				return view('admin.profiles.index'); >>>>>>>>>>>>> È DIVERSA DALLA DASHBOARD !!!
-			'show'		=> 'admin.profiles.show',		// ! GET'/profiles/{slug}'		return view('admin.profiles.show'); >>>>>>>>>>>>>> CI ARRIVI CON {slug}
+			'index'		=> 'admin.profiles.index',		// ! GET'/profiles'				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
+			'show'		=> 'admin.profiles.show',		// ! GET'/profiles/{slug}'		return view('admin.profiles.show');
 			'create' 	=> 'admin.profiles.create',		// ! GET'/profiles/create'		return view('admin.profiles.create');
 			'store' 	=> 'admin.profiles.store',		// ! POST'/profiles'			return redirect()->route('dashboard')->with('status','Profile created');
 			'edit' 		=> 'admin.profiles.edit',		// ! GET'profiles/{slug}/edit'	return view('admin.profiles.edit');
