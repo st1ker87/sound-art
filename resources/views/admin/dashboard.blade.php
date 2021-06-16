@@ -52,7 +52,7 @@
 
 @if ($my_profile)
 	{{-- @if (Auth::user()->profile->id) --}}
-	<a class="btn btn-primary" href="{{-- route('admin.profiles.edit',$myself_profile->slug) --}}" class="btn btn-primary">
+	<a class="btn btn-primary" href="{{ route('admin.profiles.edit',$my_profile->slug)}}" class="btn btn-primary">
 		Edit your profile
 	</a>
 	{{-- @endif --}}

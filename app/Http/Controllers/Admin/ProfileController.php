@@ -211,9 +211,73 @@ class ProfileController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, User $user)
     {
-		// faccio cose
+      $form_data = $request->all();
+		
+      // validazione parte post 
+      $this->profileValidation($request);
+  
+      // $new_profile è il nuovo profile da mettere in DB 
+      // $profile = new Profile;
+  
+      // id user che crea il post
+      // $new_profile['user_id'] = Auth::id();
+  
+      // generazione slug da nome e cognome di me stesso!
+      $user = Auth::user();
+      $pre_slug = $user->name.' '.$user->surname;
+      $new_profile['slug'] = $this->slugGeneration($pre_slug);
+  
+      // gestione immagine
+      if(array_key_exists('image_url',$form_data)) {
+        // salvo immagine in /storage/app/public/profile_image/ e recupero path
+        // ! qui viene definita la cartella /profile_image/ dentro /public/ !
+        $image_path = Storage::put('profile_image',$form_data['image_url']);
+        // @dump($image_path);
+        // modifico il default path del form
+        $form_data['image_url'] = $image_path; 
+      }
+  
+      // gestione video
+      if(array_key_exists('video_url',$form_data)) {
+        // salvo immagine in /storage/app/public/profile_video/ e recupero path
+        // ! qui viene definita la cartella /profile_video/ dentro /public/ !
+        $image_path = Storage::put('profile_video',$form_data['video_url']);
+        // @dump($image_path);
+        // modifico il default path del form
+        $form_data['video_url'] = $image_path; 
+      }
+  
+      // gestione audio
+      if(array_key_exists('audio_url',$form_data)) {
+        // salvo immagine in /storage/app/public/profile_audio/ e recupero path
+        // ! qui viene definita la cartella /profile_audio/ dentro /public/ !
+        $image_path = Storage::put('profile_audio',$form_data['audio_url']);
+        // @dump($image_path);
+        // modifico il default path del form
+        $form_data['audio_url'] = $image_path; 
+      }
+
+      dd($user);
+
+    //   if(array_key_exists('categories', $form_data)) {
+    //     $user->categories()->sync($form_data['categories']);
+    // }
+    //   else {
+    //     $user->categories()->sync([]);
+    // }
+
+    return redirect()->route('admin.posts.index');
+  
+      // ! aggiungo $new_profile nella table profiles; NON sono qui i 3 tag !
+      // il nuovo profile acquisisce i dati del form e viene buttato nel DB
+      // $new_profile->fill($form_data);
+      // $new_profile->save(); // ! DB writing here !
+
+      $user->profile->update($form_data);
+  
+      return redirect()->route('dashboard')->with('status','Profile created');
 
 
         // alla fine torno in dashboard
