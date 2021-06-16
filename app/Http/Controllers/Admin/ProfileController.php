@@ -86,6 +86,11 @@ class ProfileController extends Controller
      */
     public function create()
     {
+		// creation only for users without profile
+		$profile_is_present = Profile::where('user_id',Auth::user()->id)->first();
+		if ($profile_is_present) 
+			return redirect()->route('dashboard')->with('status','Profile already exists!');
+
 		$data = [
 			'users' 		=> User::all(),
 			'profiles'		=> Profile::all(),
@@ -130,9 +135,7 @@ class ProfileController extends Controller
 		// gestione immagine
 		if(array_key_exists('image_url',$form_data)) {
 			// salvo immagine in /storage/app/public/profile_image/ e recupero path
-			// ! qui viene definita la cartella /profile_image/ dentro /public/ !
 			$image_path = Storage::put('profile_image',$form_data['image_url']);
-			// @dump($image_path);
 			// modifico il default path del form
 			$form_data['image_url'] = $image_path; 
 		}
@@ -140,9 +143,7 @@ class ProfileController extends Controller
 		// gestione video
 		if(array_key_exists('video_url',$form_data)) {
 			// salvo immagine in /storage/app/public/profile_video/ e recupero path
-			// ! qui viene definita la cartella /profile_video/ dentro /public/ !
 			$image_path = Storage::put('profile_video',$form_data['video_url']);
-			// @dump($image_path);
 			// modifico il default path del form
 			$form_data['video_url'] = $image_path; 
 		}
@@ -150,9 +151,7 @@ class ProfileController extends Controller
 		// gestione audio
 		if(array_key_exists('audio_url',$form_data)) {
 			// salvo immagine in /storage/app/public/profile_audio/ e recupero path
-			// ! qui viene definita la cartella /profile_audio/ dentro /public/ !
 			$image_path = Storage::put('profile_audio',$form_data['audio_url']);
-			// @dump($image_path);
 			// modifico il default path del form
 			$form_data['audio_url'] = $image_path; 
 		}
@@ -162,9 +161,23 @@ class ProfileController extends Controller
 		$new_profile->fill($form_data);
 		$new_profile->save(); // ! DB writing here !
 
+		// categories,genres,offers in pivot table
+		$user = Auth::user();
+		if(array_key_exists('categories', $form_data)) 
+			$user->categories()->sync($form_data['categories']);
+		else 
+			$user->categories()->sync([]);
+		if(array_key_exists('genres', $form_data)) 
+			$user->genres()->sync($form_data['genres']);
+		else
+			$user->genres()->sync([]);
+		if(array_key_exists('offers', $form_data))
+			$user->offers()->sync($form_data['offers']);
+		else
+			$user->offers()->sync([]);
+
 		return redirect()->route('dashboard')->with('status','Profile created');
     }
-
 
     /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -178,6 +191,11 @@ class ProfileController extends Controller
      */
     public function edit($slug) // originale: edit(Profile $profile)
     {
+		// only profile owner can edit
+		$my_slug = Auth::user()->profile->slug;
+		if ($slug != $my_slug) 
+			return redirect()->route('dashboard')->with('status','You are not authorized!');
+
 		$data = [
 			// main info: passed profile
 			'profile' 		=> Profile::where('slug',$slug)->first(),
@@ -189,8 +207,6 @@ class ProfileController extends Controller
 			'offers' 		=> Offer::all(),
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
-			// ! info assemblate
-			// ! da definire
  		];
 
 		if(!$data['profile']) {
@@ -211,81 +227,46 @@ class ProfileController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Profile $profile)
     {
-      $form_data = $request->all();
-		
-      // validazione parte post 
-      $this->profileValidation($request);
-  
-      // $new_profile è il nuovo profile da mettere in DB 
-      // $profile = new Profile;
-  
-      // id user che crea il post
-      // $new_profile['user_id'] = Auth::id();
-  
-      // generazione slug da nome e cognome di me stesso!
-      $user = Auth::user();
-      $pre_slug = $user->name.' '.$user->surname;
-      $new_profile['slug'] = $this->slugGeneration($pre_slug);
-  
-      // gestione immagine
-      if(array_key_exists('image_url',$form_data)) {
-        // salvo immagine in /storage/app/public/profile_image/ e recupero path
-        // ! qui viene definita la cartella /profile_image/ dentro /public/ !
-        $image_path = Storage::put('profile_image',$form_data['image_url']);
-        // @dump($image_path);
-        // modifico il default path del form
-        $form_data['image_url'] = $image_path; 
-      }
-  
-      // gestione video
-      if(array_key_exists('video_url',$form_data)) {
-        // salvo immagine in /storage/app/public/profile_video/ e recupero path
-        // ! qui viene definita la cartella /profile_video/ dentro /public/ !
-        $image_path = Storage::put('profile_video',$form_data['video_url']);
-        // @dump($image_path);
-        // modifico il default path del form
-        $form_data['video_url'] = $image_path; 
-      }
-  
-      // gestione audio
-      if(array_key_exists('audio_url',$form_data)) {
-        // salvo immagine in /storage/app/public/profile_audio/ e recupero path
-        // ! qui viene definita la cartella /profile_audio/ dentro /public/ !
-        $image_path = Storage::put('profile_audio',$form_data['audio_url']);
-        // @dump($image_path);
-        // modifico il default path del form
-        $form_data['audio_url'] = $image_path; 
-      }
+		$form_data = $request->all();
+			
+		// validazione parte post 
+		$this->profileValidation($request);
+	  
+		// gestione media
+		if(array_key_exists('image_url',$form_data)) {
+			$image_path = Storage::put('profile_image',$form_data['image_url']);
+			$form_data['image_url'] = $image_path; 
+		}
+		if(array_key_exists('video_url',$form_data)) {
+			$image_path = Storage::put('profile_video',$form_data['video_url']);
+			$form_data['video_url'] = $image_path; 
+		}	
+		if(array_key_exists('audio_url',$form_data)) {
+			$image_path = Storage::put('profile_audio',$form_data['audio_url']);
+			$form_data['audio_url'] = $image_path; 
+		}
 
-	  $user->profile->update($form_data);
+		// profile update
+		$profile->update($form_data);
+
+		// categories,genres,offers update
+		$user = Auth::user();
+		if(array_key_exists('categories', $form_data)) 
+			$user->categories()->sync($form_data['categories']);
+		else 
+			$user->categories()->sync([]);
+		if(array_key_exists('genres', $form_data)) 
+			$user->genres()->sync($form_data['genres']);
+		else
+			$user->genres()->sync([]);
+		if(array_key_exists('offers', $form_data))
+			$user->offers()->sync($form_data['offers']);
+		else
+			$user->offers()->sync([]);
       
-	  //Update categories
-      if(array_key_exists('categories', $form_data)) {
-        $user->categories()->sync($form_data['categories']);
-      }
-      else {
-        $user->categories()->sync([]);
-      }
-
-	  // Update genres
-	  if(array_key_exists('genres', $form_data)) {
-        $user->genres()->sync($form_data['genres']);
-      }
-      else {
-        $user->genres()->sync([]);
-      }
-
-	  //Update offers
-	  if(array_key_exists('offers', $form_data)) {
-        $user->offers()->sync($form_data['offers']);
-      }
-      else {
-        $user->offers()->sync([]);
-      }
-      
-	return redirect()->route('dashboard')->with('status','Profile udated');
+		return redirect()->route('dashboard')->with('status','Profile udated');
     }
 
     /**
@@ -307,20 +288,17 @@ class ProfileController extends Controller
 		$user = User::where('id',$profile->user->id)->first();
 
 		// cancellare le relazioni user-tag presenti nelle pivot
-		// boolpress: $post->tags()->sync([]);
 		$user->categories()->sync([]);
 		$user->genres()->sync([]);
 		$user->offers()->sync([]);
 
 		// cancellare il profile $id
-		// boolpress: $post->delete();
 		$profile->delete();
 
 		// ! lo user non ha più un profile 
 		// ! ma potrebbe ancora avere messages, reviews, cotracts (collegati a user)
 		// ! che fare?
 
- 		// alla fine torno in dashboard
 		return redirect()->route('dashboard')->with('status','Profile deleted');
     }
 
@@ -332,11 +310,11 @@ class ProfileController extends Controller
 	 * 
 	 * @param  \Illuminate\Http\Request  $req
 	 */
-	protected function profileValidation($req) {
-		// $req->validate([
-		// 	'title'		=> 'required|max:255',
-		// 	'content'	=> 'required'
-		// ]);
+	protected function profileValidation($req) { // ! >>>>>>>>>>>>>>>>> COMPLETARE <<<<<<<<<<<<<<<<<< !
+		$req->validate([
+			'work_town'		=> 'required|max:255',
+			// 'content'	=> 'required'
+		]);
 	}
 
 	/**

@@ -1,8 +1,6 @@
 {{------------------------------------------------------------------
 	DASHBOARD ADMIN
 
-
-
 	si vede
 
 		pulsante: 
@@ -16,13 +14,9 @@
 
 		vedi i review > [ReviewController@index]
 
-		statistiche
+		vedi le statistiche
 
-		
 	altre funzioni quali?
-
-
-
 
 ------------------------------------------------------------------}}
 @extends('layouts.dashboard')
@@ -50,21 +44,21 @@
 
 @endphp
 
+
 @if ($my_profile)
-	{{-- @if (Auth::user()->profile->id) --}}
-	<a class="btn btn-primary" href="{{ route('admin.profiles.edit',$my_profile->slug)}}" class="btn btn-primary">
-		Edit your profile
-	</a>
-	{{-- @endif --}}
+	{{-- EDIT --}}
+	<a class="btn btn-primary" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your profile</a>
+	{{-- DELETE --}}
+	<form class="d-inline-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
+		@csrf
+		@method('DELETE')
+		<button type="submit" class="btn btn-danger">
+			Delete your profile
+		</button>
+	</form>
 @else
-	{{-- se non esiste --}}
-	<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}" class="btn btn-primary">
-		Create your profile
-	</a>		
+	{{-- CREATE --}}
+	<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create your profile</a>
 @endif
-
-
-
-
 
 @endsection

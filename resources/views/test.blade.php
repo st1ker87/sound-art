@@ -1,5 +1,15 @@
 <h2>PAGINA PER TESTARE CODICE</h2>
 
+
+{{-- ///////////////////////////////////////////// --}}
+
+
+<video width="400" controls>
+	<source src="mov_bbb.mp4" type="video/mp4">
+	Your browser does not support HTML video.
+</video>
+
+
 {{-- ///////////////////////////////////////////// --}}
 
 {{-- TEST DATI TABLE
@@ -23,14 +33,13 @@
 
 
 
-
-
-
-
-
+{{-- ///////////////////////////////////////////// --}}
+{{-- ///////////////////////////////////////////// --}}
 {{-- ///////////////////////////////////////////// --}}
 @php
 /////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
 
 
 
@@ -44,28 +53,25 @@
 /////////////////////////////////////////////
 
 
-use App\User;
-use App\Profile;
+// use App\User;
+// use App\Profile;
 
-$id = 3;
+// $id = 3;
 
-// il profilo in questione
-$profile = Profile::find($id);
-@dump($profile);
+// // il profilo in questione
+// $profile = Profile::find($id);
+// @dump($profile);
 
-// $id è id del profile
-// ? quale è il suo user_id 
-$user_id = $profile->user_id;
-@dump($user_id);
+// // $id è id del profile
+// // ? quale è il suo user_id 
+// $user_id = $profile->user_id;
+// @dump($user_id);
 
-$ciccio = $profile->user->id;
-@dump($ciccio);
+// $ciccio = $profile->user->id;
+// @dump($ciccio);
 
-$user = User::where('id',$profile->user->id)->first();
-@dump($user);
-
-
-
+// $user = User::where('id',$profile->user->id)->first();
+// @dump($user);
 
 /////////////////////////////////////////////
 

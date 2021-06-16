@@ -3,10 +3,7 @@
 
 	vedo tutti i dettagli in form vuoto
 
-<<<<<<< HEAD
-
 ------------------------------------------------------------------}}
-
 {{-- <h2>MODEL: Profile, CRUD: create, AREA: admin - FORM CREAZIONE PROFILO</h2>
 <h5>URL</h5>
 <p>url: http://localhost:8000/profiles/create (get)</p>
@@ -21,17 +18,19 @@
 @dd('') --}}
 
 
-{{-- ------------------------------------------------------------ --}}
-{{-- CONTROLLO CHE AUTENTICATO CORRISPONDA A UTENTE PROFILO EDIT  --}}
-{{-- ------------------------------------------------------------ --}}
+@extends('layouts.dashboard')
 
+@section('title','dashboard')
+@section('content')
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
+
             <div class="d-flex justify-content-between align-items-center">
                 <h1>Create your profile</h1>
             </div>
+
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -43,30 +42,39 @@
                     </div>
                 @endif
             </div>
+
             <form action="{{ route('admin.profiles.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 				@method('POST') 
-                <div class="form-group">
-                    <label>Work Town</label>
-                    <input type="text" name="work_town" class="form-control @error('work_town') is-invalid @enderror" placeholder="Insert your work town" value="{{ old('work_town') }}">
-                    @error('work_town')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Work Address</label>
-                    <input type="text" name="work_address" class="form-control @error('work_address') is-invalid @enderror" placeholder="Insert your work address" value="{{ old('work_address') }}">
-                    @error('work_address')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Phone number</label>
-                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Insert your phone" value="{{ old('phone') }}">
-                    @error('phone')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group">
+							<label>Work Town</label>
+							<input type="text" name="work_town" class="form-control @error('work_town') is-invalid @enderror" placeholder="Insert your work town" value="{{ old('work_town') }}">
+							@error('work_town')
+								<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group">
+							<label>Phone number</label>
+							<input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Insert your phone" value="{{ old('phone') }}">
+							@error('phone')
+								<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label>Work Address</label>
+					<input type="text" name="work_address" class="form-control @error('work_address') is-invalid @enderror" placeholder="Insert your work address" value="{{ old('work_address') }}">
+					@error('work_address')
+						<div class="invalid-feedback">{{ $message }}</div>
+					@enderror
+				</div>
                 <div class="form-group">
                     <label>bio_text1</label>
                     <textarea name="bio_text1" class="form-control @error('bio_text1') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text1') }}</textarea>
@@ -116,6 +124,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
 				<div class="row">
 					<div class="col-4">
 						<div class="form-group">
@@ -169,13 +178,15 @@
 						</div>		
 					</div>
 				</div>
+
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Create Profile
-                    </button>
+                    <button type="submit" class="btn btn-success">Create Profile</button>
                 </div>
+
             </form>
+			
         </div>
     </div>
 </div>
 
+@endsection
