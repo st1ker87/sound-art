@@ -187,12 +187,8 @@ class ProfileController extends Controller
 		// il profile in questione
 		$profile = Profile::find($id);
 
-		// il corrispondente user_id ($id è l'id del profile!)
-		$user_id = $profile->user_id;
-		@dd($user_id);
-
 		// lo user corrispondente a questo profile
-		$user = User::where('id',$user_id)->first();
+		$user = User::where('id',$profile->user->id)->first();
 
 		// cancellare le relazioni user-tag presenti nelle pivot
 		// boolpress: $post->tags()->sync([]);
