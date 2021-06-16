@@ -284,12 +284,8 @@ class ProfileController extends Controller
       else {
         $user->offers()->sync([]);
       }
-      // ! aggiungo $new_profile nella table profiles; NON sono qui i 3 tag !
-      // il nuovo profile acquisisce i dati del form e viene buttato nel DB
-      // $new_profile->fill($form_data);
-      // $new_profile->save(); // ! DB writing here !
-        // alla fine torno in dashboard
-		return redirect()->route('dashboard')->with('status','Profile udated');
+      
+	return redirect()->route('dashboard')->with('status','Profile udated');
     }
 
     /**
@@ -362,10 +358,5 @@ class ProfileController extends Controller
 		}
 		return $slug;
 	}
-
-
-
-
-
 
 }
