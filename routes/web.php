@@ -56,7 +56,7 @@ Route::prefix('messages')   // prefisso URI raggruppamento sezione /messages/...
 	->group(function () {	// rotte specifiche messages
 
 		Route::get('/', 'MessageController@create')->name('messages.create'); // ! return view('guest.messages.create');
-		Route::post('/', 'MessageController@store')->name('messages.store');  // ! return redirect()->route('NON LO SO')->with('status','Messaggio inviato correttamente');
+		Route::post('/', 'MessageController@store')->name('messages.store');  // ! return redirect()->route('NON LO SO')->with('status','Message sent');
 		
 	});
 
@@ -70,7 +70,7 @@ Route::prefix('reviews')   // prefisso URI raggruppamento sezione /reviews/...
 	->group(function () {	// rotte specifiche reviews
 
 		Route::get('/', 'ReviewController@create')->name('reviews.create'); // ! return view('guest.reviews.create');
-		Route::post('/', 'ReviewController@store')->name('reviews.store');  // ! return redirect()->route('NON LO SO')->with('status','Recensione inviata correttamente');
+		Route::post('/', 'ReviewController@store')->name('reviews.store');  // ! return redirect()->route('NON LO SO')->with('status','Review sent');
 		
 	});
 

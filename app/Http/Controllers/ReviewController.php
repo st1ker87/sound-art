@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Review;
 use Illuminate\Http\Request;
+use App\User;
+use App\Profile;
+use App\Category;
+use App\Genre;
+use App\Offer;
+use App\Message;
 
 class ReviewController extends Controller
 {
@@ -18,16 +24,33 @@ class ReviewController extends Controller
     }
 
     /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %            CREATE             %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+		$data = [
+			'users' 		=> User::all(),
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
+ 		];
+		return view('guest.reviews.create',$data);
     }
 
     /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %             STORE             %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,7 +58,8 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // ! da definire dove vengo mandato dopo invio recensione
+		// return redirect()->route('NON LO SO')->with('status','Review sent');
     }
 
     /**

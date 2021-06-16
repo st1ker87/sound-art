@@ -8,6 +8,8 @@ use App\Profile;
 use App\Category;
 use App\Genre;
 use App\Offer;
+use App\Message;
+use App\Review;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,8 @@ class HomeController extends Controller
 			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
  		];
         return view('home',$data);
     }
@@ -45,6 +49,8 @@ class HomeController extends Controller
 			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
  		];
         return view('test',$data); 
     }

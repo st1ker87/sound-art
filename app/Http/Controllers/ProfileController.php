@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Profile;
 use Illuminate\Http\Request;
 use App\User;
-use App\Profile;
 use App\Category;
 use App\Genre;
 use App\Offer;
+use App\Message;
+use App\Review;
 
 class ProfileController extends Controller
 {
@@ -28,6 +30,8 @@ class ProfileController extends Controller
 			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
  		];
         return view('guest.profiles.search',$data);
     }
@@ -64,12 +68,51 @@ class ProfileController extends Controller
 			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
 			// ! parte specifica: info DB GIÀ ASSEMBLATE
 			// ! da definire 
             // 'search_from_home' => $search_from_home
  		];
         return view('guest.profiles.search',$data); // CRUD index profiles 
     }
+
+    /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %             SHOW              %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
+     * Display the specified resource.
+     *
+     * @param  \App\Profile  $profile
+     * @return \Illuminate\Http\Response
+     */
+    public function show($slug) // originale: show(Profile $profile)
+    {
+        // dettaglio profilo visibile da tutti
+
+		$data = [
+			// main info: passed profile
+			'profile' 		=> Profile::where('slug',$slug)->first(),
+			// aux infos: db tables
+			'users' 		=> User::all(),
+			'profiles'		=> Profile::all(),
+			'categories'	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
+ 		];
+
+		if(!$data['profile']) {
+			abort(404);
+		}
+
+		return view('guest.profiles.show',$data);
+    }
+
+
+
 
 
 
@@ -103,16 +146,12 @@ class ProfileController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Profile $profile)
-    {
-        // dettaglio profilo 
-    }
+
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
