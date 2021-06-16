@@ -69,28 +69,28 @@
                 </div>
                 <div class="form-group">
                     <label>bio_text1</label>
-                    <textarea name="bio_text1" class="form-control @error('bio_text1') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text1') }}</textarea>
+                    <textarea name="bio_text1" class="form-control @error('bio_text1') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text1') }}</textarea>
                     @error('bio_text1')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>bio_text2</label>
-                    <textarea name="bio_text2" class="form-control @error('bio_text2') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text2') }}</textarea>
+                    <textarea name="bio_text2" class="form-control @error('bio_text2') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text2') }}</textarea>
                     @error('bio_text2')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>bio_text3</label>
-                    <textarea name="bio_text3" class="form-control @error('bio_text3') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text3') }}</textarea>
+                    <textarea name="bio_text3" class="form-control @error('bio_text3') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text3') }}</textarea>
                     @error('bio_text3')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>bio_text4</label>
-                    <textarea name="bio_text4" class="form-control @error('bio_text4') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text4') }}</textarea>
+                    <textarea name="bio_text4" class="form-control @error('bio_text4') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text4') }}</textarea>
                     @error('bio_text4')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

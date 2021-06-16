@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 use App\User;
 use App\Profile;
 use App\Category;
@@ -109,11 +113,55 @@ class ProfileController extends Controller
     {
         $form_data = $request->all();
 		
-		// fa cose per salvare i dati 
+		// validazione parte post 
+		$this->profileValidation($request);
 
+		// $new_profile è il nuovo profile da mettere in DB 
+		$new_profile = new Profile;
 
-		// slug: lo creo da users-name/surname e controllo unicità in DB
-		
+		// id user che crea il post
+		$new_profile['user_id'] = Auth::id();
+
+		// generazione slug da nome e cognome di me stesso!
+		$user = Auth::user();
+		$pre_slug = $user->name.' '.$user->surname;
+		$new_profile['slug'] = $this->slugGeneration($pre_slug);
+
+		// gestione immagine
+		if(array_key_exists('image_url',$form_data)) {
+			// salvo immagine in /storage/app/public/profile_image/ e recupero path
+			// ! qui viene definita la cartella /profile_image/ dentro /public/ !
+			$image_path = Storage::put('profile_image',$form_data['image_url']);
+			// @dump($image_path);
+			// modifico il default path del form
+			$form_data['image_url'] = $image_path; 
+		}
+
+		// gestione video
+		if(array_key_exists('video_url',$form_data)) {
+			// salvo immagine in /storage/app/public/profile_video/ e recupero path
+			// ! qui viene definita la cartella /profile_video/ dentro /public/ !
+			$image_path = Storage::put('profile_video',$form_data['video_url']);
+			// @dump($image_path);
+			// modifico il default path del form
+			$form_data['video_url'] = $image_path; 
+		}
+
+		// gestione audio
+		if(array_key_exists('audio_url',$form_data)) {
+			// salvo immagine in /storage/app/public/profile_audio/ e recupero path
+			// ! qui viene definita la cartella /profile_audio/ dentro /public/ !
+			$image_path = Storage::put('profile_audio',$form_data['audio_url']);
+			// @dump($image_path);
+			// modifico il default path del form
+			$form_data['audio_url'] = $image_path; 
+		}
+
+		// ! aggiungo $new_profile nella table profiles; NON sono qui i 3 tag !
+		// il nuovo profile acquisisce i dati del form e viene buttato nel DB
+		$new_profile->fill($form_data);
+		$new_profile->save(); // ! DB writing here !
+
 		return redirect()->route('dashboard')->with('status','Profile created');
     }
 
@@ -207,4 +255,45 @@ class ProfileController extends Controller
  		// alla fine torno in dashboard
 		return redirect()->route('dashboard')->with('status','Profile deleted');
     }
+
+
+	/**
+	 * Profile: form data validation
+	 * https://laravel.com/docs/7.x/validation
+	 * errors shown in EDIT/CREATE view
+	 * 
+	 * @param  \Illuminate\Http\Request  $req
+	 */
+	protected function profileValidation($req) {
+		// $req->validate([
+		// 	'title'		=> 'required|max:255',
+		// 	'content'	=> 'required'
+		// ]);
+	}
+
+	/**
+	 * Creazione slug a partire da stringa sorgente
+	 * deve essere unico nellla tabella profiles
+	 * 
+	 * @param string $slug_source
+	 * @return string
+	 */
+	protected function slugGeneration($slug_source) {
+		$slug = Str::slug($slug_source,'-');
+		$slug_tmp = $slug;
+		$slug_is_present = Profile::where('slug',$slug)->first();
+		$counter = 1;
+		while ($slug_is_present) {
+			$slug = $slug_tmp.'-'.$counter;
+			$counter++;
+			$slug_is_present = Profile::where('slug',$slug)->first();
+		}
+		return $slug;
+	}
+
+
+
+
+
+
 }

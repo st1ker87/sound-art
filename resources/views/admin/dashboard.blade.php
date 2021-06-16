@@ -34,6 +34,15 @@
 
 <h1>{{ Auth::user()->name }}'s Dashboard</h1>
 
+<div class="d-flex justify-content-between align-items-center">
+	{{-- REDIRECT message management --}}
+	@if (session('status'))
+		<div class="alert alert-success">
+			{{ session('status') }}
+		</div>
+	@endif
+</div>
+
 @php
 
 	$my_user 	= Auth::user();
