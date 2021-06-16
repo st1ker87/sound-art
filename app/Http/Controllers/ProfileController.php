@@ -22,7 +22,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search() // index()
+    public function search() // originale: index()
     {
 		$data = [
 			'users' 		=> User::all(),
@@ -89,8 +89,6 @@ class ProfileController extends Controller
      */
     public function show($slug) // originale: show(Profile $profile)
     {
-        // dettaglio profilo visibile da tutti
-
 		$data = [
 			// main info: passed profile
 			'profile' 		=> Profile::where('slug',$slug)->first(),
@@ -102,6 +100,8 @@ class ProfileController extends Controller
 			'offers' 		=> Offer::all(),
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
+			// ! info assemblate
+			// ! da definire
  		];
 
 		if(!$data['profile']) {

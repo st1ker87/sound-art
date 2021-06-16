@@ -1,10 +1,6 @@
-<h2>MODEL: Message, CRUD: show, AREA: admin - DETTAGLIO SINGOLO MESSAGGIO</h2>
+<h2>MODEL: Profile, CRUD: index, AREA: admin - ELENCO PRIFILI - SOLO SE STESSO </h2>
 <h5>URL</h5>
-<p>url: http://localhost:8000/admin/messages/{slug} (get)</p>
-<h5>SINGOLO MESSAGGIO PASSATO</h5>
-<p>message->id = @php echo $message->id @endphp</p>
-<p>message->slug = @php echo $message->slug @endphp</p>
-<p>dump($message) = @dump($message)</p>
+<p>url: http://localhost:8000/admin/profiles/ (get)</p>
 <h5>ALTRE TABELLE DISPONIBILI</h5>
 <p>dump($users) = @dump($users)</p>
 <p>dump($profiles) = @dump($profiles)</p>
