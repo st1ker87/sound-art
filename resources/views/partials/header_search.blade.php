@@ -1,23 +1,26 @@
-<header class="header-search" :class="{change_color: scrollPosition > 400}">
+<header class="header-search" :class="{change_color: scrollPosition > scrollChange}">
 	<div class="container">
 		<nav class="navbar justify-content-between">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
-				<img id="logo" src="{{ asset('img/logo-transp.png') }}" alt="Sound Art logo">
+				<img v-if="scrollPosition < scrollChange" id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
+				<img v-if="scrollPosition > scrollChange" id="logo" src="{{ asset('img/logo-blue.png') }}" alt="Sound Art logo">
+
+        <h2 :class="{change_color_text: scrollPosition > scrollChange}"> SoundArt</h2>
 			</a>
 			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
 			@guest
-				<li class="nav-item">
-					<a class="btn btn-outline-light" role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
+				<li class="nav-item ">
+					<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
 				</li>
 				@if (Route::has('register'))
-					<li class="nav-item">
-						<a class="btn btn-outline-light" role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
+					<li class="nav-item" >
+						<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
 					</li>
 				@endif
 			@else
 				<li class="nav-item dropdown">
-					<a id="navbarDropdown btn btn-outline-light" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+					<a id="navbarDropdown btn btn-outline-light" class="nav-link dropdown-toggle" :class="{change_color_btn: scrollPosition > scrollChange}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						{{ Auth::user()->name }}
 					</a>
 	

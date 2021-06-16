@@ -17,23 +17,36 @@ QUESTO E' HEADER
 
 /* Header Search */
 .header-search {
+  height: 80px;
   position: fixed;
   z-index: 50;
   top: 0;
   left: 0;
   right: 0;
   background-color: $primaryDarkBlue;
+  .logo {
+    display: inline-block;
+  }
+  h2 {
+    display: inline-block;
+    color: $primaryWhite;
+    font-size: 1.5em;
+    margin-left: 5px;
+    line-height: 50px;
+  }
 }
+//cambiamenti sullo scroll
 .change_color {
   background-color: white;
   color: black;
-  .nav-item {
-    color: black;
-    // &:hover {
-    //     color: black;
-    //     text-decoration: underline;
-    // }
-  }
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+.change_color_text {
+  color: $primaryDarkBlue !important;
+}
+.change_color_btn {
+  color: $primaryDarkBlue !important;
+  border-color: $primaryDarkBlue  !important;
 }
 
 ul.navbar-nav {
