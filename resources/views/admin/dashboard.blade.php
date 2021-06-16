@@ -25,18 +25,22 @@
 
 
 ------------------------------------------------------------------}}
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('title','dashboard')
 
-@section('header')
-    @include('partials.header_home')
-@endsection
 
 @section('content')
-	<h1>SONO DASHBOARD</h1>
-@endsection
+	<h1>{{ Auth::user()->name }}'s Dashboard</h1>
+	@if (Auth::user()->profile->id)
+		<a class="btn btn-primary" href="#{{-- {{ route('admin.posts.edit') }} --}}" class="btn btn-primary">
+    		Edit your profile
+    	</a>
+	@else 
+		<a class="btn btn-primary" href="#{{-- {{ route('admin.posts.create') }} --}}" class="btn btn-primary">
+			Create your profile
+		</a>
+	@endif
 
-@section('footer')
-    @include('partials.footer_home')
+
 @endsection

@@ -1,4 +1,4 @@
-<header class="header-search">
+<header class="header-search" :class="{change_color: scrollPosition > 400}">
 	<div class="container">
 		<nav class="navbar justify-content-between">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">

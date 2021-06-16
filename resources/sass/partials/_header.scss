@@ -17,7 +17,23 @@ QUESTO E' HEADER
 
 /* Header Search */
 .header-search {
-    background-color: $primaryDarkBlue;
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $primaryDarkBlue;
+}
+.change_color {
+  background-color: white;
+  color: black;
+  .nav-item {
+    color: black;
+    // &:hover {
+    //     color: black;
+    //     text-decoration: underline;
+    // }
+  }
 }
 
 ul.navbar-nav {
