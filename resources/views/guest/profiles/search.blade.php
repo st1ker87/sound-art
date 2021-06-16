@@ -167,7 +167,7 @@
   
                 {{-- Categorie --}}
                 <div class="provided-card-title">
-                  <a class="provided-categories" href="#">
+                  <a class="provided-categories" href="{{ route('profiles.show', $profile->slug) }}">
                     <h3>
                       @foreach($categories as $category)
                           @if($loop->last)
@@ -180,7 +180,7 @@
                   </a>
     
                   {{-- Name, Surname, Work Town --}}
-                  <a class="provided-name" href="#">
+                  <a class="provided-name" href="{{ route('profiles.show', $profile->slug) }}">
                     <span>{{$profile->user->name}} {{$profile->user->surname}}</span>
                   </a>
                   <span>, {{$profile->work_town}}</span>
