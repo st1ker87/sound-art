@@ -259,27 +259,35 @@ class ProfileController extends Controller
         $form_data['audio_url'] = $image_path; 
       }
 
+	  $user->profile->update($form_data);
       
+	  //Update categories
+      if(array_key_exists('categories', $form_data)) {
+        $user->categories()->sync($form_data['categories']);
+      }
+      else {
+        $user->categories()->sync([]);
+      }
 
-    //   if(array_key_exists('categories', $form_data)) {
-    //     $user->categories()->sync($form_data['categories']);
-    // }
-    //   else {
-    //     $user->categories()->sync([]);
-    // }
+	  // Update genres
+	  if(array_key_exists('genres', $form_data)) {
+        $user->genres()->sync($form_data['genres']);
+      }
+      else {
+        $user->genres()->sync([]);
+      }
 
-    return redirect()->route('admin.posts.index');
-  
+	  //Update offers
+	  if(array_key_exists('offers', $form_data)) {
+        $user->offers()->sync($form_data['offers']);
+      }
+      else {
+        $user->offers()->sync([]);
+      }
       // ! aggiungo $new_profile nella table profiles; NON sono qui i 3 tag !
       // il nuovo profile acquisisce i dati del form e viene buttato nel DB
       // $new_profile->fill($form_data);
       // $new_profile->save(); // ! DB writing here !
-
-      $user->profile->update($form_data);
-  
-      return redirect()->route('dashboard')->with('status','Profile created');
-
-
         // alla fine torno in dashboard
 		return redirect()->route('dashboard')->with('status','Profile udated');
     }
