@@ -3,7 +3,19 @@
 
 .card_login {
     padding-top: 30px;
-    
+    margin: 10vh 0;
+    .btn-facebook {
+        background-color: $primaryFacebook;
+        color: white;
+    }
+    .btn-spotify {
+        background-color: $primarySpotify;
+        color: white;
+    }
+    .btn-login {
+        background-color: $primaryLogin;
+        color: white;
+    }
     .or {
         width: 100%;
         text-align: center;
