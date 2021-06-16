@@ -30,11 +30,22 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     data: {
-        searchHome : false
+        searchHome : false,
+        //scroll per nav bar (per ora solo in search.blade)
+        scrollPosition: null
     },
     methods: {
         showSearch : function() {
             this.searchHome = !this.searchHome
-        }
-    }
+        },
+        //metodo per lo scroll
+        updateScroll() {
+          this.scrollPosition = window.scrollY
+          console.log(this.scrollPosition)
+
+       }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.updateScroll);
+  }
 });
