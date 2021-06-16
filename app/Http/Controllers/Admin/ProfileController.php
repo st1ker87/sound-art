@@ -259,7 +259,7 @@ class ProfileController extends Controller
         $form_data['audio_url'] = $image_path; 
       }
 
-      dd($user);
+      
 
     //   if(array_key_exists('categories', $form_data)) {
     //     $user->categories()->sync($form_data['categories']);
