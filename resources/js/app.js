@@ -32,7 +32,8 @@ const app = new Vue({
     data: {
         searchHome : false,
         //scroll per nav bar (per ora solo in search.blade)
-        scrollPosition: null
+        scrollPosition: null,
+        scrollChange: 400
     },
     methods: {
         showSearch : function() {
