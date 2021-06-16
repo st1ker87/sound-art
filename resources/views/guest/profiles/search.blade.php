@@ -100,103 +100,129 @@
 
 
    <!-- PROFILES -->
-   <section>
+   <section class="card-list">
       <div class="container">
+        <div class="row">
+          {{-- FOR EACH PROFILE --}}
+          @foreach($profiles as $profile)
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="card-cnt">
 
-        {{-- FOR EACH PROFILE --}}
-        @foreach($profiles as $profile)
+              {{-- CARD IMAGE --}}
+              <div class="card-image">
+                {{-- Da mettere l'immagine ({{$profile->image_url}}) --}}
+                <img src="{{ asset('img/singer_photo.jpg') }}" alt="">
+              </div>
+  
+              {{-- INIZIO PHP --}}
+  
+              @php
+                // Get categories collection
+                $categories = $profile->user->categories;
+  
+                // Get genres collection
+                $genres = $profile->user->genres;
+                
+                /* VOTES */
+  
+                // Get votes collection
+                $votes = $profile->user->reviews;
+  
+                // Set average vote to false
+                $average_vote = false;
 
-          <div class="card-cnt" style="border-bottom: 2px solid black;">
-            <div class="card-image">
-              Da mettere l'immagine ({{$profile->image_url}})
-            </div>
-
-            {{-- INIZIO PHP --}}
-
-                  @php
-                  // Get categories collection
-                    $categories = $profile->user->categories;
-
-                  // Get genres collection
-                  $genres = $profile->user->genres;
-                  
-                  // Get votes collection
-                    $votes = $profile->user->reviews;
-
-                  // Set average vote to false
-                    $average_vote = false;
-
-                  // If collection of votes is not empty
-                    if($votes->isNotEmpty()) {
-
-                      // Set average vote to 0 so I can start adding the votes found
-                      $average_vote = 0;
-
-                      // Keeps track of number of votes
-                      $counter = 0;
-
-                      foreach($votes as $vote) {
-
-                        // For each vote add +1 to counter
-                        $counter++;
-
-                        // Update average vote
-                        $average_vote += $vote->rev_vote;
-                      }
-
-                      // When for loop ends, do average and round the result
-                      $average_vote = round($average_vote / $counter);
-                    }
-                  @endphp
-
-            {{-- FINE PHP --}}
-
-
-            {{-- BODY DELLA CARTA --}}
-            <div class="card-content">
-
-              {{-- Categorie --}}
-                <h5>
-                  @foreach($categories as $category)
-                      @if($loop->last)
-                        {{$category->name}}
-                      @else
-                      {{$category->name . '/'}}
-                      @endif
-                  @endforeach
-                </h5>
-
-              {{-- Name, Surname, Work Town --}}
-                <h6>
-                    {{$profile->user->name}} {{$profile->user->surname}} - 
-                    <span>Città: {{$profile->work_town}}</span> 
-                </h6>
-
-              {{-- Vote --}}
-                @if ($average_vote)
-                  <h6>{{$average_vote}}</h6>
-                @else
-                  <h6>No rating</h6>        
-                @endif
-              
-
-              {{-- DESCRIZIONE --}}
-
-              <p>DESCRIZIONE</p>
-
-              {{-- Genres --}}
-                <h6>
-                  @foreach($genres as $genre)
-                    @if($loop->last)
-                      {{$genre->name}}
-                    @else
-                      {{$genre->name . '/'}}
-                    @endif
-                  @endforeach
-                </h6>
+                // Keeps track of number of votes
+                $counter = 0;
+  
+                // If collection of votes is not empty
+                if($votes->isNotEmpty()) {
+  
+                  // Set average vote to 0 so I can start adding the votes found
+                  $average_vote = 0;
+  
+                  foreach($votes as $vote) {
+  
+                    // For each vote add +1 to counter
+                    $counter++;
+  
+                    // Update average vote
+                    $average_vote += $vote->rev_vote;
+                  }
+  
+                  // When for loop ends, do average and round the result
+                  $average_vote = round($average_vote / $counter);
+                }
+  
+                /* DESCRIPTION */
+                $description = $profile->bio_text1;
+                if (strlen($description) > 71)
+                  $description = substr($description, 0, 70) . '...';
+              @endphp
+  
+              {{-- FINE PHP --}}
+  
+  
+              {{-- BODY DELLA CARTA --}}
+              <div class="card-content">
+  
+                {{-- Categorie --}}
+                <div class="provided-card-title">
+                  <a class="provided-categories" href="#">
+                    <h3>
+                      @foreach($categories as $category)
+                          @if($loop->last)
+                            {{$category->name}}
+                          @else
+                          {{$category->name . '/'}}
+                          @endif
+                      @endforeach
+                    </h3>
+                  </a>
+    
+                  {{-- Name, Surname, Work Town --}}
+                  <a class="provided-name" href="#">
+                    <span>{{$profile->user->name}} {{$profile->user->surname}}</span>
+                  </a>
+                  <span>, {{$profile->work_town}}</span>
+                </div>
+  
+                {{-- Vote --}}
+                <div class="vote">
+                  @for ($i = 0; $i < $average_vote; $i++)
+                    <i class="fas fa-star filled"></i>
+                  @endfor
+                  @if ($average_vote < 5)
+                    @for ($i = 0; $i < 5 - $average_vote; $i++)
+                    <i class="fas fa-star empty"></i>
+                    @endfor
+                  @endif
+                  <span>({{$counter}})</span>     
+                </div>
+                
+  
+                {{-- DESCRIZIONE --}}
+                <div class="provided-description">
+                  <p>{{$description}}</p>
+                </div>
+                
+                {{-- Genres --}}
+                <div class="provided-genres">
+                  <h6>Genres</h6>
+                  <span>
+                      @foreach($genres as $genre)
+                        @if($loop->last)
+                          {{$genre->name}}
+                        @else
+                          {{$genre->name . '/'}}
+                        @endif
+                      @endforeach
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-        @endforeach
+          @endforeach
+        </div>
       </div>
    </section>
   </main>
