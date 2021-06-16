@@ -1,5 +1,6 @@
 <h2>PAGINA PER TESTARE CODICE</h2>
 
+{{-- ///////////////////////////////////////////// --}}
 
 {{-- TEST DATI TABLE
 @foreach ($profiles as $profile)
@@ -14,6 +15,7 @@
 
 @endforeach --}}
 
+{{-- ///////////////////////////////////////////// --}}
 
 
 
@@ -26,17 +28,26 @@
 
 
 
-
-
+{{-- ///////////////////////////////////////////// --}}
 @php
+/////////////////////////////////////////////
 
 
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////
 
 
 use App\User;
 use App\Profile;
 
-$id = 7;
+$id = 3;
 
 // il profilo in questione
 $profile = Profile::find($id);
@@ -45,8 +56,9 @@ $profile = Profile::find($id);
 // $id è id del profile
 // ? quale è il suo user_id 
 $user_id = $profile->user_id;
-$ciccio = $profile->user->id;
 @dump($user_id);
+
+$ciccio = $profile->user->id;
 @dump($ciccio);
 
 $user = User::where('id',$profile->user->id)->first();

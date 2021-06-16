@@ -40,7 +40,7 @@
 </head>
 <body>
     <div id="app">
-        @include('partials.header_search')
+        @include('partials.header_home')
 
         {{-- FINP A QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
 
@@ -95,7 +95,7 @@
             </div>
         </div>
 
-		@include('partials.footer_search')
+		@include('partials.footer_home')
     </div>
 </body>
 </html>

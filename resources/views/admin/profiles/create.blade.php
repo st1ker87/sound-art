@@ -20,12 +20,17 @@
 <p>dump($reviews) = @dump($reviews)</p>
 @dd('') --}}
 
+
+{{-- ------------------------------------------------------------ --}}
+{{-- CONTROLLO CHE AUTENTICATO CORRISPONDA A UTENTE PROFILO EDIT  --}}
+{{-- ------------------------------------------------------------ --}}
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
                 <h1>Create your profile</h1>
-                
             </div>
             <div>
                 @if ($errors->any())
@@ -38,60 +43,139 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.profiles.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
+				@method('POST') 
                 <div class="form-group">
-                    <label>Titolo</label>
-                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Inserisci il titolo" value="{{ old('title') }}" required>
-                    @error('title')
+                    <label>Work Town</label>
+                    <input type="text" name="work_town" class="form-control @error('work_town') is-invalid @enderror" placeholder="Insert your work town" value="{{ old('work_town') }}">
+                    @error('work_town')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Contenuto</label>
-                    <textarea name="content" class="form-control @error('content') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('content') }}</textarea>
-                    @error('content')
+                    <label>Work Address</label>
+                    <input type="text" name="work_address" class="form-control @error('work_address') is-invalid @enderror" placeholder="Insert your work address" value="{{ old('work_address') }}">
+                    @error('work_address')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Categoria</label>
-                    <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
-                        <option value="">-- seleziona categoria --</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected=selected' : '' }}>
-                                {{ $category->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('category_id')
+                    <label>Phone number</label>
+                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Insert your phone" value="{{ old('phone') }}">
+                    @error('phone')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <p>Seleziona i tag:</p>
-                    @foreach ($tags as $tag)
-                        <div class="form-check @error('tags') is-invalid @enderror">
-                            <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag->id }}"
-                            {{ in_array($tag->id, old('tags', [])) ? 'checked=checked' : '' }}>
-                            <label class="form-check-label">
-                                {{ $tag->name }}
-                            </label>
-                        </div>
-                    @endforeach
-                    @error('tags')
+                    <label>bio_text1</label>
+                    <textarea name="bio_text1" class="form-control @error('bio_text1') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text1') }}</textarea>
+                    @error('bio_text1')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label>bio_text2</label>
+                    <textarea name="bio_text2" class="form-control @error('bio_text2') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text2') }}</textarea>
+                    @error('bio_text2')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>bio_text3</label>
+                    <textarea name="bio_text3" class="form-control @error('bio_text3') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text3') }}</textarea>
+                    @error('bio_text3')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>bio_text4</label>
+                    <textarea name="bio_text4" class="form-control @error('bio_text4') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text4') }}</textarea>
+                    @error('bio_text4')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Your profile image</label>
+                    <input type="file" name="image_url" class="form-control-file @error('image_url') is-invalid @enderror" value="{{ old('image_url') }}">
+                    @error('image_url')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Your video essay</label>
+                    <input type="file" name="video_url" class="form-control-file @error('video_url') is-invalid @enderror" value="{{ old('video_url') }}">
+                    @error('video_url')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Your audio preview</label>
+                    <input type="file" name="audio_url" class="form-control-file @error('audio_url') is-invalid @enderror" value="{{ old('audio_url') }}">
+                    @error('audio_url')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+				<div class="row">
+					<div class="col-4">
+						<div class="form-group">
+							<p>Select your Category</p>
+							@foreach ($categories as $category)
+								<div class="form-check @error('categories') is-invalid @enderror">
+									<input name="categories[]" class="form-check-input" type="checkbox" value="{{ $category->id }}"
+									{{ in_array($category->id, old('categories', [])) ? 'checked=checked' : '' }}>
+									<label class="form-check-label">
+										{{ $category->name }}
+									</label>
+								</div>
+							@endforeach
+							@error('categories')
+								<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>		
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<p>Select your Genre</p>
+							@foreach ($genres as $genre)
+								<div class="form-check @error('genres') is-invalid @enderror">
+									<input name="genres[]" class="form-check-input" type="checkbox" value="{{ $genre->id }}"
+									{{ in_array($genre->id, old('genres', [])) ? 'checked=checked' : '' }}>
+									<label class="form-check-label">
+										{{ $genre->name }}
+									</label>
+								</div>
+							@endforeach
+							@error('genres')
+								<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>		
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<p>Select your Offer</p>
+							@foreach ($offers as $offer)
+								<div class="form-check @error('offers') is-invalid @enderror">
+									<input name="offers[]" class="form-check-input" type="checkbox" value="{{ $offer->id }}"
+									{{ in_array($offer->id, old('offers', [])) ? 'checked=checked' : '' }}>
+									<label class="form-check-label">
+										{{ $offer->name }}
+									</label>
+								</div>
+							@endforeach
+							@error('offers')
+								<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>		
+					</div>
+				</div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Crea post
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Create Profile
                     </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
 

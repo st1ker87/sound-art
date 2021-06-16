@@ -31,16 +31,31 @@
 
 
 @section('content')
-	<h1>{{ Auth::user()->name }}'s Dashboard</h1>
-	@if (Auth::user()->profile->id)
-		<a class="btn btn-primary" href="#{{-- {{ route('admin.posts.edit') }} --}}" class="btn btn-primary">
-    		Edit your profile
-    	</a>
-	@else 
-		<a class="btn btn-primary" href="#{{-- {{ route('admin.posts.create') }} --}}" class="btn btn-primary">
-			Create your profile
-		</a>
-	@endif
+
+<h1>{{ Auth::user()->name }}'s Dashboard</h1>
+
+@php
+
+	$my_user 	= Auth::user();
+	$my_profile = Auth::user()->profile;
+
+@endphp
+
+@if ($my_profile)
+	{{-- @if (Auth::user()->profile->id) --}}
+	<a class="btn btn-primary" href="{{-- route('admin.profiles.edit',$myself_profile->slug) --}}" class="btn btn-primary">
+		Edit your profile
+	</a>
+	{{-- @endif --}}
+@else
+	{{-- se non esiste --}}
+	<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}" class="btn btn-primary">
+		Create your profile
+	</a>		
+@endif
+
+
+
 
 
 @endsection

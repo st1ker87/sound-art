@@ -201,7 +201,7 @@ class ProfileController extends Controller
 		$profile->delete();
 
 		// ! lo user non ha più un profile 
-		// ! ma potrebbe ancora avere messages e reviews (collegati a user)
+		// ! ma potrebbe ancora avere messages, reviews, cotracts (collegati a user)
 		// ! che fare?
 
  		// alla fine torno in dashboard
