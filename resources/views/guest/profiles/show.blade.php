@@ -50,7 +50,8 @@
               @if ($average_vote)
                 @for ($i = 0; $i < $average_vote; $i++)
                   <i class='fas fa-star'></i>   
-                @endfor      
+                @endfor
+              @else <span>No raiting</span>
               @endif 
               <p>{{$profile->work_town}}</p>
           </div>
@@ -73,6 +74,9 @@
           <p>{{$profile->bio_text1}}</p>
           <p>{{$profile->bio_text2}}</p>
         </div>
+      </div>
+    </section>
+      <section class="container main-show">
         <div class="row">
           <div class="genrs">
             <h2>My favorite music</h2>
@@ -85,9 +89,25 @@
         @endforeach
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section class="container main-show">
+        <div class="row">
+          <div class="offert">
+            <h2>Offerts</h2>
+            @foreach($profile->user->offers as $offer)
+            @if($loop->last)
+              {{$offer->name}}
+            @else
+            {{$offer->name . ','}}
+            @endif
+        @endforeach
+          </div>
+        </div>
+      </section>
   </main>
+
+  {{-- mancante video, audio e foto
+    visualizzazione form messaggio, visualizzazione review --}}
 
 
 @endsection
