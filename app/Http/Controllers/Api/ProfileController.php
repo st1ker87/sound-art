@@ -59,13 +59,12 @@ class ProfileController extends Controller
 			foreach ($offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
 			foreach ($messages as $message)		$iper_profile['messages'][]		= $message->toArray();
 			if ($reviews->isNotEmpty()) {
-				$total_vote = 0; $counter = 0;
+				$total_vote = 0;
 				foreach ($reviews as $review) {
 					$iper_profile['reviews'][] = $review->toArray();	
 					$total_vote += $review['rev_vote'];
-					$counter++;
 				}
-				$iper_profile['average_vote'] = $total_vote/$counter;
+				$iper_profile['average_vote'] = $total_vote/count($reviews);
 			} else {
 				$iper_profile['average_vote'] = 0;
 			}
@@ -98,7 +97,8 @@ class ProfileController extends Controller
 		if ($rev_count)	$filters['rev_count']		= $rev_count;
 		
 		// filtering iteration for each user filter
-		$tmp_iper_profiles = $iper_profiles;
+		$filtered_iper_profiles = $iper_profiles;
+		$tmp_iper_profiles = $filtered_iper_profiles;
 		foreach ($filters as $key => $value) {
 			$mode = is_numeric($value) ?  'greater' : 'contains';
 			$filtered_iper_profiles = $this->getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
@@ -107,7 +107,6 @@ class ProfileController extends Controller
 
 		return response()->json([
 			'success' => true,
-			// 'results' => $iper_profiles
 			'results' => $filtered_iper_profiles
 		]);
 

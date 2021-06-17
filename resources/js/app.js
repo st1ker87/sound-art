@@ -93,7 +93,9 @@ const app = new Vue({
 		// this.filterCall('Drummer','Metal',3,6); // 0 risultati [OK]
 		// this.filterCall(null,null,3,4); // 2 risultati
 		// this.filterCall(null,null,3,1); // 5 risultati
-		this.filterCall(null,'New-age',null,null); // 3 risultati [OK]
+		// this.filterCall(null,'New-age',null,null); // 3 risultati [OK]
 		// this.filterCall('Mixer/Engineer',null,null,null); // 3 risultati [OK]
+		// this.filterCall('Classical Guitarist',null,null,null); // 2 risultati [OK]
+		this.filterCall(null,null,null,null); // 11 risultati [OK]
 	}
 });
