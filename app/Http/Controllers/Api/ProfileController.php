@@ -29,7 +29,7 @@ class ProfileController extends Controller
     public function index(Request $request) 
 	{
 
-		// ! ingredienti DB
+		// ! DB source
 		$users 			= User::all();
 		$profiles 		= Profile::all();
 		$categories 	= Category::all();
@@ -40,14 +40,12 @@ class ProfileController extends Controller
 		// $contracts		= Contract::all();
 		// $sponsorships	= Sponsorship::all();
 
-		// ! torta senza filtri
-		$profiles_array = $profiles;
-
-		foreach ($profiles_array as $profile) {
+		// ! building iper_profile
+		foreach ($profiles as $profile) {
 
 			$iper_profile = $profile->toArray();
 
-			$iper_profile['name'] = $profile->user->name;
+			$iper_profile['name'] 	 = $profile->user->name;
 			$iper_profile['surname'] = $profile->user->surname;
 
 			$categories = $profile->user->categories;
@@ -60,11 +58,9 @@ class ProfileController extends Controller
 			foreach ($genres as $genre)			$iper_profile['genres'][]		= $genre->name;
 			foreach ($offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
 			foreach ($messages as $message)		$iper_profile['messages'][]		= $message->toArray();
-			$iper_profile['msg_count'] = count($messages);
-			
 			if ($reviews->isNotEmpty()) {
 				$total_vote = 0; $counter = 0;
-				foreach ($reviews as $review) {		
+				foreach ($reviews as $review) {
 					$iper_profile['reviews'][] = $review->toArray();	
 					$total_vote += $review['rev_vote'];
 					$counter++;
@@ -73,68 +69,74 @@ class ProfileController extends Controller
 			} else {
 				$iper_profile['average_vote'] = 0;
 			}
-
+			$iper_profile['rev_count'] = count($reviews);
+			
+			// new iper_profile is listed
 			$iper_profiles[] = $iper_profile;
 		}
 
-		// 1 query ottiene tutti i profile dove category = quella richiesta
-		// 2 query ottiene tutti i profile dove genre = quella richiesta
-		// 3 query ottiene tutti i profile dove vote = quella richiesta
-		// 4 query ottiene tutti i profile dove reviewNum = quella richiesta
-
-		// ! ingredienti utente
+		// ! user's filters
 		$category 	= $request->get('category');
 		$genre		= $request->get('genre');
+		$offer		= $request->get('offer');
 		$vote		= $request->get('vote');
-		$reviewNum	= $request->get('reviewNum');
+		$rev_count	= $request->get('reviewNum');
 
+		// >>>TEST VALUES<<<
+		// $category 	= 'Drummer'; // Mixer/Engineer
+		// $genre		= 'Metal'; // Rock
+		// $offer		= 'Recording'; // 
+		// $vote		= 3;
+		// $rev_count	= 5;
+
+		// ! filtering values (keys must be iper_profile's keys!)
 		$filters = [];
-		if ($category)	$filters['category'] = $category;
-		if ($genre)		$filters['genre'] = $genre;
-		if ($vote)		$filters['vote'] = $vote;
-		if ($reviewNum)	$filters['reviewNum'] = $reviewNum;
-
-
-
-
-		// $iper_profiles_tmp = $iper_profiles;
-
-		// foreach ($filters as $key => $filter) {
-
-		// 	$iper_profiles_tmp = iperProfilesFilter($iper_profiles_tmp,$key,$filter);
-
-
-		// }
-
+		if ($category)	$filters['categories']		= $category;
+		if ($genre)		$filters['genres']			= $genre;
+		if ($offer)		$filters['offers']			= $offer;
+		if ($vote)		$filters['average_vote']	= $vote;
+		if ($rev_count)	$filters['rev_count']		= $rev_count;
 		
-		// function iperProfilesFilter($_iper_profiles,$key,$filter) {
-			
-		// 	iperProfilesFilter($_iper_profiles,$key,$filter);
-
-
-		// }
-
+		// filtering iteration for each user filter
+		$tmp_iper_profiles = $iper_profiles;
+		foreach ($filters as $key => $value) {
+			$mode = is_numeric($value) ?  'greater' : 'contains';
+			$filtered_iper_profiles = $this->getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
+			$tmp_iper_profiles = $filtered_iper_profiles;
+		}
 
 		return response()->json([
 			'success' => true,
-			'results' => $iper_profiles
+			// 'results' => $iper_profiles
+			'results' => $filtered_iper_profiles
 		]);
+
 	}
 
 
+
+
 	/**
+	 * Array Filter Function
 	 * 
+	 * mode 1: $_mode = 'contains' 
+	 * returns $_array items where $_filter set contains $_value
 	 * 
+	 * mode 2: $_mode = 'greater' 
+	 * returns $_array items where $_filter value is greater than $_value
 	 */
-	protected function iperProfilesFilter($_array,$_filter,$_value) {
+	protected function getFilteredProfiles($_array,$_key,$_value,$_mode) {
+		$filtered_array = [];
 		foreach ($_array as $item) {
-			if ( !empty($item[$_filter]) && in_array($_value,$item['categories']) ) {
-				$filtered_array[] = $item;
+			if (array_key_exists($_key,$item)) {
+				if ($_mode == 'contains') $condition = (in_array($_value,$item[$_key]));
+				if ($_mode == 'greater')  $condition = ($item[$_key] >= $_value);
+				if ($condition) $filtered_array[] = $item;
 			}
 		}
 		return $filtered_array;
 	}
-	
+
 }
 
 

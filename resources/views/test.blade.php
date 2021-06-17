@@ -41,6 +41,7 @@
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 
+
 use App\User;
 use App\Profile;
 use App\Category;
@@ -59,14 +60,12 @@ $messages 		= Message::all();
 $reviews 		= Review::all();
 
 // ! torta
-$profiles_array = $profiles;
-
-foreach ($profiles_array as $profile) {
+foreach ($profiles as $profile) {
 
 	$iper_profile = $profile->toArray();
 
-	$iper_profile['name'] = $profile->user->name;
-	$iper_profile['surname'] = $profile->user->surname;
+	$iper_profile['name'] 		= $profile->user->name;
+	$iper_profile['surname'] 	= $profile->user->surname;
 
 	$categories = $profile->user->categories;
 	$genres		= $profile->user->genres;
@@ -78,11 +77,9 @@ foreach ($profiles_array as $profile) {
 	foreach ($genres as $genre)			$iper_profile['genres'][]		= $genre->name;
 	foreach ($offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
 	foreach ($messages as $message)		$iper_profile['messages'][]		= $message->toArray();
-	$iper_profile['msg_count'] = count($messages);
-
 	if ($reviews->isNotEmpty()) {
 		$total_vote = 0; $counter = 0;
-		foreach ($reviews as $review) {		
+		foreach ($reviews as $review) {
 			$iper_profile['reviews'][] = $review->toArray();	
 			$total_vote += $review['rev_vote'];
 			$counter++;
@@ -91,35 +88,69 @@ foreach ($profiles_array as $profile) {
 	} else {
 		$iper_profile['average_vote'] = 0;
 	}
-
+	$iper_profile['rev_count'] = count($reviews);
+	
+	// new iper profile
 	$iper_profiles[] = $iper_profile;
 }
 
-// @dump($iper_profiles);
+@dump($iper_profiles);
 
 
 
-// $iper_profiles_filtered = iperProfilesFilter($iper_profiles,'categories','Mixer/Engineer');
 
-// @dump($iper_profiles_filtered);
 
-// function iperProfilesFilter($_array,$_filter,$_value) {
-// 	foreach ($_array as $item) {
-// 		if ( !empty($item[$_filter]) && in_array($_value,$item['categories']) ) {
-// 			$filtered_array[] = $item;
-// 		}
-// 	}
-// 	return $filtered_array;
-// }
 
-@dump(A(3));
+// ! ingredienti utente
+$category 	= 'Drummer'; // Mixer/Engineer
+$genre		= 'Metal'; // Rock
+$offer		= 'Recording'; // 
+$vote		= 3;
+$rev_count	= 5;
 
-function A($N) {
-	if ($N==1) {
-		return 1;
-	}
-	return $N*A($N-1);
+if ($category)	$filters['categories']		= $category;
+if ($genre)		$filters['genres']			= $genre;
+if ($offer)		$filters['offers']			= $offer;
+if ($vote)		$filters['average_vote']	= $vote;
+if ($rev_count)	$filters['rev_count']		= $rev_count;
+@dump($filters);
+
+// filtering iteration for each user filter
+$tmp_iper_profiles = $iper_profiles;
+foreach ($filters as $key => $value) {
+	$mode = is_numeric($value) ?  'greater' : 'contains';
+	$filtered_iper_profiles = getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
+	$tmp_iper_profiles = $filtered_iper_profiles;
 }
+
+// risultato
+@dump($filtered_iper_profiles);
+
+
+
+function getFilteredProfiles($_array,$_key,$_value,$_mode) {
+	$filtered_array = [];
+	foreach ($_array as $item) {
+		if (array_key_exists($_key,$item)) {
+			if ($_mode == 'contains') $condition = (in_array($_value,$item[$_key]));
+			if ($_mode == 'greater')  $condition = ($item[$_key] >= $_value);
+			if ($condition) $filtered_array[] = $item;
+		}
+	}
+	return $filtered_array;
+}
+
+/////////////////////////////////////////////
+
+
+// @dump(A(3));
+
+// function A($N) {
+// 	if ($N==1) {
+// 		return 1;
+// 	}
+// 	return $N*A($N-1);
+// }
 
 
 
