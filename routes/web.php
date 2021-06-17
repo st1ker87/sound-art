@@ -110,9 +110,9 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 			'show'		=> 'admin.profiles.show',		// ! GET'/profiles/{slug}'		return view('admin.profiles.show');
 			'create' 	=> 'admin.profiles.create',		// ! GET'/profiles/create'		return view('admin.profiles.create');
 			'store' 	=> 'admin.profiles.store',		// ! POST'/profiles'			return redirect()->route('dashboard')->with('status','Profile created');
-			'edit' 		=> 'admin.profiles.edit',		// ! GET'profiles/{slug}/edit'	return view('admin.profiles.edit');
-			'update' 	=> 'admin.profiles.update',		// ! PUT'profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile udated');
-			'destroy' 	=> 'admin.profiles.destroy',	// ! DEL'profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile deleted');
+			'edit' 		=> 'admin.profiles.edit',		// ! GET'/profiles/{slug}/edit'	return view('admin.profiles.edit');
+			'update' 	=> 'admin.profiles.update',		// ! PUT'/profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile udated');
+			'destroy' 	=> 'admin.profiles.destroy',	// ! DEL'/profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile deleted');
 		]);
 
 		/**
@@ -121,9 +121,11 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * Message CRUD: parte admin (index,show,destroy) SOLO I PROPRI MESSAGGI RICEVUTI
 		 * http://localhost:8000/admin/messages
 		 */
-		Route::get('/messages',			'MessageController@index')->name('admin.messages.index'); 		// ! return view('admin.messages.index');
-		Route::get('/messages/{slug}',	'MessageController@show')->name('admin.messages.show'); 		// ! return view('admin.messages.show');
-		Route::get('/messages',			'MessageController@destroy')->name('admin.messages.destroy'); 	// ! return redirect()->route('dashboard')->with('status','Message deleted');
+		Route::resource('/messages', MessageController::class)->names([
+			'index'		=> 'admin.messages.index',		// ! GET'/messages'				return view('admin.messages.index');
+			'show'		=> 'admin.messages.show',		// ! GET'/messages/{slug}'		return view('admin.messages.show');
+			'destroy' 	=> 'admin.messages.destroy',	// ! DEL'/messages/{slug}'		return redirect()->route('dashboard')->with('status','Message deleted');
+		]);
 
 		/**
 		 * # REVIEWS #

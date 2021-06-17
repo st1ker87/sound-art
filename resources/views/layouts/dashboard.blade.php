@@ -9,6 +9,12 @@
 			scatola Vue.js: NON ELIMINARE!
 
 	in seguito si può differenziare per guest/admin
+
+	DEFINITO QUI:
+			$my_user 	= Auth::user();
+			$my_profile = Auth::user()->profile;
+
+
 ------------------------------------------------------------------}}
 
 {{-- DA QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
@@ -44,6 +50,11 @@
 
         {{-- FINP A QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
 
+		@php
+			$my_user 	= Auth::user();
+			$my_profile = Auth::user()->profile;
+		@endphp
+
         {{-- DA QUI NAVBAR COMUNE A SX --}}
 
         <div class="container-fluid">
@@ -58,7 +69,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.profiles.show', Auth::user()->profile) }}">
+                                <a class="nav-link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">
                                     <i class="fas fa-id-card"></i>
                                     Profile
                                 </a>
