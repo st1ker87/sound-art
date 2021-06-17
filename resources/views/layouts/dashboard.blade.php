@@ -58,19 +58,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('admin.profiles.show', Auth::user()->profile) }}">
                                     <i class="fas fa-id-card"></i>
                                     Profile
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('admin.messages.index') }}">
                                     <i class="fas fa-inbox"></i>
                                     Messages
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('admin.reviews.index') }}">
                                     <i class="fab fa-font-awesome-flag"></i>
                                     Reviews
                                 </a>
