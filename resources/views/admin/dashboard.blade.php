@@ -18,6 +18,10 @@
 
 	altre funzioni quali?
 
+	DISPONIBILE IN PAGINA:
+			$my_user 	= Auth::user();
+			$my_profile = Auth::user()->profile;
+
 ------------------------------------------------------------------}}
 @extends('layouts.dashboard')
 
@@ -38,12 +42,9 @@
 </div>
 
 @php
-
 	$my_user 	= Auth::user();
 	$my_profile = Auth::user()->profile;
-
 @endphp
-
 
 @if ($my_profile)
 	{{-- EDIT --}}
