@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * # AUTHENTICATION #
+ * 
+ * default laravel
+ * http://localhost:8000/api/user/
+ */
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/**
+ * # IPER PROFILES #
+ * 
+ * rotte estrazione iper profiles dal DB
+ * http://localhost:8000/api/profiles
+ */
+Route::get('profiles', 'Api\ProfileController@index'); // api senza protezione
+// Route::get('profiles', 'Api\ProfileController@index')->middleware('api_token_check');

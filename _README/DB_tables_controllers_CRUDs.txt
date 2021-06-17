@@ -1,7 +1,15 @@
 
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                           API DI SERVIZIO                          %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
+---------------------------------------------------------------- rotte
 
+php artisan make:controller Api/ProfileController
+*Api/ProfileController >> controller per i profile via API
+
+--------------------------------------------------------- JSON - mappa
 
 singolo profilo
 	[tutta riga della tabella profiles] array
