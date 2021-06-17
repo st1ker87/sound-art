@@ -5,13 +5,26 @@ QUESTO E' HEADER
 */
 /* Header Home */
 .header-home {
-    background-color: $primaryBlack;
-    .nav-link {
-        color: $primaryWhite;
-        &:hover {
-            color: $primaryWhite;
-            text-decoration: underline;
-        }
+  height: 80px;
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $primaryBlack;
+  h2 {
+    display: inline-block;
+    color: $primaryWhite;
+    font-size: 1.5em;
+    margin-left: 5px;
+    line-height: 50px;
+  }
+  .nav-link {
+      color: $primaryWhite;
+      &:hover {
+          color: $primaryWhite;
+          text-decoration: underline;
+      }
     }
 }
 
