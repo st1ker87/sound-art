@@ -1,0 +1,53 @@
+
+
+
+---------------------------------------------------------------------------------
+PARTE VUE.JS
+
+data: {
+	...
+	displayList: [], // array di item ricevuti da axios; ogni item ha proprietà item.vote_average in formato intero.decimale (ex: 3.7)
+	...
+},
+methods: {
+	...
+	getRatingStyle(vote_average) { // funzione chiamata da vuejs dall'html
+		return '--rating: '+vote_average+';';
+	},
+	...
+}
+
+---------------------------------------------------------------------------------
+PARTE HTML
+
+<div class="item_box" v-for="(item,index) in displayList">
+	...
+	<ul>
+		<li class="rating_bar" :style="getRatingStyle(item.vote_average)"></li>
+	</ul>
+	...
+</div> 
+
+---------------------------------------------------------------------------------
+PARTE CSS
+
+/* rating stars  */
+.rating_bar {
+	--fraction: calc(var(--rating)/10*100%);
+	font-size: 25px;
+	line-height: 0.5em;
+}
+.rating_bar::before {
+	content: '★★★★★';
+	background: linear-gradient(90deg, var(--red) var(--fraction), var(--white) var(--fraction));
+	/* switch color between background and content */
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+---------------------------------------------------------------------------------
+
+
+
+

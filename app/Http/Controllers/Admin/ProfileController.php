@@ -194,7 +194,9 @@ class ProfileController extends Controller
 		// only profile owner can edit
 		$my_slug = Auth::user()->profile->slug;
 		if ($slug != $my_slug) 
-			return redirect()->route('dashboard')->with('status','You are not authorized!');
+			// return redirect()->route('dashboard')->with('status','You are not authorized!');
+			// return redirect()->route('dashboard')->with('status','Something went wrong');
+			return redirect()->route('dashboard');
 
 		$data = [
 			// main info: passed profile
@@ -313,6 +315,7 @@ class ProfileController extends Controller
 	protected function profileValidation($req) { // ! >>>>>>>>>>>>>>>>> COMPLETARE <<<<<<<<<<<<<<<<<< !
 		$req->validate([
 			'work_town'		=> 'required|max:255',
+			'phone'			=> 'required|max:25',
 			// 'content'	=> 'required'
 		]);
 	}
