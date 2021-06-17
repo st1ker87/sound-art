@@ -31,7 +31,8 @@
                 <h1>Create your profile</h1>
             </div>
 
-            <div>
+			{{-- PROBABILMENTE NON SERVE QUESTO --}}
+            {{-- <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -41,7 +42,7 @@
                         </ul>
                     </div>
                 @endif
-            </div>
+            </div> --}}
 
             <form action="{{ route('admin.profiles.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
