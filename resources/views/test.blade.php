@@ -4,10 +4,10 @@
 {{-- ///////////////////////////////////////////// --}}
 
 
-<video width="400" controls>
+{{-- <video width="400" controls>
 	<source src="{{asset('storage/profile_video/video_placeholder.mp4')}}" type="video/mp4">
 	Your browser does not support HTML video.
-</video>
+</video> --}}
 
 
 {{-- ///////////////////////////////////////////// --}}
@@ -41,10 +41,85 @@
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 
+use App\User;
+use App\Profile;
+use App\Category;
+use App\Genre;
+use App\Offer;
+use App\Message;
+use App\Review;
+
+// ! ingredienti DB
+$users 			= User::all();
+$profiles 		= Profile::all();
+$categories 	= Category::all();
+$genres 		= Genre::all();
+$offers 		= Offer::all();
+$messages 		= Message::all();
+$reviews 		= Review::all();
+
+// ! torta
+$profiles_array = $profiles;
+
+foreach ($profiles_array as $profile) {
+
+	$iper_profile = $profile->toArray();
+
+	$iper_profile['name'] = $profile->user->name;
+	$iper_profile['surname'] = $profile->user->surname;
+
+	$categories = $profile->user->categories;
+	$genres		= $profile->user->genres;
+	$offers 	= $profile->user->offers;
+	$messages 	= $profile->user->messages;
+	$reviews 	= $profile->user->reviews;
+
+	foreach ($categories as $category)	$iper_profile['categories'][]	= $category->name;
+	foreach ($genres as $genre)			$iper_profile['genres'][]		= $genre->name;
+	foreach ($offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
+	foreach ($messages as $message)		$iper_profile['messages'][]		= $message->toArray();
+	$iper_profile['msg_count'] = count($messages);
+
+	if ($reviews->isNotEmpty()) {
+		$total_vote = 0; $counter = 0;
+		foreach ($reviews as $review) {		
+			$iper_profile['reviews'][] = $review->toArray();	
+			$total_vote += $review['rev_vote'];
+			$counter++;
+		}
+		$iper_profile['average_vote'] = $total_vote/$counter;
+	} else {
+		$iper_profile['average_vote'] = 0;
+	}
+
+	$iper_profiles[] = $iper_profile;
+}
+
+// @dump($iper_profiles);
 
 
 
+// $iper_profiles_filtered = iperProfilesFilter($iper_profiles,'categories','Mixer/Engineer');
 
+// @dump($iper_profiles_filtered);
+
+// function iperProfilesFilter($_array,$_filter,$_value) {
+// 	foreach ($_array as $item) {
+// 		if ( !empty($item[$_filter]) && in_array($_value,$item['categories']) ) {
+// 			$filtered_array[] = $item;
+// 		}
+// 	}
+// 	return $filtered_array;
+// }
+
+@dump(A(3));
+
+function A($N) {
+	if ($N==1) {
+		return 1;
+	}
+	return $N*A($N-1);
+}
 
 
 

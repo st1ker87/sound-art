@@ -30,5 +30,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * rotte estrazione iper profiles dal DB
  * http://localhost:8000/api/profiles
  */
-Route::get('profiles', 'Api\ProfileController@index'); // api senza protezione
+Route::get('profiles', 'Api\ProfileController@index');  // api senza protezione	
 // Route::get('profiles', 'Api\ProfileController@index')->middleware('api_token_check');

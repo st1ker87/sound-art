@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { split } = require('lodash');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -36,6 +38,15 @@ const app = new Vue({
 		scrollChange: 400,
 
 
+		// FILTER
+		category_selected	: null,
+		genre_selected		: null,
+		vote_selected 		: null,
+		reviewNum_selected	: null,
+
+
+
+
 		// INTERNAL APIs
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
 		iper_profiles		: [],
@@ -52,15 +63,21 @@ const app = new Vue({
 		},
 
 		// INTERNAL APIs
-		iperProfilesCall() {
+		// STEP 1 utente seleziona alcune delle 4 tendine > ottengo i vari {qualcosa}_selected
+		// STEP 2 al Submit chiamo filterCall(category_selected,genre_selected,vote_selected,reviewNum_selected)
+		filterCall(_category,_genre,_vote,_reviewNum) {
+
 			axios.get(this.iper_profiles_url, {
-				// headers: {
-				// 	'Authorization': 'Bearer '+this.access_token
-				// }
+				params: {
+					category	: _category,
+					genre		: _genre,
+					vote		: _vote,
+					reviewNum	: _reviewNum,
+				}
 			})
 			.then((resp) => {
-				// console.log('resp',resp);
-				// console.log('resp.data',resp.data);
+				console.log('resp',resp);
+				console.log('resp.data',resp.data);
 				this.iper_profiles = resp.data.results;
 				console.log('this.iper_profiles',this.iper_profiles);
 			})
@@ -69,6 +86,23 @@ const app = new Vue({
 			});
 		},
 
+		// iperProfilesCall() {
+		// 	axios.get(this.iper_profiles_url, {
+		// 		// headers: {
+		// 		// 	'Authorization': 'Bearer '+this.access_token
+		// 		// }
+		// 	})
+		// 	.then((resp) => {
+		// 		console.log('resp',resp);
+		// 		console.log('resp.data',resp.data);
+		// 		this.iper_profiles = resp.data.results;
+		// 		console.log('this.iper_profiles',this.iper_profiles);
+		// 	})
+		// 	.catch((error) => {
+		// 		console.error(error);
+		// 	});
+		// },
+
 	},
 	mounted() {
 		window.addEventListener('scroll', this.updateScroll);
@@ -76,8 +110,8 @@ const app = new Vue({
 
 		// INTERNAL APIs
 		// ! STABILIRE QUANDO ESEGUIRE LA CHIAMATA
-		this.iperProfilesCall();
+		// this.iperProfilesCall();
 
-
+		this.filterCall('ciccio','pluto','paperino','giuseppina');
 	}
 });
