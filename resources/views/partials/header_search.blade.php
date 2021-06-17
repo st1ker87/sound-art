@@ -1,21 +1,20 @@
-<header class="header-search" :class="{change_color: scrollPosition > scrollChange}">
+<header class="header-search">
 	<div class="container">
 		<nav class="navbar justify-content-between">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
-				<img v-if="scrollPosition < scrollChange" id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
-				<img v-if="scrollPosition > scrollChange" id="logo" src="{{ asset('img/logo-blue.png') }}" alt="Sound Art logo">
+				<img id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
 
-        <h2 :class="{change_color_text: scrollPosition > scrollChange}"> SoundArt</h2>
+        <h2>SoundArt</h2>
 			</a>
 			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
 			@guest
 				<li class="nav-item ">
-					<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
+					<a class="btn btn-outline-light" role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
 				</li>
 				@if (Route::has('register'))
 					<li class="nav-item">
-						<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
+						<a class="btn btn-outline-light" role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
 					</li>
 				@endif
 			@else

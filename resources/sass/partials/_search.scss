@@ -24,6 +24,9 @@
 
 //barra ricerca
 .my-color-search {
+  position: sticky;
+  top: 80px;
+  z-index: 50;
   background-color: $primaryWhite;
   border-bottom: 0.5px solid $lightGray;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
