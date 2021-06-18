@@ -47,8 +47,6 @@ else {
 
 @endphp
 
-
-
 <script type="text/javascript">
     const search_from_home_key 	= '<?php echo $search_from_home_key; ?>';
     const search_from_home_value= '<?php echo $search_from_home_value; ?>';

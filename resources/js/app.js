@@ -183,8 +183,6 @@ const app = new Vue({
 // COSE FATTIBILI
 /**
  * [1] 
- * ! riempire le voci delle tendine lasciando tutto sotto vuejs ???
- * altre chiamate axios per ottenere
  * lisa valori DB di: categories, genres, (eventuelmente) offers
  */
 ////////////////////////////////////////////////////////
