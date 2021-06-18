@@ -93,8 +93,6 @@ const app = new Vue({
 		},
 
 		// INTERNAL APIs
-		// STEP 1 utente seleziona alcune delle 4 tendine > ottengo i vari {qualcosa}_selected
-		// STEP 2 al Submit chiamo filterCall(category_selected,genre_selected,vote_selected,reviewNum_selected)
 		filterCall() {
 			axios.get(this.iper_profiles_url, {
 				params: {
@@ -114,9 +112,6 @@ const app = new Vue({
 		},
 		
 		test() {
-			// let x = document.getElementById('prova');
-			// let valore = x.innerHTML;
-			// console.log(`Valore: ${valore}`);
 			if(typeof(search_from_home_key) !== 'undefined'){
 				if(search_from_home_key === 'category') {
 					this.btnCategories = search_from_home_value;
@@ -135,10 +130,12 @@ const app = new Vue({
 					this.btnGeneres = 'Genres';
 					this.btnVotes = 'Vote';
 				}
-				this.category_selected;
-				this.genre_selected;
-				this.vote_selected;
-				this.reviewNum_selected;
+				this.filterCall();
+			}
+			else {
+				this.btnCategories = 'Categories';
+				this.btnGeneres = 'Genres';
+				this.btnVotes = 'Vote';
 				this.filterCall();
 			}
 		}
@@ -148,29 +145,10 @@ const app = new Vue({
 
 	},
 	mounted() {
+		console.log('mounted');
 		window.addEventListener('scroll', this.updateScroll);
-		this.test();
-
-		/**
-		 * ! CHIAMATA API AXIOS DI DEFAULT
-		 * 
-		 * # modalità di accesso 1:
-		 * accedo direttamente a ricerca avanzata
-		 * nessun parametro vlorizzato 
-		 * chiamata filterCall() >>> tutti i profili in DB visualizzati
-		 * nel mounted() è ragionevole
-		 * 
-		 * # modalità di accesso 2:
-		 * accedo a ricerca avanzata da ricerca semplice di home page
-		 * *soluzione:
-		 * 		1. atterro in ricerca avanzata da meccanismo attuale (back end)
-		 * 		2. recupero in ricerca avanzata il parametro php (back end)
-		 * 		3. eseguo chiamata filterCall() >>> profili filtrati
-		 * *prerequisito:
-		 * 		gestione della VISUALIZZAZIONE delle card in vuejs
-		 */			
-
-
+		this.test();	
+		
 		// INTERNAL APIs
 		// chiamate di test (in realtà avviene al Filter Submit)
 		// this.filterCall_TEST('Drummer','Metal',3,5); // 1 risultato [OK]
@@ -181,6 +159,11 @@ const app = new Vue({
 		// this.filterCall_TEST('Mixer/Engineer',null,null,null); // 3 risultati [OK]
 		// this.filterCall_TEST('Classical Guitarist',null,null,null); // 2 risultati [OK]
 		// this.filterCall_TEST(null,null,null,null); // 11 risultati [OK]
+	},
+	created() {
+		console.log('created');	
+	},
+	updated() {
 	}
 });
 

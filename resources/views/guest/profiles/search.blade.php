@@ -90,7 +90,7 @@ else {
               <button id="prova" v-on:click="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showCategoryPannel" class="search">
                 <div class="categories-cnt">
-                    <ul>
+                    <ul>                 
                         @foreach($categories as $category)
                         <li>
                             <input v-on:click="setCategory($event.target.value)" type="button" value="{{$category->name}}">
