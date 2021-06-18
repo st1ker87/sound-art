@@ -70,7 +70,7 @@ foreach ($profiles as $profile) {
 	$categories = $profile->user->categories;
 	$genres		= $profile->user->genres;
 	$offers 	= $profile->user->offers;
-	$messages 	= $profile->user->messages;
+	$messages 	= $profile->user->messages; // @dd($messages);
 	$reviews 	= $profile->user->reviews;
 
 	foreach ($categories as $category)	$iper_profile['categories'][]	= $category->name;

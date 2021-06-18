@@ -4,16 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use App\User;
 use App\Profile;
-use App\Category;
-use App\Genre;
-use App\Offer;
-use App\Message;
-use App\Review;
-// use App\Contract;
-// use App\Sponsorship;
 
 class ProfileController extends Controller
 {
@@ -25,83 +16,75 @@ class ProfileController extends Controller
 	 * restituisce in json tutta la tabella profile con info ausiliarie
 	 * 
 	 */
-    public function index(Request $request) 
+    public function index(Request $request)
 	{
+		// DB starting source
+		$profiles = Profile::all();
 
-		// ! DB source
-		$users 			= User::all();
-		$profiles 		= Profile::all();
-		$categories 	= Category::all();
-		$genres 		= Genre::all();
-		$offers 		= Offer::all();
-		$messages 		= Message::all();
-		$reviews 		= Review::all();
-		// $contracts		= Contract::all();
-		// $sponsorships	= Sponsorship::all();
-
-		// ! building $iper_profiles array di $iper_profile 
+		// building $iper_profiles, array of $iper_profile 
 		foreach ($profiles as $profile) {
 
-			$iper_profile = $profile->toArray();
+			// starting properties 
+			$iper_profile = $profile->toArray(); // array, NOT laravel collection!
 
+			// adding name, surname >>> strings
 			$iper_profile['name'] 	 = $profile->user->name;
 			$iper_profile['surname'] = $profile->user->surname;
 
-			$categories = $profile->user->categories;
-			$genres		= $profile->user->genres;
-			$offers 	= $profile->user->offers;
-			$messages 	= $profile->user->messages;
-			$reviews 	= $profile->user->reviews;
+			// warning: these are lravel collections!
+			$profile_categories = $profile->user->categories;
+			$profile_genres		= $profile->user->genres;
+			$profile_offers 	= $profile->user->offers;
+			$profile_messages 	= $profile->user->messages;
+			$profile_reviews 	= $profile->user->reviews;
+			// $profile_contracts 	= $profile->user->contracts;
 
-			foreach ($categories as $category)	$iper_profile['categories'][]	= $category->name;
-			foreach ($genres as $genre)			$iper_profile['genres'][]		= $genre->name;
-			foreach ($offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
-			foreach ($messages as $message)		$iper_profile['messages'][]		= $message->toArray();
-			if ($reviews->isNotEmpty()) {
+			// adding categories, genres, offers >>> array of strings
+			foreach ($profile_categories as $category)	$iper_profile['categories'][]	= $category->name;
+			foreach ($profile_genres as $genre)			$iper_profile['genres'][]		= $genre->name;
+			foreach ($profile_offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
+
+			// adding messages, revies >>> array of array of strings
+			// adding average_vote, rev_count >>> strings
+			foreach ($profile_messages as $message)		$iper_profile['messages'][]		= $message->toArray(); // array, NOT laravel collection!
+			if ($profile_reviews->isNotEmpty()) {
 				$total_vote = 0;
-				foreach ($reviews as $review) {
-					$iper_profile['reviews'][] = $review->toArray();	
+				foreach ($profile_reviews as $review) {
+					$iper_profile['reviews'][] = $review->toArray(); // array, NOT laravel collection!
 					$total_vote += $review['rev_vote'];
 				}
-				$iper_profile['average_vote'] = $total_vote/count($reviews); // ! voto obbligatorio per ogni review (testo facoltativo)
+				$iper_profile['average_vote'] = $total_vote/count($profile_reviews); // ! voto obbligatorio per ogni review (testo facoltativo)
 			} else {
 				$iper_profile['average_vote'] = 0;
 			}
-			$iper_profile['rev_count'] = count($reviews);
+			$iper_profile['rev_count'] = count($profile_reviews);
 			
-			// new iper_profile is listed
+			// a new iper_profile is born!
 			$iper_profiles[] = $iper_profile;
 		}
 
-		// ! user's filters
+		// user's filters from axios query url
 		$category 	= $request->get('category');
 		$genre		= $request->get('genre');
 		$offer		= $request->get('offer');
 		$vote		= $request->get('vote');
 		$rev_count	= $request->get('reviewNum');
 
-		// >>>TEST VALUES<<<
-		// $category 	= 'Drummer'; // Mixer/Engineer
-		// $genre		= 'Metal'; // Rock
-		// $offer		= 'Recording'; // 
-		// $vote		= 3;
-		// $rev_count	= 5;
-
-		// ! filtering values (keys must be iper_profile's keys!)
+		// building filter set (only not null values)
 		$filters = [];
+		// ! these keys must be equal to $iper_profile's keys!
 		if ($category)	$filters['categories']		= $category;
 		if ($genre)		$filters['genres']			= $genre;
 		if ($offer)		$filters['offers']			= $offer;
 		if ($vote)		$filters['average_vote']	= $vote;
 		if ($rev_count)	$filters['rev_count']		= $rev_count;
 		
-		// filtering iteration for each user filter
+		// iterating on filter set 
 		$filtered_iper_profiles = $iper_profiles;
 		$tmp_iper_profiles = $filtered_iper_profiles;
 		foreach ($filters as $key => $value) {
 			$mode = is_numeric($value) ?  'greater' : 'contains';
 			$filtered_iper_profiles = $this->getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
-			// $filtered_iper_profiles = $this->getFilteredProfiles($tmp_iper_profiles,'categories','Band',$mode);
 			$tmp_iper_profiles = $filtered_iper_profiles;
 		}
 

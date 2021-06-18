@@ -142,6 +142,22 @@ const app = new Vue({
 	mounted() {
 		window.addEventListener('scroll', this.updateScroll);
 
+		// 
+		// modalità 1: 
+		// 
+		// paramtro proveniendo da ricerca semplice
+
+		/**
+		 * ! CHIAMATA DI DEFAULT
+		 * 
+		 * modalità 1:
+		 * accedo direttamente a ricerca avanzata
+		 * nessun parametro >>> tutti i profili in DB
+		 * 
+		 * modalità 2:
+		 * accedo a ricerca avanzata da ricerca semplice di home page
+		 * parametro ereditato da back end 
+		 */
 
 		// INTERNAL APIs
 		// chiamate di test (in realtà avviene al Filter Submit)
@@ -167,7 +183,7 @@ const app = new Vue({
 // <!-- v-model preleva automaticamente il valore di :value selezionato -->
 // <label for="filter1">Filter by</label>														// etichetta
 // <select id="filter1" v-model="filter1Selected" @change="filter2Selected=''">					// select con v-model="{nome variabile per filter1}"
-// 	<option value="">none</option>																// opzione con value="" per non selezionare nulla
+// <option value="">none</option>																// opzione con value="" per non selezionare nulla
 // 	<option v-for="filter1 in Object.keys(filterLists)" :value="filter1">{{cap(filter1)}}		// ciclo di opzioni con :value="{valore per filter1}"
 // 	</option>																					// filter1 è ogni valore di array Object.keys(filterLists)
 // </select>
@@ -179,3 +195,7 @@ const app = new Vue({
 // lisa valori categories, genres, (eventuelmente offers)
 
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+// ! chiudere tendine quando clicco altrove
+
+// ! aggiungere in ogni "tendina" la voce di non-selezione
