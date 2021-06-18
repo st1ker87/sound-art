@@ -27,140 +27,170 @@
 
 {{-- ///////////////////////////////////////////// --}}
 
-
-
+{{-- 
 @php
 
-	$search_from_home = [
-		'category' => 'ciccio'
-	];
-
-
-	$is_category = array_key_exists('category',$search_from_home);
-	$is_genre = array_key_exists('genre',$search_from_home);
-	if ($is_category) {
-		$search_from_home_key = 'category';
-		$search_from_home_value = $search_from_home['category'];
-	} else if ($is_genre) {
-		$search_from_home_key = 'genre';
-		$search_from_home_value = $search_from_home['genre'];
+	if (isset($search_from_home)) {
+		@dd($search_from_home);
+		$is_category = array_key_exists('category',$search_from_home);
+		$is_genre = array_key_exists('genre',$search_from_home);
+		if ($is_category) {
+			$search_from_home_key = 'category';
+			$search_from_home_value = $search_from_home['category'];
+		} else if ($is_genre) {
+			$search_from_home_key = 'genre';
+			$search_from_home_value = $search_from_home['genre'];
+		} else {
+			$search_from_home_key = '';
+			$search_from_home_value = '';
+		}
 	} else {
 		$search_from_home_key = '';
 		$search_from_home_value = '';
 	}
+
 @endphp
 <script type="text/javascript">
     const search_from_home_key 	= '<?php echo $search_from_home_key; ?>';
     const search_from_home_value= '<?php echo $search_from_home_value; ?>';
 </script>
 
+ --}}
+
+
+
+
 
 {{-- ///////////////////////////////////////////// --}}
-{{-- ///////////////////////////////////////////// --}}
+{{-- ///////// qua sopra scrivi in blade ///////// --}}
 {{-- ///////////////////////////////////////////// --}}
 @php
 /////////////////////////////////////////////
+////////// qua sotto scrivi in php //////////
 /////////////////////////////////////////////
+
+
+
+
+
+
+
 /////////////////////////////////////////////
 
+/**
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ * %     IPER PROFILE ENDPOINT     %
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ *
+ * @return json: array of profiles with aux infos
+ */
 
-// use App\User;
-// use App\Profile;
-// use App\Category;
-// use App\Genre;
-// use App\Offer;
-// use App\Message;
-// use App\Review;
+use App\Profile;
 
-// // ! ingredienti DB
-// $users 			= User::all();
-// $profiles 		= Profile::all();
-// $categories 	= Category::all();
-// $genres 		= Genre::all();
-// $offers 		= Offer::all();
-// $messages 		= Message::all();
-// $reviews 		= Review::all();
+// DB starting source
+$profiles = Profile::all();
 
-// // ! torta
-// foreach ($profiles as $profile) {
+// building $iper_profiles, array of $iper_profile 
+foreach ($profiles as $profile) {
 
-// 	$iper_profile = $profile->toArray();
+	// starting properties 
+	$iper_profile = $profile->toArray(); // array, NOT laravel collection!
 
-// 	$iper_profile['name'] 		= $profile->user->name;
-// 	$iper_profile['surname'] 	= $profile->user->surname;
+	// adding name, surname >>> strings
+	$iper_profile['name'] 	 = $profile->user->name;
+	$iper_profile['surname'] = $profile->user->surname;
 
-// 	$categories = $profile->user->categories;
-// 	$genres		= $profile->user->genres;
-// 	$offers 	= $profile->user->offers;
-// 	$messages 	= $profile->user->messages; // @dd($messages);
-// 	$reviews 	= $profile->user->reviews;
+	// warning: these are lravel collections!
+	$profile_categories = $profile->user->categories;
+	$profile_genres		= $profile->user->genres;
+	$profile_offers 	= $profile->user->offers;
+	$profile_messages 	= $profile->user->messages;
+	$profile_reviews 	= $profile->user->reviews;
+	// $profile_contracts 	= $profile->user->contracts;
 
-// 	foreach ($categories as $category)	$iper_profile['categories'][]	= $category->name;
-// 	foreach ($genres as $genre)			$iper_profile['genres'][]		= $genre->name;
-// 	foreach ($offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
-// 	foreach ($messages as $message)		$iper_profile['messages'][]		= $message->toArray();
-// 	if ($reviews->isNotEmpty()) {
-// 		$total_vote = 0; $counter = 0;
-// 		foreach ($reviews as $review) {
-// 			$iper_profile['reviews'][] = $review->toArray();	
-// 			$total_vote += $review['rev_vote'];
-// 			$counter++;
-// 		}
-// 		$iper_profile['average_vote'] = $total_vote/$counter;
-// 	} else {
-// 		$iper_profile['average_vote'] = 0;
-// 	}
-// 	$iper_profile['rev_count'] = count($reviews);
-	
-// 	// new iper profile
-// 	$iper_profiles[] = $iper_profile;
-// }
+	// adding categories, genres, offers >>> array of strings
+	foreach ($profile_categories as $category)	$iper_profile['categories'][]	= $category->name;
+	foreach ($profile_genres as $genre)			$iper_profile['genres'][]		= $genre->name;
+	foreach ($profile_offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
 
-// @dump($iper_profiles);
+	// adding messages, revies >>> array of array of strings
+	// adding average_vote, rev_count >>> strings
+	// foreach ($profile_messages as $message)		$iper_profile['messages'][]		= $message->toArray(); // array, NOT laravel collection!
+	if ($profile_reviews->isNotEmpty()) {
+		$total_vote = 0;
+		foreach ($profile_reviews as $review) {
+			// $iper_profile['reviews'][] = $review->toArray(); // array, NOT laravel collection!
+			$total_vote += $review['rev_vote'];
+		}
+		$iper_profile['average_vote'] = $total_vote/count($profile_reviews); // ! voto obbligatorio per ogni review (testo facoltativo)
+	} else {
+		$iper_profile['average_vote'] = 0;
+	}
+	$iper_profile['rev_count'] = count($profile_reviews);
 
+	// ALLEGGERIMENTO
+	$unset_properties = [
+		'work_address','work_address_gps','phone',
+		'bio_text1','bio_text2','bio_text3','video_url','audio_url','public',
+		'created_at','updated_at'
+	];
+	foreach ($unset_properties as $unset_property) {
+		unset($iper_profile[$unset_property]);
+	}
 
+	// a new iper_profile is born!
+	$iper_profiles[] = $iper_profile;
+}
 
-
-
-
-// // ! ingredienti utente
-// $category 	= 'Drummer'; // Mixer/Engineer
-// $genre		= 'Metal'; // Rock
-// $offer		= 'Recording'; // 
-// $vote		= 3;
-// $rev_count	= 5;
-
-// if ($category)	$filters['categories']		= $category;
-// if ($genre)		$filters['genres']			= $genre;
-// if ($offer)		$filters['offers']			= $offer;
-// if ($vote)		$filters['average_vote']	= $vote;
-// if ($rev_count)	$filters['rev_count']		= $rev_count;
-// @dump($filters);
-
-// // filtering iteration for each user filter
-// $tmp_iper_profiles = $iper_profiles;
-// foreach ($filters as $key => $value) {
-// 	$mode = is_numeric($value) ?  'greater' : 'contains';
-// 	$filtered_iper_profiles = getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
-// 	$tmp_iper_profiles = $filtered_iper_profiles;
-// }
-
-// // risultato
-// @dump($filtered_iper_profiles);
+// tutti gli iper profiles
+@dump($iper_profiles);
 
 
 
-// function getFilteredProfiles($_array,$_key,$_value,$_mode) {
-// 	$filtered_array = [];
-// 	foreach ($_array as $item) {
-// 		if (array_key_exists($_key,$item)) {
-// 			if ($_mode == 'contains') $condition = (in_array($_value,$item[$_key]));
-// 			if ($_mode == 'greater')  $condition = ($item[$_key] >= $_value);
-// 			if ($condition) $filtered_array[] = $item;
-// 		}
-// 	}
-// 	return $filtered_array;
-// }
+
+
+
+// ! ingredienti utente
+$category 	= 'Drummer'; // Mixer/Engineer
+$genre		= 'Metal'; // Rock
+$offer		= 'Recording'; // 
+$vote		= 3;
+$rev_count	= 5;
+
+if ($category)	$filters['categories']		= $category;
+if ($genre)		$filters['genres']			= $genre;
+if ($offer)		$filters['offers']			= $offer;
+if ($vote)		$filters['average_vote']	= $vote;
+if ($rev_count)	$filters['rev_count']		= $rev_count;
+
+// i filtri effettivi
+@dump($filters);
+
+// filtering iteration for each user filter
+$tmp_iper_profiles = $iper_profiles;
+foreach ($filters as $key => $value) {
+	$mode = is_numeric($value) ?  'greater' : 'contains';
+	$filtered_iper_profiles = getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
+	$tmp_iper_profiles = $filtered_iper_profiles;
+}
+
+// gli iper profiles filtrati
+@dump($filtered_iper_profiles);
+
+
+
+
+function getFilteredProfiles($_array,$_key,$_value,$_mode) {
+	$filtered_array = [];
+	foreach ($_array as $item) {
+		if (array_key_exists($_key,$item)) {
+			if ($_mode == 'contains') $condition = (in_array($_value,$item[$_key]));
+			if ($_mode == 'greater')  $condition = ($item[$_key] >= $_value);
+			if ($condition) $filtered_array[] = $item;
+		}
+	}
+	return $filtered_array;
+}
 
 /////////////////////////////////////////////
 

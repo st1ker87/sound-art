@@ -13,8 +13,7 @@ class ProfileController extends Controller
 	 * %     IPER PROFILE ENDPOINT     %
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      *
-	 * restituisce in json tutta la tabella profile con info ausiliarie
-	 * 
+	 * @return json: array of profiles with aux infos
 	 */
     public function index(Request $request)
 	{
@@ -44,13 +43,15 @@ class ProfileController extends Controller
 			foreach ($profile_genres as $genre)			$iper_profile['genres'][]		= $genre->name;
 			foreach ($profile_offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
 
-			// adding messages, revies >>> array of array of strings
+			// adding messages >>> array of array of strings [NO!]
+			// foreach ($profile_messages as $message)		$iper_profile['messages'][]		= $message->toArray(); // array, NOT laravel collection!
+
+			// adding reviews >>> array of array of strings [NO!]
 			// adding average_vote, rev_count >>> strings
-			foreach ($profile_messages as $message)		$iper_profile['messages'][]		= $message->toArray(); // array, NOT laravel collection!
 			if ($profile_reviews->isNotEmpty()) {
 				$total_vote = 0;
 				foreach ($profile_reviews as $review) {
-					$iper_profile['reviews'][] = $review->toArray(); // array, NOT laravel collection!
+					// $iper_profile['reviews'][] = $review->toArray(); // array, NOT laravel collection!
 					$total_vote += $review['rev_vote'];
 				}
 				$iper_profile['average_vote'] = $total_vote/count($profile_reviews); // ! voto obbligatorio per ogni review (testo facoltativo)
@@ -58,7 +59,17 @@ class ProfileController extends Controller
 				$iper_profile['average_vote'] = 0;
 			}
 			$iper_profile['rev_count'] = count($profile_reviews);
-			
+
+			// less properties
+			$unset_properties = [
+				'work_address','work_address_gps','phone',
+				'bio_text1','bio_text2','bio_text3','video_url','audio_url','public',
+				'created_at','updated_at'
+			];
+			foreach ($unset_properties as $unset_property) {
+				unset($iper_profile[$unset_property]);
+			}
+
 			// a new iper_profile is born!
 			$iper_profiles[] = $iper_profile;
 		}
@@ -87,6 +98,13 @@ class ProfileController extends Controller
 			$filtered_iper_profiles = $this->getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
 			$tmp_iper_profiles = $filtered_iper_profiles;
 		}
+
+		// SHUFFLE DEI PROFILI
+		// sort
+
+		// SPONSORSHIP
+		// assegnare bandiera
+		// sort
 
 		return response()->json([
 			'success' => true,
