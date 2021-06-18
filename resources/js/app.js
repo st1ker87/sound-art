@@ -55,6 +55,7 @@ const app = new Vue({
 		// INTERNAL APIs
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
 		iper_profiles		: [],
+		iper_profiles_display: [],
 
 	},
 	methods: {
@@ -142,31 +143,24 @@ const app = new Vue({
 	mounted() {
 		window.addEventListener('scroll', this.updateScroll);
 
-		// 
-		// modalità 1: 
-		// 
-		// paramtro proveniendo da ricerca semplice
-
 		/**
 		 * ! CHIAMATA API AXIOS DI DEFAULT
 		 * 
-		 * # modalità 1:
+		 * # modalità di accesso 1:
 		 * accedo direttamente a ricerca avanzata
 		 * nessun parametro vlorizzato 
 		 * chiamata filterCall() >>> tutti i profili in DB visualizzati
+		 * nel mounted() è ragionevole
 		 * 
-		 * # modalità 2:
+		 * # modalità di accesso 2:
 		 * accedo a ricerca avanzata da ricerca semplice di home page
-		 * *opzione 1: 
-		 * 		parametro search_from_home ereditato da back end 
-		 * 		? come renderlo disponibile in vuejs ?
-		 * *opzione 2:
-		 * 		ricerca semplice "Search for artists" scatena: 
-		 * 			1.	this.category_selected valorizzato
-		 * 				oppure
-		 * 				this.genre_selected valorizzato
-		 * 			2. 	chiamata axios filterCall() >>> profili filtrati visualizzati
-		 */
+		 * *soluzione:
+		 * 		1. atterro in ricerca avanzata da meccanismo attuale (back end)
+		 * 		2. recupero in ricerca avanzata il parametro php (back end)
+		 * 		3. eseguo chiamata filterCall() >>> profili filtrati
+		 * *prerequisito:
+		 * 		gestione della VISUALIZZAZIONE delle card in vuejs
+		 */			
 
 
 		// INTERNAL APIs
