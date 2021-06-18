@@ -104,62 +104,6 @@
       </div>
     </section>
 
-
-   {{-- <div class="container-fluid my-color-search">
-     <div class="row">
-       <div class="container">
-          <div class="search-nav">
-            <div class="btn-filter d-inline-block">
-              <h3>Filters</h3>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <div class="box">
-                  <select v-model="category_selected">
-                    @foreach($categories as $category)
-                      <option>{{$category->name}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <div class="box">
-                  <select v-model="genre_selected">
-                    @foreach($genres as $genre)
-                      <option>{{$genre->name}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <div class="box">
-                  <select v-model="vote_selected">
-                    @for($i = 1; $i <= 5; $i++)
-                      <option>{{$i}}</option>
-                    @endfor
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <input v-model="reviewNum_selected" type="number" placeholder="Number of views">
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="btn-category">
-                <button v-on:click="filterCall" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </div>
-       </div>
-     </div>
-    </div> --}}
-
    {{-- PROFILES --}}
    <section class="card-list">
       <div class="container">
