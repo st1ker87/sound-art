@@ -56,7 +56,7 @@
           {{-- CATEGORY --}}
           <div class="col-lg-2 col-md-4">
             <div class="categories-pannel">
-              <button v-on:click="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
+              <button id="prova" v-on:click="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showCategoryPannel" class="search">
                 <div class="categories-cnt">
                     <ul>

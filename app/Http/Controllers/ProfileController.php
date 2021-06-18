@@ -47,7 +47,7 @@ class ProfileController extends Controller
     {
 		// qui c'è il filtro dell'utente selezionato in ricerca semplice
         $form_data = $request->all();
-		
+        
 		$data = [
 			// main info: passed filter
 			'search_from_home' => $form_data,

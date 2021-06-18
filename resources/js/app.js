@@ -112,29 +112,12 @@ const app = new Vue({
 				console.error(error);
 			});
 		},
-
-
-
-
-		// TEST CALL ////////////////////////////////////////////////////////////////////////////////
-		filterCall_TEST(category_selected,genre_selected,vote_selected,reviewNum_selected) {
-			axios.get(this.iper_profiles_url, {
-				params: {
-					category	: category_selected,
-					genre		: genre_selected,
-					vote		: vote_selected,
-					reviewNum	: reviewNum_selected,
-				}
-			})
-			.then((resp) => {
-				this.iper_profiles = resp.data.results;
-				console.log('this.iper_profiles',this.iper_profiles);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-		},
-		// TEST CALL ////////////////////////////////////////////////////////////////////////////////
+		
+		test() {
+			let x = document.getElementById('prova');
+			let valore = x.innerHTML;
+			console.log(`Valore: ${valore}`);	
+		}
 
 
 
@@ -142,6 +125,7 @@ const app = new Vue({
 	},
 	mounted() {
 		window.addEventListener('scroll', this.updateScroll);
+		this.test();
 
 		/**
 		 * ! CHIAMATA API AXIOS DI DEFAULT
