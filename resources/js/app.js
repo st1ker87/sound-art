@@ -93,14 +93,8 @@ const app = new Vue({
 
 		// INTERNAL APIs
 		// STEP 1 utente seleziona alcune delle 4 tendine > ottengo i vari {qualcosa}_selected
-<<<<<<< HEAD
 		// STEP 2 al Submit chiamo filterCall(category_selected,genre_selected,vote_selected,reviewNum_selected)
 		filterCall() {
-=======
-		// STEP 2 al Submit dell'utente chiamo filterCall(category_selected,genre_selected,vote_selected,reviewNum_selected)
-		filterCall(_category,_genre,_vote,_reviewNum) {
-
->>>>>>> 8f5a66fa76a1f55de5a4a74354790873fee5d4e7
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
