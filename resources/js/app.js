@@ -39,9 +39,9 @@ const app = new Vue({
 		showVotePannel : false,
 
 		/*BUTTONS IN PAGINA SEARCH*/
-		btnCategories : 'Categories',
-		btnGeneres : 'Genres',
-		btnVotes : 'Vote',
+		btnCategories : null,
+		btnGeneres : null,
+		btnVotes : null,
 		//scroll per nav bar (per ora solo in search.blade)
 		scrollPosition: null,
 		scrollChange: 400,
@@ -114,9 +114,33 @@ const app = new Vue({
 		},
 		
 		test() {
-			let x = document.getElementById('prova');
-			let valore = x.innerHTML;
-			console.log(`Valore: ${valore}`);	
+			// let x = document.getElementById('prova');
+			// let valore = x.innerHTML;
+			// console.log(`Valore: ${valore}`);
+			if(typeof(search_from_home_key) !== 'undefined'){
+				if(search_from_home_key === 'category') {
+					this.btnCategories = search_from_home_value;
+					this.category_selected = search_from_home_value;
+					this.btnGeneres = 'Genre';
+					this.btnVotes = 'Votes';
+				}
+				else if (search_from_home_key === 'genre') {
+					this.btnGeneres = search_from_home_value;
+					this.genre_selected = search_from_home_value;
+					this.btnCategories = 'Categories';
+					this.btnVotes = 'Votes';
+				}
+				else {
+					this.btnCategories = 'Categories';
+					this.btnGeneres = 'Genres';
+					this.btnVotes = 'Vote';
+				}
+				this.category_selected;
+				this.genre_selected;
+				this.vote_selected;
+				this.reviewNum_selected;
+				this.filterCall();
+			}
 		}
 
 

@@ -23,6 +23,37 @@
 <p>dump($reviews) = @dump($reviews)</p>
 @dd('') --}}
 
+@php
+if(isset($search_from_home)) {
+
+  $is_category = array_key_exists('category',$search_from_home);
+  $is_genre = array_key_exists('genre',$search_from_home);
+  if ($is_category) {
+    $search_from_home_key = 'category';
+    $search_from_home_value = $search_from_home['category'];
+  } else if ($is_genre) {
+    $search_from_home_key = 'genre';
+    $search_from_home_value = $search_from_home['genre'];
+  } 
+  else {
+      $search_from_home_key = '';
+      $search_from_home_value = '';
+    }
+}
+else {
+  $search_from_home_key = '';
+  $search_from_home_value = '';
+}
+
+@endphp
+
+
+
+<script type="text/javascript">
+    const search_from_home_key 	= '<?php echo $search_from_home_key; ?>';
+    const search_from_home_value= '<?php echo $search_from_home_value; ?>';
+</script>
+
 @extends('layouts.app')
 
 @section('title', 'Search')
