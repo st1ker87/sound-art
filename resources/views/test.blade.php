@@ -4,10 +4,10 @@
 {{-- ///////////////////////////////////////////// --}}
 
 
-<video width="400" controls>
+{{-- <video width="400" controls>
 	<source src="{{asset('storage/profile_video/video_placeholder.mp4')}}" type="video/mp4">
 	Your browser does not support HTML video.
-</video>
+</video> --}}
 
 
 {{-- ///////////////////////////////////////////// --}}
@@ -29,8 +29,30 @@
 
 
 
+@php
+
+	$search_from_home = [
+		'category' => 'ciccio'
+	];
 
 
+	$is_category = array_key_exists('category',$search_from_home);
+	$is_genre = array_key_exists('genre',$search_from_home);
+	if ($is_category) {
+		$search_from_home_key = 'category';
+		$search_from_home_value = $search_from_home['category'];
+	} else if ($is_genre) {
+		$search_from_home_key = 'genre';
+		$search_from_home_value = $search_from_home['genre'];
+	} else {
+		$search_from_home_key = '';
+		$search_from_home_value = '';
+	}
+@endphp
+<script type="text/javascript">
+    const search_from_home_key 	= '<?php echo $search_from_home_key; ?>';
+    const search_from_home_value= '<?php echo $search_from_home_value; ?>';
+</script>
 
 
 {{-- ///////////////////////////////////////////// --}}
@@ -42,9 +64,115 @@
 /////////////////////////////////////////////
 
 
+// use App\User;
+// use App\Profile;
+// use App\Category;
+// use App\Genre;
+// use App\Offer;
+// use App\Message;
+// use App\Review;
+
+// // ! ingredienti DB
+// $users 			= User::all();
+// $profiles 		= Profile::all();
+// $categories 	= Category::all();
+// $genres 		= Genre::all();
+// $offers 		= Offer::all();
+// $messages 		= Message::all();
+// $reviews 		= Review::all();
+
+// // ! torta
+// foreach ($profiles as $profile) {
+
+// 	$iper_profile = $profile->toArray();
+
+// 	$iper_profile['name'] 		= $profile->user->name;
+// 	$iper_profile['surname'] 	= $profile->user->surname;
+
+// 	$categories = $profile->user->categories;
+// 	$genres		= $profile->user->genres;
+// 	$offers 	= $profile->user->offers;
+// 	$messages 	= $profile->user->messages; // @dd($messages);
+// 	$reviews 	= $profile->user->reviews;
+
+// 	foreach ($categories as $category)	$iper_profile['categories'][]	= $category->name;
+// 	foreach ($genres as $genre)			$iper_profile['genres'][]		= $genre->name;
+// 	foreach ($offers as $offer)			$iper_profile['offers'][] 		= $offer->name;
+// 	foreach ($messages as $message)		$iper_profile['messages'][]		= $message->toArray();
+// 	if ($reviews->isNotEmpty()) {
+// 		$total_vote = 0; $counter = 0;
+// 		foreach ($reviews as $review) {
+// 			$iper_profile['reviews'][] = $review->toArray();	
+// 			$total_vote += $review['rev_vote'];
+// 			$counter++;
+// 		}
+// 		$iper_profile['average_vote'] = $total_vote/$counter;
+// 	} else {
+// 		$iper_profile['average_vote'] = 0;
+// 	}
+// 	$iper_profile['rev_count'] = count($reviews);
+	
+// 	// new iper profile
+// 	$iper_profiles[] = $iper_profile;
+// }
+
+// @dump($iper_profiles);
 
 
 
+
+
+
+// // ! ingredienti utente
+// $category 	= 'Drummer'; // Mixer/Engineer
+// $genre		= 'Metal'; // Rock
+// $offer		= 'Recording'; // 
+// $vote		= 3;
+// $rev_count	= 5;
+
+// if ($category)	$filters['categories']		= $category;
+// if ($genre)		$filters['genres']			= $genre;
+// if ($offer)		$filters['offers']			= $offer;
+// if ($vote)		$filters['average_vote']	= $vote;
+// if ($rev_count)	$filters['rev_count']		= $rev_count;
+// @dump($filters);
+
+// // filtering iteration for each user filter
+// $tmp_iper_profiles = $iper_profiles;
+// foreach ($filters as $key => $value) {
+// 	$mode = is_numeric($value) ?  'greater' : 'contains';
+// 	$filtered_iper_profiles = getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
+// 	$tmp_iper_profiles = $filtered_iper_profiles;
+// }
+
+// // risultato
+// @dump($filtered_iper_profiles);
+
+
+
+// function getFilteredProfiles($_array,$_key,$_value,$_mode) {
+// 	$filtered_array = [];
+// 	foreach ($_array as $item) {
+// 		if (array_key_exists($_key,$item)) {
+// 			if ($_mode == 'contains') $condition = (in_array($_value,$item[$_key]));
+// 			if ($_mode == 'greater')  $condition = ($item[$_key] >= $_value);
+// 			if ($condition) $filtered_array[] = $item;
+// 		}
+// 	}
+// 	return $filtered_array;
+// }
+
+/////////////////////////////////////////////
+
+
+// @dump(A(3));
+
+// function A($N) {
+// 	if ($N==1) {
+// 		return 1;
+// 	}
+// 	return $N*A($N-1);
+// }
 
 
 

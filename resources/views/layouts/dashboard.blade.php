@@ -55,6 +55,21 @@
 			$my_profile = Auth::user()->profile;
 		@endphp
 
+        {{-- JUMBOTRON DASHBOARD --}}
+            <div class="jumbo-dash">
+                <div class="container">
+                    <div class="title-dash">
+                        <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                        <h3>
+                            @foreach (Auth::user()->categories as $category)
+                                <span> {{$category->name}} |</span>
+                            @endforeach
+                        </h3>
+                        <p>{{ Auth::user()->profile->work_town }}</p>
+                    </div>
+                </div>
+            </div>
+
         {{-- DA QUI NAVBAR COMUNE A SX --}}
 
         <div class="container-fluid">
@@ -96,6 +111,7 @@
 
                     </div>
                 </nav>
+                
 
         {{-- FINO A QUI NAVBAR COMUNE A SX --}}
 

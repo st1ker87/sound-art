@@ -73,3 +73,43 @@
     }
   }
 }
+
+.search-bar {
+  padding: 20px 0;
+  font-size: 1.1rem;
+  button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    i {
+      vertical-align: text-top;
+    }
+  }
+  span {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  [class*='pannel'] {
+    position: relative;
+  }
+  #submit-advanced-search {
+    width: 50%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    &:hover {
+      background-color: black;
+      color: $primaryWhite;
+    }
+  }
+  #number-of-views {
+    width: 70%;
+  }
+}

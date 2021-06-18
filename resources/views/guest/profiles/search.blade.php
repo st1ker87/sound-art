@@ -3,9 +3,54 @@
 
 	equivale a index.blade.php
 
-
 ------------------------------------------------------------------}}
+{{-- <h2>MODEL: Profile, CRUD: index (search / search_from_home), AREA: guest - ELENCO PROFILI</h2>
+<h5>URL</h5>
+<p>url: http://localhost:8000/search (get)</p>
+<h5>PARAMETRO FILTRO PASSATO DALLA RICERCA SEMPLICE</h5>
+@isset($search_from_home)
+	<p>dump($search_from_home) = @dump($search_from_home)</p>
+@else 
+	{{'$search_from_home non disponibile, sei arrivato qui senza ricerca semplice'}}
+@endisset
+<h5>ALTRE TABELLE DISPONIBILI</h5>
+<p>dump($users) = @dump($users)</p>
+<p>dump($profiles) = @dump($profiles)</p>
+<p>dump($categories) = @dump($categories)</p>
+<p>dump($genres) = @dump($genres)</p>
+<p>dump($offers) = @dump($offers)</p>
+<p>dump($messages) = @dump($messages)</p>
+<p>dump($reviews) = @dump($reviews)</p>
+@dd('') --}}
 
+@php
+if(isset($search_from_home)) {
+
+  $is_category = array_key_exists('category',$search_from_home);
+  $is_genre = array_key_exists('genre',$search_from_home);
+  if ($is_category) {
+    $search_from_home_key = 'category';
+    $search_from_home_value = $search_from_home['category'];
+  } else if ($is_genre) {
+    $search_from_home_key = 'genre';
+    $search_from_home_value = $search_from_home['genre'];
+  } 
+  else {
+      $search_from_home_key = '';
+      $search_from_home_value = '';
+    }
+}
+else {
+  $search_from_home_key = '';
+  $search_from_home_value = '';
+}
+
+@endphp
+
+<script type="text/javascript">
+    const search_from_home_key 	= '<?php echo $search_from_home_key; ?>';
+    const search_from_home_value= '<?php echo $search_from_home_value; ?>';
+</script>
 
 @extends('layouts.app')
 
@@ -26,80 +71,85 @@
         </div>
       </div>
     </section>
-    {{-- barra ricerca --}}
-   <div class="container-fluid my-color-search">
-     <div class="row">
-       <div class="container">
-          <div class="search-nav">
-            <div class="btn-filter d-inline-block">
-              <h3>Filters</h3>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <div class="box">
-                  <select>
-                    <option disabled selected><h3>-- Categories --</h3></option>
-                    <option value="band">Band</option>
-                    <option value="bass">Bass</option>
-                    <option value="cello">Cello</option>
-                    <option value="drums">Drums</option>
-                  </select>
+
+    {{-- BARRA RICERCA --}}
+    <section class="search-bar">
+      <div class="container">
+        <div class="row">
+
+          {{-- FILTER --}}
+          <div class="col-lg-2 col-md-4">
+            <span>Filters</span>
+          </div>
+
+          {{-- CATEGORY --}}
+          <div class="col-lg-2 col-md-4">
+            <div class="categories-pannel">
+              <button id="prova" v-on:click="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
+              <div v-if="showCategoryPannel" class="search">
+                <div class="categories-cnt">
+                    <ul>                 
+                        @foreach($categories as $category)
+                        <li>
+                            <input v-on:click="setCategory($event.target.value)" type="button" value="{{$category->name}}">
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <div class="box">
-                  <select>
-                    <option disabled selected><h3>-- Genrs --</h3></option>
-                    <option value="rock">Rock</option>
-                    <option value="punk">Punk</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="hip-hop">Hip-Hop</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <div class="box">
-                  <select>
-                    <option disabled selected><h3>-- Votes--</h3></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="my-set btn-category">
-                <h3>Number Reviews</h3>
-              </div>
-            </div>
-            <div class="filter-show d-inline-block">
-              <div class="btn-category">
-                <button class="btn btn-primary">Submit</button>
               </div>
             </div>
           </div>
-       </div>
-     </div>
-    </div>
 
+          {{-- GENRE --}}
+          <div class="col-lg-2 col-md-4">
+            <div class="categories-pannel">
+              <button v-on:click="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
+              <div v-if="showGenrePannel" class="search">
+                <div class="categories-cnt">
+                    <ul>
+                        @foreach($genres as $genre)
+                        <li>
+                            <input v-on:click="setGenre($event.target.value)" type="button" value="{{$genre->name}}">
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
-   <!-- PROFILES -->
+          {{-- VOTES --}}
+          <div class="col-lg-2 col-md-4">
+            <div class="categories-pannel">
+              <button v-on:click="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
+              <div v-if="showVotePannel" class="search">
+                <div class="categories-cnt">
+                    <ul>
+                      @for($i = 1; $i <= 5; $i++)
+                        <li>
+                          <input v-on:click="setVote($event.target.value)" type="button" value="{{$i}}">
+                        </li>
+                      @endfor
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{-- REVIEWS --}}
+          <div class="col-lg-2 col-md-4">
+            <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="N views">
+          </div>
+
+          {{-- SUBMIT --}}
+          <div class="col-lg-2 col-md-4">
+            <button id="submit-advanced-search" v-on:click="filterCall">Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   {{-- PROFILES --}}
    <section class="card-list">
       <div class="container">
         <div class="row">

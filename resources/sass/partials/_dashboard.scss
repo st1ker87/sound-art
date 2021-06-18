@@ -1,0 +1,29 @@
+//jumbo e testo
+.jumbo-dash {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  background-color: $primaryDarkBlue;
+  background: $primaryDarkBlue url("../img/singer_photo.jpg") no-repeat right; 
+
+  background-size: contain;
+//   background-size: contain;
+
+    .title-dash {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100ch;
+      h1 {
+          font-size: 5rem;
+          color: $primaryWhite;
+      }
+      h3 {
+          color: $primaryWhite;
+      }
+      p {
+          font-size: 1.5em;
+          color: $primaryWhite;
+      }
+  }
+}
