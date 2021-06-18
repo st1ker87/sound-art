@@ -148,16 +148,26 @@ const app = new Vue({
 		// paramtro proveniendo da ricerca semplice
 
 		/**
-		 * ! CHIAMATA DI DEFAULT
+		 * ! CHIAMATA API AXIOS DI DEFAULT
 		 * 
-		 * modalità 1:
+		 * # modalità 1:
 		 * accedo direttamente a ricerca avanzata
-		 * nessun parametro >>> tutti i profili in DB
+		 * nessun parametro vlorizzato 
+		 * chiamata filterCall() >>> tutti i profili in DB visualizzati
 		 * 
-		 * modalità 2:
+		 * # modalità 2:
 		 * accedo a ricerca avanzata da ricerca semplice di home page
-		 * parametro ereditato da back end 
+		 * *opzione 1: 
+		 * 		parametro search_from_home ereditato da back end 
+		 * 		? come renderlo disponibile in vuejs ?
+		 * *opzione 2:
+		 * 		ricerca semplice "Search for artists" scatena: 
+		 * 			1.	this.category_selected valorizzato
+		 * 				oppure
+		 * 				this.genre_selected valorizzato
+		 * 			2. 	chiamata axios filterCall() >>> profili filtrati visualizzati
 		 */
+
 
 		// INTERNAL APIs
 		// chiamate di test (in realtà avviene al Filter Submit)
@@ -173,29 +183,23 @@ const app = new Vue({
 });
 
 
-///////////////////////////////////////////////////////////////////////////////////////////
-// APPUNTI Vuejs
+////////////////////////////////////////////////////////
+// COSE DA FARE
+/**
+ * [1]
+ * ! aggiungere in ogni "tendina" la voce di non-selezione
+ */
+/**
+ * [2]
+ * ! chiudere tendine quando clicco altrove
+ */
 
 ////////////////////////////////////////////////////////
-// [1] lato html
-// ! singola tendina modello vue-dischi (ce ne servono 3)
-
-// <!-- v-model preleva automaticamente il valore di :value selezionato -->
-// <label for="filter1">Filter by</label>														// etichetta
-// <select id="filter1" v-model="filter1Selected" @change="filter2Selected=''">					// select con v-model="{nome variabile per filter1}"
-// <option value="">none</option>																// opzione con value="" per non selezionare nulla
-// 	<option v-for="filter1 in Object.keys(filterLists)" :value="filter1">{{cap(filter1)}}		// ciclo di opzioni con :value="{valore per filter1}"
-// 	</option>																					// filter1 è ogni valore di array Object.keys(filterLists)
-// </select>
+// COSE FATTIBILI
+/**
+ * [1] 
+ * ! riempire le voci delle tendine lasciando tutto sotto vuejs ???
+ * altre chiamate axios per ottenere
+ * lisa valori DB di: categories, genres, (eventuelmente) offers
+ */
 ////////////////////////////////////////////////////////
-// [2] lato html e app.js 
-// ! riempire le voci delle tendine lasciando tutto sotto vuejs ???
-
-// altre chiamate axios per ottenere
-// lisa valori categories, genres, (eventuelmente offers)
-
-///////////////////////////////////////////////////////////////////////////////////////////
-
-// ! chiudere tendine quando clicco altrove
-
-// ! aggiungere in ogni "tendina" la voce di non-selezione

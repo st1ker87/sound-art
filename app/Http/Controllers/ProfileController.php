@@ -45,24 +45,13 @@ class ProfileController extends Controller
      */
     public function search_from_home(Request $request)
     {
+		// qui c'è il filtro dell'utente selezionato in ricerca semplice
         $form_data = $request->all();
 		
-		// ! tutto questo va pensato in funzione delle info GIÀ MONTATE necessarie in pagina
-		// ! non ne abbiamo ancora un'idea chiara 
-        // $search_from_home = [];
-        // $search_from_home['id'] = $form_data['id'];
-        // if (array_key_exists('category', $form_data)) {
-        //     $search_from_home['category'] = $form_data['category'];   
-        // }
-        // else {
-        //     $search_from_home['genre'] = $form_data['genre'];
-        // }
-
-		// ! cosa serve qua da passare alla pagina ?
-
 		$data = [
-			// ! parte generica: tabelle DB disaccoppiate
-			// ! con queste si può fare tutto, ma lato pagina
+			// main info: passed filter
+			'search_from_home' => $form_data,
+			// aux infos: db tables	
 			'users' 		=> User::all(),
 			'profiles' 		=> Profile::all(),
 			'categories' 	=> Category::all(),
@@ -70,9 +59,6 @@ class ProfileController extends Controller
 			'offers' 		=> Offer::all(),
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
-			// ! parte specifica: info DB GIÀ ASSEMBLATE
-			// ! da definire 
-            // 'search_from_home' => $search_from_home
  		];
         return view('guest.profiles.search',$data); // CRUD index profiles 
     }
