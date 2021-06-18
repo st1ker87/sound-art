@@ -32,7 +32,16 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
 	el: '#app',
 	data: {
+		/* PANNELS SHOW */
 		searchHome : false,
+		showCategoryPannel : false,
+		showGenrePannel : false,
+		showVotePannel : false,
+
+		/*BUTTONS IN PAGINA SEARCH*/
+		btnCategories : 'Categories',
+		btnGeneres : 'Genres',
+		btnVotes : 'Vote',
 		//scroll per nav bar (per ora solo in search.blade)
 		scrollPosition: null,
 		scrollChange: 400,
@@ -57,6 +66,31 @@ const app = new Vue({
 		showSearch : function() {
 			this.searchHome = !this.searchHome
 		},
+		showCategory: function() {
+			this.showCategoryPannel = !this.showCategoryPannel;
+		},
+		showGenres: function() {
+			this.showGenrePannel = !this.showGenrePannel;
+		},
+		showVotes: function() {
+			this.showVotePannel = !this.showVotePannel;
+		},
+		setCategory: function (category) {
+			this.btnCategories = category;
+			this.showCategoryPannel = false;
+			this.genre_selected = category;
+		},
+		setGenre: function (genre) {
+			this.btnGeneres = genre;
+			this.showGenrePannel = false;
+			this.category_selected = genre;
+		},
+		setVote: function (vote) {
+			this.btnVotes = vote;
+			this.showVotePannel = false;
+			this.vote_selected = vote;
+		},
+
 		//metodo per lo scroll
 		updateScroll() {
 			this.scrollPosition = window.scrollY
@@ -65,14 +99,13 @@ const app = new Vue({
 		// INTERNAL APIs
 		// STEP 1 utente seleziona alcune delle 4 tendine > ottengo i vari {qualcosa}_selected
 		// STEP 2 al Submit chiamo filterCall(category_selected,genre_selected,vote_selected,reviewNum_selected)
-		filterCall(_category,_genre,_vote,_reviewNum) {
-
+		filterCall() {
 			axios.get(this.iper_profiles_url, {
 				params: {
-					category	: _category,
-					genre		: _genre,
-					vote		: _vote,
-					reviewNum	: _reviewNum,
+					category	: this.category_selected,
+					genre		: this.genre_selected,
+					vote		: this.vote_selected,
+					reviewNum	: this.reviewNum_selected,
 				}
 			})
 			.then((resp) => {

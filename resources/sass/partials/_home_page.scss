@@ -1,4 +1,35 @@
+.search-cnt, .categories-pannel {
+    position: relative;
+    .search {
+        position: absolute;
+        display: flex;
+        z-index: 500;
+        ul {
+            padding: 0;
+            height: 25vh;
+            overflow: auto;
+            li {
+                line-height: 30px;
 
+            }
+        }
+        .categories-cnt ,
+        .genres-cnt {
+            width: 200px;
+            padding: 20px;
+            background-color: $primaryWhite;
+        }      
+        input {
+            border: none;
+            width: 100%;
+            background-color: $primaryWhite;
+            text-align: start;
+            &:hover {
+                background-color: $primaryGray;
+            }
+        }
+    }
+}
 // Jumbotron section
 .jumbotron-container {
     width: 100%;
@@ -19,13 +50,10 @@
         p {
             width: 60ch;
         }
-        .search-cnt {
+        .search-cnt, .categories-pannel {
             position: relative;
             .search {
-                display: block;
                 color: $primaryBlack;
-                position: absolute;
-                display: flex;
                 left: 100%;
                 top: 0;
                 border: 1px solid black;
@@ -37,7 +65,7 @@
                     overflow: auto;
                     li {
                         line-height: 30px;
-
+        
                     }
                 }
                 .categories-cnt ,
@@ -175,11 +203,6 @@
     background-image: url('../img/mixing.jpg');
     background-position: center;
     background-size: cover;
-}
-
-//Get Started
-.get-started {
-    //Da deffinire
 }
 
 
