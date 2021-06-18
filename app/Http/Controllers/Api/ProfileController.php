@@ -22,8 +22,7 @@ class ProfileController extends Controller
 	 * %     IPER PROFILE ENDPOINT     %
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      *
-	 * STEP 1: restituisce in json tutta la tabella profile
-	 * STEP 2: restituisce in json tutta la tabella profile con info ausiliarie
+	 * restituisce in json tutta la tabella profile con info ausiliarie
 	 * 
 	 */
     public function index(Request $request) 
@@ -40,7 +39,7 @@ class ProfileController extends Controller
 		// $contracts		= Contract::all();
 		// $sponsorships	= Sponsorship::all();
 
-		// ! building iper_profile
+		// ! building $iper_profiles array di $iper_profile 
 		foreach ($profiles as $profile) {
 
 			$iper_profile = $profile->toArray();
@@ -64,7 +63,7 @@ class ProfileController extends Controller
 					$iper_profile['reviews'][] = $review->toArray();	
 					$total_vote += $review['rev_vote'];
 				}
-				$iper_profile['average_vote'] = $total_vote/count($reviews);
+				$iper_profile['average_vote'] = $total_vote/count($reviews); // ! voto obbligatorio per ogni review (testo facoltativo)
 			} else {
 				$iper_profile['average_vote'] = 0;
 			}
@@ -102,6 +101,7 @@ class ProfileController extends Controller
 		foreach ($filters as $key => $value) {
 			$mode = is_numeric($value) ?  'greater' : 'contains';
 			$filtered_iper_profiles = $this->getFilteredProfiles($tmp_iper_profiles,$key,$value,$mode);
+			// $filtered_iper_profiles = $this->getFilteredProfiles($tmp_iper_profiles,'categories','Band',$mode);
 			$tmp_iper_profiles = $filtered_iper_profiles;
 		}
 

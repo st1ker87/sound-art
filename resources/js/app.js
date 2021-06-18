@@ -104,8 +104,6 @@ const app = new Vue({
 				}
 			})
 			.then((resp) => {
-				console.log('resp',resp);
-				console.log('resp.data',resp.data);
 				this.iper_profiles = resp.data.results;
 				console.log('this.iper_profiles',this.iper_profiles);
 			})
@@ -115,6 +113,31 @@ const app = new Vue({
 		},
 
 
+
+
+		// TEST CALL ////////////////////////////////////////////////////////////////////////////////
+		filterCall_TEST(category_selected,genre_selected,vote_selected,reviewNum_selected) {
+			axios.get(this.iper_profiles_url, {
+				params: {
+					category	: category_selected,
+					genre		: genre_selected,
+					vote		: vote_selected,
+					reviewNum	: reviewNum_selected,
+				}
+			})
+			.then((resp) => {
+				this.iper_profiles = resp.data.results;
+				console.log('this.iper_profiles',this.iper_profiles);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+		},
+		// TEST CALL ////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 	},
 	mounted() {
 		window.addEventListener('scroll', this.updateScroll);
@@ -122,13 +145,37 @@ const app = new Vue({
 
 		// INTERNAL APIs
 		// chiamate di test (in realtà avviene al Filter Submit)
-		// this.filterCall('Drummer','Metal',3,5); // 1 risultato [OK]
-		// this.filterCall('Drummer','Metal',3,6); // 0 risultati [OK]
-		// this.filterCall(null,null,3,4); // 2 risultati
-		// this.filterCall(null,null,3,1); // 5 risultati
-		// this.filterCall(null,'New-age',null,null); // 3 risultati [OK]
-		// this.filterCall('Mixer/Engineer',null,null,null); // 3 risultati [OK]
-		// this.filterCall('Classical Guitarist',null,null,null); // 2 risultati [OK]
-		this.filterCall(null,null,null,null); // 11 risultati [OK]
+		// this.filterCall_TEST('Drummer','Metal',3,5); // 1 risultato [OK]
+		// this.filterCall_TEST('Drummer','Metal',3,6); // 0 risultati [OK]
+		// this.filterCall_TEST(null,null,3,4); // 2 risultati
+		// this.filterCall_TEST(null,null,3,1); // 5 risultati
+		// this.filterCall_TEST(null,'New-age',null,null); // 3 risultati [OK]
+		// this.filterCall_TEST('Mixer/Engineer',null,null,null); // 3 risultati [OK]
+		// this.filterCall_TEST('Classical Guitarist',null,null,null); // 2 risultati [OK]
+		// this.filterCall_TEST(null,null,null,null); // 11 risultati [OK]
 	}
 });
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// APPUNTI Vuejs
+
+////////////////////////////////////////////////////////
+// [1] lato html
+// ! singola tendina modello vue-dischi (ce ne servono 3)
+
+// <!-- v-model preleva automaticamente il valore di :value selezionato -->
+// <label for="filter1">Filter by</label>														// etichetta
+// <select id="filter1" v-model="filter1Selected" @change="filter2Selected=''">					// select con v-model="{nome variabile per filter1}"
+// 	<option value="">none</option>																// opzione con value="" per non selezionare nulla
+// 	<option v-for="filter1 in Object.keys(filterLists)" :value="filter1">{{cap(filter1)}}		// ciclo di opzioni con :value="{valore per filter1}"
+// 	</option>																					// filter1 è ogni valore di array Object.keys(filterLists)
+// </select>
+////////////////////////////////////////////////////////
+// [2] lato html e app.js 
+// ! riempire le voci delle tendine lasciando tutto sotto vuejs ???
+
+// altre chiamate axios per ottenere
+// lisa valori categories, genres, (eventuelmente offers)
+
+///////////////////////////////////////////////////////////////////////////////////////////
