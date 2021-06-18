@@ -62,23 +62,28 @@
     ma anche per questa sezione usero un div <3 --}}
     <div class="bar_under_jumbo container-fluid">
       <div class="row search-nav">
-        <div class="container">
-          <button class="btn btn-primary">Contact {{$profile->user->name}}</button>
+        <div class="container d-flex my_flex">
+          <a href="#about_me">About Me</a>
+          <a href="#genres">Genres</a>
+          <a href="#offers">Offers</a>
+          <button  class="btn btn-primary">Contact {{$profile->user->name}}</button>
         </div>
       </div>
     </div>
     <section class="container main-show">
       <div class="row">
-        <div class="description">
-          <h2>About me</h2>
-          <p>{{$profile->bio_text1}}</p>
-          <p>{{$profile->bio_text2}}</p>
+        <div id="about_me" class="description">
+          @if($profile->bio_text1 && $profile->bio_text2)
+            <h2>About me</h2>
+            <p>{{$profile->bio_text1}}</p>
+            <p>{{$profile->bio_text2}}</p>
+          @endif
         </div>
       </div>
     </section>
       <section class="container main-show">
         <div class="row">
-          <div class="genrs">
+          <div id="genres" class="genres">
             <h2>My favorite music</h2>
             @foreach($profile->user->genres as $genre)
             @if($loop->last)
@@ -92,7 +97,7 @@
       </section>
       <section class="container main-show">
         <div class="row">
-          <div class="offert">
+          <div id="offers" class="offert">
             <h2>Offerts</h2>
             @foreach($profile->user->offers as $offer)
             @if($loop->last)
@@ -109,6 +114,10 @@
   {{-- mancante video, audio e foto
     visualizzazione form messaggio, visualizzazione review --}}
 
+
+  @section('footer')
+    @include('partials.footer_search')
+  @endsection
 
 @endsection
 

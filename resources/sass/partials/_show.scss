@@ -36,5 +36,12 @@
     justify-content: space-between;
     height: 8vh;
     width: 100%;
+    .my_flex {
+      justify-content: end;
+      align-items: center;
+      a {
+        margin: 0 10px;
+      }
+    }
   }
 }
