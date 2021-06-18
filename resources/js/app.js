@@ -46,20 +46,15 @@ const app = new Vue({
 		scrollPosition: null,
 		scrollChange: 400,
 
-
 		// FILTER
 		category_selected	: null,
 		genre_selected		: null,
 		vote_selected 		: null,
 		reviewNum_selected	: null,
 
-
-
-
 		// INTERNAL APIs
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
 		iper_profiles		: [],
-
 
 	},
 	methods: {
@@ -98,8 +93,14 @@ const app = new Vue({
 
 		// INTERNAL APIs
 		// STEP 1 utente seleziona alcune delle 4 tendine > ottengo i vari {qualcosa}_selected
+<<<<<<< HEAD
 		// STEP 2 al Submit chiamo filterCall(category_selected,genre_selected,vote_selected,reviewNum_selected)
 		filterCall() {
+=======
+		// STEP 2 al Submit dell'utente chiamo filterCall(category_selected,genre_selected,vote_selected,reviewNum_selected)
+		filterCall(_category,_genre,_vote,_reviewNum) {
+
+>>>>>>> 8f5a66fa76a1f55de5a4a74354790873fee5d4e7
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
@@ -119,22 +120,6 @@ const app = new Vue({
 			});
 		},
 
-		// iperProfilesCall() {
-		// 	axios.get(this.iper_profiles_url, {
-		// 		// headers: {
-		// 		// 	'Authorization': 'Bearer '+this.access_token
-		// 		// }
-		// 	})
-		// 	.then((resp) => {
-		// 		console.log('resp',resp);
-		// 		console.log('resp.data',resp.data);
-		// 		this.iper_profiles = resp.data.results;
-		// 		console.log('this.iper_profiles',this.iper_profiles);
-		// 	})
-		// 	.catch((error) => {
-		// 		console.error(error);
-		// 	});
-		// },
 
 	},
 	mounted() {
@@ -142,9 +127,14 @@ const app = new Vue({
 
 
 		// INTERNAL APIs
-		// ! STABILIRE QUANDO ESEGUIRE LA CHIAMATA
-		// this.iperProfilesCall();
-
-		this.filterCall('ciccio','pluto','paperino','giuseppina');
+		// chiamate di test (in realtà avviene al Filter Submit)
+		// this.filterCall('Drummer','Metal',3,5); // 1 risultato [OK]
+		// this.filterCall('Drummer','Metal',3,6); // 0 risultati [OK]
+		// this.filterCall(null,null,3,4); // 2 risultati
+		// this.filterCall(null,null,3,1); // 5 risultati
+		// this.filterCall(null,'New-age',null,null); // 3 risultati [OK]
+		// this.filterCall('Mixer/Engineer',null,null,null); // 3 risultati [OK]
+		// this.filterCall('Classical Guitarist',null,null,null); // 2 risultati [OK]
+		this.filterCall(null,null,null,null); // 11 risultati [OK]
 	}
 });
