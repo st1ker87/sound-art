@@ -73,12 +73,12 @@ const app = new Vue({
 		setCategory: function (category) {
 			this.btnCategories = category;
 			this.showCategoryPannel = false;
-			this.genre_selected = category;
+			this.category_selected = category;
 		},
 		setGenre: function (genre) {
 			this.btnGeneres = genre;
 			this.showGenrePannel = false;
-			this.category_selected = genre;
+			this.genre_selected = genre;
 		},
 		setVote: function (vote) {
 			this.btnVotes = vote;
