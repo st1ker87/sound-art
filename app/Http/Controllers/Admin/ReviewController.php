@@ -5,19 +5,89 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Review;
+use App\User;
+use App\Profile;
+use App\Category;
+use App\Genre;
+use App\Offer;
+use App\Message;
 
 class ReviewController extends Controller
 {
     /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %             INDEX             %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+		$data = [
+			'users' 		=> User::all(),
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
+ 		];
+
+		return view('admin.reviews.index',$data);
+	}
+
+    /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %             SHOW              %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
+     * Display the specified resource.
+     *
+     * @param  \App\Review  $review
+     * @return \Illuminate\Http\Response
+     */
+    public function show($slug) // originale:  show(Review $review)
+    {
+		$data = [
+			// main info: passed resource
+			'review' 		=> Review::where('slug',$slug)->first(),
+			// aux infos: db tables
+			'users' 		=> User::all(),
+			'profiles'		=> Profile::all(),
+			'categories'	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
+ 		];
+
+		if(!$data['review']) {
+			abort(404);
+		}
+
+		return view('admin.reviews.show',$data);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
     /**
      * Show the form for creating a new resource.
      *
@@ -35,17 +105,6 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Review $review)
     {
         //
     }

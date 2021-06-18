@@ -43,6 +43,7 @@ class ReviewController extends Controller
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
  		];
+		
 		return view('guest.reviews.create',$data);
     }
 
@@ -58,8 +59,9 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        // ! da definire dove vengo mandato dopo invio recensione
-		// return redirect()->route('NON LO SO')->with('status','Review sent');
+		// metto la review nel DB
+
+		return redirect()->route('profiles.show')->with('status','Review sent');
     }
 
     /**

@@ -55,4 +55,26 @@ class HomeController extends Controller
         return view('test',$data); 
     }
 
+	/**
+	 * #################################
+	 * #       CODE TEST PAGE 2        #
+	 * #################################
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function test2()
+    {
+		$data = [
+			'users' 		=> User::all(),		
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
+ 		];
+        return view('test2',$data); 
+    }
+
+
 }

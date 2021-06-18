@@ -43,6 +43,7 @@ class MessageController extends Controller
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
  		];
+		
 		 return view('guest.messages.create',$data);
     }
 
@@ -58,8 +59,9 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        // ! da definire dove vengo mandato dopo invio messaggio
-		// return redirect()->route('NON LO SO')->with('status','Message sent');
+		// metto il messaaggio nel DB
+
+		return redirect()->route('profiles.show')->with('status','Message sent');
     }
 
     /**
