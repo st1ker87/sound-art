@@ -60,31 +60,52 @@ const app = new Vue({
 	},
 	methods: {
 		showSearch : function() {
-			this.searchHome = !this.searchHome
+			this.searchHome = !this.searchHome;		
 		},
 		showCategory: function() {
 			this.showCategoryPannel = !this.showCategoryPannel;
+			this.showGenrePannel = false;
+			this.showVotePannel = false;
 		},
 		showGenres: function() {
 			this.showGenrePannel = !this.showGenrePannel;
+			this.showCategoryPannel = false;
+			this.showVotePannel = false;
 		},
 		showVotes: function() {
 			this.showVotePannel = !this.showVotePannel;
+			this.showCategoryPannel = false;
+			this.showGenrePannel = false;
 		},
 		setCategory: function (category) {
+			if(category === 'No filter') {
+				this.category_selected = null;
+			}
+			else {
+				this.category_selected = category;
+			}
 			this.btnCategories = category;
 			this.showCategoryPannel = false;
-			this.category_selected = category;
 		},
 		setGenre: function (genre) {
+			if(genre === 'No filter') {
+				this.genre_selected = null;
+			}
+			else {
+				this.genre_selected = genre;
+			}
 			this.btnGeneres = genre;
 			this.showGenrePannel = false;
-			this.genre_selected = genre;
 		},
 		setVote: function (vote) {
+			if(vote === 'No filter') {
+				this.vote_selected = null;
+			}
+			else {
+				this.vote_selected = vote;
+			}
 			this.btnVotes = vote;
-			this.showVotePannel = false;
-			this.vote_selected = vote;
+			this.showVotePannel = false;	
 		},
 
 		//metodo per lo scroll
@@ -94,6 +115,7 @@ const app = new Vue({
 
 		// INTERNAL APIs
 		filterCall() {
+
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
@@ -111,7 +133,7 @@ const app = new Vue({
 			});
 		},
 		
-		test() {
+		searchDefault() {
 			if(typeof(search_from_home_key) !== 'undefined'){
 				if(search_from_home_key === 'category') {
 					this.btnCategories = search_from_home_value;
@@ -147,7 +169,12 @@ const app = new Vue({
 	mounted() {
 		console.log('mounted');
 		window.addEventListener('scroll', this.updateScroll);
-		this.test();	
+		window.addEventListener('click', function () {
+			this.showGenrePannel = false;
+			this.showVotePannel = false;
+			this.showCategoryPannel = false;
+		});
+		this.searchDefault();	
 		
 		// INTERNAL APIs
 		// chiamate di test (in realtà avviene al Filter Submit)
@@ -161,7 +188,7 @@ const app = new Vue({
 		// this.filterCall_TEST(null,null,null,null); // 11 risultati [OK]
 	},
 	created() {
-		console.log('created');	
+			
 	},
 	updated() {
 	}

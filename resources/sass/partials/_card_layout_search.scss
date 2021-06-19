@@ -29,12 +29,16 @@
             .provided-categories {
                 color: $primaryBlack;
                 h3 {
-                    display: block;
-                    line-height: 1.5em;
+                    display: flex;
+                    flex-wrap: wrap;
                     height: 65%;
                     font-size: 1rem;
                     font-weight: 600;
                     margin: 0;
+                    span {
+                        color: inherit;
+                        line-height: 1em;
+                    }
                 }
             }
             .provided-name {
