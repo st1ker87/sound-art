@@ -31,9 +31,10 @@ class DatabaseSeeder extends Seeder
         $this->call(MessageSeeder::class);
         $this->call(ReviewSeeder::class);
 
-		// ! NON ESEGUIRE QUESTI SOTTO !
 		// sponsorships
-        // $this->call(SponsorshipSeeder::class);
+        $this->call(SponsorshipSeeder::class);
+
+		// ! NON PREVEDIAMO QUESTO SOTTO !
         // $this->call(ContractSeeder::class);
     }
 }

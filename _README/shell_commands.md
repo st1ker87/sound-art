@@ -124,6 +124,8 @@ php artisan migrate:reset
 *MIGRATION ripristino stato iniziale e rieseguo tutte le migrations*
 *(esecuzione di tutti i down() in ordine inverso, poi tutti gli up() in oridne diretto)*
 php artisan migrate:refresh
+*MIGRATION controllo migrazioni fatte e da fare*
+php artisan migrate:status
 *SEEDER: creazione seeder*
 php artisan make:seeder ProductsTableSeeder
 *SEEDER: esecuzione default seeder collector (DatabaseSeeder.php)*

@@ -24,7 +24,7 @@ class OfferSeeder extends Seeder
 			'collaboration',
 			'recording',
 			'mixing',
-			'editing',
+			'editing'
 		];
 
 		sort($offers);
