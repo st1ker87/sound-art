@@ -30,7 +30,7 @@ class ReviewSeeder extends Seeder
 		 */
 		
 		$min_rev_number = 0;
-		$max_rev_number = 5;
+		$max_rev_number = 10;
 
 		$users = User::All();
 

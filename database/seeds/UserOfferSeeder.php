@@ -34,7 +34,7 @@ class UserOfferSeeder extends Seeder
 		foreach ($users as $user) {
 
 			shuffle($tag_ids);
-			$tag_num = random_int(1,$max_num_offers_per_user);
+			$tag_num = random_int(0,$max_num_offers_per_user);
 
 			for ($i=0; $i<$tag_num; $i++) {
 

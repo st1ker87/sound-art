@@ -46,45 +46,34 @@
 
 @section('content')
 
-	<section class="container main-show">
-      <div class="row">
-        <div id="about_me" class="description">
-          @if($my_profile->bio_text1 && $my_profile->bio_text2)
-            <h2>About me</h2>
-            <p>{{$my_profile->bio_text1}}</p>
-            <p>{{$my_profile->bio_text2}}</p>
-          @endif
-        </div>
-      </div>
-    </section>
-      <section class="container main-show">
-        <div class="row">
-          <div id="genres" class="genres">
-            <h2>My favorite music</h2>
-            @foreach($my_profile->user->genres as $genre)
-            @if($loop->last)
-              {{$genre->name}}
-            @else
-            {{$genre->name . ','}}
-            @endif
-        @endforeach
-          </div>
-        </div>
-      </section>
-      <section class="container main-show">
-        <div class="row">
-          <div id="offers" class="offert">
-            <h2>Offers</h2>
-            @foreach($my_profile->user->offers as $offer)
-            @if($loop->last)
-              {{$offer->name}}
-            @else
-            {{$offer->name . ','}}
-            @endif
-        @endforeach
-          </div>
-        </div>
-    </section>
+<div id="about_me" class="description">
+  @if($my_profile->bio_text1 && $my_profile->bio_text2)
+    <h2>About me</h2>
+    <p>{{$my_profile->bio_text1}}</p>
+    <p>{{$my_profile->bio_text2}}</p>
+  @endif
+</div>
+<div id="genres" class="genres">
+  <h2>My favorite music</h2>
+  @foreach($my_profile->user->genres as $genre)
+    @if($loop->last)
+      {{$genre->name}}
+    @else
+      {{$genre->name . ','}}
+    @endif
+  @endforeach
+</div>
+<div id="offers" class="offert">
+  <h2>Offers</h2>
+  @foreach($my_profile->user->offers as $offer)
+    @if($loop->last)
+      {{$offer->name}}
+    @else
+      {{$offer->name . ','}}
+    @endif
+  @endforeach
+</div>
+
 @endsection
   {{-- mancante video, audio e foto
     visualizzazione form messaggio, visualizzazione review --}}
