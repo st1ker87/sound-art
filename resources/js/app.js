@@ -115,6 +115,11 @@ const app = new Vue({
 
 		// INTERNAL APIs
 		filterCall() {
+			console.log(this.category_selected);
+			console.log(this.genre_selected);
+			console.log(this.vote_selected);
+			console.log(this.reviewNum_selected);
+
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
@@ -126,13 +131,6 @@ const app = new Vue({
 			.then((resp) => {
 				this.iper_profiles = resp.data.results;
 				console.log('this.iper_profiles',this.iper_profiles);
-				this.btnCategories = 'Categories';
-				this.btnGeneres = 'Genres';
-				this.btnVotes = 'Vote';
-				this.category_selected = null;
-				this.genre_selected = null;
-				this.vote_selected = null;
-				this.reviewNum_selected = null;
 			})
 			.catch((error) => {
 				console.error(error);
@@ -169,7 +167,6 @@ const app = new Vue({
 		}
 	},
 	mounted() {
-		console.log('mounted');
 		window.addEventListener('scroll', this.updateScroll);
 		this.searchDefault();	
 		
