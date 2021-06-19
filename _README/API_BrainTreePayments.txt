@@ -16,7 +16,6 @@ Public key	: BT user-specific public identifier
 Private key	: BT user-specific private identifier
 Merchant ID	: unique identifier for your entire gateway account
 
-
 email		: path381492@gmail.com
 identity	: Riccardo Martino
 user		: proj26-team-1
@@ -27,6 +26,81 @@ Environment	: sandbox (test)
 Merchant ID	: ct6s84gcw9cmkv8y
 Public Key	: 6kb2fp2f64c886gk
 Private Key	: 6c65a8532a3d982fe758048074e17dcf
+
+API key + Base64
+echo -n "6kb2fp2f64c886gk:6c65a8532a3d982fe758048074e17dcf" | base64
+NmtiMmZwMmY2NGM4ODZnazo2YzY1YTg1MzJhM2Q5ODJmZTc1ODA0ODA3NGUxN2RjZg==
+Authorization: Basic NmtiMmZwMmY2NGM4ODZnazo2YzY1YTg1MzJhM2Q5ODJmZTc1ODA0ODA3NGUxN2RjZg==
+
+Tokenization Key
+sandbox_7bjc3tq2_ct6s84gcw9cmkv8y
+Authorization: Bearer sandbox_7bjc3tq2_ct6s84gcw9cmkv8y
+
+
+https://payments.sandbox.braintree-api.com/graphql
+
+
+You SHOULD use the POST method for all requests.
+
+include your credentials in the Authorization header. 
+
+due opioni: client tokens and tokenization keys
+
+
+
+$gateway = new Braintree\Gateway([
+  'environment' => 'sandbox',
+  'merchantId' => 'ct6s84gcw9cmkv8y',
+  'publicKey' => '6kb2fp2f64c886gk',
+  'privateKey' => '6c65a8532a3d982fe758048074e17dcf'
+]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -------------------------------------------------------------------------------------------
