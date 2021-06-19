@@ -23,6 +23,8 @@ class OfferSeeder extends Seeder
 			'live exhibition', 
 			'collaboration',
 			'recording',
+			'mixing',
+			'editing',
 		];
 
 		sort($offers);

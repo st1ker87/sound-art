@@ -38,6 +38,7 @@ class CategorySeeder extends Seeder
 			'saxophonist',
 			'trumpeter',
 			'violinist',
+			'pianist',
 		];
 
 		sort($categories);
