@@ -161,10 +161,6 @@ const app = new Vue({
 				this.filterCall();
 			}
 		}
-
-
-
-
 	},
 	mounted() {
 		console.log('mounted');

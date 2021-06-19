@@ -194,8 +194,8 @@ else {
                 {{-- DESCRIZIONE --}}
                 <div class="provided-description">
                   <p>
-                    @{{card.bio_text1.substring(0, 90)}}
-                    <span v-if="card.bio_text1.length > 80">...</span>
+                    @{{card.bio_text4.substring(0, 90)}}
+                    <span v-if="card.bio_text4.length > 80">...</span>
                   </p>
                 </div>
 
