@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
  * home page con ricerca semplice
  * http://localhost:8000/
  */
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');	// !  GET	/	return view('home');
 
 /**
  * # PROFILES = ADVANCED SEARCH #
@@ -35,14 +35,14 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
 	->group(function () {	// rotte specifiche search = profiles
 
-		// atterraggio diretto senza filtri 
-		Route::get('/', 'ProfileController@search')->name('search'); // ! ->name('profiles.index') || return view('guest.profiles.search');
+		// atterraggio diretto senza filtri di ricerca semplice	[come fosse ->name('profiles.index')]
+		Route::get('/', 'ProfileController@search')->name('search'); 						// !  GET	/search			return view('guest.profiles.search');
 
-		// atterraggio da home page form ricerca semplice 
-		Route::post('/', 'ProfileController@search_from_home')->name('search_from_home');  // ! return view('guest.profiles.search');
+		// atterraggio da home page con ricerca semplice 
+		Route::post('/', 'ProfileController@search_from_home')->name('search_from_home');	// ! POST	/search			return view('guest.profiles.search');
 
 		// dettaglio profilo (di chiunque per chiunque)
-		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show'); // ! return view('guest.profiles.show');
+		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show'); 			// ! GET	/search/{slug}	return view('guest.profiles.show');
 
 	});
 
@@ -53,8 +53,8 @@ Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
  * http://localhost:8000/messages
  */
 Route::resource('/messages', MessageController::class)->names([
-	'create'	=> 'messages.create',	// ! GET/messages/create	return view('guest.messages.create');
-	'store'		=> 'messages.store',	// ! POST/messages			return redirect()->route('profiles.show')->with('status','Message sent');
+	'create'	=> 'messages.create',	// ! GET	/messages/create	return view('guest.messages.create');
+	'store'		=> 'messages.store',	// ! POST	/messages			return redirect()->route('profiles.show')->with('status','Message sent');
 ]);
 
 /**
@@ -64,8 +64,8 @@ Route::resource('/messages', MessageController::class)->names([
  * http://localhost:8000/reviews
  */
 Route::resource('/reviews', ReviewController::class)->names([
-	'create'	=> 'reviews.create',	// ! GET/reviews/create		return view('guest.reviews.create');
-	'store'		=> 'reviews.store',		// ! POST/reviews			return redirect()->route('profiles.show')->with('status','Review sent');
+	'create'	=> 'reviews.create',	// ! GET	/reviews/create		return view('guest.reviews.create');
+	'store'		=> 'reviews.store',		// ! POST	/reviews			return redirect()->route('profiles.show')->with('status','Review sent');
 ]);
 
 
@@ -91,7 +91,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 *
 		 * http://localhost:8000/admin/dashboard
 		 */
-		Route::get('/dashboard', 'HomeController@index')->name('dashboard'); // ! return view('admin.dashboard');
+		Route::get('/dashboard', 'HomeController@index')->name('dashboard'); // ! GET	/admin/dashboard	return view('admin.dashboard');
 
 		/**
 		 * # PROFILES #
@@ -100,13 +100,13 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * http://localhost:8000/admin/profiles
 		 */
 		Route::resource('/profiles', ProfileController::class)->names([
-			'index'		=> 'admin.profiles.index',		// ! GET/admin/profiles				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
-			'show'		=> 'admin.profiles.show',		// ! GET/admin/profiles/{slug}		return view('admin.profiles.show');
-			'create' 	=> 'admin.profiles.create',		// ! GET/admin/profiles/create		return view('admin.profiles.create');
-			'store' 	=> 'admin.profiles.store',		// ! POST/admin/profiles			return redirect()->route('dashboard')->with('status','Profile created');
-			'edit' 		=> 'admin.profiles.edit',		// ! GET/admin/profiles/{slug}/edit	return view('admin.profiles.edit');
-			'update' 	=> 'admin.profiles.update',		// ! PUT/admin/profiles/{slug}		return redirect()->route('dashboard')->with('status','Profile udated');
-			'destroy' 	=> 'admin.profiles.destroy',	// ! DEL/admin/profiles/{slug}		return redirect()->route('dashboard')->with('status','Profile deleted');
+			'index'		=> 'admin.profiles.index',		// ! GET	/admin/profiles				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
+			'show'		=> 'admin.profiles.show',		// ! GET	/admin/profiles/{slug}		return view('admin.profiles.show');
+			'create' 	=> 'admin.profiles.create',		// ! GET	/admin/profiles/create		return view('admin.profiles.create');
+			'store' 	=> 'admin.profiles.store',		// ! POST	/admin/profiles				return redirect()->route('dashboard')->with('status','Profile created');
+			'edit' 		=> 'admin.profiles.edit',		// ! GET	/admin/profiles/{slug}/edit	return view('admin.profiles.edit');
+			'update' 	=> 'admin.profiles.update',		// ! PUT	/admin/profiles/{slug}		return redirect()->route('dashboard')->with('status','Profile udated');
+			'destroy' 	=> 'admin.profiles.destroy',	// ! DEL	/admin/profiles/{slug}		return redirect()->route('dashboard')->with('status','Profile deleted');
 		]);
 
 		/**
@@ -116,9 +116,9 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * http://localhost:8000/admin/messages
 		 */
 		Route::resource('/messages', MessageController::class)->names([
-			'index'		=> 'admin.messages.index',		// ! GET/admin/messages				return view('admin.messages.index');
-			'show'		=> 'admin.messages.show',		// ! GET/admin/messages/{slug}		return view('admin.messages.show');
-			'destroy' 	=> 'admin.messages.destroy',	// ! DEL/admin/messages/{slug}		return redirect()->route('dashboard')->with('status','Message deleted');
+			'index'		=> 'admin.messages.index',		// ! GET	/admin/messages				return view('admin.messages.index');
+			'show'		=> 'admin.messages.show',		// ! GET	/admin/messages/{slug}		return view('admin.messages.show');
+			'destroy' 	=> 'admin.messages.destroy',	// ! DEL	/admin/messages/{slug}		return redirect()->route('dashboard')->with('status','Message deleted');
 		]);
 
 		/**
@@ -128,8 +128,8 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * http://localhost:8000/admin/reviews
 		 */
 		Route::resource('/reviews', ReviewController::class)->names([
-			'index'		=> 'admin.reviews.index',		// ! GET/admin/reviews				return view('admin.reviews.index');
-			'show'		=> 'admin.reviews.show',		// ! GET/admin/reviews/{slug}		return view('admin.reviews.show');
+			'index'		=> 'admin.reviews.index',		// ! GET	/admin/reviews				return view('admin.reviews.index');
+			'show'		=> 'admin.reviews.show',		// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
 		]);
 
 

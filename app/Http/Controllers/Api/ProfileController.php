@@ -34,7 +34,7 @@ class ProfileController extends Controller
 			$profile_categories = $profile->user->categories;
 			$profile_genres		= $profile->user->genres;
 			$profile_offers 	= $profile->user->offers;
-			$profile_messages 	= $profile->user->messages;
+			// $profile_messages 	= $profile->user->messages;
 			$profile_reviews 	= $profile->user->reviews;
 			// $profile_contracts 	= $profile->user->contracts;
 
@@ -99,12 +99,13 @@ class ProfileController extends Controller
 			$tmp_iper_profiles = $filtered_iper_profiles;
 		}
 
-		// SHUFFLE DEI PROFILI
-		// sort
+		// filtered iper profile array shuffle
+		shuffle($filtered_iper_profiles);
 
-		// SPONSORSHIP
+		// ! SPONSORSHIP
 		// assegnare bandiera
-		// sort
+		// sort prima quelli con bandiera
+		//
 
 		return response()->json([
 			'success' => true,

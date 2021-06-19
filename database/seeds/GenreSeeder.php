@@ -13,9 +13,10 @@ class GenreSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-		// protected $fillable = [
-		// 	'name', 'description'
-		// ];
+		/**
+		 * Genre Model $fillable:
+		 * 	'name', 'description'
+		 */
 
 		$genres = [
 			'rock',
@@ -39,6 +40,8 @@ class GenreSeeder extends Seeder
 			'new-age',
 			'reggaeton',
 		];
+
+		sort($genres);
 
 		foreach($genres as $genre) {
 
