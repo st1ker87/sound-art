@@ -348,8 +348,21 @@ php artisan make:controller Api/ProfileController
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-%                ELENCO VIEW con contenuti e funzioni                %
+%      ELENCO VIEW con contenuti e funzioni ~ ~ ~ OBSOLETO ~ ~ ~     %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
 # GUEST or ADMIN HOME                    

@@ -6,6 +6,7 @@ API docs	: https://developer.paypal.com/braintree/docs
 
 Basic installation guide: https://developer.paypal.com/braintree/docs/start/overview
 Drop-in Tutorial		: https://developer.paypal.com/braintree/docs/start/tutorial-drop-in-node
+							(fa costruire un modellino funzionante solo per transazioni da €10: non ci posso credere!)
 
 Sandbox dashboard		: https://sandbox.braintreegateway.com/merchants/ct6s84gcw9cmkv8y/home
 Transactiom				: https://developer.paypal.com/braintree/docs/guides/transactions
@@ -56,24 +57,107 @@ Checkout UI:
 5. BE code receives the payment method nonce and then uses the server SDK to create a transaction
 
 -------------------------------------------------------------------------------------------
-[2] https://developer.paypal.com/braintree/docs/start/hello-client
+[2] 
 
 # FE Set Up #
 
+https://developer.paypal.com/braintree/docs/start/hello-client
+
+* 1. In page (add Drop-in)
+*********************************************
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.braintreegateway.com/web/dropin/1.30.1/js/dropin.min.js"></script>
+</head>
+<body>
+  <!-- Step one: add an empty container to your page -->
+  <div id="dropin-container"></div>
+
+  <script type="text/javascript">
+  // call `braintree.dropin.create` code here
+  </script>
+</body>
+*********************************************
+
+* 2. In JS (add Drop-in)
+*********************************************
+// Step two: create a dropin instance using that container (or a string
+//   that functions as a query selector such as `#dropin-container`)
+braintree.dropin.create({
+  container: document.getElementById('dropin-container'),
+  // ...plus remaining configuration
+}, (error, dropinInstance) => {
+  // Use `dropinInstance` here
+  // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
+});
+*********************************************
+
+* 3. Get a client token
+*********************************************
+braintree.dropin.create({
+  // Step three: get client token from your server, such as via
+ //    templates or async http request
+  authorization: CLIENT_TOKEN_FROM_SERVER,
+  container: '#dropin-container'
+}, (error, dropinInstance) => {
+  // Use `dropinInstance` here
+  // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
+});
+*********************************************
 
 
 
 
 # BE Set Up #
 
-In the composer.json file in your project add:
-{
-  "require" : {
-    "braintree/braintree_php" : "6.2.0"
-  }
-}
+https://developer.paypal.com/braintree/docs/start/hello-server/php
 
-POI
-	lui dice di fare questo		: php composer.phar install
-	io so di dover fare questo	: composer install --ignore-platform-reqs
+* 1. Installing BT in project
+[DA FARE TUTTI ASSIEME, COME?] composer require braintree/braintree_php:6.2.0
 
+* 2. In page (add configuration)
+*********************************************
+$gateway = new Braintree\Gateway([
+    'environment' => 'sandbox',
+    'merchantId' => 'use_your_merchant_id',
+    'publicKey' => 'use_your_public_key',
+    'privateKey' => 'use_your_private_key'
+]);
+*********************************************
+
+* 3. Generate a client token
+*********************************************
+// pass $clientToken to your front-end
+$clientToken = $gateway->clientToken()->generate([
+    "customerId" => $aCustomerId
+]);
+*********************************************
+
+* 4. Send a client token to your client
+*********************************************
+echo($clientToken = $gateway->clientToken()->generate());
+*********************************************
+
+
+
+
+
+
+
+
+
+
+
+
+npm install --global express-generator@4
+
+express braintreeTutorial --view=hbs
+
+cd braintreeTutorial
+
+npm install
+
+npm install braintree --save
+
+touch routes/checkout.js
+echo.>routes\checkout.js

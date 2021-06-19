@@ -4,6 +4,15 @@
 
 @php
 	echo 'Curl: ', function_exists('curl_version') ? 'Enabled' : 'Disabled';
+
+	// richiede installazione BT
+	$gateway = new Braintree\Gateway([
+		'environment' => 'sandbox',
+		'merchantId' => 'use_your_merchant_id',
+		'publicKey' => 'use_your_public_key',
+		'privateKey' => 'use_your_private_key'
+	]);
+
 @endphp
 
 <head>
