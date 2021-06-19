@@ -132,9 +132,15 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 			'show'		=> 'admin.reviews.show',		// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
 		]);
 
-
-		// ! POI LE ROTTE PER IL RAMO SPONSORSHIP
-		//
+		/**
+		 * # CONTRACTS #
+		 * 
+		 * Braintree process payment (create) and checkout (store)
+		 * http://localhost:8000/admin/sponsorship
+		 */
+		// 
+		Route::get('/sponsorship', 			 'ContractController@create')->name('sponsorship'); 	// ! GET	/admin/sponsorship			return view('admin.contracts.create');
+		Route::post('/sponsorship/checkout', 'ContractController@store')->name('checkout'); 		// ! POST	/admin/sponsorship/checkout	DIPENDE !
 
 
 		

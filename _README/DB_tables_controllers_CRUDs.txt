@@ -296,6 +296,8 @@ php artisan make:controller Admin/ContractController
 
 ! contracts: da fare
 
+! sponsorships: da fare
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 %                           API DI SERVIZIO                          %
