@@ -23,6 +23,7 @@ class UserGenreSeeder extends Seeder
 		 * ! ************************************* !
 		 */
 
+		$min_num_genres_per_user = 0;
 		$max_num_genres_per_user = 4;
 
 		$users = User::All();
@@ -34,7 +35,7 @@ class UserGenreSeeder extends Seeder
 		foreach ($users as $user) {
 
 			shuffle($tag_ids);
-			$tag_num = random_int(1,$max_num_genres_per_user);
+			$tag_num = random_int($min_num_genres_per_user,$max_num_genres_per_user);
 
 			for ($i=0; $i<$tag_num; $i++) {
 
