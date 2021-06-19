@@ -20,7 +20,7 @@ class OfferSeeder extends Seeder
 
 		$offers = [
 			'teaching',
-			'live Exhibition', 
+			'live exhibition', 
 			'collaboration',
 			'recording',
 		];

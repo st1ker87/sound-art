@@ -4,12 +4,11 @@
 API docs	: https://developer.paypal.com/braintree/docs
 			: https://developer.paypal.com/braintree/docs/start/overview
 
-Sandbox dashboard: https://sandbox.braintreegateway.com/merchants/ct6s84gcw9cmkv8y/home
-
-Transactiom: https://developer.paypal.com/braintree/docs/guides/transactions
-
 Basic installation guide: https://developer.paypal.com/braintree/docs/start/overview
+Drop-in Tutorial		: https://developer.paypal.com/braintree/docs/start/tutorial-drop-in-node
 
+Sandbox dashboard		: https://sandbox.braintreegateway.com/merchants/ct6s84gcw9cmkv8y/home
+Transactiom				: https://developer.paypal.com/braintree/docs/guides/transactions
 
 Environment	: sandbox (test) oppure production (non ci interessa)
 Public key	: BT user-specific public identifier
@@ -29,5 +28,52 @@ Public Key	: 6kb2fp2f64c886gk
 Private Key	: 6c65a8532a3d982fe758048074e17dcf
 
 
+-------------------------------------------------------------------------------------------
+[1] https://developer.paypal.com/braintree/docs/start/overview
 
+# COMPONENTS #
+
+client SDK (JavaScript): 
+	collect infos from customer
+	require authorization >>> client token
+
+server SDK (PHP): 
+	act on collected infos
+	PHP version 7.2.0 or higher and the PHP cURL extension are required
+
+Checkout UI:
+	UI for transactions
+	connected to client/server SDKs
+
+# WORKFLOW #
+
+1. FE requests a client token from BE and initializes the client SDK
+2. server SDK on BE generates and sends a client token back to FE
+3. The customer submits payment infos: 
+	3.1. the client SDK communicates that information to BT 
+	3.2. BT returns a payment method nonce
+4. FE sends the payment method nonce to BE
+5. BE code receives the payment method nonce and then uses the server SDK to create a transaction
+
+-------------------------------------------------------------------------------------------
+[2] https://developer.paypal.com/braintree/docs/start/hello-client
+
+# FE Set Up #
+
+
+
+
+
+# BE Set Up #
+
+In the composer.json file in your project add:
+{
+  "require" : {
+    "braintree/braintree_php" : "6.2.0"
+  }
+}
+
+POI
+	lui dice di fare questo		: php composer.phar install
+	io so di dover fare questo	: composer install --ignore-platform-reqs
 

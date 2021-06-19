@@ -13,31 +13,34 @@ class CategorySeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-		// protected $fillable = [
-		// 	'name', 'description'
-		// ];
-
+		/**
+		 * Category Model $fillable:
+		 * 	'name', 'description'
+		 */
+		
 		$categories = [
+			'accordionist',
 			'band',
-			'singer',
-			'vocalist',
+			'bassist',
+			'clarinetist',
 			'composer',
+			'disc jockey',
+			'drummer',
+			'engineer',
+			'flautist',
+			'guitarist',
 			'lyricist',
 			'mixer',
-			'engineer',
 			'record company',
-			'disc jockey',
-			'bassist',
-			'guitarist',
-			'drummer',
-			'accordionist',
-			'clarinetist',
-			'flautist',
+			'singer',
+			'vocalist',
 			'classical guitarist',
 			'saxophonist',
 			'trumpeter',
 			'violinist',
 		];
+
+		sort($categories);
 
 		foreach($categories as $category) {
 

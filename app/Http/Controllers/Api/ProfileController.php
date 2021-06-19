@@ -104,8 +104,8 @@ class ProfileController extends Controller
 
 		// ! SPONSORSHIP
 		// assegnare bandiera
-		// sort prima quelli con bandiera
-		//
+		// ordinare prima quelli con bandiera
+		// il front end non deve fare nulla!
 
 		return response()->json([
 			'success' => true,

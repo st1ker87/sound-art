@@ -122,9 +122,10 @@ relazione 1-1 users-profiles, separiamo id profile da user_id
 User			N.A. 					N.A.
 
 Profile			ProfileController 		Admin/ProfileController SOLO SE STESSO
-				search(index)			dashboard 	(index)
-				search_from_home(index)	create 		(form vuoto)
-				show					store
+				search(index)			index 		(non è la dashboard: NON SERVE!)
+				search_from_home(index)	show		(dettaglio profilo per admin: NON SERVE!)
+				show					create 		(form vuoto)
+										store
 										edit 		(form compilato da Profile)
 										update
 										delete 		(pulsante messo da qualche parte...?)
@@ -136,19 +137,21 @@ Message 		MessageController		Admin/MessageController
 
 Review			ReviewController 		Admin/ReviewController
 				create					index
-										show
+				store					show
 
-Category		N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
+Category		N.A. 					N.A. 				(il dato è manipolato solo dallo svipuppatore)
 
-Genre			N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
+Genre			N.A. 					N.A. 				(il dato è manipolato solo dallo svipuppatore)
 
-Offer			N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
+Offer			N.A. 					N.A. 				(il dato è manipolato solo dallo svipuppatore)
 
 Contract		N.A. 					Admin/ContractController
 										create
+										store
 
 Sponsorship		N.A. 					Admin/SponsorshipController
 										index
+										show
 
 ! DELLE TABELLE PONTE NON CI SONO MODEL/CONTROLLER, MA CI SONO MIGRATION !
 
