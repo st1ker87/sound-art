@@ -108,7 +108,7 @@ else {
               <div v-if="showGenrePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-on:click="setCategory($event.target.value)" type="button" value="No filter"></li>
+                      <li><input v-on:click="setGenre($event.target.value)" type="button" value="No filter"></li>
                         @foreach($genres as $genre)
                         <li>
                             <input v-on:click="setGenre($event.target.value)" type="button" value="{{$genre->name}}">
@@ -127,7 +127,7 @@ else {
               <div v-if="showVotePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-on:click="setCategory($event.target.value)" type="button" value="No filter"></li>
+                      <li><input v-on:click="setVote($event.target.value)" type="button" value="No filter"></li>
                       @for($i = 1; $i <= 5; $i++)
                         <li>
                           <input v-on:click="setVote($event.target.value)" type="button" value="{{$i}}">
@@ -171,7 +171,7 @@ else {
                 <div class="provided-card-title">
                   <a class="provided-categories" v-bind:href="'search/' + card.slug">
                     <h3>
-                      <span v-for="category, index in card.categories" :key="category.id" v-if="index < 3">@{{category}}
+                      <span  v-for="category, index in card.categories" :key="category.id" v-if="index < 3">@{{category}}
                         <span v-if="index < (card.categories.length - 1)">/</span>
                       </span>          
                     </h3>
