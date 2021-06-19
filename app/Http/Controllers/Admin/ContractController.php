@@ -66,6 +66,7 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
+		// ! DEVO PORTARMI DIETRO IL PREZZO DELLA SPONSORSHIP SCELTA
 
 		// @dd($request);
 
@@ -96,7 +97,6 @@ class ContractController extends Controller
 
 		// @dd($result);
 
-		// ! forse togliere la parte in OR
 		// if ($result->success || !is_null($result->transaction)) {
 		if ($result->success) {
 			$transaction = $result->transaction;
@@ -118,7 +118,7 @@ class ContractController extends Controller
 				' Amount: '.$transaction->amount.
 				' Status: '.$transaction->status
 			);
-			// return redirect()->route('braintree')->with('success_message','Transaction successful with ID: '.$transaction->id);
+			// ! return redirect()->route('braintree')->with('success_message','Transaction successful with ID: '.$transaction->id);
 		} else {
 			$errorString = "";
 			foreach ($result->errors->deepAll() as $error) {
@@ -127,7 +127,7 @@ class ContractController extends Controller
 			// // $_SESSION["errors"] = $errorString;
 			// // header("Location: " . $baseUrl . "index.php");
 			return back()->withErrors('Transaction unsuccessful. Message: '.$result->message);
-			// return redirect()->route('braintree')->withErrors('Transaction unsuccessful. Message: '.$result->message);
+			// ! return redirect()->route('braintree')->withErrors('Transaction unsuccessful. Message: '.$result->message);
 		}
 
     }
