@@ -13,16 +13,19 @@ class OfferSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-		// protected $fillable = [
-		// 	'name', 'description'
-		// ];
+		/**
+		 * Offer Model $fillable:
+		 * 	'name', 'description'
+		 */
 
 		$offers = [
 			'teaching',
-			'live Exhibition', 
+			'live exhibition', 
 			'collaboration',
 			'recording',
 		];
+
+		sort($offers);
 
 		foreach($offers as $offer) {
 

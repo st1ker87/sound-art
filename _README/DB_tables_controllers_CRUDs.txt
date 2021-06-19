@@ -1,40 +1,4 @@
 
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-%                           API DI SERVIZIO                          %
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-
----------------------------------------------------------------- rotte
-
-php artisan make:controller Api/ProfileController
-*Api/ProfileController >> controller per i profile via API
-
---------------------------------------------------------- JSON - mappa
-
-singolo profilo
-	[tutta riga della tabella profiles] array
-	nome (users)
-	nognome (users)
-	[categorie del profilo] array (users-categories)
-	[genres del profilo] array (users-genres)
-	[offers del profilo] array (users-offers)
-	[messages del profile] array (users-messages)
-		email
-		nome
-		titolo
-		testo
-		
-
-
-
-
-
-
-
-
-
-
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 %            ELENCO TABLE + MODEL + RELAZIONI + ipotesi CRUD         %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
@@ -158,20 +122,13 @@ relazione 1-1 users-profiles, separiamo id profile da user_id
 User			N.A. 					N.A.
 
 Profile			ProfileController 		Admin/ProfileController SOLO SE STESSO
-				search(index)			dashboard 	(index)
-				search_from_home(index)	create 		(form vuoto)
-				show					store
+				search(index)			index 		(non è la dashboard: NON SERVE!)
+				search_from_home(index)	show		(dettaglio profilo per admin: NON SERVE!)
+				show					create 		(form vuoto)
+										store
 										edit 		(form compilato da Profile)
 										update
 										delete 		(pulsante messo da qualche parte...?)
-
-[route fatta] index (search.blade.php) : elenco profili con dettagli minimi (quelli della card ma messi a caso)
-[route fatta] show.blade.php : dettaglio profilo che capisco dopo form 
-
-[route fatta] admin/dshboard.blade.php : pulsante crea profilo, pulsante modifica profilo, (un giorno potrò metter dettagli del MIO profilo)
-[route fatta] admin/create.blade.php : form vuoto 
-[route fatta] admin/edit.blade.php : form compilato 
-
 
 Message 		MessageController		Admin/MessageController
 				create					index
@@ -180,19 +137,21 @@ Message 		MessageController		Admin/MessageController
 
 Review			ReviewController 		Admin/ReviewController
 				create					index
-										show
+				store					show
 
-Category		N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
+Category		N.A. 					N.A. 				(il dato è manipolato solo dallo svipuppatore)
 
-Genre			N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
+Genre			N.A. 					N.A. 				(il dato è manipolato solo dallo svipuppatore)
 
-Offer			N.A. 					N.A. 				(dato è manipolato solo dallo svipuppatore)
+Offer			N.A. 					N.A. 				(il dato è manipolato solo dallo svipuppatore)
 
 Contract		N.A. 					Admin/ContractController
 										create
+										store
 
 Sponsorship		N.A. 					Admin/SponsorshipController
 										index
+										show
 
 ! DELLE TABELLE PONTE NON CI SONO MODEL/CONTROLLER, MA CI SONO MIGRATION !
 
@@ -325,16 +284,54 @@ php artisan make:controller Admin/ContractController
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-%                               CRUD                                 %
+%                           CRUD PROGRESS                            %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
 
-profiles
+* profiles: fatte
 
-messages
+! messages: da fare
 
-reviews
+! reviews: da fare
 
+! contracts: da fare
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                           API DI SERVIZIO                          %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+---------------------------------------------------------------- rotte
+
+php artisan make:controller Api/ProfileController
+*Api/ProfileController >> controller per i profile via API
+
+------------------------------ axios per ricerca - risultato in uscita
+
+  0 => array:13 [
+    "id" => 1
+    "user_id" => 1
+    "slug" => "loredana-venditti"
+    "work_town" => "Firenze"
+    "bio_text4" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "image_url" => "profile_image/image_placeholder.jpg"
+    "name" => "Loredana"
+    "surname" => "Venditti"
+    "categories" => array:2 [
+      0 => "Drummer"
+      1 => "Classical Guitarist"
+    ]
+    "genres" => array:3 [
+      0 => "Metal"
+      1 => "Folk"
+      2 => "Reggaeton"
+    ]
+    "offers" => array:1 [
+      0 => "Recording"
+    ]
+    "average_vote" => 3.8
+    "rev_count" => 5
+  ]
 
 
 

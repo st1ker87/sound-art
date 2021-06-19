@@ -22,11 +22,12 @@ class ProfileSeeder extends Seeder
 		 * ! ************************************* !
 		 */
 
-		// protected $fillable = [
-		// 	'user_id','slug',
-		// 	'work_town','work_address','work_address_gps','phone',
-		// 	'bio_text1','bio_text2','bio_text3','bio_text4','image_url','video_url','audio_url','public'
-		// ];
+		/**
+		 * Profile Model $fillable:
+		 * 	'user_id','slug',
+		 * 	'work_town','work_address','work_address_gps','phone',
+		 * 	'bio_text1','bio_text2','bio_text3','bio_text4','image_url','video_url','audio_url','public'
+		 */
 	
 		$work_towns 	= ['Milano','Bologna','Roma','Napoli','Trieste','Avellino','Firenze','Cuneo','Foggia','Torino','Brescia','Ravenna','Cremona','Pesaro','Rimini','Cagliari'];
 		$work_addresses = ['Via Santo Stefano 3','Via Spirito Eterno 2','Via Giuseppe Garibaldi 1','Piazza Duca D\'Aosta 33','Via Gramsci 87','Via De Gasperi 34','Via Cavour 8','Corso Indipendenza 3','Corso Unione Sovietica 1','Corso XX Settembre 109','Via Parini 2','Via Dante 3','Via Torquato Tasso 76','Via Montenapoleone 1','Piazza Einaudi 8','Piazza Oberdan 21'];

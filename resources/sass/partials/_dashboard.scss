@@ -1,29 +1,68 @@
 //jumbo e testo
 .jumbo-dash {
-  position: relative;
-  width: 100%;
-  height: 40vh;
-  background-color: $primaryDarkBlue;
-  background: $primaryDarkBlue url("../img/singer_photo.jpg") no-repeat right; 
+    width: 100%;
+    height: 40vh;
+    background-color: $primaryDarkBlue;
+    background: $primaryDarkBlue url("../img/singer_photo.jpg") no-repeat right; 
+    background-size: contain;
+    border-bottom: 0.5px solid $lightGray;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    .container {
+        position: relative;
+        height: 100%;
+        .title-dash {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100ch;
+            h1 {
+                font-size: 5rem;
+                color: $primaryWhite;
+            }
+            h3 {
+                color: $primaryWhite;
+            }
+            p {
+                font-size: 1.5em;
+                color: $primaryWhite;
+            }
+        }
 
-  background-size: contain;
-//   background-size: contain;
-
-    .title-dash {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100ch;
-      h1 {
-          font-size: 5rem;
-          color: $primaryWhite;
-      }
-      h3 {
-          color: $primaryWhite;
-      }
-      p {
-          font-size: 1.5em;
-          color: $primaryWhite;
-      }
-  }
+    }
 }
+
+// sidebar fissa a sx nella dashboard
+.sidebar {
+    height: 100%;
+    border-right: 0.5px solid $lightGray;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    .nav-item {
+        margin: 20px 0;
+        .nav-link {
+            font-size: 1.3em;
+        }
+        i {
+            font-size: 1.5em;
+
+            margin-right: 10px;
+        }
+    }
+}
+
+// sezione messaggi
+.msg_box {
+    border: 1px solid grey;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 20px;
+    .msg_head, .msg_content {
+        padding: 5px 20px;
+    }
+    .msg_head {
+        border-bottom: 1px solid lightgray;
+        .msg_obj {
+            color: darkred;
+            font-weight: 800;
+        }
+    }
+}
+

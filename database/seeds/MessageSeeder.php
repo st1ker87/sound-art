@@ -23,10 +23,11 @@ class MessageSeeder extends Seeder
 		 * ! ************************************* !
 		 */
 
-		// protected $fillable = [
-		// 	'user_id','slug',
-		// 	'msg_sender_email','msg_sender_name','msg_subject','msg_text','msg_read_status'
-		// ];
+		/**
+		 * Message Model $fillable:
+		 * 	'user_id','slug',
+		 * 	'msg_sender_email','msg_sender_name','msg_subject','msg_text','msg_read_status'
+		 */
 	
 		$min_msg_number = 0;
 		$max_msg_number = 5;

@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
  * home page con ricerca semplice
  * http://localhost:8000/
  */
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');	// !  GET	/	return view('home');
 
 /**
  * # PROFILES = ADVANCED SEARCH #
@@ -35,14 +35,14 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
 	->group(function () {	// rotte specifiche search = profiles
 
-		// atterraggio diretto senza filtri 
-		Route::get('/', 'ProfileController@search')->name('search'); // ! ->name('profiles.index') || return view('guest.profiles.search');
+		// atterraggio diretto senza filtri di ricerca semplice	[come fosse ->name('profiles.index')]
+		Route::get('/', 'ProfileController@search')->name('search'); 						// !  GET	/search			return view('guest.profiles.search');
 
-		// atterraggio da home page form ricerca semplice 
-		Route::post('/', 'ProfileController@search_from_home')->name('search_from_home');  // ! return view('guest.profiles.search');
+		// atterraggio da home page con ricerca semplice 
+		Route::post('/', 'ProfileController@search_from_home')->name('search_from_home');	// ! POST	/search			return view('guest.profiles.search');
 
 		// dettaglio profilo (di chiunque per chiunque)
-		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show'); // ! return view('guest.profiles.show');
+		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show'); 			// ! GET	/search/{slug}	return view('guest.profiles.show');
 
 	});
 
@@ -52,13 +52,10 @@ Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
  * Message CRUD: parte guest (create,store)
  * http://localhost:8000/messages
  */
-Route::prefix('messages')   // prefisso URI raggruppamento sezione /messages/...
-	->group(function () {	// rotte specifiche messages
-
-		Route::get('/create',	'MessageController@create')->name('messages.create'); // ! return view('guest.messages.create');
-		Route::post('/',		'MessageController@store')->name('messages.store');  // ! return redirect()->route('NON LO SO')->with('status','Message sent');
-		
-	});
+Route::resource('/messages', MessageController::class)->names([
+	'create'	=> 'messages.create',	// ! GET	/messages/create	return view('guest.messages.create');
+	'store'		=> 'messages.store',	// ! POST	/messages			return redirect()->route('profiles.show')->with('status','Message sent');
+]);
 
 /**
  * # REVIEWS #
@@ -66,13 +63,10 @@ Route::prefix('messages')   // prefisso URI raggruppamento sezione /messages/...
  * Review CRUD: parte guest (create,store)
  * http://localhost:8000/reviews
  */
-Route::prefix('reviews')   // prefisso URI raggruppamento sezione /reviews/...
-	->group(function () {	// rotte specifiche reviews
-
-		Route::get('/create',	'ReviewController@create')->name('reviews.create'); // ! return view('guest.reviews.create');
-		Route::post('/', 		'ReviewController@store')->name('reviews.store');  // ! return redirect()->route('NON LO SO')->with('status','Review sent');
-		
-	});
+Route::resource('/reviews', ReviewController::class)->names([
+	'create'	=> 'reviews.create',	// ! GET	/reviews/create		return view('guest.reviews.create');
+	'store'		=> 'reviews.store',		// ! POST	/reviews			return redirect()->route('profiles.show')->with('status','Review sent');
+]);
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -97,7 +91,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 *
 		 * http://localhost:8000/admin/dashboard
 		 */
-		Route::get('/dashboard', 'HomeController@index')->name('dashboard'); // ! return view('admin.dashboard');
+		Route::get('/dashboard', 'HomeController@index')->name('dashboard'); // ! GET	/admin/dashboard	return view('admin.dashboard');
 
 		/**
 		 * # PROFILES #
@@ -106,39 +100,36 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * http://localhost:8000/admin/profiles
 		 */
 		Route::resource('/profiles', ProfileController::class)->names([
-			'index'		=> 'admin.profiles.index',		// ! GET'/profiles'				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
-			'show'		=> 'admin.profiles.show',		// ! GET'/profiles/{slug}'		return view('admin.profiles.show');
-			'create' 	=> 'admin.profiles.create',		// ! GET'/profiles/create'		return view('admin.profiles.create');
-			'store' 	=> 'admin.profiles.store',		// ! POST'/profiles'			return redirect()->route('dashboard')->with('status','Profile created');
-			'edit' 		=> 'admin.profiles.edit',		// ! GET'/profiles/{slug}/edit'	return view('admin.profiles.edit');
-			'update' 	=> 'admin.profiles.update',		// ! PUT'/profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile udated');
-			'destroy' 	=> 'admin.profiles.destroy',	// ! DEL'/profiles/{slug}'		return redirect()->route('dashboard')->with('status','Profile deleted');
+			'index'		=> 'admin.profiles.index',		// ! GET	/admin/profiles				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
+			'show'		=> 'admin.profiles.show',		// ! GET	/admin/profiles/{slug}		return view('admin.profiles.show');
+			'create' 	=> 'admin.profiles.create',		// ! GET	/admin/profiles/create		return view('admin.profiles.create');
+			'store' 	=> 'admin.profiles.store',		// ! POST	/admin/profiles				return redirect()->route('dashboard')->with('status','Profile created');
+			'edit' 		=> 'admin.profiles.edit',		// ! GET	/admin/profiles/{slug}/edit	return view('admin.profiles.edit');
+			'update' 	=> 'admin.profiles.update',		// ! PUT	/admin/profiles/{slug}		return redirect()->route('dashboard')->with('status','Profile udated');
+			'destroy' 	=> 'admin.profiles.destroy',	// ! DEL	/admin/profiles/{slug}		return redirect()->route('dashboard')->with('status','Profile deleted');
 		]);
 
 		/**
 		 * # MESSAGES #
 		 * 
-		 * Message CRUD: parte admin (index,show,destroy) SOLO I PROPRI MESSAGGI RICEVUTI
+		 * Message CRUD: parte admin (index,show,destroy) MESSAGGI RICEVUTI
 		 * http://localhost:8000/admin/messages
 		 */
 		Route::resource('/messages', MessageController::class)->names([
-			'index'		=> 'admin.messages.index',		// ! GET'/messages'				return view('admin.messages.index');
-			'show'		=> 'admin.messages.show',		// ! GET'/messages/{slug}'		return view('admin.messages.show');
-			'destroy' 	=> 'admin.messages.destroy',	// ! DEL'/messages/{slug}'		return redirect()->route('dashboard')->with('status','Message deleted');
+			'index'		=> 'admin.messages.index',		// ! GET	/admin/messages				return view('admin.messages.index');
+			'show'		=> 'admin.messages.show',		// ! GET	/admin/messages/{slug}		return view('admin.messages.show');
+			'destroy' 	=> 'admin.messages.destroy',	// ! DEL	/admin/messages/{slug}		return redirect()->route('dashboard')->with('status','Message deleted');
 		]);
 
 		/**
 		 * # REVIEWS #
 		 * 
-		 * Review CRUD: parte admin (index,show) SOLO LE PROPRIE RECENSIONI RICEVUTE 
+		 * Review CRUD: parte admin (index,show) RECENSIONI RICEVUTE 
 		 * http://localhost:8000/admin/reviews
 		 */
-		// Route::get('/reviews',			'ReviewController@index')->name('admin.reviews.index'); // ! return view('admin.reviews.index');
-		// Route::get('/reviews/{slug}',	'ReviewController@show')->name('admin.reviews.show'); 	// ! return view('admin.reviews.show');
-
-		 Route::resource('/reviews', ReviewController::class)->names([
-			'index' 	=> 'admin.reviews.index', 	// ! return view('admin.reviews.index');
-			'show' 		=> 'admin.reviews.show',	// ! return view('admin.reviews.show');
+		Route::resource('/reviews', ReviewController::class)->names([
+			'index'		=> 'admin.reviews.index',		// ! GET	/admin/reviews				return view('admin.reviews.index');
+			'show'		=> 'admin.reviews.show',		// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
 		]);
 
 
@@ -155,9 +146,6 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		// Route::get('/profile', 'HomeController@profile')->name('admin-profile');
 		// Route::post('/profile/generate-token', 'HomeController@generateToken')->name('admin.generate_token');
 
-
-
-
 	});
 
 
@@ -167,6 +155,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 // #         DEV  ROUTES         # 
 // ############################### 
 
-Route::get('/test', 'HomeController@test')->name('test');  // ! SOLO PER TESTARE CODICE 
+Route::get('/test', 'HomeController@test')->name('test');  		// ! SOLO PER TESTARE CODICE 
+Route::get('/test2', 'HomeController@test2')->name('test2');  	// ! SOLO PER TESTARE CODICE 
 
 

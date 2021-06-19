@@ -23,10 +23,11 @@ class ReviewSeeder extends Seeder
 		 * ! ************************************* !
 		 */
 
-		// protected $fillable = [
-		// 	'user_id','slug',
-		// 	'rev_sender_name','rev_subject','rev_vote','rev_text'
-		// ];
+		/**
+		 * Review Model $fillable:
+		 * 	'user_id','slug',
+		 * 	'rev_sender_name','rev_subject','rev_vote','rev_text'
+		 */
 		
 		$min_rev_number = 0;
 		$max_rev_number = 5;
