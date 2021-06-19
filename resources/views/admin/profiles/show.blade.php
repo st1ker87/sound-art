@@ -18,7 +18,7 @@
 	
 
 ------------------------------------------------------------------}}
-<h2>MODEL: Profile, CRUD: show, AREA: admin - DETTAGLIO SINGOLO PROFILO - SOLO SE STESSO</h2>
+{{-- <h2>MODEL: Profile, CRUD: show, AREA: admin - DETTAGLIO SINGOLO PROFILO - SOLO SE STESSO</h2>
 <h5>URL</h5>
 <p>url: http://localhost:8000/admin/profiles/{slug} (get)</p>
 <h5>SINGOLO PROFILO PASSATO</h5>
@@ -32,4 +32,59 @@
 <p>dump($genres) = @dump($genres)</p>
 <p>dump($offers) = @dump($offers)</p>
 <p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p>
+<p>dump($reviews) = @dump($reviews)</p> --}}
+
+{{-- dati user autenticato --}}
+@php
+	$my_user 	= Auth::user();
+	$my_profile = Auth::user()->profile;
+@endphp
+
+@extends('layouts.dashboard')
+
+@section('title','dashboard-my-profile')
+
+@section('content')
+
+	<section class="container main-show">
+      <div class="row">
+        <div id="about_me" class="description">
+          @if($my_profile->bio_text1 && $my_profile->bio_text2)
+            <h2>About me</h2>
+            <p>{{$my_profile->bio_text1}}</p>
+            <p>{{$my_profile->bio_text2}}</p>
+          @endif
+        </div>
+      </div>
+    </section>
+      <section class="container main-show">
+        <div class="row">
+          <div id="genres" class="genres">
+            <h2>My favorite music</h2>
+            @foreach($my_profile->user->genres as $genre)
+            @if($loop->last)
+              {{$genre->name}}
+            @else
+            {{$genre->name . ','}}
+            @endif
+        @endforeach
+          </div>
+        </div>
+      </section>
+      <section class="container main-show">
+        <div class="row">
+          <div id="offers" class="offert">
+            <h2>Offers</h2>
+            @foreach($my_profile->user->offers as $offer)
+            @if($loop->last)
+              {{$offer->name}}
+            @else
+            {{$offer->name . ','}}
+            @endif
+        @endforeach
+          </div>
+        </div>
+    </section>
+@endsection
+  {{-- mancante video, audio e foto
+    visualizzazione form messaggio, visualizzazione review --}}

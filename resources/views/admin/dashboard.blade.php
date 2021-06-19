@@ -41,6 +41,7 @@
 	@endif
 </div>
 
+{{-- dati user autenticato --}}
 @php
 	$my_user 	= Auth::user();
 	$my_profile = Auth::user()->profile;

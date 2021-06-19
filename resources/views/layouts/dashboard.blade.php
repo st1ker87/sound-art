@@ -56,24 +56,30 @@
 		@endphp
 
         {{-- JUMBOTRON DASHBOARD --}}
-            <div class="jumbo-dash">
-                <div class="container">
-                    <div class="title-dash">
-                        <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
-                        <h3>
-                            @foreach (Auth::user()->categories as $category)
-                                <span> {{$category->name}} |</span>
-                            @endforeach
-                        </h3>
-                        <p>{{ Auth::user()->profile->work_town }}</p>
-                    </div>
+        <div class="jumbo-dash">
+            <div class="container">
+                <div class="title-dash">
+                    <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                    <h3>
+                        @foreach (Auth::user()->categories as $category)
+                            @if($loop->last)
+                                {{$category->name}}
+                                @else
+                                {{$category->name . ' |'}}
+                            @endif
+                        @endforeach
+                    </h3>
+                    <p>{{ Auth::user()->profile->work_town }}</p>
                 </div>
             </div>
+        </div>
 
-        {{-- DA QUI NAVBAR COMUNE A SX --}}
-
+            
         <div class="container-fluid">
             <div class="row">
+
+                {{-- DA QUI NAVBAR COMUNE A SX --}}
+
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
                     <div class="sidebar-sticky">
                         <ul class="nav flex-column">
@@ -112,8 +118,8 @@
                     </div>
                 </nav>
                 
+                {{-- FINO A QUI NAVBAR COMUNE A SX --}}
 
-        {{-- FINO A QUI NAVBAR COMUNE A SX --}}
 
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-4">
