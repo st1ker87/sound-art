@@ -30,7 +30,7 @@ class MessageSeeder extends Seeder
 		 */
 	
 		$min_msg_number = 0;
-		$max_msg_number = 5;
+		$max_msg_number = 10;
 
 		$users = User::All();
 
