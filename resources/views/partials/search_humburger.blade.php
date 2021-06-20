@@ -1,30 +1,72 @@
-@include('partials.search_humburger')
 
-<header class="header-search q-fluid">
+<header class="header-home q-540-blue">
 	<div class="container">
-		<nav class="navbar justify-content-between">
+		<nav class="navbar">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
 				<img id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
 			</a>
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route('search') }}">Explore</a>
+			<ul class="humburger">
+				<li class="humburger-item">
+					<button v-on:click="showHumburger" class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-bars"></i></button>
+					<div v-if="humburger" class="nav-actions">
+						<ul>
+							<li>
+								<a role="button" href="{{ route('search') }}">Explore</a>
+							</li>
+							@guest
+							<li>
+								<a role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
+							</li>
+							<li>
+								<a role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
+							</li>
+							@else
+							<li>
+								<a role="button" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+							</li>
+							<li>
+								<a href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+									document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST">
+									@csrf
+								</form>
+							</li>
+							@endguest
+						</ul>
+					</div>
 				</li>
 			</ul>
-			<ul class="navbar-nav ml-auto"> 
+		</nav>
+	</div>
+</header>
+      		{{-- <ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="{{ route('search') }}">Explore</a>
+			</li>  
+			@guest
+			@else
+			<li class="nav-item">
+				<a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+			</li>					
+			@endguest
+      		</ul>
+			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
 			@guest
-				<li class="nav-item ">
-					<a class="btn btn-outline-light" role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
+				<li class="nav-item">
+					<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('login') }}">{{ __('Login') }}</a>
 				</li>
 				@if (Route::has('register'))
 					<li class="nav-item">
-						<a class="btn btn-outline-light" role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
+						<a class="btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" role="button" href="{{ route('register') }}">{{ __('Register') }}</a>
 					</li>
 				@endif
 			@else
 				<li class="nav-item dropdown">
-					<a id="navbarDropdown btn btn-outline-light" class="nav-link dropdown-toggle" :class="{change_color_btn: scrollPosition > scrollChange}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+					<a id="navbarDropdown btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						{{ Auth::user()->name }}
 					</a>
 	
@@ -43,7 +85,7 @@
 			@endguest
 			</ul>
 		  </nav>
-	</div>
+	</div> --}}
 
 	{{-- HRADER NAVBAR START originale laravel --}}
 	{{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

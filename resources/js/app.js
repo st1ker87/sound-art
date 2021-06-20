@@ -37,6 +37,7 @@ const app = new Vue({
 		showCategoryPannel : false,
 		showGenrePannel : false,
 		showVotePannel : false,
+		humburger : false,
 
 		/*BUTTONS IN PAGINA SEARCH*/
 		btnCategories : null,
@@ -59,6 +60,10 @@ const app = new Vue({
 
 	},
 	methods: {
+		showHumburger : function() {
+			console.log('alora!!')
+			this.humburger = !this.humburger;
+		},
 		showSearch : function() {
 			this.searchHome = !this.searchHome;		
 		},

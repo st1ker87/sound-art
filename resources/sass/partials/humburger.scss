@@ -1,0 +1,42 @@
+%q-540 {
+    display: none;
+    .humburger-item {
+        position: relative;
+        z-index: 2000;
+        ul {
+            padding: .5em 2em;
+            margin: 0;
+        }
+        .nav-actions {
+            position: absolute;
+            top: 90%;
+            right: 50%;
+            background-color: white;
+            border-radius: .5em;
+            border: 3px solid $primaryBlack;
+            ul li {
+                line-height: 30px;
+                a {
+                    color: $primaryBlack;
+                }
+            }
+        }
+    }
+}
+.q-540-black {
+    background-color: $primaryBlack;
+    @extend %q-540;
+}
+.q-540-blue {
+    background-color: $primaryDarkBlue;
+    @extend %q-540;
+}
+
+@media (max-width: 540px) {
+    [class*='q-540'] {
+        display: block;
+    }
+    .q-fluid {
+        display: none;
+    }
+}

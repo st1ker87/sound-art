@@ -1,4 +1,6 @@
-<header class="header-home">
+@include('partials.home_humburger')
+
+<header class="header-home q-fluid">
 	<div class="container">
 		<nav class="navbar justify-content-around">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">

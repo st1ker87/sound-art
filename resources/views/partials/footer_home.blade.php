@@ -22,7 +22,7 @@
         <ul>
           <li><a href="#">Terms</a></li>
           <li><a href="#">Tutorials</a></li>
-          <li><a href="#">Provacy</a></li>
+          <li><a href="#">Privacy</a></li>
           <li><a href="#">Contact us</a></li>
         </ul>
       </div>
