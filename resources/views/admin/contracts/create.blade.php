@@ -32,18 +32,25 @@
 	                              CAPIRE PERCHÉ
 --------------------------------------------------------------------------------}}
 
-{{-- 
+
 @extends('layouts.dashboard')
 @section('title','Sponsorship Gateway')
-@section('content') --}}
+@section('content')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO TEMPORANEAMENTE IN admin/dashboard.blade.php
 		<!-- Styles: single page addendum -->
 		@stack('dashboard_head')
 	PORTARE POI IN SASS PER INSERIRE QUESTO STILE
+
+	@if (Request::is('admin/sponsorship/*'))
+		conflitto vuejs nel form di braintree!
+		@else
+		<script src="{{ asset('js/app.js') }}" defer></script>	
+	@endif
+
 -----------------------------------------------------------}}
-{{-- @push('dashboard_head')
+@push('dashboard_head')
 
 <style>
 	body {
@@ -61,10 +68,10 @@
 	}
 </style>
 
-@endpush --}}
+@endpush
 
 
-
+{{-- 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -93,7 +100,7 @@
 
     </head>
     <body>  
-
+ --}}
 
 
         <div class="container">
@@ -101,6 +108,8 @@
 
 
                 <h1>{{$sponsorship->name}} purchase</h1>
+                <div class="spacer"></div>
+				<h4>{{$sponsorship->description}}</h4>
                 <div class="spacer"></div>
 
 
@@ -312,6 +321,8 @@
 						});
 					}, false);
 				});
+
+
 				// Create a PayPal Checkout component.
 				braintree.paypalCheckout.create({
 					client: clientInstance
@@ -362,12 +373,12 @@
 
 
 
-
+{{-- 
     </body>
 </html>
+ --}}
 
 
 
 
-
-{{-- @endsection --}}
+@endsection
