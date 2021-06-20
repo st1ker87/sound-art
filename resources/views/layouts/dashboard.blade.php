@@ -46,9 +46,9 @@
 </head>
 <body>
     <div id="app">
-        @include('partials.header_home')
+        @include('partials.header_search')
 
-        {{-- FINP A QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
+        {{-- FINO A QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
 
 		@php
 			$my_user 	= Auth::user();

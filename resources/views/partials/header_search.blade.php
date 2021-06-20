@@ -4,7 +4,12 @@
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
 				<img id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
 			</a>
-			<ul class="navbar-nav ml-auto">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('search') }}">Explore</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto"> 
 			<!-- Authentication Links -->
 			@guest
 				<li class="nav-item ">

@@ -1,12 +1,19 @@
-<header class="header-home" :class="{change_color: scrollPosition > scrollChange}">
+<header class="header-home">
 	<div class="container">
 		<nav class="navbar justify-content-around">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
-				<img v-if="scrollPosition < scrollChange" id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
-				<img v-if="scrollPosition > scrollChange" id="logo" src="{{ asset('img/logo-blue.png') }}" alt="Sound Art logo">
+				<img id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
 			</a>
-      		<ul class="nav-item ml-5">
-			  <a class="nav-link" href="{{ route('search') }}">Explore</a>
+      		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="{{ route('search') }}">Explore</a>
+			</li>  
+			@guest
+			@else
+			<li class="nav-item">
+				<a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+			</li>					
+			@endguest
       		</ul>
 			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
@@ -26,9 +33,6 @@
 					</a>
 	
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ route('dashboard') }}">
-							{{ __('Dashboard') }}
-						</a>
 						<a class="dropdown-item" href="{{ route('logout') }}"
 							onclick="event.preventDefault();
 											document.getElementById('logout-form').submit();">

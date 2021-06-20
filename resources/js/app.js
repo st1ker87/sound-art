@@ -78,7 +78,7 @@ const app = new Vue({
 			this.showGenrePannel = false;
 		},
 		setCategory: function (category) {
-			if(category === 'No filter') {
+			if(category === '-- No filter --') {
 				this.category_selected = null;
 			}
 			else {
@@ -88,7 +88,7 @@ const app = new Vue({
 			this.showCategoryPannel = false;
 		},
 		setGenre: function (genre) {
-			if(genre === 'No filter') {
+			if(genre === '-- No filter --') {
 				this.genre_selected = null;
 			}
 			else {
@@ -98,7 +98,7 @@ const app = new Vue({
 			this.showGenrePannel = false;
 		},
 		setVote: function (vote) {
-			if(vote === 'No filter') {
+			if(vote === '-- No filter --') {
 				this.vote_selected = null;
 			}
 			else {
