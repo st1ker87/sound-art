@@ -10,6 +10,10 @@
 
 	in seguito si può differenziare per guest/admin
 ------------------------------------------------------------------}}
+@php
+	date_default_timezone_set('Europe/Rome');
+@endphp
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
