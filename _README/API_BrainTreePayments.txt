@@ -71,7 +71,7 @@ BT_PRIVATE_KEY=6c65a8532a3d982fe758048074e17dcf
 composer require braintree/braintree_php
 
 *flusso
-.env > config/services.php > web.php > Admin/ContractController@process
+.env > config/services.php > web.php > Admin/ContractController@create
 
 *dati disponibili
 transaction

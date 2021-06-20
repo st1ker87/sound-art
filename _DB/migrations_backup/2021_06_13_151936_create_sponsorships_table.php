@@ -18,7 +18,8 @@ class CreateSponsorshipsTable extends Migration
 			$table->string('name');
 			$table->string('description')->nullable();
 			$table->smallInteger('hour_duration'); 	// time interval in hours
-			$table->decimal('price', 6, 2); 		// ! 'price' => "required|regex:/^\d+(\.\d{1,2})?$/"
+			$table->decimal('price', 6, 2); // ! 'price' => "required|regex:/^\d+(\.\d{1,2})?$/"
+			$table->boolean('is_active')->default(1); // ! 'public' => 'is_active'
             $table->timestamps();
         });
     }

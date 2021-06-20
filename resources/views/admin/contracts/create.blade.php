@@ -144,7 +144,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="amount">Amount</label>
-                                <input type="text" class="form-control" id="amount" name="amount" value="11">
+                                <input type="text" class="form-control" id="amount" name="amount" value="11"> {{-- QUI VA PORTATO E BLOCCATO IL PREZZO --}}
                             </div>
                         </div>
                     </div>
