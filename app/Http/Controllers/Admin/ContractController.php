@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 use App\Contract;
 use App\User;
@@ -83,7 +84,7 @@ class ContractController extends Controller
 		$amount = $request->amount;
 		$nonce = $request->payment_method_nonce;
 
-		// added custom fields to send to BT platform
+		// custom fields to send to BT platform
 		$result = $gateway->transaction()->sale([
 			'amount' => $amount,
 			'paymentMethodNonce' => $nonce,
@@ -105,50 +106,36 @@ class ContractController extends Controller
 			$transaction = $result->transaction;
 			// // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
 
-			// ! SALVARE DATI SU TABELLA CONTRACTS
-			// mi devo portare dietro: sponsorship > id e hour_duration
-			// user_id = Auth::id()
-			// sponsorship_id = sponsorship > id
-			// transaction_status = $transaction->status (string)
-			// $new_contract->save()
-			// date_start = created_at
-			// date_end =  created_at + sponsorship > hour_duration
-
 			// sponsorship id & hour_duration here
 			$form_data = $request->all();
 			// @dd($form_data);
-			
-			// new contracts row
+
+			// # NEW CONTRACT #
 			$new_contract = new Contract;
 			$new_contract['user_id'] = Auth::id();
 			$new_contract['sponsorship_id'] = $form_data['sponsorship_id'];
 			$new_contract['transaction_status'] = $transaction->status;
-			// @dd($new_contract);
-			
-			
-			// $new_contract->save(); // ! DB writing here !
+			$new_contract->save(); // ! DB writing here !
+			// calculating date_start & date_end
+			$new_contract['date_start'] = $new_contract->created_at->format('Y-m-d H:i:s');
+			// created_at in formato dateTime (per fare calcoli)
+			$tmp_time = DateTime::createFromFormat('Y-m-d H:i:s', $new_contract['created_at']);
+			// aggiungo numero di ore = sponsorship_hour_duration
+			date_add($tmp_time, date_interval_create_from_date_string($form_data['sponsorship_hour_duration'].' hours'));			
+			// torno al formato created_at per mettere in DB
+			$new_contract['date_end'] = date_format($tmp_time, 'Y-m-d H:i:s');
+			$new_contract->update(); // ! DB writing here !
 
-			// $new_contract['date_start'] = $new_contract['created_at'];
-			
-			// come faccio a fare la somma DATA + NUMERO DI ORE
-			// $new_contract['date_end'] = $new_contract['created_at'] + $form_data['sponsorship_hour_duration'];
-			
-
-
-			// return back()->with(
-			// 	'transaction_feedbak',
-			// 	'Transaction successful.'.
-			// 	' Id: '.$transaction->id.
-			// 	' Amount: '.$transaction->amount.
-			// 	' Status: '.$transaction->status
-			// );
-			return redirect()->route('dashboard')->with(
-				'transaction_feedbak',
-				'Transaction successful.'.
-				' Id: '.$transaction->id.
-				' Amount: '.$transaction->amount.
-				' Status: '.$transaction->status
-			);
+			// # GOOD REDIRECT #
+			// return back()
+			return redirect()->route('dashboard')
+					->with(
+						'transaction_feedbak',
+						'Transaction successful.'.
+						' Id: '.$transaction->id.
+						' Amount: '.$transaction->amount.
+						' Status: '.$transaction->status
+					);
 		} else {
 			$errorString = "";
 			foreach ($result->errors->deepAll() as $error) {
@@ -156,8 +143,11 @@ class ContractController extends Controller
 			}
 			// // $_SESSION["errors"] = $errorString;
 			// // header("Location: " . $baseUrl . "index.php");
-			// return back()->withErrors('Transaction unsuccessful. Message: '.$result->message);
-			return redirect()->route('dashboard')->withErrors('Transaction unsuccessful. Message: '.$result->message);
+
+			// # BAD REDIRECT #
+			// return back()
+			return redirect()->route('dashboard')
+					->withErrors('Transaction unsuccessful. Message: '.$result->message);
 		}
 
     }
