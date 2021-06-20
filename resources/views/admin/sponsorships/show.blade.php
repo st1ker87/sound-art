@@ -1,6 +1,9 @@
-<h2>MODEL: Sponsorship, CRUD: index, AREA: admin - ELENCO SPONSORSHIP IN VENDITA</h2>
+<h2>MODEL: Sponsorship, CRUD: show, AREA: admin - DETTAGLIO SINGOLA SPONSORSHIP IN VENDITA</h2>
 <h5>URL</h5>
-<p>url: http://localhost:8000/admin/sponsorships (get)</p>
+<p>url: http://localhost:8000/admin/sponsorships/{slug} (get)</p>
+<h5>SINGOLA SPONSORSHIP PASSATA</h5>
+<p>sponsorship->id = @php echo $sponsorship->id @endphp</p>
+<p>dump($sponsorship) = @dump($sponsorship)</p>
 <h5>ALTRE TABELLE DISPONIBILI</h5>
 <p>dump($users) = @dump($users)</p>
 <p>dump($profiles) = @dump($profiles)</p>

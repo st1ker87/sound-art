@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Review;
 use App\User;
 use App\Profile;
 use App\Category;
 use App\Genre;
 use App\Offer;
+use App\Review;
 use App\Message;
 
 class ReviewController extends Controller

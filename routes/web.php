@@ -138,9 +138,21 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * Braintree process payment (create) and checkout (store)
 		 * http://localhost:8000/admin/sponsorship
 		 */
-		// 
 		Route::get('/sponsorship', 			 'ContractController@create')->name('sponsorship'); 	// ! GET	/admin/sponsorship			return view('admin.contracts.create');
 		Route::post('/sponsorship/checkout', 'ContractController@store')->name('checkout'); 		// ! POST	/admin/sponsorship/checkout	DIPENDE !
+
+		/**
+		 * # SPONSORSHIPS #
+		 * 
+		 * Sponsorship CRUD: solo admin (index,show) PRODOTTI IN VENDITA 
+		 * http://localhost:8000/admin/sponsorship
+		 */
+		Route::resource('/sponsorships', SponsorshipController::class)->names([
+			'index'		=> 'admin.sponsorships.index',	// ! GET	/admin/sponsorships			return view('admin.sponsorships.index');
+			'show'		=> 'admin.sponsorships.show',	// ! GET	/admin/sponsorships/{id}	return view('admin.sponsorships.show');
+		]);
+
+
 
 
 		
