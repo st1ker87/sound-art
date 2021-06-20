@@ -128,7 +128,8 @@
 
     <!-- Get started -->
     <section class="get-started">
-
+            <h3>Get started for free</h3>
+            <a href="{{ route('dashboard') }}" class="btn btn-outline-dark btn-lg">Post your offers now</a>
     </section>
 
 @endsection

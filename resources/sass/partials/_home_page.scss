@@ -204,6 +204,23 @@
     background-size: cover;
 }
 
+/* Get started */
+.get-started {
+    padding: 10vh 0;
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h3 {
+        margin-bottom: 4vh;
+        font-size: 3rem;
+        font-weight: 500;
+    }
+    a {
+        font-weight: 600;
+    }
+}
 
 
 /*              *
