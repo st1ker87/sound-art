@@ -117,14 +117,20 @@ class ContractController extends Controller
 			// date_start = created_at
 			// date_end =  created_at + sponsorship > hour_duration
 
-			return back()->with(
-				'success_message',
+			// return back()->with(
+			// 	'transaction_feedbak',
+			// 	'Transaction successful.'.
+			// 	' Id: '.$transaction->id.
+			// 	' Amount: '.$transaction->amount.
+			// 	' Status: '.$transaction->status
+			// );
+			return redirect()->route('dashboard')->with(
+				'transaction_feedbak',
 				'Transaction successful.'.
 				' Id: '.$transaction->id.
 				' Amount: '.$transaction->amount.
 				' Status: '.$transaction->status
 			);
-			// ! return redirect()->route('braintree')->with('success_message','Transaction successful with ID: '.$transaction->id);
 		} else {
 			$errorString = "";
 			foreach ($result->errors->deepAll() as $error) {
@@ -132,8 +138,8 @@ class ContractController extends Controller
 			}
 			// // $_SESSION["errors"] = $errorString;
 			// // header("Location: " . $baseUrl . "index.php");
-			return back()->withErrors('Transaction unsuccessful. Message: '.$result->message);
-			// ! return redirect()->route('braintree')->withErrors('Transaction unsuccessful. Message: '.$result->message);
+			// return back()->withErrors('Transaction unsuccessful. Message: '.$result->message);
+			return redirect()->route('dashboard')->withErrors('Transaction unsuccessful. Message: '.$result->message);
 		}
 
     }

@@ -296,7 +296,7 @@ php artisan make:controller Admin/ContractController
 
 ? contracts: in corso...
 
-! sponsorships: da fare
+* sponsorships: fatte
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
