@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Contract;
 use App\User;
@@ -31,7 +32,7 @@ class ContractController extends Controller
 		// choosen sponsorship 
 		$sponsorship = Sponsorship::where('id',$id)->first();
 
-		// ! creation only for users without sponsorship
+		// ! double check: creation only for users without sponsorship
 		//
 
 		// con \Braintree invece di Braintree risolvo la classe introvabile... 
@@ -72,10 +73,6 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-		// ! DEVO PORTARMI DIETRO IL PREZZO DELLA SPONSORSHIP SCELTA
-
-		// @dd($request);
-
 		$gateway = new \Braintree\Gateway([
 			'environment' 	=> config('services.braintree.environment'),
 			'merchantId' 	=> config('services.braintree.merchantId'),
@@ -116,6 +113,27 @@ class ContractController extends Controller
 			// $new_contract->save()
 			// date_start = created_at
 			// date_end =  created_at + sponsorship > hour_duration
+
+			// sponsorship id & hour_duration here
+			$form_data = $request->all();
+			// @dd($form_data);
+			
+			// new contracts row
+			$new_contract = new Contract;
+			$new_contract['user_id'] = Auth::id();
+			$new_contract['sponsorship_id'] = $form_data['sponsorship_id'];
+			$new_contract['transaction_status'] = $transaction->status;
+			// @dd($new_contract);
+			
+			
+			// $new_contract->save(); // ! DB writing here !
+
+			// $new_contract['date_start'] = $new_contract['created_at'];
+			
+			// come faccio a fare la somma DATA + NUMERO DI ORE
+			// $new_contract['date_end'] = $new_contract['created_at'] + $form_data['sponsorship_hour_duration'];
+			
+
 
 			// return back()->with(
 			// 	'transaction_feedbak',

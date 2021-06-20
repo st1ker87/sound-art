@@ -36,7 +36,7 @@
 		<script src="{{ asset('js/app.js') }}" defer></script>	
 	@endif
 
-	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE (solo per questa view) <<<
+	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
 
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
@@ -45,28 +45,30 @@
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
-	.spacer {
-		margin-bottom: 24px;
-	}
-	#card-number, #cvv, #expiration-date {
+	#bt_form #card-number, 
+	#bt_form #cvv, 
+	#bt_form #expiration-date {
+		/* MODIFICABILE IN BASE AGLI ALTRI FORM */
 		background: white;
 		height: 38px;
 		border: 1px solid #CED4DA;
 		padding: .375rem .75rem;
 		border-radius: .25rem;
 	}
-	#bt_message_container {
+	#bt_form #bt_message_container {
 		display: none;
-		width: 100%;
 	}
-	.required {
+	#bt_form .spacer {
+		margin-bottom: 24px;
+	}
+	#bt_form .required {
 		color: #e3342f; /* $red */
 	}
 </style>
 @endpush
 
 
-<div class="container">
+<div id="bt_form" class="container">
 	<div class="col-md-6 offset-md-3">
 
 
@@ -192,7 +194,14 @@
 			<div class="spacer"></div>
 
 			<input id="nonce" name="payment_method_nonce" type="hidden" />
+
+			{{-- faccio confluire di nascosto nel form id e durata della sponsorship --}}
+			<input id="nonce" name="sponsorship_id" type="hidden" value="{{$sponsorship->id}}" />
+			<input id="nonce" name="sponsorship_hour_duration" type="hidden" value="{{$sponsorship->hour_duration}}" />
+
 			<button type="submit" class="btn btn-success">Submit Payment</button>
+			<div class="spacer"></div>
+			<div class="spacer"></div>
 
 		</form>
 
@@ -276,6 +285,8 @@
 				// encrypted payment information in a variable called a payment method nonce
 				hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
 					if (tokenizeErr) {
+						console.error(tokenizeErr);
+						// error message for the user ///////////////////////////////
 						console.log('tokenizeErr[\'message\']: ',tokenizeErr['message']);
 						document.getElementById('bt_message_container').style.display = 'block';
 						const msg_box = document.getElementById('bt_message_box');
@@ -286,8 +297,7 @@
 							msg = 'Some payment input fields are invalid';
 						}
 						msg_box.innerHTML = msg;
-						// alert(tokenizeErr);
-						console.error(tokenizeErr);
+						/////////////////////////////////////////////////////////////
 						return;
 					}
 					// If this was a real integration, this is where you would
