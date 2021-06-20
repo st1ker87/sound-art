@@ -14,7 +14,7 @@
             <div class="jumbotron-title">
                 <h1>Hire your artist</h1>
                 <p>
-                    If you are looking for music artists, session drummers, vocalists,
+                    If you are looking for session drummers, vocalists,
                     audio editing, mixing engineers, producers and more,
                     or you just want to have your private lessons, you can find all of that with us.
                 </p>

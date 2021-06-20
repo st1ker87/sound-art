@@ -120,11 +120,10 @@ const app = new Vue({
 
 		// INTERNAL APIs
 		filterCall() {
-			console.log(this.category_selected);
-			console.log(this.genre_selected);
-			console.log(this.vote_selected);
-			console.log(this.reviewNum_selected);
-
+			this.showCategoryPannel = false;
+			this.showGenrePannel = false;
+			this.showVotePannel = false;
+			
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
