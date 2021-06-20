@@ -16,9 +16,6 @@
 
 
 ------------------------------------------------------------------}}
-@php
-	date_default_timezone_set('Europe/Rome');
-@endphp
 
 {{-- DA QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
 

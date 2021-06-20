@@ -17,6 +17,8 @@ use App\Message;
 use App\Review;
 use App\Sponsorship;
 
+date_default_timezone_set('Europe/Rome');
+
 class ContractController extends Controller
 {
     /**
