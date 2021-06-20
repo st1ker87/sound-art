@@ -4,11 +4,10 @@
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
 				<img v-if="scrollPosition < scrollChange" id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
 				<img v-if="scrollPosition > scrollChange" id="logo" src="{{ asset('img/logo-blue.png') }}" alt="Sound Art logo">
-        <h2 :class="{change_color_text: scrollPosition > scrollChange}">SoundArt</h2>
 			</a>
-      <ul class="nav-item ml-5">
+      		<ul class="nav-item ml-5">
 			  <a class="nav-link" href="{{ route('search') }}">Explore</a>
-      </ul>
+      		</ul>
 			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
 			@guest

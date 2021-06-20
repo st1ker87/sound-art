@@ -25,20 +25,13 @@ class CreateContractsTable extends Migration
 			$table->foreign('sponsorship_id')->references('id')->on('sponsorships');
 
 			// date_start: created_at 
-			$table->dateTime('date_start', 0); 	// ! usato in laravel-boolpress-base
+			$table->dateTime('date_start', 0);
 
 			// date_end: created_at + sponsorships hour_duration
 			$table->dateTime('date_end', 0);
 
-			/** 
-			 * ! ************************************* !
-			 * !                                       !
-			 * !   DA DEFINIRE DOPO STUDIATE API BT    !
-			 * !                                       !
-			 * ! ************************************* !
-			 */
 			// transaction_status (Brain Tree Payments)
-			$table->string('transaction_status'); // ??? formato? contenuti? ???
+			$table->string('transaction_status'); 
 
             $table->timestamps();
         });

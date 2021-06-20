@@ -41,6 +41,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+	<!-- Styles: single page addendum -->
+	@stack('dashboard_head')
+
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <title>@yield('title') | Sound Art</title>
 </head>

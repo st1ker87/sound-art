@@ -1,68 +1,114 @@
 
-
-
-API docs	: https://developer.paypal.com/braintree/docs
-			: https://developer.paypal.com/braintree/docs/start/overview
-
-Basic installation guide: https://developer.paypal.com/braintree/docs/start/overview
-Drop-in Tutorial		: https://developer.paypal.com/braintree/docs/start/tutorial-drop-in-node
-							(fa costruire un modellino funzionante solo per transazioni da €10: non ci posso credere!)
-
-Sandbox dashboard		: https://sandbox.braintreegateway.com/merchants/ct6s84gcw9cmkv8y/home
-Transactiom				: https://developer.paypal.com/braintree/docs/guides/transactions
-
-Environment	: sandbox (test) oppure production (non ci interessa)
-Public key	: BT user-specific public identifier
-Private key	: BT user-specific private identifier
-Merchant ID	: unique identifier for your entire gateway account
+# ACCOUNT BRAINTREE #
 
 email		: path381492@gmail.com
 identity	: Riccardo Martino
 user		: proj26-team-1
 pwd			: proj26-team-1 
 
-CREDENTIALS
-Environment	: sandbox (test) 
-Merchant ID	: ct6s84gcw9cmkv8y
-Public Key	: 6kb2fp2f64c886gk
-Private Key	: 6c65a8532a3d982fe758048074e17dcf
+NOTA: è collegato dentro l'account braintree anche un account di test PayPal, le cui API non funzionano! (è risaputo)
 
+# IDENTIFICATIVI APPLICAZIONE BT #
+
+Dashboard	: https://sandbox.braintreegateway.com/merchants/ct6s84gcw9cmkv8y/home
+Environment	: sandbox		 						sandbox (test) oppure production (non ci interessa)
+Merchant ID	: ct6s84gcw9cmkv8y						BT user-specific public identifier
+Public Key	: 6kb2fp2f64c886gk						BT user-specific private identifier
+Private Key	: 6c65a8532a3d982fe758048074e17dcf		unique identifier for your entire gateway account
+
+# DOCUMENTAZIONE INUTILE #
+
+API docs			: https://developer.paypal.com/braintree/docs
+Basic installation	: https://developer.paypal.com/braintree/docs/start/overview
+Drop-in Tutorial	: https://developer.paypal.com/braintree/docs/start/tutorial-drop-in-node
+							(fa costruire un modellino funzionante solo per transazioni da €10: non ci posso credere!)
+Transactiom			: https://developer.paypal.com/braintree/docs/guides/transactions
+Link Paypal	into BT	: https://developer.paypal.com/braintree/docs/guides/paypal/testing-go-live#linked-paypal-testing
+
+# INFO UTILI #
+
+braintree_php_example		: https://github.com/braintree/braintree_php_example.git
+Andre Madarang sei un mito 	: https://www.youtube.com/watch?v=3VLKmN7wL0o (ma io l'ho fatto meglio con il controller!)
+testing						: https://developer.paypal.com/braintree/docs/reference/general/testing
+transaction custom fields	: https://developer.paypal.com/braintree/docs/reference/request/transaction/sale/php
+
+# NOTE ON THE FLY #
+
+Base url BT API
+		https://payments.sandbox.braintree-api.com/graphql
 API key + Base64
-echo -n "6kb2fp2f64c886gk:6c65a8532a3d982fe758048074e17dcf" | base64
-NmtiMmZwMmY2NGM4ODZnazo2YzY1YTg1MzJhM2Q5ODJmZTc1ODA0ODA3NGUxN2RjZg==
-Authorization: Basic NmtiMmZwMmY2NGM4ODZnazo2YzY1YTg1MzJhM2Q5ODJmZTc1ODA0ODA3NGUxN2RjZg==
-
+		echo -n "6kb2fp2f64c886gk:6c65a8532a3d982fe758048074e17dcf" | base64
+		NmtiMmZwMmY2NGM4ODZnazo2YzY1YTg1MzJhM2Q5ODJmZTc1ODA0ODA3NGUxN2RjZg==
+		Authorization: Basic NmtiMmZwMmY2NGM4ODZnazo2YzY1YTg1MzJhM2Q5ODJmZTc1ODA0ODA3NGUxN2RjZg==
 Tokenization Key
-sandbox_7bjc3tq2_ct6s84gcw9cmkv8y
-Authorization: Bearer sandbox_7bjc3tq2_ct6s84gcw9cmkv8y
+		sandbox_7bjc3tq2_ct6s84gcw9cmkv8y
+		Authorization: Bearer sandbox_7bjc3tq2_ct6s84gcw9cmkv8y
+Requisiti API
+	You SHOULD use the POST method for all requests.
+	include your credentials in the Authorization header. 
+	due opzioni: client tokens and tokenization keys
 
 
-https://payments.sandbox.braintree-api.com/graphql
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        INTEGRAZIONE BT IN LARAVEL     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+*.env:
+BT_ENVIRONMENT=sandbox
+BT_MERCHANT_ID=ct6s84gcw9cmkv8y
+BT_PUBLIC_KEY=6kb2fp2f64c886gk
+BT_PRIVATE_KEY=6c65a8532a3d982fe758048074e17dcf
+
+*config/services.php: 
+    'braintree' => [
+		'environment' => env('BT_ENVIRONMENT'),
+		'merchantId' => env('BT_MERCHANT_ID'),
+		'publicKey' => env('BT_PUBLIC_KEY'),
+		'privateKey' => env('BT_PRIVATE_KEY'),		
+    ],
+
+*installazione braintree
+composer require braintree/braintree_php
+
+*flusso
+.env > config/services.php > web.php > Admin/ContractController@create
+
+*dati disponibili
+transaction
+	id			998801t2
+	type		sale
+	amount		10.00
+	status		submitted_for_settlement
+	created_at	2021-06-19 19:15:47
+	updated_at	2021-06-19 19:15:47 
+Payment
+	token	
+	bin				424242
+	last_4			4242
+	card_type		Visa
+	expiration_date	12/2022
+	cardholder_name	
+	customer_location	US
 
 
-You SHOULD use the POST method for all requests.
 
-include your credentials in the Authorization header. 
 
-due opioni: client tokens and tokenization keys
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-$gateway = new Braintree\Gateway([
-  'environment' => 'sandbox',
-  'merchantId' => 'ct6s84gcw9cmkv8y',
-  'publicKey' => '6kb2fp2f64c886gk',
-  'privateKey' => '6c65a8532a3d982fe758048074e17dcf'
-]);
-
-
-
-
-
-
-
-
-
+[DASHBOARD ADMIN]
+	if (sponsorship attiva)
+		notifica sponsorship attiva
+	else 
+		pulsante acquista una sponsorhip 
+			>> [ELENCO SPONSORSHIP] 
+			
+[ELENCO SPONSORSHIP] (admin.sponsorships.index)
+	per ogni sponsorship
+		descrizione
+		pulsanti acuqista 
+			>> ContractController@create (PaymentController@create)
 
 
 
@@ -215,23 +261,3 @@ echo($clientToken = $gateway->clientToken()->generate());
 
 
 
-
-
-
-
-
-
-
-
-npm install --global express-generator@4
-
-express braintreeTutorial --view=hbs
-
-cd braintreeTutorial
-
-npm install
-
-npm install braintree --save
-
-touch routes/checkout.js
-echo.>routes\checkout.js
