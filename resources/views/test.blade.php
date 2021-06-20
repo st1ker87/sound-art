@@ -1,5 +1,5 @@
 <h2>TESTACODICE #1</h2>
-
+@include('partials.humburger')
 
 {{-- ///////////////////////////////////////////// --}}
 
@@ -14,7 +14,7 @@
 
 {{-- TEST DATI TABLE
 @foreach ($profiles as $profile)
-	
+
 	@php
 		$cats = $profile->user->categories
 	@endphp
@@ -27,7 +27,7 @@
 
 {{-- ///////////////////////////////////////////// --}}
 
-{{-- 
+{{--
 @php
 
 	if (isset($search_from_home)) {
@@ -99,15 +99,15 @@ $products = [
 
 
 		foreach ($products as $product) {
-			
+
 			$new_sponsorship = new Sponsorship();
 			$new_sponsorship['name'] 			= $product['name'];
 			$new_sponsorship['description'] 	= $product['description'];
 			$new_sponsorship['hour_duration'] 	= $product['hour_duration'];
 			$new_sponsorship['price'] 			= $product['price'];
-			// $new_sponsorship->save(); // ! DB writing here ! 
+			// $new_sponsorship->save(); // ! DB writing here !
 
-			@dump($new_sponsorship);
+			// @dump($new_sponsorship);
 		}
 
 
@@ -135,10 +135,10 @@ $products = [
 // // DB starting source
 // $profiles = Profile::all();
 
-// // building $iper_profiles, array of $iper_profile 
+// // building $iper_profiles, array of $iper_profile
 // foreach ($profiles as $profile) {
 
-// 	// starting properties 
+// 	// starting properties
 // 	$iper_profile = $profile->toArray(); // array, NOT laravel collection!
 
 // 	// adding name, surname >>> strings
@@ -198,7 +198,7 @@ $products = [
 // // ! ingredienti utente
 // $category 	= 'Drummer'; // Mixer/Engineer
 // $genre		= 'Metal'; // Rock
-// $offer		= 'Recording'; // 
+// $offer		= 'Recording'; //
 // $vote		= 3;
 // $rev_count	= 5;
 
@@ -266,7 +266,7 @@ $products = [
 // @dump($profile);
 
 // // $id è id del profile
-// // ? quale è il suo user_id 
+// // ? quale è il suo user_id
 // $user_id = $profile->user_id;
 // @dump($user_id);
 
@@ -287,9 +287,9 @@ $products = [
 // 		$tag_ids = [];
 // 		foreach ($categories as $category)
 // 			$tag_ids[] = $category['id'];
-			
+
 // 		foreach ($users as $user) {
-				
+
 // 			shuffle($tag_ids);
 // 			@dump($tag_ids);
 // 			$tag_num = random_int(1,3);
@@ -302,7 +302,7 @@ $products = [
 // 				@dump($user_category);
 
 // 				// DB::table('user_category')->insert([
-//         		// 	'user_id'	 	=> $user['id'],  
+//         		// 	'user_id'	 	=> $user['id'],
 //         		// 	'category_id' 	=> $tag_ids[$i],
 //     			// ]);
 
@@ -329,7 +329,7 @@ $products = [
 
 // 			if ($rev_num > 0) {
 // 				for ($i=1; $i<=$rev_num; $i++) {
-	
+
 // 					$rev_text_is_present = random_int(0,1);
 
 // 					$new_review = new Review();
@@ -337,7 +337,7 @@ $products = [
 // 					$new_review['rev_sender_name'] = $faker->name();
 // 					$new_review['rev_vote'] = random_int(1,5);
 // 					$new_review['rev_subject'] = $faker->sentence(rand(2,6)); // ! required for slug
-// 					$new_review['rev_text'] = $rev_text_is_present ? $faker->text() : '';	
+// 					$new_review['rev_text'] = $rev_text_is_present ? $faker->text() : '';
 // 					// slug must be unique
 // 					$slug = Str::slug($new_review['rev_subject'],'-');
 // 					$slug_tmp = $slug;
@@ -349,7 +349,7 @@ $products = [
 // 						$slug_is_present = Review::where('slug',$slug)->first();
 // 					}
 // 					$new_review['slug'] = $slug;
-// 					$new_review->save(); // ! DB writing here ! 
+// 					$new_review->save(); // ! DB writing here !
 
 // 				}
 // 			}
@@ -376,7 +376,7 @@ $products = [
 
 // 			if ($msg_num > 0) {
 // 				for ($i=1; $i<=$msg_num; $i++) {
-	
+
 // 					$new_message = new Message();
 // 					$new_message['user_id'] = $user['id'];
 // 					$new_message['msg_sender_email'] = $faker->freeEmail();
@@ -395,7 +395,7 @@ $products = [
 // 					}
 // 					$new_message['slug'] = $slug;
 // 					$new_message['msg_read_status'] = 0;
-// 					// $new_message->save(); // ! DB writing here ! 
+// 					// $new_message->save(); // ! DB writing here !
 // 					@dump($new_message);
 // 				}
 // 			}
@@ -427,7 +427,7 @@ $products = [
 // 		$counter++;
 // 		$email_is_present = User::where('email',$email)->first();
 // 	}
-	
+
 // 	$password = explode('@', $email)[0].explode('@', $email)[0];
 
 // 	$new_user = new User();
@@ -489,7 +489,7 @@ $products = [
 // foreach ($users as $user) {
 // 	$name = $user->name;
 // 	$surname = $user->surname;
-// 	@dump($name,$surname);	
+// 	@dump($name,$surname);
 // }
 
 /////////////////////////////////////////////
