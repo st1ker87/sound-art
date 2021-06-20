@@ -112,12 +112,6 @@ const app = new Vue({
 			this.btnVotes = vote;
 			this.showVotePannel = false;	
 		},
-
-		//metodo per lo scroll
-		updateScroll() {
-			this.scrollPosition = window.scrollY
-		},
-
 		// INTERNAL APIs
 		filterCall() {
 			this.showCategoryPannel = false;
@@ -171,7 +165,6 @@ const app = new Vue({
 		}
 	},
 	mounted() {
-		window.addEventListener('scroll', this.updateScroll);
 		this.searchDefault();	
 		
 		// INTERNAL APIs
