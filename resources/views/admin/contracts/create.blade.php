@@ -1,6 +1,10 @@
 {{-- <h2>MODEL: Contract, CRUD: create, AREA: admin - FORM CREAZIONE CONTRACT (info pagamento)</h2>
 <h5>URL</h5>
 <p>url: http://localhost:8000/admin/sponsorship (get)</p>
+<h5>SINGOLA SPONSORSHIP PASSATA</h5>
+<p>sponsorship->id = @php echo $sponsorship->id @endphp</p>
+<p>sponsorship->name = @php echo $sponsorship->name @endphp</p>
+<p>dump($sponsorship) = @dump($sponsorship)</p>
 <h5>TOKEN PASSATO</h5>
 <p>dump($token) = @dump($token)</p>
 <h5>ALTRE TABELLE DISPONIBILI</h5>
@@ -14,16 +18,49 @@
 <p>dump($sponsorships) = @dump($sponsorships)</p>
 @dd('') --}}
 
-
-
-{{-- INCORPORATE IN LAYOUT --}}
-
-{{-- AGGIUSTARE ROTTE STILI --}}
-
 {{-- 
-	VALORI PER TEST
+	VALORI DI IMMISSIONE PER TEST TRANSAZIONE
 	https://developer.paypal.com/braintree/docs/reference/general/testing 
 --}}
+
+
+{{-------------------------------------------------------------------------------- 
+	                               ATTENZIONE !
+
+          	     INTRODUCENDO IL LAYOUT SI ROMPONO LE TRANSAZIONI
+
+	                              CAPIRE PERCHÉ
+--------------------------------------------------------------------------------}}
+
+
+{{-- @extends('layouts.dashboard')
+@section('title','Sponsorship Gateway')
+@section('content') --}}
+
+{{----------------------------------------------------------- 
+	AGGIUNTO TEMPORANEAMENTE IN admin/dashboard.blade.php
+		<!-- Styles: single page addendum -->
+		@stack('dashboard_head')
+	PORTARE POI IN SASS PER INSERIRE QUESTO STILE
+-----------------------------------------------------------}}
+{{-- @push('dashboard_head')
+<style>
+	body {
+		margin: 24px 0;
+	}
+	.spacer {
+		margin-bottom: 24px;
+	}
+	#card-number, #cvv, #expiration-date {
+		background: white;
+		height: 38px;
+		border: 1px solid #CED4DA;
+		padding: .375rem .75rem;
+		border-radius: .25rem;
+	}
+</style>
+@endpush --}}
+
 
 
 <!doctype html>
@@ -32,14 +69,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-        <title>Sponsorship Gateway</title>
-
-
         <link rel="stylesheet" href="/css/app.css">
 
-
-        <style>
+		<style>
             body {
                 margin: 24px 0;
             }
@@ -55,16 +87,18 @@
             }
         </style>
 
+		<title>Sponsorship Gateway</title>
 
     </head>
-    <body>
+    <body>  
+
 
 
         <div class="container">
             <div class="col-md-6 offset-md-3">
 
 
-                <h1>Payment Form</h1>
+                <h1>{{$sponsorship->name}} purchase</h1>
                 <div class="spacer"></div>
 
 
@@ -91,11 +125,11 @@
 
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="name_on_card">Name on Card</label>
-                        <input type="text" class="form-control" id="name_on_card" name="name_on_card">
+                        <input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ Auth::user()->name.' '.Auth::user()->surname }}">
                     </div>
 
                     <div class="row">
@@ -143,12 +177,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="amount">Amount</label>
-                                <input type="text" class="form-control" id="amount" name="amount" value="11"> {{-- QUI VA PORTATO E BLOCCATO IL PREZZO --}}
+                                <label for="amount">Amount (€)</label>
+                                <input type="text" class="form-control" id="amount" name="amount" value="{{ $sponsorship->price }}" data-type="currency" readonly> 
                             </div>
                         </div>
                     </div>
 
+					{{-- VERSIONE SENZA GESTIONE JS --}}
                     {{-- <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -170,6 +205,7 @@
                         </div>
                     </div> --}}
 
+					{{-- VERSIONE CON GESTIONE JS --}}
                     <div class="row">
                         <div class="col-md-6">
                             <label for="cc_number">Credit Card Number</label>
@@ -203,15 +239,14 @@
 
 
 
-
+		{{-- RISORSE ESTERNE --}}
+		<!-- Braintree + form customizzabile -->
 		<script src="https://js.braintreegateway.com/web/3.38.1/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.38.1/js/hosted-fields.min.js"></script>
-
-		<!-- Load PayPal's checkout.js Library. -->
+		<!-- PayPal + Checkout -->
 		<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
-
-		<!-- Load the PayPal Checkout component. -->
 		<script src="https://js.braintreegateway.com/web/3.38.1/js/paypal-checkout.min.js"></script>
+
 		<script>
 			var form = document.querySelector('#payment-form');
 			var submit = document.querySelector('input[type="submit"]');
@@ -241,7 +276,7 @@
 				fields: {
 					number: {
 						selector: '#card-number',
-						placeholder: '4111 1111 1111 1111'
+						placeholder: '4242 4242 4242 4242'
 					},
 					cvv: {
 						selector: '#cvv',
@@ -249,7 +284,7 @@
 					},
 					expirationDate: {
 						selector: '#expiration-date',
-						placeholder: '10/2019'
+						placeholder: '12/22'
 					}
 				}
 				}, function (hostedFieldsErr, hostedFieldsInstance) {
@@ -326,3 +361,9 @@
 
     </body>
 </html>
+
+
+
+
+
+{{-- @endsection --}}

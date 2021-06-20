@@ -26,8 +26,11 @@ class ContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+		// choosen sponsorship 
+		$sponsorship = Sponsorship::where('id',$id)->first();
+
 		// ! creation only for users without sponsorship
 		//
 
@@ -42,7 +45,10 @@ class ContractController extends Controller
 		$token = $gateway->ClientToken()->generate();
 
 		$data = [
+			// main infos
+			'sponsorship'	=> $sponsorship,
 			'token'			=> $token,
+			// aux infos
 			'users' 		=> User::all(),		
 			'profiles' 		=> Profile::all(),
 			'categories' 	=> Category::all(),
