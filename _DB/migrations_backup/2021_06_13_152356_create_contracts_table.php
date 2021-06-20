@@ -25,10 +25,10 @@ class CreateContractsTable extends Migration
 			$table->foreign('sponsorship_id')->references('id')->on('sponsorships');
 
 			// date_start: created_at 
-			$table->dateTime('date_start', 0);
+			$table->dateTime('date_start', 0)->nullable();
 
 			// date_end: created_at + sponsorships hour_duration
-			$table->dateTime('date_end', 0);
+			$table->dateTime('date_end', 0)->nullable();
 
 			// transaction_status (Brain Tree Payments)
 			$table->string('transaction_status'); 
