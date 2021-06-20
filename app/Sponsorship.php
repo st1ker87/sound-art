@@ -12,7 +12,7 @@ class Sponsorship extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'hour_duration', 'price'
+        'name', 'description', 'hour_duration', 'price', 'is_active'
     ];
 
 	/**

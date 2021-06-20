@@ -64,14 +64,16 @@
   @endforeach
 </div>
 <div id="offers" class="offert">
-  <h2>Offers</h2>
-  @foreach($my_profile->user->offers as $offer)
-    @if($loop->last)
-      {{$offer->name}}
-    @else
-      {{$offer->name . ','}}
-    @endif
-  @endforeach
+   @if(count($my_profile->user->offers)>0)
+    <h2>Offers</h2>
+    @foreach($my_profile->user->offers as $offer)
+      @if($loop->last)
+        {{$offer->name}}
+      @else
+        {{$offer->name . ','}}
+      @endif
+    @endforeach    
+  @endif
 </div>
 
 @endsection

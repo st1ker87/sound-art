@@ -18,7 +18,7 @@
 
 @extends('layouts.dashboard')
 
-@section('title','dashboard')
+@section('title','dashboard-messages')
 @section('content')
 
 <div class="container">
@@ -26,14 +26,14 @@
     	<div class="col-12">
         	
 			<div class="d-flex justify-content-between align-items-center">
-            	<h1>Your message box</h1>
+            	<h2>Your message box</h2>
 			</div>
             @foreach ($my_user->messages as $message)
                 <div class="msg_box">
                     <div class="msg_head">
                         <div class="row">
                             <span class="msg_obj col-md-6">{{ $message->msg_subject}}</span>
-                            <span class="msg_sender col-md-6">{{ $message->msg_sender_name}}</span>
+                            <span class="msg_sender col-md-6">from: {{ $message->msg_sender_name}}</span>
                             <span class="msg_sender_mail col-md-6 offset-md-6">{{ $message->msg_sender_email}}</span>
                         </div>
                     </div>

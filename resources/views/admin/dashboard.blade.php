@@ -32,14 +32,36 @@
 
 <h1>{{ Auth::user()->name }}'s Dashboard</h1>
 
+
+{{-- FEEDBACK MESSAGES --}}
 <div class="d-flex justify-content-between align-items-center">
-	{{-- REDIRECT message management --}}
+	
+	{{-- REDIRECT --}}
 	@if (session('status'))
 		<div class="alert alert-success">
 			{{ session('status') }}
 		</div>
 	@endif
+
+	{{-- TRNSACTION RESULT MESSAGE --}}
+	@if (session()->has('transaction_feedbak'))
+		<div class="alert alert-success">
+			{{ session()->get('transaction_feedbak') }}
+		</div>
+	@endif
+	@if(count($errors) > 0)
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
+
 </div>
+
+
 
 {{-- dati user autenticato --}}
 @php
@@ -62,5 +84,13 @@
 	{{-- CREATE --}}
 	<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create your profile</a>
 @endif
+
+{{-- if (NON ESISTE GIÀ UNA SPONSORSHIP) --}}
+	{{-- BUY A SPONSORSHIP --}}
+	<a class="btn btn-primary" href="{{ route('admin.sponsorships.index') }}">Buy a sponsorship</a>
+{{-- @endif --}}
+
+
+
 
 @endsection

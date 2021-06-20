@@ -14,7 +14,7 @@ class SponsorshipSeeder extends Seeder
     {
 		/**
 		 * Sponsorship Model $fillable:
-		 * 	'name', 'description', 'hour_duration', 'price'
+		 * 	'name', 'description', 'hour_duration', 'price', 'is_active'
 		 */
 
 		$products = [
@@ -22,19 +22,22 @@ class SponsorshipSeeder extends Seeder
 				'name' 			=> 'silver sponsorship',
 				'description' 	=> 'Your Profile is highlighted in our Home Page for 24 hours.',
 				'hour_duration' => 24,
-				'price' 		=> 2.99
+				'price' 		=> 2.99,
+				'is_active' 	=> 1
 			],
 			[
 				'name' 			=> 'gold sponsorship',
 				'description' 	=> 'Your Profile is highlighted in our Home Page for 72 hours.',
 				'hour_duration' => 72,
-				'price' 		=> 5.99
+				'price' 		=> 5.99,
+				'is_active' 	=> 1
 			],
 			[
 				'name' 			=> 'platinum sponsorship',
 				'description' 	=> 'Your Profile is highlighted in our Home Page for 144 hours.',
 				'hour_duration' => 144,
-				'price' 		=> 9.99
+				'price' 		=> 9.99,
+				'is_active' 	=> 1
 			],
 		];
 
@@ -45,6 +48,7 @@ class SponsorshipSeeder extends Seeder
 			$new_sponsorship['description'] 	= $product['description'];
 			$new_sponsorship['hour_duration'] 	= $product['hour_duration'];
 			$new_sponsorship['price'] 			= $product['price'];
+			$new_sponsorship['is_active'] 		= $product['is_active'];
 			$new_sponsorship->save(); // ! DB writing here ! 
 
 		}
