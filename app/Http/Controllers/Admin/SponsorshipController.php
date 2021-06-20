@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DateTime;
+
 use App\User;
 use App\Profile;
 use App\Category;
@@ -27,6 +30,18 @@ class SponsorshipController extends Controller
      */
     public function index()
     {
+		// double check: creation only for users without sponsorship
+		$my_contracts = Auth::user()->contracts;
+		$is_active_sponsorship = false;
+		foreach ($my_contracts as $my_contract) {
+			$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
+			$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);
+			$now 		= new DateTime();
+			if ($date_start < $now && $date_end >= $now) $is_active_sponsorship = true;
+		}
+		if ($is_active_sponsorship)
+			return redirect()->route('dashboard')->with('status','A Sponsorship is already active!');
+
 		$data = [
 			'users'			=> User::all(),
 			'profiles'		=> Profile::all(),

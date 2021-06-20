@@ -21,6 +21,40 @@ class ContractController extends Controller
 {
     /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %             SHOW              %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
+     * Display the specified resource.
+     *
+     * @param  \App\Contract  $contract
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) // originale: show(Contract $contract)
+    {
+
+		// $id del mio contract
+		$contract = Contract::where('id',$id)->first();
+
+		$data = [
+			// main infos
+			'contract'		=> $contract,
+			// aux infos
+			'users' 		=> User::all(),		
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
+			'contracts' 	=> Contract::all(),
+			'sponsorships' 	=> Sponsorship::all(),
+		];
+
+		return view('admin.contracts.show',$data);
+    }
+
+	/**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	 * %             CREATE            %
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      *
@@ -33,8 +67,18 @@ class ContractController extends Controller
 		// choosen sponsorship 
 		$sponsorship = Sponsorship::where('id',$id)->first();
 
-		// ! double check: creation only for users without sponsorship
-		//
+		// double check: creation only for users without sponsorship
+		$my_contracts = Auth::user()->contracts;
+		$is_active_sponsorship = false;
+		foreach ($my_contracts as $my_contract) {
+			$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
+			$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);
+			$now 		= new DateTime();
+			if ($date_start < $now && $date_end >= $now) $is_active_sponsorship = true;
+		}
+		if ($is_active_sponsorship)
+			return redirect()->route('dashboard')->with('status','A Sponsorship is already active!');
+
 
 		// con \Braintree invece di Braintree risolvo la classe introvabile... 
 		$gateway = new \Braintree\Gateway([
@@ -58,10 +102,12 @@ class ContractController extends Controller
 			'offers' 		=> Offer::all(),
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
+			'contracts' 	=> Contract::all(),
 			'sponsorships' 	=> Sponsorship::all(),
- 		];
+		];
 
-        return view('admin.contracts.create',$data); 
+		return view('admin.contracts.create',$data); 
+
     }
 
 	/**
@@ -131,10 +177,10 @@ class ContractController extends Controller
 			return redirect()->route('dashboard')
 					->with(
 						'transaction_feedbak',
-						'Transaction successful.'.
-						' Id: '.$transaction->id.
-						' Amount: '.$transaction->amount.
-						' Status: '.$transaction->status
+						'Transaction successful. Your Sponsorship is active'
+						// .' Id: '.$transaction->id
+						// .' Amount: '.$transaction->amount
+						// .' Status: '.$transaction->status
 					);
 		} else {
 			$errorString = "";
@@ -171,16 +217,6 @@ class ContractController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Contract  $contract
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Contract $contract)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -65,30 +65,46 @@
 
 {{-- dati user autenticato --}}
 @php
-	$my_user 	= Auth::user();
-	$my_profile = Auth::user()->profile;
+	$my_user		= Auth::user();
+	$my_profile		= $my_user->profile;
+	$my_contracts	= $my_user->contracts;
+	$is_active_sponsorship = false;
+	$my_sponsorship_id = null;
+	foreach ($my_contracts as $my_contract) {
+		$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
+		$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);
+		$now 		= new DateTime();
+		if ($date_start < $now && $date_end >= $now) {
+			$is_active_sponsorship = true;
+			$my_contract_id = $my_contract->id;
+		}
+	}
 @endphp
 
 @if ($my_profile)
 	{{-- EDIT --}}
-	<a class="btn btn-primary" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your profile</a>
+	<a class="btn btn-primary" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
 	{{-- DELETE --}}
 	<form class="d-inline-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
 		@csrf
 		@method('DELETE')
-		<button type="submit" class="btn btn-danger">
-			Delete your profile
-		</button>
+		<button type="submit" class="btn btn-danger">Delete your Profile</button>
 	</form>
 @else
 	{{-- CREATE --}}
-	<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create your profile</a>
+	<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
 @endif
 
-{{-- if (NON ESISTE GIÀ UNA SPONSORSHIP) --}}
-	{{-- BUY A SPONSORSHIP --}}
-	<a class="btn btn-primary" href="{{ route('admin.sponsorships.index') }}">Buy a sponsorship</a>
-{{-- @endif --}}
+@if (!$is_active_sponsorship)
+	{{-- SPONSOR YOUR PROFILE --}}
+	<a class="btn btn-primary" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
+@else
+	{{-- CHECK YOUR SPONSORSHIP --}}
+	<a class="btn btn-primary" href="{{ route('my_sponsorship',$my_contract_id) }}">Check your Sponsorship</a>	
+@endif
+
+
+
 
 
 
