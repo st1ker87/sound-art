@@ -32,19 +32,21 @@
 }
 
 // sidebar fissa a sx nella dashboard
-.sidebar {
+.dash_row {
     height: 100%;
-    border-right: 0.5px solid $lightGray;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    .nav-item {
-        margin: 20px 0;
-        .nav-link {
-            font-size: 1.3em;
-        }
-        i {
-            font-size: 1.5em;
-
-            margin-right: 10px;
+    .sidebar {
+        border-right: 0.5px solid $lightGray;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        .nav-item {
+            margin: 20px 0;
+            .nav-link {
+                font-size: 1.3em;
+            }
+            i {
+                font-size: 1.5em;
+    
+                margin-right: 10px;
+            }
         }
     }
 }
@@ -63,6 +65,11 @@
             color: darkred;
             font-weight: 800;
         }
+    }
+    .rev_vote {
+        border-bottom: 1px solid lightgray;
+        padding: 5px 20px;
+
     }
 }
 

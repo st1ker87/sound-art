@@ -76,7 +76,7 @@
 
             
         <div class="container-fluid">
-            <div class="row">
+            <div class="row dash_row">
 
                 {{-- DA QUI NAVBAR COMUNE A SX --}}
 
