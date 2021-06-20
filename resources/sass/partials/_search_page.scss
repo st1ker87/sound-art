@@ -1,86 +1,36 @@
 
 //jumbo e testo
 .jumbotron-container-search {
-  position: relative;
-  width: 100%;
   height: 40vh;
   background-color: $primaryDarkBlue;
-  //se manteniamo questa foto bsogna ritoccarla con PS
-    .title-search {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100ch;
-      h1 {
-          font-size: 5rem;
-          color: $primaryWhite;
-      }
-      p {
-          font-size: 2em;
-          color: $primaryWhite;
-      }
-  }
-}
-
-//barra ricerca
-.my-color-search {
-  position: sticky;
-  top: 80px;
-  z-index: 50;
-  background-color: $primaryWhite;
-  border-bottom: 0.5px solid $lightGray;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  .search-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 8vh;
-    width: 100%;
-    .btn-filter {
-      padding: 0 20px;
-      line-height: 8vh;
-      height: 100%;
-      background-color: $primaryWhite;
-      border-right: 0.5px solid $lightGray;
-      cursor: pointer;
+  .jumbotron-title {
+    margin: 0 auto;
+    max-width: 60%;
+    text-align: center;
+    height: 100%;
+    h1 {
+        font-size: 4rem;
+        color: $primaryWhite;
     }
-    // dropdown
-    .filter-show {
-      .box {
-        select {
-          background-color: $primaryWhite;
-          color: #9da7ba;
-          padding: 12px;
-          border: none;
-          font-size: 1.3em;
-          overflow: hidden;
-          font-weight: bolder;
-          -webkit-appearance: button;
-          appearance: button;
-          outline: none;
-        }
-      }
-    }
-    .my-set {
-      padding: 0 20px;
-      border-right: 0.5px solid $lightGray;
-    }
-    h3 {
-      color: $lightGray;
-      line-height: 8vh;
-      font-size: 1.3em;
-      font-weight: bolder;
+    p {
+        font-size: 1.5rem;
+        color: $primaryWhite;
     }
   }
 }
-
+/* SEARCH BAR */
 .search-bar {
   padding: 20px 0;
   font-size: 1.1rem;
+  
+  .search {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   button {
     display: block;
-    width: 100%;
-    height: 100%;
     background-color: inherit;
     border: none;
     &:hover {
@@ -98,8 +48,43 @@
   [class*='pannel'] {
     position: relative;
   }
+  .categories-pannel {
+    position: relative;
+    .search {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 500;
+        ul {
+            padding: 0;
+            height: 18vh;
+            overflow: auto;
+            background-color: $primaryDarkBlue;
+            li {
+                line-height: 30px;
+                background-color: $primaryDarkBlue;
+                input {
+                  color: $primaryWhite;
+                  background-color: $primaryDarkBlue;
+                  &:hover {
+                    color: $primaryDarkBlue;
+                    background-color: $primaryWhite;
+                  }
+                }
+            }
+        }
+        .categories-cnt ,
+        .genres-cnt {
+            width: 200px;
+            padding: 20px;
+            background-color: $primaryDarkBlue;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+    }
+  }
   #submit-advanced-search {
-    width: 50%;
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -109,7 +94,42 @@
       color: $primaryWhite;
     }
   }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
   #number-of-views {
-    width: 70%;
+    width: 50%;
+  }
+}
+
+/* Gap */
+.gap {
+  background-color: #eee;
+}
+
+
+@media screen and (max-width: 540px) {
+  .jumbotron-container-search {
+    .jumbotron-title {
+      margin: 0 auto;
+      max-width: 60%;
+      text-align: center;
+      height: 100%;
+      h1 {
+          font-size: 2.5rem;
+          color: $primaryWhite;
+      }
+      p {
+          font-size: 1rem;
+          color: $primaryWhite;
+      }
+    }
   }
 }

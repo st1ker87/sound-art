@@ -64,11 +64,9 @@ else {
   <main>
     {{-- jumbo con testi --}}
     <section class="jumbotron-container-search">
-      <div class="container">
-        <div class="title-search">
-          <h1>Find your Artist</h1>
-          <p>Migliorare il testo QUI</p>
-        </div>
+      <div class="jumbotron-title flex">
+        <h1>Find your Artist</h1>
+        <p>Mix & Mastering Engineers, Singers, Recording Studios & Session Musicians for Hire</p>
       </div>
     </section>
 
@@ -78,18 +76,19 @@ else {
         <div class="row">
 
           {{-- FILTER --}}
-          <div class="col-lg-2 col-md-4">
+          <div class="col-lg-1 col-md-12 flex border-right">
             <span>Filters</span>
           </div>
 
           {{-- CATEGORY --}}
-          <div class="col-lg-2 col-md-4">
-            <div class="categories-pannel">
-              <button id="prova" v-on:click="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
+          <div class="col-lg-2 col-md-6 border-right">
+            <div class="categories-pannel  flex">
+              <label for="category-button">Category:</label>
+              <button id="category-button" v-on:click="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showCategoryPannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-on:click="setCategory($event.target.value)" type="button" value="-- No filter --"></li>
+                      <li><input v-if="btnCategories != '-- No filter --'" v-on:click="setCategory($event.target.value)" type="button" value="-- No filter --"></li>
                         @foreach($categories as $category)
                         <li>
                             <input v-on:click="setCategory($event.target.value)" type="button" value="{{$category->name}}">
@@ -102,13 +101,14 @@ else {
           </div>
 
           {{-- GENRE --}}
-          <div class="col-lg-2 col-md-4">
-            <div class="categories-pannel">
-              <button v-on:click="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
+          <div class="col-lg-2 col-md-6 border-right">
+            <div class="categories-pannel flex">
+              <label for="genre-button">Genre:</label>
+              <button id="genre-button" v-on:click="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showGenrePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-on:click="setGenre($event.target.value)" type="button" value="-- No filter --"></li>
+                      <li><input v-if="btnGeneres != '-- No filter --'" v-on:click="setGenre($event.target.value)" type="button" value="-- No filter --"></li>
                         @foreach($genres as $genre)
                         <li>
                             <input v-on:click="setGenre($event.target.value)" type="button" value="{{$genre->name}}">
@@ -121,13 +121,14 @@ else {
           </div>
 
           {{-- VOTES --}}
-          <div class="col-lg-2 col-md-4">
-            <div class="categories-pannel">
-              <button v-on:click="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
+          <div class="col-lg-2 col-md-6 border-right">
+            <div class="categories-pannel flex">
+              <label for="votes-button">Votes:</label>
+              <button id="votes-button" v-on:click="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showVotePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-on:click="setVote($event.target.value)" type="button" value="-- No filter --"></li>
+                      <li><input v-if="btnVotes != '-- No filter --'" v-on:click="setVote($event.target.value)" type="button" value="-- No filter --"></li>
                       @for($i = 1; $i <= 5; $i++)
                         <li>
                           <input v-on:click="setVote($event.target.value)" type="button" value="{{$i}}">
@@ -140,12 +141,13 @@ else {
           </div>
 
           {{-- REVIEWS --}}
-          <div class="col-lg-2 col-md-4">
-            <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="N views">
+          <div class="col-lg-2 col-md-6 flex border-right">
+            <label for="number-of-views">Reviews:</label>
+            <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="number">
           </div>
 
           {{-- SUBMIT --}}
-          <div class="col-lg-2 col-md-4">
+          <div class="col-lg-1 col-md-12 flex">
             <button id="submit-advanced-search" v-on:click="filterCall">Submit</button>
           </div>
         </div>
@@ -211,6 +213,9 @@ else {
           </div>
         </div>
       </div>
+    </section>
+    <section class="gap">
+      
     </section>
   </main>
 

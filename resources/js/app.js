@@ -146,26 +146,26 @@ const app = new Vue({
 				if(search_from_home_key === 'category') {
 					this.btnCategories = search_from_home_value;
 					this.category_selected = search_from_home_value;
-					this.btnGeneres = 'Genre';
-					this.btnVotes = 'Votes';
+					this.btnGeneres = '-- No filter --';
+					this.btnVotes = '-- No filter --';
 				}
 				else if (search_from_home_key === 'genre') {
 					this.btnGeneres = search_from_home_value;
 					this.genre_selected = search_from_home_value;
-					this.btnCategories = 'Categories';
-					this.btnVotes = 'Votes';
+					this.btnCategories = '-- No filter --';
+					this.btnVotes = '-- No filter --';
 				}
 				else {
-					this.btnCategories = 'Categories';
-					this.btnGeneres = 'Genres';
-					this.btnVotes = 'Vote';
+					this.btnCategories = '-- No filter --';
+					this.btnGeneres = '-- No filter --';
+					this.btnVotes = '-- No filter --';
 				}
 				this.filterCall();
 			}
 			else {
-				this.btnCategories = 'Categories';
-				this.btnGeneres = 'Genres';
-				this.btnVotes = 'Vote';
+				this.btnCategories = '-- No filter --';
+				this.btnGeneres = '-- No filter --';
+				this.btnVotes = '-- No filter --';
 				this.filterCall();
 			}
 		}
