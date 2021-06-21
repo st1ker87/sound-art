@@ -34,8 +34,7 @@
 
 
 {{-- FEEDBACK MESSAGES --}}
-<div class="d-flex justify-content-between align-items-center">
-	
+<div class="d-flex justify-content-between align-items-center">	
 	{{-- redirect with() [success] --}}
 	@if (session()->has('status'))
 	<div class="alert alert-success">
@@ -58,7 +57,6 @@
 			</ul>
 		</div>
 	@endif
-
 </div>
 
 

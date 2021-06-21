@@ -72,7 +72,20 @@
         </div>
       </div>
     </div>
-    <section class="container main-show">
+
+	{{-- FEEDBACK MESSAGES --}}
+	{{-- redirect with() [success] --}}
+	@if (session()->has('status'))
+		<section class="container main-show">
+			<div class="row">
+				<div class="alert alert-success">
+					{{ session()->get('status') }}
+				</div>
+			</div>
+		</section>
+	@endif
+
+	<section class="container main-show">
       <div class="row">
         <div id="about_me" class="description">
           @if($profile->bio_text1 && $profile->bio_text2)
