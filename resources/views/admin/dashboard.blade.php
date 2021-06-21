@@ -36,19 +36,19 @@
 {{-- FEEDBACK MESSAGES --}}
 <div class="d-flex justify-content-between align-items-center">
 	
-	{{-- REDIRECT --}}
-	@if (session('status'))
-		<div class="alert alert-success">
-			{{ session('status') }}
-		</div>
+	{{-- redirect with (success) --}}
+	@if (session()->has('status'))
+	<div class="alert alert-success">
+		{{ session()->get('status') }}
+	</div>
 	@endif
-
-	{{-- TRNSACTION RESULT MESSAGE --}}
+	{{-- transaction result (success) --}}
 	@if (session()->has('transaction_feedbak'))
 		<div class="alert alert-success">
 			{{ session()->get('transaction_feedbak') }}
 		</div>
 	@endif
+	{{-- redirect withErrors (fail) --}}
 	@if(count($errors) > 0)
 		<div class="alert alert-danger">
 			<ul>
@@ -101,7 +101,7 @@
 	<a class="btn btn-primary" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
 @else
 	{{-- CHECK YOUR SPONSORSHIP --}}
-	<a class="btn btn-primary" href="{{ route('my_sponsorships',$my_contract_id) }}">Check your Sponsorship</a>	
+	<a class="btn btn-primary" href="{{ route('my_sponsorships',$my_contract_id) }}">Check your Sponsorships</a>	
 @endif
 
 

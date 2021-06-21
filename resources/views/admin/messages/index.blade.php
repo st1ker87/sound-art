@@ -28,6 +28,29 @@
 			<div class="d-flex justify-content-between align-items-center">
             	<h2>Your message box</h2>
 			</div>
+
+			{{-- FEEDBACK MESSAGES --}}
+			<div class="d-flex justify-content-between align-items-center">
+				
+				{{-- REDIRECT --}}
+				@if (session()->has('status'))
+				<div class="alert alert-success">
+					{{ session()->get('status') }}
+				</div>
+				@endif
+				@if(count($errors) > 0)
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
+		
+
+			</div>
+
             @foreach ($my_user->messages as $message)
                 <div class="msg_box">
                     <div class="msg_head">
@@ -40,6 +63,14 @@
                     <div class="msg_content">
                         <span class="msg_obj">{{ $message->msg_text}}</span>
                     </div>
+
+					{{-- DELETE --}}
+					<form class="d-inline-block" action="{{ route('admin.messages.destroy',$message->id) }}" method="post">
+						@csrf
+						@method('DELETE')
+						<button type="submit" class="btn btn-danger">Delete</button>
+					</form>
+
                 </div>
             @endforeach
         </div>

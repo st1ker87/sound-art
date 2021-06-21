@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Message;
@@ -70,6 +71,31 @@ class MessageController extends Controller
 		return view('admin.messages.show',$data);
     }
 
+    /**
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * %            DESTROY            %
+	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 * 
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id) // originale: destroy(Message $message)
+    {
+		// il messaggio specifico in base all'id che mi hanno passato
+		$message = Message::find($id);
+
+		// onyly auth user can delete this message
+		$user = Auth::id();
+		if ($user != $message->user_id)
+			return redirect()->route('admin.messages.index')->withErrors('You cannot delete this message!');
+
+        // deleting message on DB
+		$message->delete();
+
+		return redirect()->route('admin.messages.index')->with('status','Message deleted');	
+    }
 
 
 
@@ -131,14 +157,4 @@ class MessageController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Message $message)
-    {
-        //
-    }
 }

@@ -117,8 +117,8 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 */
 		Route::resource('/messages', MessageController::class)->names([
 			'index'		=> 'admin.messages.index',		// ! GET	/admin/messages				return view('admin.messages.index');
-			'show'		=> 'admin.messages.show',		// ! GET	/admin/messages/{slug}		return view('admin.messages.show');
-			'destroy' 	=> 'admin.messages.destroy',	// ! DEL	/admin/messages/{slug}		return redirect()->route('dashboard')->with('status','Message deleted');
+			// 'show'		=> 'admin.messages.show',	// ! GET	/admin/messages/{slug}		return view('admin.messages.show');
+			'destroy' 	=> 'admin.messages.destroy',	// ! DEL	/admin/messages/{slug}		return redirect()->route('admin.messages.index')->with('status','Message deleted');
 		]);
 
 		/**

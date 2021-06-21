@@ -42,7 +42,7 @@ class SponsorshipController extends Controller
 			if ($date_start < $now && $date_end >= $now) $is_active_sponsorship = true;
 		}
 		if ($is_active_sponsorship)
-			return redirect()->route('dashboard')->with('status','A Sponsorship is already active!');
+			return redirect()->route('dashboard')->withErrors('A Sponsorship is already active!');
 
 		$data = [
 			'users'			=> User::all(),
