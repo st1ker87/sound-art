@@ -164,7 +164,17 @@ const app = new Vue({
 				this.btnVotes = '-- No filter --';
 				this.filterCall();
 			}
+		},
+
+		addEventClickListener() {
+			document.addEventListener('click', () => {
+				this.searchHome = false;
+				this.showCategoryPannel = false;
+				this.showGenrePannel = false;
+				this.showVotePannel = false;
+			});
 		}
+
 	},
 	mounted() {
 
@@ -173,11 +183,13 @@ const app = new Vue({
 		if (ulr_path == '/') {
 			this.onlySponsorship = true,
 			this.searchDefault();
+			this.addEventClickListener();
 		}	
 		if (ulr_path == '/profiles/search') {
 			this.onlySponsorship = false,
 			this.searchDefault();
-		}	
+			this.addEventClickListener();
+		}
 
 	},
 	created() {
