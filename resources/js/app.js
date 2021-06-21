@@ -168,8 +168,15 @@ const app = new Vue({
 
 		// console.log('window.location.pathname: ',window.location.pathname);
 		var ulr_path = window.location.pathname;
-		if (ulr_path == '/' || ulr_path == '/search') this.searchDefault();	
-
+		if (ulr_path == '/' || ulr_path == '/search') {
+			this.searchDefault();
+			document.addEventListener('click', () =>{
+				this.searchHome = false;
+				this.showCategoryPannel = false;
+				this.showGenrePannel = false;
+				this.showVotePannel = false;
+			});
+		}
 	},
 	created() {
 			

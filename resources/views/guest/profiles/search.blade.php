@@ -84,7 +84,7 @@ else {
           <div class="col-lg-2 col-md-6 border-right">
             <div class="categories-pannel  flex">
               <label for="category-button">Category:</label>
-              <button id="category-button" v-on:click="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
+              <button id="category-button" v-on:click.stop="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showCategoryPannel" class="search">
                 <div class="categories-cnt">
                     <ul>
@@ -104,7 +104,7 @@ else {
           <div class="col-lg-2 col-md-6 border-right">
             <div class="categories-pannel flex">
               <label for="genre-button">Genre:</label>
-              <button id="genre-button" v-on:click="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
+              <button id="genre-button" v-on:click.stop="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showGenrePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
@@ -124,7 +124,7 @@ else {
           <div class="col-lg-2 col-md-6 border-right">
             <div class="categories-pannel flex">
               <label for="votes-button">Votes:</label>
-              <button id="votes-button" v-on:click="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
+              <button id="votes-button" v-on:click.stop="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
               <div v-if="showVotePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
