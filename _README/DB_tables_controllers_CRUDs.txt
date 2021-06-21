@@ -255,7 +255,7 @@ php artisan make:controller Admin/ContractController
 ----------------------------------------------------------------------
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-%                SEED DATABASE (no ramo sponsorship)                 %
+%                            SEED DATABASE                           %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
 ------------------------------------------ popolamento singola tabella
@@ -281,6 +281,28 @@ php artisan make:controller Admin/ContractController
 4. controllo DatabaseSeeder.php con 10 seed base (no ramo sponsorhip)
 5. composer dump-autoload (se serve)
 6. php artisan db:seed
+
+------------------------------------- seed INTERO database + BRAINTREE
+
+1. svuotamento db_sound_art (scatola rimane)
+2. aggiornamento /migrations/ >> /migrations_backup/ (14 file)
+3. aggiornamento /seeds/ >> /seeds_backup/ (13 file, di cui uno inutile "DRAFT_")
+4. php artisan migrate
+5. composer dump-autoload
+6. php artisan db:seed
+7. aggiornamento .env, aggiunta righe
+	BT_ENVIRONMENT=sandbox
+	BT_MERCHANT_ID=ct6s84gcw9cmkv8y
+	BT_PUBLIC_KEY=6kb2fp2f64c886gk
+	BT_PRIVATE_KEY=6c65a8532a3d982fe758048074e17dcf
+9. aggiornamento config/services.php, aggiunta righe (occhio alle parentesi)
+    'braintree' => [
+		'environment' => env('BT_ENVIRONMENT'),
+		'merchantId' => env('BT_MERCHANT_ID'),
+		'publicKey' => env('BT_PUBLIC_KEY'),
+		'privateKey' => env('BT_PRIVATE_KEY'),		
+    ],
+10. composer require braintree/braintree_php
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %

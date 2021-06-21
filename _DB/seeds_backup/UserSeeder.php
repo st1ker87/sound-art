@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
 		// 	'name', 'surname', 'email', 'password',
 		// ];
 
-		$number_of_users_to_be_created = 10;
+		$number_of_users_to_be_created = 50;
 
 		$names = ['Lorenzo','Enrico','Francesco','Fabrizio','Antonello','Paola','Elisa','Gianna','Vasco','Mina','Ornella','Loredana','Patty','Marco Antonio'];
 		$surnames = ['De Andre','Ruggeri','Guccini','Cherubini','Venditti','De Gregori','Turci','Pausini','Nannini','Rossi'];
