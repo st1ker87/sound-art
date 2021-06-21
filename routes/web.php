@@ -129,7 +129,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 */
 		Route::resource('/reviews', ReviewController::class)->names([
 			'index'		=> 'admin.reviews.index',		// ! GET	/admin/reviews				return view('admin.reviews.index');
-			'show'		=> 'admin.reviews.show',		// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
+			// 'show'		=> 'admin.reviews.show',	// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
 		]);
 
 		/**

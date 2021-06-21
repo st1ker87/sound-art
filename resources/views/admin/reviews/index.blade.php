@@ -29,6 +29,7 @@
 			<div class="d-flex justify-content-center align-items-center">
             	<h2>Your reviews</h2>
 			</div>
+			
             @foreach ($my_user->reviews as $review)
                 <div class="msg_box">
                     <div class="msg_head">
