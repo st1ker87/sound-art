@@ -70,7 +70,7 @@
 	$my_profile		= $my_user->profile;
 	$my_contracts	= $my_user->contracts;
 	$is_active_sponsorship = false;
-	$my_sponsorship_id = null;
+	$my_contract_id = null;
 	foreach ($my_contracts as $my_contract) {
 		$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
 		$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);

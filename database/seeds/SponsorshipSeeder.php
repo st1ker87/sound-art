@@ -20,21 +20,21 @@ class SponsorshipSeeder extends Seeder
 		$products = [
 			[
 				'name' 			=> 'silver sponsorship',
-				'description' 	=> 'Your Profile is highlighted in our Home Page for 24 hours.',
+				'description' 	=> 'Your Profile is highlighted in our Home Page for 24 hours',
 				'hour_duration' => 24,
 				'price' 		=> 2.99,
 				'is_active' 	=> 1
 			],
 			[
 				'name' 			=> 'gold sponsorship',
-				'description' 	=> 'Your Profile is highlighted in our Home Page for 72 hours.',
+				'description' 	=> 'Your Profile is highlighted in our Home Page for 72 hours',
 				'hour_duration' => 72,
 				'price' 		=> 5.99,
 				'is_active' 	=> 1
 			],
 			[
 				'name' 			=> 'platinum sponsorship',
-				'description' 	=> 'Your Profile is highlighted in our Home Page for 144 hours.',
+				'description' 	=> 'Your Profile is highlighted in our Home Page for 144 hours',
 				'hour_duration' => 144,
 				'price' 		=> 9.99,
 				'is_active' 	=> 1

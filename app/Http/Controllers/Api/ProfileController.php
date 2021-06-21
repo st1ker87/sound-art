@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Profile;
 
+use DateTime;
+
 class ProfileController extends Controller
 {
 	/**
@@ -37,6 +39,7 @@ class ProfileController extends Controller
 			// $profile_messages 	= $profile->user->messages;
 			$profile_reviews 	= $profile->user->reviews;
 			// $profile_contracts 	= $profile->user->contracts;
+			$profile_contracts 	= $profile->user->contracts;
 
 			// adding categories, genres, offers >>> array of strings
 			foreach ($profile_categories as $category)	$iper_profile['categories'][]	= $category->name;
@@ -60,7 +63,23 @@ class ProfileController extends Controller
 			}
 			$iper_profile['rev_count'] = count($profile_reviews);
 
-			// less properties
+			// sponsorship flags
+			date_default_timezone_set('Europe/Rome');
+			$is_active_sponsorship = false;
+			$active_contract_id = null;
+			foreach ($profile_contracts as $contract) {
+				$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
+				$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_end);
+				$now 		= new DateTime();
+				if ($date_start < $now && $date_end >= $now) {
+					$is_active_sponsorship = true;
+					$active_contract_id = $contract->id;
+				}
+			}
+			$iper_profile['is_active_sponsorship'] = $is_active_sponsorship;
+			$iper_profile['active_contract_id'] = $active_contract_id;
+
+			// less transmitted properties
 			$unset_properties = [
 				'work_address','work_address_gps','phone',
 				'bio_text1','bio_text2','bio_text3','video_url','audio_url','public',
@@ -102,10 +121,11 @@ class ProfileController extends Controller
 		// filtered iper profile array shuffle
 		shuffle($filtered_iper_profiles);
 
-		// ! SPONSORSHIP
-		// assegnare bandiera
+		// ! SPONSORSHIP IPER PROFILE SORT
 		// ordinare prima quelli con bandiera
-		// il front end non deve fare nulla!
+		// 
+
+
 
 		return response()->json([
 			'success' => true,
