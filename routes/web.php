@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
  * # HOME = SIMPLE SEARCH #
  * 
  * home page con ricerca semplice
+ * 
  * http://localhost:8000/
  */
 Route::get('/', 'HomeController@index')->name('home');	// !  GET	/	return view('home');
@@ -29,8 +30,12 @@ Route::get('/', 'HomeController@index')->name('home');	// !  GET	/	return view('
 /**
  * # PROFILES = ADVANCED SEARCH #
  * 
- * Profile CRUD: parte guest (index,show) TUTTI I PROFILI
+ * Profile CRUD: parte guest 
+ * 		ELENCO E DETTAGLIO DI TUTTI I PROFILI (index,show)
+ * 
  * http://localhost:8000/search
+ * 
+ * * /search/{slug} : profile slug
  * 
  * !---------------------------------------!
  * !                                       !
@@ -57,8 +62,11 @@ Route::prefix('profiles')   // prefisso URI raggruppamento sezione /search/...
 /**
  * # MESSAGES #
  * 
- * Message CRUD: parte guest (create,store)
+ * Message CRUD: parte guest 
+ * 		CREA MESSAGGIO (create,store)
+ * 
  * http://localhost:8000/messages
+ * 
  * * .../{slug} : slug of user recipient
  * * .../{id} 	: id of user recipient
  */
@@ -68,8 +76,11 @@ Route::post('/messages/{id}', 			'MessageController@store')->name('messages_stor
 /**
  * # REVIEWS #
  * 
- * Review CRUD: parte guest (create,store)
+ * Review CRUD: parte guest 
+ * 		CREA REVIEW (create,store)
+ * 
  * http://localhost:8000/reviews
+ * 
  * * .../{slug} : slug of user recipient
  * * .../{id} 	: id of user recipient
  */
@@ -104,8 +115,12 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		/**
 		 * # PROFILES #
 		 * 
-		 * Profile CRUD: parte admin (create,store,edit,update,destroy) SOLO IL PROPRIO PROFILE
+		 * Profile CRUD: parte admin 
+		 * 		GESTIONE COMPLETA PROPRIO PROFILO (create,store,edit,update,destroy)
+		 * 
 		 * http://localhost:8000/admin/profiles
+		 * 
+		 * * {slug} : profile slug
 		 */
 		Route::resource('/profiles', ProfileController::class)->names([
 			'index'		=> 'admin.profiles.index',		// ! GET	/admin/profiles				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
@@ -120,59 +135,48 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		/**
 		 * # MESSAGES #
 		 * 
-		 * Message CRUD: parte admin (index,show,destroy) MESSAGGI RICEVUTI
+		 * Message CRUD: parte admin 
+		 * 		LISTA MESSAGGI RICEVUTI (index)
+		 * 		CANCELLA MESSAGGIO (destroy)
+		 * 
 		 * http://localhost:8000/admin/messages
 		 */
-		Route::resource('/messages', MessageController::class)->names([
-			'index'		=> 'admin.messages.index',		// ! GET	/admin/messages				return view('admin.messages.index');
-			// 'show'	=> 'admin.messages.show',		// ! GET	/admin/messages/{slug}		return view('admin.messages.show');
-			'destroy' 	=> 'admin.messages.destroy',	// ! DEL	/admin/messages/{slug}		return redirect()->route('admin.messages.index')->with('status','Message deleted');
-		]);
+		Route::get('/messages', 			'MessageController@index')->name('admin.messages.index');		// ! GET /admin/messages		return view('admin.messages.index');
+		Route::delete('/messages/{slug}',	'MessageController@destroy')->name('admin.messages.destroy');	// ! DEL /admin/messages/{slug}	return redirect()->route('admin.messages.index')->with('status','Message deleted');
 
 		/**
 		 * # REVIEWS #
 		 * 
-		 * Review CRUD: parte admin (index,show) RECENSIONI RICEVUTE 
+		 * Review CRUD: parte admin 
+		 * 		LISTA RECENSIONI RICEVUTE (index)
+		 * 
 		 * http://localhost:8000/admin/reviews
 		 */
-		Route::resource('/reviews', ReviewController::class)->names([
-			'index'		=> 'admin.reviews.index',		// ! GET	/admin/reviews				return view('admin.reviews.index');
-			// 'show'	=> 'admin.reviews.show',		// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
-		]);
+		Route::get('/reviews', 'ReviewController@index')->name('admin.reviews.index'); // ! GET	/admin/reviews	return view('admin.reviews.index');
 
 		/**
 		 * # CONTRACTS #
 		 * 
-		 * Braintree process payment (index,create,store) and checkout (store)
+		 * Contract CRUD: solo admin
+		 * 		LISTA STORICO SPONSORSHIP (index)
+		 * 		BRAINTREE PAYMENT PROCESS: FORM (create) + CHECKOUT (store)
+		 * 
 		 * http://localhost:8000/admin/sponsorship
 		 * * /sponsorship/create/{id} : chosen sponsorship_id
 		 */
-		Route::get('/sponsorship/list', 	 	'ContractController@index')->name('my_sponsorships'); // ! GET	/admin/sponsorship/list			return view('admin.contracts.index');
-		Route::get('/sponsorship/create/{id}', 	'ContractController@create')->name('sponsorship');	// ! GET	/admin/sponsorship/create/{id}	return view('admin.contracts.create');
-		Route::post('/sponsorship/checkout', 	'ContractController@store')->name('checkout'); 		// ! POST	/admin/sponsorship/checkout		DIPENDE !
+		Route::get('/sponsorship/list', 	 	'ContractController@index')->name('my_sponsorships');	// ! GET	/admin/sponsorship/list			return view('admin.contracts.index');
+		Route::get('/sponsorship/create/{id}', 	'ContractController@create')->name('sponsorship');		// ! GET	/admin/sponsorship/create/{id}	return view('admin.contracts.create');
+		Route::post('/sponsorship/checkout', 	'ContractController@store')->name('checkout'); 			// ! POST	/admin/sponsorship/checkout		DIPENDE DALLA TRANSAZIONE !
 
 		/**
 		 * # SPONSORSHIPS #
 		 * 
-		 * Sponsorship CRUD: solo admin (index,show) PRODOTTI IN VENDITA 
+		 * Sponsorship CRUD: solo admin
+		 * 		LISTA PRODOTTI IN VENDITA (index)
+		 * 
 		 * http://localhost:8000/admin/sponsorship
 		 */
-		Route::resource('/sponsorships', SponsorshipController::class)->names([
-			'index'		=> 'admin.sponsorships.index',	// ! GET	/admin/sponsorships			return view('admin.sponsorships.index');
-			'show'		=> 'admin.sponsorships.show',	// ! GET	/admin/sponsorships/{id}	return view('admin.sponsorships.show');
-		]);
-
-
-
-
-		
-		/**
-		 * API con token
-		 * pannello generazione token utente loggato
-		 * generazione token 
-		 */
-		// Route::get('/profile', 'HomeController@profile')->name('admin-profile');
-		// Route::post('/profile/generate-token', 'HomeController@generateToken')->name('admin.generate_token');
+		Route::get('/sponsorship', 'SponsorshipController@index')->name('admin.sponsorships.index'); 	// ! GET	/admin/sponsorships		return view('admin.sponsorships.index');
 
 	});
 
@@ -180,7 +184,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 
 
 // ############################### 
-// #         DEV  ROUTES         # 
+// #          DEV ROUTES         # 
 // ############################### 
 
 Route::get('/test', 'HomeController@test')->name('test');  		// ! SOLO PER TESTARE CODICE 
