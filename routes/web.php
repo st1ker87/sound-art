@@ -135,10 +135,10 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		/**
 		 * # CONTRACTS #
 		 * 
-		 * Braintree process payment (create) and checkout (store)
+		 * Braintree process payment (index,create,store) and checkout (store)
 		 * http://localhost:8000/admin/sponsorship
 		 */
-		Route::get('/sponsorship/{id}', 	 	'ContractController@show')->name('my_sponsorship'); // ! GET	/admin/sponsorship/{id}			return view('admin.contracts.show');
+		Route::get('/sponsorship/{id}', 	 	'ContractController@index')->name('my_sponsorships'); // ! GET	/admin/sponsorship/{id}			return view('admin.contracts.index');
 		Route::get('/sponsorship/create/{id}', 	'ContractController@create')->name('sponsorship');	// ! GET	/admin/sponsorship/create/{id}	return view('admin.contracts.create');
 		Route::post('/sponsorship/checkout', 	'ContractController@store')->name('checkout'); 		// ! POST	/admin/sponsorship/checkout		DIPENDE !
 

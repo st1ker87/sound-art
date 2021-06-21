@@ -23,7 +23,7 @@ class ContractController extends Controller
 {
     /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	 * %             SHOW              %
+	 * %             INDEX             %
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	 * 
      * Display the specified resource.
@@ -31,7 +31,7 @@ class ContractController extends Controller
      * @param  \App\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function show($id) // originale: show(Contract $contract)
+    public function index($id) // originale: show(Contract $contract)
     {
 
 		// $id del mio contract
@@ -52,7 +52,7 @@ class ContractController extends Controller
 			'sponsorships' 	=> Sponsorship::all(),
 		];
 
-		return view('admin.contracts.show',$data);
+		return view('admin.contracts.index',$data);
     }
 
 	/**
@@ -214,7 +214,7 @@ class ContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function show()
     {
         //
     }

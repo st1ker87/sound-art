@@ -101,7 +101,7 @@
 	<a class="btn btn-primary" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
 @else
 	{{-- CHECK YOUR SPONSORSHIP --}}
-	<a class="btn btn-primary" href="{{ route('my_sponsorship',$my_contract_id) }}">Check your Sponsorship</a>	
+	<a class="btn btn-primary" href="{{ route('my_sponsorships',$my_contract_id) }}">Check your Sponsorship</a>	
 @endif
 
 

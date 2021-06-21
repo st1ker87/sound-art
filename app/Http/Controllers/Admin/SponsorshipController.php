@@ -90,7 +90,7 @@ class SponsorshipController extends Controller
 			abort(404);
 		}
 
-		return view('admin.sponsorships.show',$data);
+		return view('admin.sponsorships.DELETE_show',$data);
     }
 
 

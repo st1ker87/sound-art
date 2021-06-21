@@ -305,6 +305,12 @@ php artisan make:controller Admin/ContractController
 10. composer require braintree/braintree_php
 
 
+
+git fetch --all
+git reset --hard origin/master
+
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 %                           CRUD PROGRESS                            %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
