@@ -60,9 +60,10 @@ Route::prefix('profiles')   // prefisso URI raggruppamento sezione /search/...
  * Message CRUD: parte guest (create,store)
  * http://localhost:8000/messages
  * * .../{slug} : slug of user recipient
+ * * .../{id} 	: id of user recipient
  */
 Route::get('/messages/create/{slug}',	'MessageController@create')->name('messages_create');	// ! GET	/messages/create/{id}	return view('guest.messages.create');
-Route::post('/messages/{slug}', 		'MessageController@store')->name('messages_store'); 	// ! GET	/messages/{id}			return redirect()->route('profiles.show')->with('status','Message sent');
+Route::post('/messages/{id}', 			'MessageController@store')->name('messages_store'); 	// ! GET	/messages/{id}			return redirect()->route('profiles.show')->with('status','Message sent');
 
 /**
  * # REVIEWS #
@@ -70,9 +71,10 @@ Route::post('/messages/{slug}', 		'MessageController@store')->name('messages_sto
  * Review CRUD: parte guest (create,store)
  * http://localhost:8000/reviews
  * * .../{slug} : slug of user recipient
+ * * .../{id} 	: id of user recipient
  */
 Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');		// ! GET	/reviews/create/{id}	return view('guest.reviews.create');
-Route::post('/reviews/{slug}',			'ReviewController@store')->name('reviews_store');		// ! GET	/reviews/{id}			return redirect()->route('profiles.show')->with('status','Review created');
+Route::post('/reviews/{id}',			'ReviewController@store')->name('reviews_store');		// ! GET	/reviews/{id}			return redirect()->route('profiles.show')->with('status','Review created');
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 

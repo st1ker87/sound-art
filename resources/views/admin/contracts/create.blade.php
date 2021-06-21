@@ -28,7 +28,7 @@
 @section('content')
 
 {{----------------------------------------------------------- 
-	AGGIUNTO IN admin/dashboard.blade.php
+	AGGIUNTO IN layouts/dashboard.blade.php
 
 	@if (Request::is('admin/sponsorship/*'))
 		conflitto vuejs nel form di braintree!
