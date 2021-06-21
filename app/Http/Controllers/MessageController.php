@@ -14,16 +14,6 @@ use App\Review;
 class MessageController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	 * %            CREATE             %
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,6 +52,62 @@ class MessageController extends Controller
 		// metto il messaaggio nel DB
 
 		return redirect()->route('profiles.show')->with('status','Message sent');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
     /**
