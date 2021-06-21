@@ -51,8 +51,8 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
+<section class="container main-show">
+    <div class="row">
         <div class="col-12">
 
             <div class="d-flex justify-content-between align-items-center">
@@ -99,15 +99,15 @@
 
 				<div class="form-group">
 					<label>Subject <span class="required">*</span></label>
-					<input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="Insert your subject" value="{{ old('subject') }}" required>
-					@error('work_address')
+					<input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="You ask for..." value="{{ old('subject') }}" required>
+					@error('subject')
 						<div class="invalid-feedback">{{ $message }}</div>
 					@enderror
 				</div>
                 <div class="form-group">
                     <label>Text <span class="required">*</span></label>
                     <textarea name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your message please..." required>{{ old('text') }}</textarea>
-                    @error('bio_text1')
+                    @error('text')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -120,7 +120,7 @@
 			
         </div>
     </div>
-</div>
+</section>
 
 
 

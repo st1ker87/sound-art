@@ -24,7 +24,7 @@ class MessageController extends Controller
      */
     public function create($slug)
     {
-		// recipient user has $slug
+		// recipient: from profile $slug to $user
 		$profile = Profile::where('slug',$slug)->first();
 		$user 	 = User::where('id',$profile->user_id)->first();
 
@@ -54,8 +54,13 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+		$form_data = $request->All();
+		// il destinatario del messaggio è user_id
+		@dump($id);
+		@dd($form_data);
+
 		// metto il messaaggio nel DB
 
 		return redirect()->route('profiles.show')->with('status','Message sent');
