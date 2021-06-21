@@ -31,20 +31,43 @@ Route::get('/', 'HomeController@index')->name('home');	// !  GET	/	return view('
  * 
  * Profile CRUD: parte guest (index,show) TUTTI I PROFILI
  * http://localhost:8000/search
+ * 
+ * !---------------------------------------!
+ * !                                       !
+ * !           /profiles/search            !
+ * !       search & search_from_home       !
+ * !     THIS URL IS IN Vue.js mount()     !
+ * !                                       !
+ * !---------------------------------------!
  */
-Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
+Route::prefix('profiles')   	// prefisso URI raggruppamento sezione /search/...
 	->group(function () {	// rotte specifiche search = profiles
 
 		// atterraggio diretto senza filtri di ricerca semplice	[come fosse ->name('profiles.index')]
-		Route::get('/', 'ProfileController@search')->name('search'); 						// !  GET	/search			return view('guest.profiles.search');
+		Route::get('/search', 'ProfileController@search')->name('search'); 						// !  GET	/profiles/search		return view('guest.profiles.search');
 
 		// atterraggio da home page con ricerca semplice 
-		Route::post('/', 'ProfileController@search_from_home')->name('search_from_home');	// ! POST	/search			return view('guest.profiles.search');
+		Route::post('/search', 'ProfileController@search_from_home')->name('search_from_home');	// ! POST	/profiles/search		return view('guest.profiles.search');
 
 		// dettaglio profilo (di chiunque per chiunque)
-		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show'); 			// ! GET	/search/{slug}	return view('guest.profiles.show');
+		Route::get('/search/{slug}', 'ProfileController@show')->name('profiles.show'); 			// ! GET	/profiles/search/{slug}	return view('guest.profiles.show');
 
 	});
+
+// Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
+// 	->group(function () {	// rotte specifiche search = profiles
+
+// 		// atterraggio diretto senza filtri di ricerca semplice	[come fosse ->name('profiles.index')]
+// 		Route::get('/', 'ProfileController@search')->name('search'); 						// !  GET	/search			return view('guest.profiles.search');
+
+// 		// atterraggio da home page con ricerca semplice 
+// 		Route::post('/', 'ProfileController@search_from_home')->name('search_from_home');	// ! POST	/search			return view('guest.profiles.search');
+
+// 		// dettaglio profilo (di chiunque per chiunque)
+// 		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show'); 			// ! GET	/search/{slug}	return view('guest.profiles.show');
+
+// 	});
+
 
 /**
  * # MESSAGES #

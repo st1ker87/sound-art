@@ -14,16 +14,6 @@ use App\Message;
 class ReviewController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	 * %            CREATE             %
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,6 +52,50 @@ class ReviewController extends Controller
 		// metto la review nel DB
 
 		return redirect()->route('profiles.show')->with('status','Review sent');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
     /**

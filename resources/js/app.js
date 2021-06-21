@@ -168,7 +168,7 @@ const app = new Vue({
 
 		// console.log('window.location.pathname: ',window.location.pathname);
 		var ulr_path = window.location.pathname;
-		if (ulr_path == '/' || ulr_path == '/search') {
+		if (ulr_path == '/' || ulr_path == '/profiles/search') {
 			this.searchDefault();
 			document.addEventListener('click', () =>{
 				this.searchHome = false;
