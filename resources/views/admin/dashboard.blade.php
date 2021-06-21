@@ -36,19 +36,19 @@
 {{-- FEEDBACK MESSAGES --}}
 <div class="d-flex justify-content-between align-items-center">
 	
-	{{-- redirect with (success) --}}
+	{{-- redirect with() [success] --}}
 	@if (session()->has('status'))
 	<div class="alert alert-success">
 		{{ session()->get('status') }}
 	</div>
 	@endif
-	{{-- transaction result (success) --}}
+	{{-- transaction result with() [success] --}}
 	@if (session()->has('transaction_feedbak'))
 		<div class="alert alert-success">
 			{{ session()->get('transaction_feedbak') }}
 		</div>
 	@endif
-	{{-- redirect withErrors (fail) --}}
+	{{-- redirect withErrors() [errors] --}}
 	@if(count($errors) > 0)
 		<div class="alert alert-danger">
 			<ul>

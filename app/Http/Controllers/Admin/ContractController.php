@@ -175,15 +175,7 @@ class ContractController extends Controller
 			$new_contract->update(); // ! DB writing here !
 
 			// # GOOD REDIRECT #
-			// return back()
-			return redirect()->route('dashboard')
-					->with(
-						'transaction_feedbak',
-						'Transaction successful. Your Sponsorship is active'
-						// .' Id: '.$transaction->id
-						// .' Amount: '.$transaction->amount
-						// .' Status: '.$transaction->status
-					);
+			return redirect()->route('dashboard')->with('transaction_feedbak','Transaction successful. Your Sponsorship is active');
 		} else {
 			$errorString = "";
 			foreach ($result->errors->deepAll() as $error) {
@@ -193,9 +185,7 @@ class ContractController extends Controller
 			// // header("Location: " . $baseUrl . "index.php");
 
 			// # BAD REDIRECT #
-			// return back()
-			return redirect()->route('dashboard')
-					->withErrors('Transaction unsuccessful. Message: '.$result->message);
+			return redirect()->route('dashboard')->withErrors('Transaction unsuccessful. Message: '.$result->message);
 		}
 
     }
