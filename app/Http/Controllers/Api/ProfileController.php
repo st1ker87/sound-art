@@ -19,7 +19,8 @@ class ProfileController extends Controller
 	 */
     public function index(Request $request)
 	{
-		// DB starting source
+		// # DB PROFILES WITH AUX PARAMETERS # 
+
 		$profiles = Profile::all();
 
 		// building $iper_profiles, array of $iper_profile 
@@ -57,7 +58,7 @@ class ProfileController extends Controller
 					// $iper_profile['reviews'][] = $review->toArray(); // array, NOT laravel collection!
 					$total_vote += $review['rev_vote'];
 				}
-				$iper_profile['average_vote'] = $total_vote/count($profile_reviews); // ! voto obbligatorio per ogni review (testo facoltativo)
+				$iper_profile['average_vote'] = $total_vote/count($profile_reviews);
 			} else {
 				$iper_profile['average_vote'] = 0;
 			}
@@ -93,13 +94,19 @@ class ProfileController extends Controller
 			$iper_profiles[] = $iper_profile;
 		}
 
-		// user's filters from axios query url
+		// # AXIOS QUERY URL # 
+
+		// user's request 
 		$category 	= $request->get('category');
 		$genre		= $request->get('genre');
 		$offer		= $request->get('offer');
 		$vote		= $request->get('vote');
 		$rev_count	= $request->get('reviewNum');
-		$only_sponsorship = $request->get('only_sponsorship'); // true / false
+
+		// only profiles with sponsorship requested
+		$only_sponsorship = ($request->get('only_sponsorship') == 'true') ? true : false;
+
+		// # FILTER 1: USER'S REQUEST # 
 
 		// building filter set (only not null values)
 		$filters = [];
@@ -109,8 +116,8 @@ class ProfileController extends Controller
 		if ($offer)		$filters['offers']			= $offer;
 		if ($vote)		$filters['average_vote']	= $vote;
 		if ($rev_count)	$filters['rev_count']		= $rev_count;
-		
-		// iterating on filter set 
+
+		// filtering iteration on user's filter set 
 		$filtered_iper_profiles = $iper_profiles;
 		$tmp_iper_profiles = $filtered_iper_profiles;
 		foreach ($filters as $key => $value) {
@@ -122,11 +129,18 @@ class ProfileController extends Controller
 		// filtered iper profile array shuffle
 		shuffle($filtered_iper_profiles);
 
-		// ! SPONSORSHIP IPER PROFILE SORT
-		// ordinare prima quelli con bandiera true
-		// 
+		// # FILTER 2: ONLY PROFILES WITH SPONSORSHIP # 
 
+		if ($only_sponsorship) {
+			$spons_f_i_profiles = [];
+			foreach ($filtered_iper_profiles as $f_i_profile) {
+				if ($f_i_profile['is_active_sponsorship'])
+					$spons_f_i_profiles[] = $f_i_profile;
+			}
+			$filtered_iper_profiles = $spons_f_i_profiles;
+		}
 
+		// # RESPONSE EJECT # 
 
 		return response()->json([
 			'success' => true,
