@@ -47,11 +47,12 @@ const app = new Vue({
 		scrollPosition: null,
 		scrollChange: 400,
 
-		// FILTER
+		// API FILTERS
 		category_selected	: null,
 		genre_selected		: null,
 		vote_selected 		: null,
 		reviewNum_selected	: null,
+		onlySponsorship		: false,
 
 		// INTERNAL APIs
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
@@ -124,6 +125,7 @@ const app = new Vue({
 					genre		: this.genre_selected,
 					vote		: this.vote_selected,
 					reviewNum	: this.reviewNum_selected,
+					only_sponsorship: this.onlySponsorship,
 				}
 			})
 			.then((resp) => {
@@ -168,7 +170,14 @@ const app = new Vue({
 
 		// console.log('window.location.pathname: ',window.location.pathname);
 		var ulr_path = window.location.pathname;
-		if (ulr_path == '/' || ulr_path == '/profiles/search') this.searchDefault();	
+		if (ulr_path == '/') {
+			this.onlySponsorship = true,
+			this.searchDefault();
+		}	
+		if (ulr_path == '/profiles/search') {
+			this.onlySponsorship = false,
+			this.searchDefault();
+		}	
 
 	},
 	created() {

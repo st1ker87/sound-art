@@ -99,6 +99,7 @@ class ProfileController extends Controller
 		$offer		= $request->get('offer');
 		$vote		= $request->get('vote');
 		$rev_count	= $request->get('reviewNum');
+		$only_sponsorship = $request->get('only_sponsorship'); // true / false
 
 		// building filter set (only not null values)
 		$filters = [];
@@ -122,7 +123,7 @@ class ProfileController extends Controller
 		shuffle($filtered_iper_profiles);
 
 		// ! SPONSORSHIP IPER PROFILE SORT
-		// ordinare prima quelli con bandiera
+		// ordinare prima quelli con bandiera true
 		// 
 
 

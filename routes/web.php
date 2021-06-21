@@ -40,7 +40,7 @@ Route::get('/', 'HomeController@index')->name('home');	// !  GET	/	return view('
  * !                                       !
  * !---------------------------------------!
  */
-Route::prefix('profiles')   	// prefisso URI raggruppamento sezione /search/...
+Route::prefix('profiles')   // prefisso URI raggruppamento sezione /search/...
 	->group(function () {	// rotte specifiche search = profiles
 
 		// atterraggio diretto senza filtri di ricerca semplice	[come fosse ->name('profiles.index')]
@@ -75,10 +75,13 @@ Route::prefix('profiles')   	// prefisso URI raggruppamento sezione /search/...
  * Message CRUD: parte guest (create,store)
  * http://localhost:8000/messages
  */
-Route::resource('/messages', MessageController::class)->names([
-	'create'	=> 'messages.create',	// ! GET	/messages/create	return view('guest.messages.create');
-	'store'		=> 'messages.store',	// ! POST	/messages			return redirect()->route('profiles.show')->with('status','Message sent');
-]);
+Route::get('/messages/create/{id}', 'MessageController@create')->name('messages.create');	// ! GET	/messages/create/{id}	return view('guest.messages.create');
+Route::post('/messages/{id}', 		'MessageController@store')->name('messages.store'); 	// ! GET	/messages/{id}			return redirect()->route('profiles.show')->with('status','Message sent');
+
+// Route::resource('/messages', MessageController::class)->names([
+// 	'create'	=> 'messages.create',	// ! GET	/messages/create	return view('guest.messages.create');
+// 	'store'		=> 'messages.store',	// ! POST	/messages			return redirect()->route('profiles.show')->with('status','Message sent');
+// ]);
 
 /**
  * # REVIEWS #
