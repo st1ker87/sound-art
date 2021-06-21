@@ -165,18 +165,11 @@ const app = new Vue({
 		}
 	},
 	mounted() {
-		this.searchDefault();	
-		
-		// INTERNAL APIs
-		// chiamate di test (in realtà avviene al Filter Submit)
-		// this.filterCall_TEST('Drummer','Metal',3,5); // 1 risultato [OK]
-		// this.filterCall_TEST('Drummer','Metal',3,6); // 0 risultati [OK]
-		// this.filterCall_TEST(null,null,3,4); // 2 risultati
-		// this.filterCall_TEST(null,null,3,1); // 5 risultati
-		// this.filterCall_TEST(null,'New-age',null,null); // 3 risultati [OK]
-		// this.filterCall_TEST('Mixer/Engineer',null,null,null); // 3 risultati [OK]
-		// this.filterCall_TEST('Classical Guitarist',null,null,null); // 2 risultati [OK]
-		// this.filterCall_TEST(null,null,null,null); // 11 risultati [OK]
+
+		// console.log('window.location.pathname: ',window.location.pathname);
+		var ulr_path = window.location.pathname;
+		if (ulr_path == '/' || ulr_path == '/search') this.searchDefault();	
+
 	},
 	created() {
 			
@@ -189,10 +182,6 @@ const app = new Vue({
 ////////////////////////////////////////////////////////
 // COSE DA FARE
 /**
- * [1]
- * ! aggiungere in ogni "tendina" la voce di non-selezione
- */
-/**
  * [2]
  * ! chiudere tendine quando clicco altrove
  */
@@ -204,3 +193,4 @@ const app = new Vue({
  * lisa valori DB di: categories, genres, (eventuelmente) offers
  */
 ////////////////////////////////////////////////////////
+
