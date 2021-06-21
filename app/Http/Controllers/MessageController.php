@@ -22,13 +22,16 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create($slug)
     {
-		// devo sapare a chi schrivere (messages->user_id)
-		// mi porto lo user id 
-		@dd($id);
+		// recipient user has $slug
+		$profile = Profile::where('slug',$slug)->first();
+		$user 	 = User::where('id',$profile->user_id)->first();
 
 		$data = [
+			// main infos
+			'user'			=> $user,
+			// aux infos
 			'users' 		=> User::all(),
 			'profiles' 		=> Profile::all(),
 			'categories' 	=> Category::all(),

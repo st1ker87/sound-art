@@ -1,9 +1,6 @@
-{{-- <h2>MODEL: Contract, CRUD: show, AREA: admin - DETTAGLIO SINGOLO CONTRATTO MIO</h2>
+{{-- <h2>MODEL: Contract, CRUD: index, AREA: admin - DETTAGLIO SINGOLO CONTRATTO MIO</h2>
 <h5>URL</h5>
-<p>url: http://localhost:8000/admin/sponsorship/{id} (get)</p>
-<h5>SINGOLO CONTRATTO PASSATO</h5>
-<p>contract->id = @php echo $contract->id @endphp</p>
-<p>dump($contract) = @dump($contract)</p>
+<p>url: http://localhost:8000/admin/sponsorship/list (get)</p>
 <h5>ALTRE TABELLE DISPONIBILI</h5>
 <p>dump($users) = @dump($users)</p>
 <p>dump($profiles) = @dump($profiles)</p>

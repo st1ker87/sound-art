@@ -54,21 +54,6 @@ Route::prefix('profiles')   // prefisso URI raggruppamento sezione /search/...
 
 	});
 
-// Route::prefix('search')   	// prefisso URI raggruppamento sezione /search/...
-// 	->group(function () {	// rotte specifiche search = profiles
-
-// 		// atterraggio diretto senza filtri di ricerca semplice	[come fosse ->name('profiles.index')]
-// 		Route::get('/', 'ProfileController@search')->name('search'); 						// !  GET	/search			return view('guest.profiles.search');
-
-// 		// atterraggio da home page con ricerca semplice 
-// 		Route::post('/', 'ProfileController@search_from_home')->name('search_from_home');	// ! POST	/search			return view('guest.profiles.search');
-
-// 		// dettaglio profilo (di chiunque per chiunque)
-// 		Route::get('/{slug}', 'ProfileController@show')->name('profiles.show'); 			// ! GET	/search/{slug}	return view('guest.profiles.show');
-
-// 	});
-
-
 /**
  * # MESSAGES #
  * 
@@ -86,8 +71,8 @@ Route::post('/messages/{slug}', 		'MessageController@store')->name('messages_sto
  * http://localhost:8000/reviews
  * * .../{slug} : slug of user recipient
  */
-Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');	// ! GET	/reviews/create/{id}	return view('guest.reviews.create');
-Route::post('/reviews/{slug}',			'ReviewController@store')->name('reviews_store');	// ! GET	/reviews/{id}			return redirect()->route('profiles.show')->with('status','Review created');
+Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');		// ! GET	/reviews/create/{id}	return view('guest.reviews.create');
+Route::post('/reviews/{slug}',			'ReviewController@store')->name('reviews_store');		// ! GET	/reviews/{id}			return redirect()->route('profiles.show')->with('status','Review created');
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -160,7 +145,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * http://localhost:8000/admin/sponsorship
 		 * * /sponsorship/create/{id} : chosen sponsorship_id
 		 */
-		Route::get('/sponsorship/list', 	 	'ContractController@index')->name('my_sponsorships'); // ! GET	/admin/sponsorship/{id}			return view('admin.contracts.index');
+		Route::get('/sponsorship/list', 	 	'ContractController@index')->name('my_sponsorships'); // ! GET	/admin/sponsorship/list			return view('admin.contracts.index');
 		Route::get('/sponsorship/create/{id}', 	'ContractController@create')->name('sponsorship');	// ! GET	/admin/sponsorship/create/{id}	return view('admin.contracts.create');
 		Route::post('/sponsorship/checkout', 	'ContractController@store')->name('checkout'); 		// ! POST	/admin/sponsorship/checkout		DIPENDE !
 
