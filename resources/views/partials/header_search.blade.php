@@ -10,6 +10,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('search') }}">Explore</a>
 				</li>
+				@guest
+				@else
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+				</li>
+				@endguest
 			</ul>
 			<ul class="navbar-nav ml-auto"> 
 			<!-- Authentication Links -->

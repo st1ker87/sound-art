@@ -214,9 +214,6 @@ else {
         </div>
       </div>
     </section>
-    <section class="gap">
-      
-    </section>
   </main>
 
 @endsection
