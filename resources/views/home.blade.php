@@ -19,7 +19,7 @@
                     or you just want to have your private lessons, you can find all of that with us.
                 </p>
                 <div class="search-cnt">
-                    <button v-on:click="showSearch" type="button" class="btn btn-dark">
+                    <button v-on:click.stop="showSearch" type="button" class="btn btn-dark">
                         Search for artists <i class="fas fa-caret-right"></i>
                     </button>
                     <div v-if="searchHome" class="search">
