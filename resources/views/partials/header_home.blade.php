@@ -7,9 +7,9 @@
 				<img id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
 			</a>
       		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" href="{{ route('search') }}">Explore</a>
-			</li>  
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('search') }}">Explore</a>
+				</li>  
 			@guest
 			@else
 			<li class="nav-item">
