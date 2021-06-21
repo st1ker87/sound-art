@@ -24,6 +24,8 @@
 
 {{-- dati user autenticato --}}
 @php
+	date_default_timezone_set('Europe/Rome');
+
 	$my_user		= Auth::user();
 	$my_profile		= $my_user->profile;
 	$my_contracts	= $my_user->contracts;

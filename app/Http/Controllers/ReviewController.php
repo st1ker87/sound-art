@@ -22,8 +22,12 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+		// devo sapare a chi schrivere (messages->user_id)
+		// mi porto lo user id 
+		@dd($id);
+
 		$data = [
 			'users' 		=> User::all(),
 			'profiles' 		=> Profile::all(),

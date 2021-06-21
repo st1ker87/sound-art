@@ -31,16 +31,9 @@ class ContractController extends Controller
      * @param  \App\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function index($id) // originale: show(Contract $contract)
+    public function index() // originale: show(Contract $contract)
     {
-
-		// $id del mio contract
-		$contract = Contract::where('id',$id)->first();
-
 		$data = [
-			// main infos
-			'contract'		=> $contract,
-			// aux infos
 			'users' 		=> User::all(),		
 			'profiles' 		=> Profile::all(),
 			'categories' 	=> Category::all(),

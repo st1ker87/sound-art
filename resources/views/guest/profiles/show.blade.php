@@ -67,7 +67,8 @@
           <a href="#genres">Genres</a>
           <a href="#offers">Offers</a>
           {{-- <button  class="btn btn-primary">Contact {{$profile->user->name}}</button> --}}
-		  <a class="btn btn-primary" href="{{ route('messages.create',$profile->user->id) }}">Contact {{$profile->user->name}}</a>
+		  <a class="btn btn-primary" href="{{ route('messages_create',$profile->slug) }}">Contact {{$profile->user->name}}</a>
+		  <a class="btn btn-primary" href="{{ route('reviews_create',$profile->slug) }}">Write a Review for {{$profile->user->name}}</a>
         </div>
       </div>
     </div>

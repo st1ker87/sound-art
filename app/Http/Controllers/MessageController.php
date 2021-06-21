@@ -26,7 +26,6 @@ class MessageController extends Controller
     {
 		// devo sapare a chi schrivere (messages->user_id)
 		// mi porto lo user id 
-		// $id
 		@dd($id);
 
 		$data = [

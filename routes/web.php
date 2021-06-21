@@ -74,25 +74,20 @@ Route::prefix('profiles')   // prefisso URI raggruppamento sezione /search/...
  * 
  * Message CRUD: parte guest (create,store)
  * http://localhost:8000/messages
+ * * .../{slug} : slug of user recipient
  */
-Route::get('/messages/create/{id}', 'MessageController@create')->name('messages.create');	// ! GET	/messages/create/{id}	return view('guest.messages.create');
-Route::post('/messages/{id}', 		'MessageController@store')->name('messages.store'); 	// ! GET	/messages/{id}			return redirect()->route('profiles.show')->with('status','Message sent');
-
-// Route::resource('/messages', MessageController::class)->names([
-// 	'create'	=> 'messages.create',	// ! GET	/messages/create	return view('guest.messages.create');
-// 	'store'		=> 'messages.store',	// ! POST	/messages			return redirect()->route('profiles.show')->with('status','Message sent');
-// ]);
+Route::get('/messages/create/{slug}',	'MessageController@create')->name('messages_create');	// ! GET	/messages/create/{id}	return view('guest.messages.create');
+Route::post('/messages/{slug}', 		'MessageController@store')->name('messages_store'); 	// ! GET	/messages/{id}			return redirect()->route('profiles.show')->with('status','Message sent');
 
 /**
  * # REVIEWS #
  * 
  * Review CRUD: parte guest (create,store)
  * http://localhost:8000/reviews
+ * * .../{slug} : slug of user recipient
  */
-Route::resource('/reviews', ReviewController::class)->names([
-	'create'	=> 'reviews.create',	// ! GET	/reviews/create		return view('guest.reviews.create');
-	'store'		=> 'reviews.store',		// ! POST	/reviews			return redirect()->route('profiles.show')->with('status','Review sent');
-]);
+Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');	// ! GET	/reviews/create/{id}	return view('guest.reviews.create');
+Route::post('/reviews/{slug}',			'ReviewController@store')->name('reviews_store');	// ! GET	/reviews/{id}			return redirect()->route('profiles.show')->with('status','Review created');
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -143,7 +138,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 */
 		Route::resource('/messages', MessageController::class)->names([
 			'index'		=> 'admin.messages.index',		// ! GET	/admin/messages				return view('admin.messages.index');
-			// 'show'		=> 'admin.messages.show',	// ! GET	/admin/messages/{slug}		return view('admin.messages.show');
+			// 'show'	=> 'admin.messages.show',		// ! GET	/admin/messages/{slug}		return view('admin.messages.show');
 			'destroy' 	=> 'admin.messages.destroy',	// ! DEL	/admin/messages/{slug}		return redirect()->route('admin.messages.index')->with('status','Message deleted');
 		]);
 
@@ -155,7 +150,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 */
 		Route::resource('/reviews', ReviewController::class)->names([
 			'index'		=> 'admin.reviews.index',		// ! GET	/admin/reviews				return view('admin.reviews.index');
-			// 'show'		=> 'admin.reviews.show',	// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
+			// 'show'	=> 'admin.reviews.show',		// ! GET	/admin/reviews/{slug}		return view('admin.reviews.show');
 		]);
 
 		/**
@@ -163,8 +158,9 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * 
 		 * Braintree process payment (index,create,store) and checkout (store)
 		 * http://localhost:8000/admin/sponsorship
+		 * * /sponsorship/create/{id} : chosen sponsorship_id
 		 */
-		Route::get('/sponsorship/{id}', 	 	'ContractController@index')->name('my_sponsorships'); // ! GET	/admin/sponsorship/{id}			return view('admin.contracts.index');
+		Route::get('/sponsorship/list', 	 	'ContractController@index')->name('my_sponsorships'); // ! GET	/admin/sponsorship/{id}			return view('admin.contracts.index');
 		Route::get('/sponsorship/create/{id}', 	'ContractController@create')->name('sponsorship');	// ! GET	/admin/sponsorship/create/{id}	return view('admin.contracts.create');
 		Route::post('/sponsorship/checkout', 	'ContractController@store')->name('checkout'); 		// ! POST	/admin/sponsorship/checkout		DIPENDE !
 
