@@ -34,22 +34,29 @@
 
 
 {{-- FEEDBACK MESSAGES --}}
-<div class="d-flex justify-content-between align-items-center">	
+<div class="d-flex justify-content-between align-items-center alert_box">	
 	{{-- redirect with() [success] --}}
 	@if (session()->has('status'))
-	<div class="alert alert-success">
+	{{-- ALERT RICHIUDIBILE DI BOOTSTRAP DA PROVARE --}}
+	{{-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div> --}}
+	<div class="alert alert-success col-md-4 offset-md-1">
 		{{ session()->get('status') }}
 	</div>
 	@endif
 	{{-- transaction result with() [success] --}}
 	@if (session()->has('transaction_feedbak'))
-		<div class="alert alert-success">
+		<div class="alert alert-success col-md-4 offset-md-1">
 			{{ session()->get('transaction_feedbak') }}
 		</div>
 	@endif
 	{{-- redirect withErrors() [errors] --}}
 	@if(count($errors) > 0)
-		<div class="alert alert-danger">
+		<div class="alert alert-danger col-md-4 offset-md-1">
 			<ul>
 				@foreach ($errors->all() as $error)
 				<li>{{ $error }}</li>

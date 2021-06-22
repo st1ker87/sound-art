@@ -3,18 +3,22 @@
     border-radius: 8px 8px 0 0;
     box-shadow: 3px 3px 10px rgb(212, 212, 212);
     margin-bottom: 20px;
-    padding: 5px 10px;
+    padding: 10px 20px;
+    i {
+        font-size: 1.5em;
+    }
     .msg_head, .msg_content {
         padding: 5px 20px;
     }
     .msg_head {
-        border-bottom: 1px solid lightgray;
-        margin-bottom: 10px;
+        // border-bottom: 1px solid lightgray;
+        margin-bottom: 5px;
         .msg_date {
             margin-bottom: 5px;
         }
         .msg_sender {
             color: $darkGray;
+            margin-bottom: 5px;
         }
         .msg_obj {
             color: $primaryBlack;

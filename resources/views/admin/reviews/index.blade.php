@@ -39,10 +39,8 @@
                             @endfor
                         </div>
                         <div class="msg_head">
-                            <div class="row">
-                                <span class="msg_obj col-md-6">{{ $review->rev_subject}}</span>
-                                <span class="msg_sender col-md-6">{{ $review->created_at}}  by <strong>{{ $review->rev_sender_name}}</strong></span>
-                            </div>
+                            <div class="msg_sender">{{ $review->created_at}}  by <strong>{{ $review->rev_sender_name}}</strong></div>
+                            <div class="msg_obj">{{ $review->rev_subject}}</div>
                         </div>
                         @if ($review->rev_text)
                             <div class="msg_content">
