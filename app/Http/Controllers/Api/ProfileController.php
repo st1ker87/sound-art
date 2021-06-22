@@ -126,12 +126,13 @@ class ProfileController extends Controller
 			$tmp_iper_profiles = $filtered_iper_profiles;
 		}
 
+		// # SHUFFLE FOR PAR CONDICIO # 
+
 		// filtered iper profile array shuffle
 		shuffle($filtered_iper_profiles);
 
-		// # SPLIT BY SPONSORSHIP # 
-
 		// ! after shuffle !
+		// # SPLIT BY SPONSORSHIP # 
 
 		$spons_f_i_profiles = [];
 		$no_spons_f_i_profiles = [];
@@ -144,10 +145,10 @@ class ProfileController extends Controller
 
 		// # FILTER 2: ONLY PROFILES WITH SPONSORSHIP # 
 
-		if ($only_sponsorship) { // ! home page
+		if ($only_sponsorship) {
 			$filtered_iper_profiles = $spons_f_i_profiles;
-		} else { 				// ! no home page
-			$filtered_iper_profiles = $spons_f_i_profiles + $no_spons_f_i_profiles;
+		} else {
+			$filtered_iper_profiles = [...$spons_f_i_profiles, ...$no_spons_f_i_profiles];
 		}
 
 		// # RESPONSE EJECT # 

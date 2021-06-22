@@ -62,48 +62,28 @@
 
 
 {{-- dati user autenticato --}}
+{{-- ##### QUESTA PARTE DI CALCOLI È CAMBIATA >> SOSTITUIRE IL BLOCCO ##### --}}
 @php
 	date_default_timezone_set('Europe/Rome');
 	$my_user		= Auth::user();
 	$my_profile		= $my_user->profile;
 	$my_contracts	= $my_user->contracts;
 	$is_active_sponsorship = false;
-	$my_contract_id = null;
+	$is_any_contract = false;
 	foreach ($my_contracts as $my_contract) {
 		$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
 		$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);
 		$now 		= new DateTime();
 		if ($date_start < $now && $date_end >= $now) {
 			$is_active_sponsorship = true;
-			$my_contract_id = $my_contract->id;
+			$is_any_contract = true;
 		}
 	}
 @endphp
 
 
-@if ($my_profile)
-	{{-- EDIT --}}
-	<a class="btn btn-primary" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
-	{{-- DELETE --}}
-	<form class="d-inline-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
-		@csrf
-		@method('DELETE')
-		<button type="submit" class="btn btn-danger">Delete your Profile</button>
-	</form>
-@else
-	{{-- CREATE --}}
-	<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
-@endif
 
-@if (!$is_active_sponsorship)
-	{{-- SPONSOR YOUR PROFILE --}}
-	<a class="btn btn-primary" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
-@else
-	{{-- CHECK YOUR SPONSORSHIP --}}
-	<a class="btn btn-primary" href="{{ route('my_sponsorships') }}">Check your Sponsorships</a>	
-@endif
-
-<div class="row">
+<div class="row dashboard_home">
 	<div class="col-md-4 offset-md-1">
 		@if ($my_profile)
 			{{-- EDIT --}}
@@ -116,23 +96,22 @@
 			</form>
 		@else
 			{{-- CREATE --}}
-			<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
+			<a class="btn btn-primary btn-block" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
+		@endif
+		{{-- ##### PULSANTE PER FARE SPONSORSHIP (se non ne hai nessuna attiva) ##### --}}
+		@if (!$is_active_sponsorship && $my_profile)
+		{{-- SPONSOR YOUR PROFILE --}}
+		<a class="btn btn-primary btn-block" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
+		@endif
+
+		{{-- ##### PULSANTE PER VEDERE I CONTRATTI PASSATI (se ce ne sono) ##### --}}
+		@if ($is_any_contract)
+		{{-- CHECK YOUR SPONSORSHIPS --}}
+		<a class="btn btn-primary btn-block" href="{{ route('my_sponsorships') }}">Check your Sponsorships</a>	
 		@endif
 		
-		@if (!$is_active_sponsorship)
-			{{-- SPONSOR YOUR PROFILE --}}
-			<a class="btn btn-primary btn-block" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
-		@else
-			{{-- CHECK YOUR SPONSORSHIP --}}
-			<a class="btn btn-primary btn-block" href="{{ route('my_sponsorships',$my_contract_id) }}">Check your Sponsorships</a>	
-		@endif
 	</div>
 </div>
-
-
-
-
-
 
 
 
