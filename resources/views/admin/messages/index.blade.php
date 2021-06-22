@@ -58,7 +58,8 @@
 			</div>
 			@if(count($my_user->messages)>0)
 				<div class="row">
-					@foreach ($my_user->messages as $message)
+					{{-- @foreach ($my_user->messages as $message) --}}
+					@foreach ($my_user->messages->sortByDesc('created_at') as $message)
 						<div class="msg_box col-xl-8">
 							<div class="msg_head">
 								<div class="row">

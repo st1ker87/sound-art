@@ -30,7 +30,8 @@
 			
             @if(count($my_user->reviews)>0)
 
-                @foreach ($my_user->reviews as $review)
+                {{-- @foreach ($my_user->reviews as $review) --}}
+                @foreach ($my_user->reviews->sortByDesc('created_at') as $review)
                     <div class="msg_box">
                         <div class="rev_vote">
                             @for ($i = 0; $i < $review->rev_vote; $i++)
