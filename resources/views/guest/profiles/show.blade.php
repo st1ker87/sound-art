@@ -77,7 +77,7 @@
 	{{-- redirect with() [success] --}}
 	@if (session()->has('status'))
 		<section class="container main-show">
-			<div class="row">
+			<div class="row border_bottom">
 				<div class="alert alert-success">
 					{{ session()->get('status') }}
 				</div>
@@ -86,7 +86,7 @@
 	@endif
 
 	<section class="container main-show">
-      <div class="row">
+      <div class="row border_bottom">
         <div id="about_me" class="description">
           @if($profile->bio_text1 && $profile->bio_text2)
             <h2>About me</h2>
@@ -96,40 +96,38 @@
         </div>
       </div>
     </section>
-      <section class="container main-show">
-        <div class="row">
-          <div id="genres" class="genres">
-            <h2>My favorite music</h2>
-            @foreach($profile->user->genres as $genre)
-            @if($loop->last)
-              {{$genre->name}}
-            @else
-            {{$genre->name . ','}}
-            @endif
-        @endforeach
-          </div>
+    <section class="container main-show">
+      <div class="row border_bottom">
+        <div id="offers" class="offert">
+          <h2>Offerts</h2>
+          @foreach($profile->user->offers as $offer)
+          @if($loop->last)
+            {{$offer->name}}
+          @else
+          {{$offer->name . ','}}
+          @endif
+      @endforeach
         </div>
-      </section>
-      <section class="container main-show">
-        <div class="row">
-          <div id="offers" class="offert">
-            <h2>Offerts</h2>
-            @foreach($profile->user->offers as $offer)
-            @if($loop->last)
-              {{$offer->name}}
-            @else
-            {{$offer->name . ','}}
-            @endif
-        @endforeach
-          </div>
+      </div>
+    </section>
+    <section class="container main-show">
+      <div class="row border_bottom">
+        <div id="genres" class="genres">
+          <h2>My favorite music</h2>
+          @foreach($profile->user->genres as $genre)
+          @if($loop->last)
+            {{$genre->name}}
+          @else
+          {{$genre->name . ','}}
+          @endif
+      @endforeach
         </div>
-      </section>
+      </div>
+    </section>
   </main>
 
-  {{-- mancante video, audio e foto
+  {{-- foto
     visualizzazione form messaggio, visualizzazione review --}}
-
-
   @section('footer')
     @include('partials.footer_search')
   @endsection
