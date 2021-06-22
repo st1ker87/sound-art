@@ -53,18 +53,22 @@
     <p>{{$my_profile->bio_text2}}</p>
   @endif
 </div>
-<div id="genres" class="genres">
-  <h2>My favorite music</h2>
-  @foreach($my_profile->user->genres as $genre)
-    @if($loop->last)
-      {{$genre->name}}
-    @else
-      {{$genre->name . ','}}
-    @endif
-  @endforeach
-</div>
-<div id="offers" class="offert">
-   @if(count($my_profile->user->offers)>0)
+
+@if (count($my_user->genres)>0)
+  <div id="genres" class="genres">
+    <h2>My favorite music</h2>
+    @foreach($my_profile->user->genres as $genre)
+      @if($loop->last)
+        {{$genre->name}}
+      @else
+        {{$genre->name . ','}}
+      @endif
+    @endforeach
+  </div>    
+@endif
+
+@if(count($my_profile->user->offers)>0)
+  <div id="offers" class="offert">
     <h2>Offers</h2>
     @foreach($my_profile->user->offers as $offer)
       @if($loop->last)
@@ -73,8 +77,8 @@
         {{$offer->name . ','}}
       @endif
     @endforeach    
-  @endif
-</div>
+  </div>
+@endif
 
 @endsection
   {{-- mancante video, audio e foto

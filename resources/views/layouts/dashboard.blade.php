@@ -64,19 +64,22 @@
 
         {{-- JUMBOTRON DASHBOARD --}}
         <div class="jumbo-dash">
-            <div class="container">
-                <div class="title-dash">
-                    <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
-                    <h3>
-                        @foreach (Auth::user()->categories as $category)
-                            @if($loop->last)
-                                {{$category->name}}
-                                @else
-                                {{$category->name . ' |'}}
-                            @endif
-                        @endforeach
-                    </h3>
-                    <p>{{ Auth::user()->profile->work_town }}</p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="over-jumbo d-block d-xl-none col-xs-6"></div>
+                    <div class="title-dash col-xl-6">
+                        <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                        <h3>
+                            @foreach (Auth::user()->categories as $category)
+                                @if($loop->last)
+                                    {{$category->name}}
+                                    @else
+                                    {{$category->name . ' |'}}
+                                @endif
+                            @endforeach
+                        </h3>
+                        <p>{{ Auth::user()->profile->work_town }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,40 +89,53 @@
             <div class="row dash_row">
 
                 {{-- DA QUI NAVBAR COMUNE A SX --}}
-
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
                     <div class="sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link active" href="{{ route('dashboard') }}">
-                                    <i class="fas fa-house-user"></i>
-                                    Dashboard
+                                    <div class="row">
+                                        <i class="fas fa-house-user col-lg-12 col-xl-3"></i>
+                                        Dashboard
+
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">
-                                    <i class="fas fa-id-card"></i>
-                                    Profile
+                                    <div class="row">
+                                        <i class="fas fa-id-card col-lg-12 col-xl-3"></i>
+                                        Profile
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.messages.index') }}">
-                                    <i class="fas fa-inbox"></i>
-                                    Messages
+                                    <div class="row">
+                                        <i class="fas fa-inbox col-lg-12 col-xl-3"></i>
+                                        Messages
+
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.reviews.index') }}">
-                                    <i class="fab fa-font-awesome-flag"></i>
-                                    Reviews
+                                    <div class="row">
+                                        <i class="fab fa-font-awesome-flag col-lg-12 col-xl-3"></i>
+                                        Reviews
+
+                                    </div>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <i class="fas fa-chart-line"></i>
-                                    Statistics
+                                    <div class="row">
+                                        <i class="fas fa-chart-line col-lg-12 col-xl-3"></i>
+                                        Statistics                             
+                                    </div>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
 
                     </div>

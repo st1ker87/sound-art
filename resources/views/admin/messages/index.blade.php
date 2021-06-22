@@ -56,29 +56,40 @@
 				@endif
 
 			</div>
+			@if(count($my_user->messages)>0)
+				<div class="row">
+					@foreach ($my_user->messages as $message)
+						<div class="msg_box col-xl-8">
+							<div class="msg_head">
+								<div class="row">
+									<span class="msg_obj col-md-6">{{ $message->msg_subject}}</span>
+									<span class="msg_sender col-md-6">from: {{ $message->msg_sender_name}}</span>
+									<span class="msg_sender_mail col-md-6 offset-md-6">{{ $message->msg_sender_email}}</span>
+								</div>
+							</div>
+							<div class="msg_content row">
+								<span class="msg_txt col-md-8">
+									@if (strlen($message->msg_text)>50)
+										
+									@endif{{ $message->msg_text}}</span>
+								
+								{{-- DELETE --}}
+								<form class="d-inline-block msg_delete" action="{{ route('admin.messages.destroy',$message->id) }}" method="post">
+									@csrf
+									@method('DELETE')
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</form>
 
-            @foreach ($my_user->messages as $message)
-                <div class="msg_box">
-                    <div class="msg_head">
-                        <div class="row">
-                            <span class="msg_obj col-md-6">{{ $message->msg_subject}}</span>
-                            <span class="msg_sender col-md-6">from: {{ $message->msg_sender_name}}</span>
-                            <span class="msg_sender_mail col-md-6 offset-md-6">{{ $message->msg_sender_email}}</span>
-                        </div>
-                    </div>
-                    <div class="msg_content">
-                        <span class="msg_obj">{{ $message->msg_text}}</span>
-                    </div>
+							</div>
+	
+	
+						</div>
+					@endforeach	
 
-					{{-- DELETE --}}
-					<form class="d-inline-block" action="{{ route('admin.messages.destroy',$message->id) }}" method="post">
-						@csrf
-						@method('DELETE')
-						<button type="submit" class="btn btn-danger">Delete</button>
-					</form>
-
-                </div>
-            @endforeach
+				</div>
+			@else
+				<p>No messages to show.</p>
+			@endif
         </div>
 	</div>
 </div>
