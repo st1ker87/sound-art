@@ -60,11 +60,11 @@
 				<div class="row">
 					{{-- @foreach ($my_user->messages as $message) --}}
 					@foreach ($my_user->messages->sortByDesc('created_at') as $message)
-						<div class="msg_box col-xl-8">
+						<div class="msg_box col-xl-12">
 							<div class="msg_head">
 								<div class="row">
 									<span class="msg_date col-md-4">{{ $message->created_at}}</span>
-									<span class="msg_sender col-md-4">from: {{ $message->msg_sender_name}}</span>
+									<span class="msg_sender col-md-4">by <strong>{{ $message->msg_sender_name}}</strong></span>
 									<span class="msg_sender_mail col-md-4">{{ $message->msg_sender_email}}</span>
 									<span class="msg_obj col-md-12">{{ $message->msg_subject}}</span>
 								</div>
@@ -79,7 +79,7 @@
 								<form class="d-inline-block msg_delete" action="{{ route('admin.messages.destroy',$message->id) }}" method="post">
 									@csrf
 									@method('DELETE')
-									<button type="submit" class="btn btn-danger">Delete</button>
+									<button type="submit" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
 								</form>
 
 							</div>

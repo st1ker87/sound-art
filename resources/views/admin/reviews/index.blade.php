@@ -41,7 +41,7 @@
                         <div class="msg_head">
                             <div class="row">
                                 <span class="msg_obj col-md-6">{{ $review->rev_subject}}</span>
-                                <span class="msg_sender col-md-6">{{ $review->created_at}}  from: {{ $review->rev_sender_name}}</span>
+                                <span class="msg_sender col-md-6">{{ $review->created_at}}  by <strong>{{ $review->rev_sender_name}}</strong></span>
                             </div>
                         </div>
                         @if ($review->rev_text)

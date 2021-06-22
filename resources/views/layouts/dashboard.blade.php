@@ -67,20 +67,26 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="over-jumbo d-block d-xl-none col-xs-6"></div>
-                    <div class="title-dash col-xl-6">
-                        <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
-                        <h3>
-                            @foreach (Auth::user()->categories as $category)
-                                @if($loop->last)
-                                    {{$category->name}}
-                                    @else
-                                    {{$category->name . ' |'}}
-                                @endif
-                            @endforeach
-                        </h3>
-                        @if ($my_profile)
-                            <p>{{ $my_profile->work_town }}</p>  
-                        @endif
+                    <div class="container">
+                        
+                        
+                        <div class="title-dash col-xl-6">
+                            <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                            <h3>
+                                @foreach (Auth::user()->categories as $category)
+                                    @if($loop->last)
+                                        {{$category->name}}
+                                        @else
+                                        {{$category->name . ' |'}}
+                                    @endif
+                                @endforeach
+                            </h3>
+                            @if ($my_profile)
+                                <p>{{ $my_profile->work_town }}</p>  
+                            @endif
+                        </div>
+
+
                     </div>
                 </div>
             </div>
