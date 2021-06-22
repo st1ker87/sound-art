@@ -19,9 +19,6 @@
 /////////////////////////////////////////////
 
 
-
-
-
 		use App\Profile;
 
 		// DB starting source
@@ -106,7 +103,7 @@
 		$rev_count	= null;
 
 		// query parameters 2: only profiles with sponsorship in response
-		$only_sponsorship  = false; // true / false
+		$only_sponsorship = false; // true / false
 
 		// building filter set (only not null values)
 		$filters = [];
@@ -129,10 +126,8 @@
 		// filtered iper profile array shuffle
 		shuffle($filtered_iper_profiles);
 
-		echo 'iniziale';
+		echo 'TUTTE selezionate dall\'utente';
 		@dump($filtered_iper_profiles);
-
-
 
 		// # SPLIT BY SPONSORSHIP # 
 
@@ -153,17 +148,20 @@
 		echo 'gruppo NO sponsorship';
 		@dump($no_spons_f_i_profiles);
 
+		echo 'la somma delle due';
+		@dump([...$spons_f_i_profiles, ...$no_spons_f_i_profiles]);	
 
 		// # FILTER 2: ONLY PROFILES WITH SPONSORSHIP # 
 
 		if ($only_sponsorship) { // ! home page
 			$filtered_iper_profiles = $spons_f_i_profiles;
 		} else { 				// ! no home page
-			$filtered_iper_profiles = $spons_f_i_profiles + $no_spons_f_i_profiles;
+			$filtered_iper_profiles = [...$spons_f_i_profiles, ...$no_spons_f_i_profiles];
 		}
 
-		echo 'finale con $only_sponsorship = '.$only_sponsorship;
-		@dump($filtered_iper_profiles);
+		// @dump($only_sponsorship);
+		// echo 'finale con $only_sponsorship = '.$only_sponsorship;
+		// @dump($filtered_iper_profiles);
 
 	function getFilteredProfiles($_array,$_key,$_value,$_mode) {
 		$filtered_array = [];
