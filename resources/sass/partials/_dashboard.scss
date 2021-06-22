@@ -7,26 +7,35 @@
     background-size: contain;
     border-bottom: 0.5px solid $lightGray;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    .container {
-        position: relative;
+    .container-fluid {
         height: 100%;
-        .title-dash {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100ch;
-            h1 {
-                font-size: 5rem;
-                color: $primaryWhite;
+        .row {
+            position: relative;
+            height: 100%;
+        
+            .over-jumbo {
+                background-color: #00000082;
+                height: 100%;
+                width: 100%;
             }
-            h3 {
-                color: $primaryWhite;
-            }
-            p {
-                font-size: 1.5em;
-                color: $primaryWhite;
+            .title-dash {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                h1 {
+                    font-size: 4rem;
+                    color: $primaryWhite;
+                }
+                h3 {
+                    color: $primaryWhite;
+                }
+                p {
+                    font-size: 1.5em;
+                    color: $primaryWhite;
+                }
             }
         }
+        
 
     }
 }
@@ -46,6 +55,7 @@
                 font-size: 1.5em;
     
                 margin-right: 10px;
+                margin-bottom: 5px;
             }
         }
     }
@@ -64,12 +74,63 @@
         .msg_obj {
             color: darkred;
             font-weight: 800;
+            text-overflow: ellipsis;
+        }
+    }
+    .msg_content {
+        max-height: 2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+        .msg_delete {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .msg_txt {
+            max-height: 2rem;
+            text-overflow: ellipsis;
         }
     }
     .rev_vote {
         border-bottom: 1px solid lightgray;
         padding: 5px 20px;
+        i {
+            color: gold;
+        }
 
     }
 }
 
+// RESPONSIVE
+@media screen and (max-width: 540px) {
+    .jumbo-dash {
+        .container-fluid {
+            .row {
+                .title-dash {
+                    h1 {
+                        font-size: 2rem;
+                    }
+                    h3 {
+                        font-size: 1.5rem;
+                    }
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+
+            }
+        }
+    }
+    .btn {
+        width: 80%;
+        margin: 5px auto;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .btn {
+        width: 50%;
+        margin: 15px auto;
+    }
+}

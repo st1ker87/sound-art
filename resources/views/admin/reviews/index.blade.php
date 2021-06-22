@@ -25,27 +25,36 @@
 <div class="container">
 	<div class="row justify-content-center">
     	<div class="col-12">
-        	
-			<div class="d-flex justify-content-center align-items-center">
-            	<h2>Your reviews</h2>
-			</div>
+
+            <h2>Your reviews</h2>
 			
-            @foreach ($my_user->reviews as $review)
-                <div class="msg_box">
-                    <div class="msg_head">
-                        <div class="row">
-                            <span class="msg_obj col-md-6">{{ $review->rev_subject}}</span>
-                            <span class="msg_sender col-md-6">from: {{ $review->rev_sender_name}}</span>
+            @if(count($my_user->reviews)>0)
+
+                @foreach ($my_user->reviews as $review)
+                    <div class="msg_box">
+                        <div class="rev_vote">
+                            @for ($i = 0; $i < $review->rev_vote; $i++)
+                                <i class='fas fa-star'></i>   
+                            @endfor
                         </div>
+                        <div class="msg_head">
+                            <div class="row">
+                                <span class="msg_obj col-md-6">{{ $review->rev_subject}}</span>
+                                <span class="msg_sender col-md-6">{{ $review->created_at}}  from: {{ $review->rev_sender_name}}</span>
+                            </div>
+                        </div>
+                        @if ($review->rev_text)
+                            <div class="msg_content">
+                                <span class="msg_obj">{{ $review->rev_text}}</span>
+                            </div>    
+                        @endif
                     </div>
-                    <div class="rev_vote">{{ $review->rev_vote}}</div>
-                    @if ($review->rev_text)
-                        <div class="msg_content">
-                            <span class="msg_obj">{{ $review->rev_text}}</span>
-                        </div>    
-                    @endif
-                </div>
-            @endforeach
+                @endforeach
+                    
+            @else
+                <p>No reviews to show yet.</p>
+                
+            @endif
         </div>
 	</div>
 </div>

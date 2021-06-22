@@ -30,7 +30,7 @@
 
 @section('content')
 
-<h1>{{ Auth::user()->name }}'s Dashboard</h1>
+{{-- <h1>{{ Auth::user()->name }}'s Dashboard</h1> --}}
 
 
 {{-- FEEDBACK MESSAGES --}}
@@ -80,6 +80,7 @@
 	}
 @endphp
 
+
 @if ($my_profile)
 	{{-- EDIT --}}
 	<a class="btn btn-primary" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
@@ -101,6 +102,33 @@
 	{{-- CHECK YOUR SPONSORSHIP --}}
 	<a class="btn btn-primary" href="{{ route('my_sponsorships') }}">Check your Sponsorships</a>	
 @endif
+
+<div class="row">
+	<div class="col-md-4 offset-md-1">
+		@if ($my_profile)
+			{{-- EDIT --}}
+			<a class="btn btn-primary btn-block" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
+			{{-- DELETE --}}
+			<form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
+				@csrf
+				@method('DELETE')
+				<button type="submit" class="btn btn-danger btn-block">Delete your Profile</button>
+			</form>
+		@else
+			{{-- CREATE --}}
+			<a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
+		@endif
+		
+		@if (!$is_active_sponsorship)
+			{{-- SPONSOR YOUR PROFILE --}}
+			<a class="btn btn-primary btn-block" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
+		@else
+			{{-- CHECK YOUR SPONSORSHIP --}}
+			<a class="btn btn-primary btn-block" href="{{ route('my_sponsorships',$my_contract_id) }}">Check your Sponsorships</a>	
+		@endif
+	</div>
+</div>
+
 
 
 
