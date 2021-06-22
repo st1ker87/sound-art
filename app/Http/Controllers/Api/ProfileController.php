@@ -129,15 +129,25 @@ class ProfileController extends Controller
 		// filtered iper profile array shuffle
 		shuffle($filtered_iper_profiles);
 
+		// # SPLIT BY SPONSORSHIP # 
+
+		// ! after shuffle !
+
+		$spons_f_i_profiles = [];
+		$no_spons_f_i_profiles = [];
+		foreach ($filtered_iper_profiles as $f_i_profile) {
+			if ($f_i_profile['is_active_sponsorship'])
+				$spons_f_i_profiles[] = $f_i_profile;
+			else 
+				$no_spons_f_i_profiles[] = $f_i_profile;
+		}
+
 		// # FILTER 2: ONLY PROFILES WITH SPONSORSHIP # 
 
-		if ($only_sponsorship) {
-			$spons_f_i_profiles = [];
-			foreach ($filtered_iper_profiles as $f_i_profile) {
-				if ($f_i_profile['is_active_sponsorship'])
-					$spons_f_i_profiles[] = $f_i_profile;
-			}
+		if ($only_sponsorship) { // ! home page
 			$filtered_iper_profiles = $spons_f_i_profiles;
+		} else { 				// ! no home page
+			$filtered_iper_profiles = $spons_f_i_profiles + $no_spons_f_i_profiles;
 		}
 
 		// # RESPONSE EJECT # 

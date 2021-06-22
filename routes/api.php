@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
  * # AUTHENTICATION #
  * 
  * default laravel
+ * 
  * http://localhost:8000/api/user/
  */
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -27,7 +28,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /**
  * # IPER PROFILES #
  * 
- * rotte estrazione iper profiles dal DB
+ * rotta estrazione iper profiles dal DB
+ * 
  * http://localhost:8000/api/profiles
  */
 Route::get('profiles', 'Api\ProfileController@index');

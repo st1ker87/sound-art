@@ -70,7 +70,7 @@ Route::prefix('profiles')   // prefisso URI raggruppamento sezione /search/...
  * * .../{slug} : slug of user recipient
  * * .../{id} 	: id of user recipient
  */
-Route::get('/messages/create/{slug}',	'MessageController@create')->name('messages_create');	// ! GET	/messages/create/{id}	return view('guest.messages.create');
+Route::get('/messages/create/{slug}',	'MessageController@create')->name('messages_create');	// ! GET	/messages/create/{slug}	return view('guest.messages.create');
 Route::post('/messages/{id}', 			'MessageController@store')->name('messages_store'); 	// ! GET	/messages/{id}			return redirect()->route('profiles.show')->with('status','Message sent');
 
 /**
@@ -84,7 +84,7 @@ Route::post('/messages/{id}', 			'MessageController@store')->name('messages_stor
  * * .../{slug} : slug of user recipient
  * * .../{id} 	: id of user recipient
  */
-Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');		// ! GET	/reviews/create/{id}	return view('guest.reviews.create');
+Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');		// ! GET	/reviews/create/{slug}	return view('guest.reviews.create');
 Route::post('/reviews/{id}',			'ReviewController@store')->name('reviews_store');		// ! GET	/reviews/{id}			return redirect()->route('profiles.show')->with('status','Review created');
 
 
@@ -187,7 +187,8 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 // #          DEV ROUTES         # 
 // ############################### 
 
-Route::get('/test', 'HomeController@test')->name('test');  		// ! SOLO PER TESTARE CODICE 
+Route::get('/test1', 'HomeController@test1')->name('test1');  		// ! SOLO PER TESTARE CODICE 
 Route::get('/test2', 'HomeController@test2')->name('test2');  	// ! SOLO PER TESTARE CODICE 
+Route::get('/test3', 'HomeController@test3')->name('test3');  	// ! SOLO PER TESTARE CODICE PER LE STATISTICHE
 
 
