@@ -167,12 +167,7 @@ const app = new Vue({
 		},
 
 		addEventClickListener() {
-			document.addEventListener('click', () => {
-				this.searchHome = false;
-				this.showCategoryPannel = false;
-				this.showGenrePannel = false;
-				this.showVotePannel = false;
-			});
+			return;
 		}
 
 	},
