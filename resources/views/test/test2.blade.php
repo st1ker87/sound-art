@@ -106,7 +106,7 @@
 		$rev_count	= null;
 
 		// query parameters 2: only profiles with sponsorship in response
-		$only_sponsorship  = true; // true / false
+		$only_sponsorship  = false; // true / false
 
 		// building filter set (only not null values)
 		$filters = [];
@@ -129,18 +129,40 @@
 		// filtered iper profile array shuffle
 		shuffle($filtered_iper_profiles);
 
+		echo 'iniziale';
 		@dump($filtered_iper_profiles);
 
-		// only filtered iper profiles with sponsorship (if requested) 
-		if ($only_sponsorship) {
-			$spons_f_i_profiles = [];
-			foreach ($filtered_iper_profiles as $f_i_profile) {
-				if ($f_i_profile['is_active_sponsorship'])
-					$spons_f_i_profiles[] = $f_i_profile;
-			}
-			$filtered_iper_profiles = $spons_f_i_profiles;
+
+
+		// # SPLIT BY SPONSORSHIP # 
+
+		// ! after shuffle !
+
+		$spons_f_i_profiles = [];
+		$no_spons_f_i_profiles = [];
+		foreach ($filtered_iper_profiles as $f_i_profile) {
+			if ($f_i_profile['is_active_sponsorship'])
+				$spons_f_i_profiles[] = $f_i_profile;
+			else 
+				$no_spons_f_i_profiles[] = $f_i_profile;
 		}
 
+		echo 'gruppo sponsorship';
+		@dump($spons_f_i_profiles);
+
+		echo 'gruppo NO sponsorship';
+		@dump($no_spons_f_i_profiles);
+
+
+		// # FILTER 2: ONLY PROFILES WITH SPONSORSHIP # 
+
+		if ($only_sponsorship) { // ! home page
+			$filtered_iper_profiles = $spons_f_i_profiles;
+		} else { 				// ! no home page
+			$filtered_iper_profiles = $spons_f_i_profiles + $no_spons_f_i_profiles;
+		}
+
+		echo 'finale con $only_sponsorship = '.$only_sponsorship;
 		@dump($filtered_iper_profiles);
 
 	function getFilteredProfiles($_array,$_key,$_value,$_mode) {

@@ -10,6 +10,8 @@ use App\Genre;
 use App\Offer;
 use App\Message;
 use App\Review;
+use App\Contract;
+use App\Sponsorship;
 
 class HomeController extends Controller
 {
@@ -30,6 +32,8 @@ class HomeController extends Controller
 			'offers' 		=> Offer::all(),
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
+			'contracts' 	=> Contract::all(),
+			'sponsorships' 	=> Sponsorship::all(),
  		];
         return view('home',$data);
     }
@@ -41,7 +45,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function test()
+    public function test1()
     {
 		$data = [
 			'users' 		=> User::all(),		
@@ -51,8 +55,10 @@ class HomeController extends Controller
 			'offers' 		=> Offer::all(),
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
- 		];
-        return view('test',$data); 
+			'contracts' 	=> Contract::all(),
+			'sponsorships' 	=> Sponsorship::all(),
+		];
+        return view('test.test1',$data); 
     }
 
 	/**
@@ -72,9 +78,33 @@ class HomeController extends Controller
 			'offers' 		=> Offer::all(),
 			'messages' 		=> Message::all(),
 			'reviews' 		=> Review::all(),
+			'contracts' 	=> Contract::all(),
+			'sponsorships' 	=> Sponsorship::all(),
  		];
-        return view('test2',$data); 
+        return view('test.test2',$data); 
     }
 
+	/**
+	 * #################################
+	 * #       CODE TEST PAGE 3        #
+	 * #################################
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function test3()
+    {
+		$data = [
+			'users' 		=> User::all(),		
+			'profiles' 		=> Profile::all(),
+			'categories' 	=> Category::all(),
+			'genres' 		=> Genre::all(),
+			'offers' 		=> Offer::all(),
+			'messages' 		=> Message::all(),
+			'reviews' 		=> Review::all(),
+			'contracts' 	=> Contract::all(),
+			'sponsorships' 	=> Sponsorship::all(),
+ 		];
+        return view('test.test3',$data); 
+    }
 
 }
