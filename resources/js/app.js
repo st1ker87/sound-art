@@ -217,6 +217,7 @@ $(document).ready(function(){
    
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
+        console.log(this.hash);
       });
     } // End if
   });
