@@ -62,9 +62,10 @@
 						<div class="msg_box col-xl-8">
 							<div class="msg_head">
 								<div class="row">
-									<span class="msg_obj col-md-6">{{ $message->msg_subject}}</span>
-									<span class="msg_sender col-md-6">from: {{ $message->msg_sender_name}}</span>
-									<span class="msg_sender_mail col-md-6 offset-md-6">{{ $message->msg_sender_email}}</span>
+									<span class="msg_date col-md-4">{{ $message->created_at}}</span>
+									<span class="msg_sender col-md-4">from: {{ $message->msg_sender_name}}</span>
+									<span class="msg_sender_mail col-md-4">{{ $message->msg_sender_email}}</span>
+									<span class="msg_obj col-md-12">{{ $message->msg_subject}}</span>
 								</div>
 							</div>
 							<div class="msg_content row">

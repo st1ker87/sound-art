@@ -32,16 +32,16 @@
 
                 @foreach ($my_user->reviews as $review)
                     <div class="msg_box">
-                        <div class="msg_head">
-                            <div class="row">
-                                <span class="msg_obj col-md-6">{{ $review->rev_subject}}</span>
-                                <span class="msg_sender col-md-6">from: {{ $review->rev_sender_name}}</span>
-                            </div>
-                        </div>
                         <div class="rev_vote">
                             @for ($i = 0; $i < $review->rev_vote; $i++)
                                 <i class='fas fa-star'></i>   
                             @endfor
+                        </div>
+                        <div class="msg_head">
+                            <div class="row">
+                                <span class="msg_obj col-md-6">{{ $review->rev_subject}}</span>
+                                <span class="msg_sender col-md-6">{{ $review->created_at}}  from: {{ $review->rev_sender_name}}</span>
+                            </div>
                         </div>
                         @if ($review->rev_text)
                             <div class="msg_content">
