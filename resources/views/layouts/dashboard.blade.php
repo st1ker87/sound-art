@@ -78,7 +78,9 @@
                                 @endif
                             @endforeach
                         </h3>
-                        <p>{{ Auth::user()->profile->work_town }}</p>
+                        @if ($my_profile)
+                            <p>{{ $my_profile->work_town }}</p>  
+                        @endif
                     </div>
                 </div>
             </div>
@@ -101,6 +103,7 @@
                                     </div>
                                 </a>
                             </li>
+                            @if ($my_profile)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">
                                     <div class="row">
@@ -108,7 +111,8 @@
                                         Profile
                                     </div>
                                 </a>
-                            </li>
+                            </li> 
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.messages.index') }}">
                                     <div class="row">

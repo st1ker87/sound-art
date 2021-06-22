@@ -122,15 +122,19 @@
             }
         }
     }
-    .btn {
-        width: 80%;
-        margin: 5px auto;
+    .dashboard_home {
+        .btn {
+            width: 80%;
+            margin: 5px auto;
+        }
     }
 }
 
 @media screen and (max-width: 992px) {
-    .btn {
-        width: 50%;
-        margin: 15px auto;
+    .dashboard_home {
+        .btn {
+            width: 50%;
+            margin: 15px auto;
+        }
     }
 }
