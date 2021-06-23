@@ -71,7 +71,7 @@ else {
     </section>
 
     {{-- BARRA RICERCA --}}
-    <section class="search-bar">
+    <section class="search-bar-white">
       <div class="container">
         <div class="row">
 

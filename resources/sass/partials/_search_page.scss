@@ -19,26 +19,17 @@
   }
 }
 /* SEARCH BAR */
-.search-bar {
+%search-bar {
   padding: 20px 0;
   font-size: 1.1rem;
-  
+  position: sticky;
+  top: 0;
+  z-index: 400;
   .search {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-  }
-  button {
-    display: block;
-    background-color: inherit;
-    border: none;
-    &:hover {
-      text-decoration: underline;
-    }
-    i {
-      vertical-align: text-top;
-    }
   }
   span {
     display: block;
@@ -88,16 +79,6 @@
         }
     }
   }
-  #submit-advanced-search {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    text-decoration: none;
-    &:hover {
-      background-color: black;
-      color: $primaryWhite;
-    }
-  }
   /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -113,6 +94,69 @@
   }
 }
 
+.search-bar-white {
+  background-color: $primaryWhite;
+  @extend %search-bar;
+  button {
+    display: block;
+    background-color: inherit;
+    border: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    i {
+      vertical-align: text-top;
+    }
+  }
+  #submit-advanced-search {
+    background-color: $primaryWhite;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 
+        background-color 300ms,
+        border 300ms,
+        color 300ms;
+    &:hover {
+      background-color: black;
+      border: 1px solid $primaryWhite;
+      color: $primaryWhite;
+    }
+  }
+}
+.search-bar-blue {
+  background-color: $primaryDarkBlue;
+  color: $primaryWhite;
+  @extend %search-bar;
+  button {
+    display: block;
+    background-color: inherit;
+    border: none;
+    color: $primaryWhite;
+    &:hover {
+      text-decoration: underline;
+    }
+    i {
+      vertical-align: text-top;
+    }
+  }
+  #submit-advanced-search {
+    background-color: $primaryWhite;
+    border: 1px solid $primaryWhite;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 
+        background-color 300ms,
+        border 300ms,
+        color 300ms;
+    &:hover {
+      background-color: $lightGray;
+      border: 1px solid $primaryDarkBlue;
+      color: black;
+    }
+  }
+}
 
 @media screen and (max-width: 540px) {
   .jumbotron-container-search {
