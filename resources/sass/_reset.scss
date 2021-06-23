@@ -1,5 +1,13 @@
+:root {
+  background-color: rgb(59, 59, 73);
+}
+
+
 body {
   min-width: 270px;
+  max-width: 1900px !important;
+  margin: 0 auto !important;
+  background-color: $primaryWhite;
 }
 
 ol, ul {

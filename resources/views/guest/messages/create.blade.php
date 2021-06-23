@@ -39,7 +39,10 @@
 -----------------------------------------------------------}}
 @push('app_head')
 <style>
-	.required {
+	.vertical_spacer {
+		margin-bottom: 24px;
+	}	
+	.required_input_field {
 		color: #e3342f; /* $red */
 	}
 </style>
@@ -79,7 +82,7 @@
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
-							<label>Email <span class="required">*</span></label>
+							<label>Email <span class="required_input_field">*</span></label>
 							<input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Insert your email" value="{{ old('email') }}" required>
 							@error('email')
 								<div class="invalid-feedback">{{ $message }}</div>
@@ -98,19 +101,22 @@
 				</div>
 
 				<div class="form-group">
-					<label>Subject <span class="required">*</span></label>
+					<label>Subject <span class="required_input_field">*</span></label>
 					<input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="You ask for..." value="{{ old('subject') }}" required>
 					@error('subject')
 						<div class="invalid-feedback">{{ $message }}</div>
 					@enderror
 				</div>
                 <div class="form-group">
-                    <label>Text <span class="required">*</span></label>
-                    <textarea name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your message please..." required>{{ old('text') }}</textarea>
+                    <label>Text <span class="required_input_field">*</span></label>
+                    <textarea rows="5" name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your message please..." required>{{ old('text') }}</textarea>
                     @error('text')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
+				<div><span class="required_input_field">* Required informations</span></div>
+				<div class="vertical_spacer"></div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Send your message to {{$user->name}}</button>

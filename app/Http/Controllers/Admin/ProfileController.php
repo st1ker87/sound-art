@@ -299,7 +299,7 @@ class ProfileController extends Controller
 
 		// ! lo user non ha più un profile 
 		// ! ma potrebbe ancora avere messages, reviews, cotracts (collegati a user)
-		// ! che fare?
+		// ! decisione: per adesso lasciare
 
 		return redirect()->route('dashboard')->with('status','Profile deleted');
     }
@@ -312,11 +312,18 @@ class ProfileController extends Controller
 	 * 
 	 * @param  \Illuminate\Http\Request  $req
 	 */
-	protected function profileValidation($req) { // ! >>>>>>>>>>>>>>>>> COMPLETARE <<<<<<<<<<<<<<<<<< !
+	protected function profileValidation($req) {
 		$req->validate([
 			'work_town'		=> 'required|max:255',
-			'phone'			=> 'required|max:25',
-			// 'content'	=> 'required'
+			'work_address'	=> 'max:255',
+			'phone'			=> 'max:25',
+			'bio_text1'		=> 'required',
+			// 'bio_text2'		=> '',
+			// 'bio_text3'		=> '',
+			'bio_text4'		=> 'required',
+			// 'image_url'		=> 'required',  // non possibile in edit se immagine e già presente e un'altra non è caricata
+			'categories'	=> 'required',
+			'offers'		=> 'required',
 		]);
 	}
 

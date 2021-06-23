@@ -38,7 +38,10 @@
 -----------------------------------------------------------}}
 @push('app_head')
 <style>
-	.required {
+	.vertical_spacer {
+		margin-bottom: 24px;
+	}	
+	.required_input_field {
 		color: #e3342f; /* $red */
 	}
 </style>
@@ -79,7 +82,7 @@
 				<div class="row">
 					<div class="col-4">
 						<div class="form-group">
-							<label>Subject <span class="required">*</span></label>
+							<label>Subject <span class="required_input_field">*</span></label>
 							<input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="You ask for..." value="{{ old('subject') }}" required>
 							@error('subject')
 								<div class="invalid-feedback">{{ $message }}</div>
@@ -88,7 +91,7 @@
 					</div>
 					<div class="col-4">
 						<div class="form-group">
-							<label for="vote">Vote <span class="required">*</span></label>
+							<label for="vote">Vote <span class="required_input_field">*</span></label>
 							<select name="vote" id="vote" class="form-control @error('vote') is-invalid @enderror" required>
 								<option value="" {{ old('vote') == '' ? 'selected' : '' }}>select</option>
 								<option value="1" {{ old('vote') == 1 ? 'selected' : '' }}>1</option>
@@ -114,14 +117,17 @@
 				</div>
 
 				<div class="form-group">
-                    <label>Text <span class="required">*</span></label>
-                    <textarea name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your message please..." required>{{ old('text') }}</textarea>
+                    <label>Text <span class="required_input_field">*</span></label>
+                    <textarea rows="5" name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your message please..." required>{{ old('text') }}</textarea>
                     @error('bio_text1')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <div class="form-group">
+				<div><span class="required_input_field">* Required informations</span></div>
+				<div class="vertical_spacer"></div>
+
+				<div class="form-group">
                     <button type="submit" class="btn btn-success">Submit your review for {{$user->name}}</button>
                 </div>
 

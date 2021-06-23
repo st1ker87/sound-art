@@ -58,11 +58,9 @@ const app = new Vue({
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
 		iper_profiles		: [],
 		iper_profiles_display: [],
-
 	},
 	methods: {
 		showHumburger : function() {
-			console.log('alora!!')
 			this.humburger = !this.humburger;
 		},
 		showSearch : function() {
@@ -84,7 +82,7 @@ const app = new Vue({
 			this.showGenrePannel = false;
 		},
 		setCategory: function (category) {
-			if(category === '-- No filter --') {
+			if(category === 'No filter') {
 				this.category_selected = null;
 			}
 			else {
@@ -94,7 +92,7 @@ const app = new Vue({
 			this.showCategoryPannel = false;
 		},
 		setGenre: function (genre) {
-			if(genre === '-- No filter --') {
+			if(genre === 'No filter') {
 				this.genre_selected = null;
 			}
 			else {
@@ -104,7 +102,7 @@ const app = new Vue({
 			this.showGenrePannel = false;
 		},
 		setVote: function (vote) {
-			if(vote === '-- No filter --') {
+			if(vote === 'No filter') {
 				this.vote_selected = null;
 			}
 			else {
@@ -112,6 +110,9 @@ const app = new Vue({
 			}
 			this.btnVotes = vote;
 			this.showVotePannel = false;	
+		},
+		stopProp: function(e) {
+			e.stopPropagation();
 		},
 		// INTERNAL APIs
 		filterCall() {
@@ -142,34 +143,39 @@ const app = new Vue({
 				if(search_from_home_key === 'category') {
 					this.btnCategories = search_from_home_value;
 					this.category_selected = search_from_home_value;
-					this.btnGeneres = '-- No filter --';
-					this.btnVotes = '-- No filter --';
+					this.btnGeneres = 'No filter';
+					this.btnVotes = 'No filter';
 				}
 				else if (search_from_home_key === 'genre') {
 					this.btnGeneres = search_from_home_value;
 					this.genre_selected = search_from_home_value;
-					this.btnCategories = '-- No filter --';
-					this.btnVotes = '-- No filter --';
+					this.btnCategories = 'No filter';
+					this.btnVotes = 'No filter';
 				}
 				else {
-					this.btnCategories = '-- No filter --';
-					this.btnGeneres = '-- No filter --';
-					this.btnVotes = '-- No filter --';
+					this.btnCategories = 'No filter';
+					this.btnGeneres = 'No filter';
+					this.btnVotes = 'No filter';
 				}
 				this.filterCall();
 			}
 			else {
-				this.btnCategories = '-- No filter --';
-				this.btnGeneres = '-- No filter --';
-				this.btnVotes = '-- No filter --';
+				this.btnCategories = 'No filter';
+				this.btnGeneres = 'No filter';
+				this.btnVotes = 'No filter';
 				this.filterCall();
 			}
 		},
 
 		addEventClickListener() {
+			document.addEventListener('click', () => {
+				this.showCategoryPannel = false;
+				this.showGenrePannel = false;
+				this.showVotePannel = false;
+				this.searchHome = false;
+			});
 			return;
 		}
-
 	},
 	mounted() {
 
@@ -185,10 +191,8 @@ const app = new Vue({
 			this.searchDefault();
 			this.addEventClickListener();
 		}
-
 	},
-	created() {
-			
+	created() {			
 	},
 	updated() {
 	}

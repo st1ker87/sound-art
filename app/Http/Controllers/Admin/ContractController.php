@@ -115,6 +115,9 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
+		// validazione 
+		$this->contractValidation($request);
+
 		$gateway = new \Braintree\Gateway([
 			'environment' 	=> config('services.braintree.environment'),
 			'merchantId' 	=> config('services.braintree.merchantId'),
@@ -182,6 +185,48 @@ class ContractController extends Controller
 		}
 
     }
+
+
+	/**
+	 * Contract: form data validation
+	 * https://laravel.com/docs/7.x/validation
+	 * errors shown in EDIT/CREATE view
+	 * 
+	 * @param  \Illuminate\Http\Request  $req
+	 */
+	protected function contractValidation($req) {
+		$req->validate([
+			'email'			=> 'required',
+			'name_on_card'	=> 'required',
+			'amount'		=> 'required',
+			'payment_method_nonce'		=> 'required',
+			'sponsorship_id'			=> 'required',
+			'sponsorship_hour_duration'	=> 'required',
+		]);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

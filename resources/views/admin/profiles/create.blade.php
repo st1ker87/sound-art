@@ -23,9 +23,29 @@
 @section('title','dashboard')
 @section('content')
 
+{{----------------------------------------------------------- 
+	AGGIUNTO IN layouts/dashboard.blade.php
+
+	TODO >>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
+
+	<!-- Styles: single page addendum -->
+	@stack('dashboard_head')
+
+-----------------------------------------------------------}}
+@push('dashboard_head')
+<style>
+	.vertical_spacer {
+		margin-bottom: 24px;
+	}
+	.required_input_field {
+		color: #e3342f; /* $red */
+	}
+</style>
+@endpush
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-lg-8 col-12">
 
             <div class="d-flex justify-content-between align-items-center">
                 <h1>Create your profile</h1>
@@ -51,8 +71,8 @@
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
-							<label>Work Town</label>
-							<input type="text" name="work_town" class="form-control @error('work_town') is-invalid @enderror" placeholder="Insert your work town" value="{{ old('work_town') }}">
+							<label>Work Town <span class="required_input_field">*</span></label>
+							<input type="text" name="work_town" class="form-control @error('work_town') is-invalid @enderror" placeholder="Insert your work town" value="{{ old('work_town') }}" required>
 							@error('work_town')
 								<div class="invalid-feedback">{{ $message }}</div>
 							@enderror
@@ -77,59 +97,61 @@
 					@enderror
 				</div>
                 <div class="form-group">
-                    <label>bio_text1</label>
-                    <textarea name="bio_text1" class="form-control @error('bio_text1') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text1') }}</textarea>
+                    <label>bio_text1 <span class="required_input_field">*</span></label>
+                    <textarea rows="5" name="bio_text1" class="form-control @error('bio_text1') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text1') }}</textarea>
                     @error('bio_text1')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>bio_text2</label>
-                    <textarea name="bio_text2" class="form-control @error('bio_text2') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text2') }}</textarea>
+                    <textarea rows="5" name="bio_text2" class="form-control @error('bio_text2') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text2') }}</textarea>
                     @error('bio_text2')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>bio_text3</label>
-                    <textarea name="bio_text3" class="form-control @error('bio_text3') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text3') }}</textarea>
+                    <textarea rows="5" name="bio_text3" class="form-control @error('bio_text3') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text3') }}</textarea>
                     @error('bio_text3')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>bio_text4</label>
-                    <textarea name="bio_text4" class="form-control @error('bio_text4') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa...">{{ old('bio_text4') }}</textarea>
+                    <label>Preview text (for short presentation in Search Pages) <span class="required_input_field">*</span></label>
+                    <textarea rows="2" name="bio_text4" class="form-control @error('bio_text4') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('bio_text4') }}</textarea>
                     @error('bio_text4')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Your profile image</label>
-                    <input type="file" name="image_url" class="form-control-file @error('image_url') is-invalid @enderror" value="{{ old('image_url') }}">
+                    <label>Your profile image <span class="required_input_field">*</span></label>
+                    <input type="file" name="image_url" class="form-control-file @error('image_url') is-invalid @enderror" value="{{ old('image_url') }}" required>
                     @error('image_url')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label>Your video essay</label>
                     <input type="file" name="video_url" class="form-control-file @error('video_url') is-invalid @enderror" value="{{ old('video_url') }}">
                     @error('video_url')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
-                <div class="form-group">
+                </div> --}}
+                {{-- <div class="form-group">
                     <label>Your audio preview</label>
                     <input type="file" name="audio_url" class="form-control-file @error('audio_url') is-invalid @enderror" value="{{ old('audio_url') }}">
                     @error('audio_url')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> --}}
 
+
+				<div class="vertical_spacer"></div>
 				<div class="row">
 					<div class="col-4">
 						<div class="form-group">
-							<p>Select your Category</p>
+							<p>Select your Category <span class="required_input_field">*</span></p>
 							@foreach ($categories as $category)
 								<div class="form-check @error('categories') is-invalid @enderror">
 									<input name="categories[]" class="form-check-input" type="checkbox" value="{{ $category->id }}"
@@ -163,7 +185,7 @@
 					</div>
 					<div class="col-4">
 						<div class="form-group">
-							<p>Select your Offer</p>
+							<p>Select your Offer <span class="required_input_field">*</span></p>
 							@foreach ($offers as $offer)
 								<div class="form-check @error('offers') is-invalid @enderror">
 									<input name="offers[]" class="form-check-input" type="checkbox" value="{{ $offer->id }}"
@@ -179,6 +201,9 @@
 						</div>		
 					</div>
 				</div>
+
+				<div><span class="required_input_field">* Required informations</span></div>
+				<div class="vertical_spacer"></div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Create Profile</button>
