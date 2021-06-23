@@ -104,8 +104,8 @@
     </section>
     <section class="artist-in-evidence">
         <h1>In Evidence</h1>
-        <p>In attesa...</p>
     </section>
+    @include('partials.cards')
     <section class="how-it-works">
         <div class="container-fluid">
             <div class="row">
