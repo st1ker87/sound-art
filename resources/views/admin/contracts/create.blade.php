@@ -58,10 +58,10 @@
 	#bt_form #bt_message_container {
 		display: none;
 	}
-	#bt_form .spacer {
+	.vertical_spacer {
 		margin-bottom: 24px;
 	}
-	#bt_form .required {
+	.required_input_field {
 		color: #e3342f; /* $red */
 	}
 </style>
@@ -73,14 +73,14 @@
 
 
 		<h1>{{$sponsorship->name}}</h1>
-		<div class="spacer"></div>
+		<div class="vertical_spacer"></div>
 		<h4>{{$sponsorship->description}}</h4>
-		<div class="spacer"></div>
+		<div class="vertical_spacer"></div>
 
 		{{-- FORM FEEDBACK MESSAGE (retrieved via js) --}}
 		<div id="bt_message_container">
 			<div id="bt_message_box" class="alert alert-danger"></div>
-			<div class="spacer"></div>
+			<div class="vertical_spacer"></div>
 		</div>
 
 		{{-- TRANSACTION FORM --}}	
@@ -92,7 +92,7 @@
 				<input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
 			</div>
 			<div class="form-group">
-				<label for="name_on_card">Name on Card <span class="required">*</span></label>
+				<label for="name_on_card">Name on Card <span class="required_input_field">*</span></label>
 				<input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ Auth::user()->name.' '.Auth::user()->surname }}" required>
 			</div>
 
@@ -172,26 +172,26 @@
 			{{-- VERSIONE HOSTED FIELDS --}}
 			<div class="row">
 				<div class="col-md-6">
-					<label for="cc_number">Credit Card Number <span class="required">*</span></label>
+					<label for="cc_number">Credit Card Number <span class="required_input_field">*</span></label>
 					<div class="form-group" id="card-number"></div>
 				</div>
 
 				<div class="col-md-3">
-					<label for="expiry">Expiry <span class="required">*</span></label>
+					<label for="expiry">Expiry <span class="required_input_field">*</span></label>
 					<div class="form-group" id="expiration-date"></div>
 				</div>
 
 				<div class="col-md-3">
-					<label for="cvv">CVV <span class="required">*</span></label>
+					<label for="cvv">CVV <span class="required_input_field">*</span></label>
 					<div class="form-group" id="cvv"></div>
 				</div>
 			</div>
 
 
-			<div><span class="required">* Required informations</span></div>
-			<div class="spacer"></div>
+			<div><span class="required_input_field">* Required informations</span></div>
+			<div class="vertical_spacer"></div>
 			<div id="paypal-button"></div>
-			<div class="spacer"></div>
+			<div class="vertical_spacer"></div>
 
 			<input id="nonce" name="payment_method_nonce" type="hidden" />
 
@@ -200,8 +200,8 @@
 			<input id="nonce" name="sponsorship_hour_duration" type="hidden" value="{{$sponsorship->hour_duration}}" />
 
 			<button type="submit" class="btn btn-success">Submit Payment</button>
-			<div class="spacer"></div>
-			<div class="spacer"></div>
+			<div class="vertical_spacer"></div>
+			<div class="vertical_spacer"></div>
 
 		</form>
 
