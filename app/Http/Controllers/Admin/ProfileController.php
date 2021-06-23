@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use DateTime;
 
 use App\User;
 use App\Profile;
@@ -294,12 +295,24 @@ class ProfileController extends Controller
 		$user->genres()->sync([]);
 		$user->offers()->sync([]);
 
-		// cancellare il profile $id
-		$profile->delete();
-
 		// ! lo user non ha più un profile 
 		// ! ma potrebbe ancora avere messages, reviews, cotracts (collegati a user)
-		// ! decisione: per adesso lasciare
+		// ! decisione: lasciare messages, reviews, contracts, ma...
+
+		// interruzione sponsorship attiva
+		date_default_timezone_set('Europe/Rome');
+		foreach ($user->contracts as $contract) {
+			$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
+			$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_end);
+			$now 		= new DateTime();
+			if ($date_start < $now && $date_end >= $now) {;
+				$contract['date_end'] = $now->format('Y-m-d H:i:s');
+				$contract->update();
+			}		
+		}
+
+		// cancellare il profile $id
+		$profile->delete();
 
 		return redirect()->route('dashboard')->with('status','Profile deleted');
     }
