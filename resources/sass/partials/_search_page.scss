@@ -56,6 +56,10 @@
         justify-content: center;
         align-items: center;
         z-index: 500;
+        .btn-no-filter {
+          background-color: rgb(41, 49, 131);
+          color: rgb(212, 212, 212);
+        }
         ul {
             padding: 0;
             height: 18vh;
