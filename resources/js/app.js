@@ -175,6 +175,22 @@ const app = new Vue({
 				this.searchHome = false;
 			});
 			return;
+		},
+		scrollSearch() {
+			let x = document.querySelector('.header-search');
+			let z = document.querySelector('.jumbotron-container-search');
+			let y = document.querySelector('[class^=search-bar]');
+				window.addEventListener('scroll', function() {
+				if(window.scrollY > (x.offsetHeight + z.offsetHeight)) {
+					y.classList.remove('search-bar-white');
+					y.classList.add('search-bar-blue');
+				}
+				else {
+					y.classList.remove('search-bar-blue');
+					y.classList.add('search-bar-white');
+				}
+			});
+			
 		}
 	},
 	mounted() {
@@ -190,6 +206,8 @@ const app = new Vue({
 			this.onlySponsorship = false,
 			this.searchDefault();
 			this.addEventClickListener();
+			
+			this.scrollSearch();
 		}
 	},
 	created() {			
