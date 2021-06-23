@@ -140,9 +140,9 @@
 
 // Artisti in evidenza
 .artist-in-evidence {
-    height: 30vh;
-    background-color: #858585;
+    background: linear-gradient(black, $primaryDarkBlue);
     text-align: center;
+    color: $primaryWhite;
 }
 
 /* END ARTISTI */
@@ -226,14 +226,7 @@
     }
 }
 
-
-/*              *
- * IMPROVEMENTS * 
- *              */
- // ripeto font size 1rem nei p element
- /* cercare di essere più generali e dinamici nei font size, 
- magari con delle media queries*/
- //Aggiustare font wheights
+/* MEDIA QUERIES */
 
  @media only screen and (max-width: 600px) {
     body {
