@@ -67,18 +67,26 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="over-jumbo d-block d-xl-none col-xs-6"></div>
-                    <div class="title-dash col-xl-6">
-                        <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
-                        <h3>
-                            @foreach (Auth::user()->categories as $category)
-                                @if($loop->last)
-                                    {{$category->name}}
-                                    @else
-                                    {{$category->name . ' |'}}
-                                @endif
-                            @endforeach
-                        </h3>
-                        <p>{{ Auth::user()->profile->work_town }}</p>
+                    <div class="container">
+                        
+                        
+                        <div class="title-dash col-xl-6">
+                            <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                            <h3>
+                                @foreach (Auth::user()->categories as $category)
+                                    @if($loop->last)
+                                        {{$category->name}}
+                                        @else
+                                        {{$category->name . ' |'}}
+                                    @endif
+                                @endforeach
+                            </h3>
+                            @if ($my_profile)
+                                <p>{{ $my_profile->work_town }}</p>  
+                            @endif
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -101,6 +109,7 @@
                                     </div>
                                 </a>
                             </li>
+                            @if ($my_profile)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">
                                     <div class="row">
@@ -108,7 +117,8 @@
                                         Profile
                                     </div>
                                 </a>
-                            </li>
+                            </li> 
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.messages.index') }}">
                                     <div class="row">

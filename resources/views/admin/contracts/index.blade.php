@@ -46,6 +46,7 @@
 @endphp
 
 @foreach ($my_contracts as $contract)
+@foreach ($my_contracts->sortByDesc('created_at') as $contract)
 
 	<p>{{$counter}} (id: {{$contract->id}}) - {{$contract->sponsorship->name}} (duration: {{$contract->sponsorship->hour_duration}} hours)</p>
 	<p>start: {{$contract->date_start}} - end: {{$contract->date_end}}</p>

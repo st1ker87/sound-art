@@ -61,46 +61,13 @@
     }
 }
 
-// sezione messaggi
-.msg_box {
-    border: 1px solid grey;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 20px;
-    .msg_head, .msg_content {
-        padding: 5px 20px;
-    }
-    .msg_head {
-        border-bottom: 1px solid lightgray;
-        .msg_obj {
-            color: darkred;
-            font-weight: 800;
-            text-overflow: ellipsis;
-        }
-    }
-    .msg_content {
-        max-height: 2rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        position: relative;
-        .msg_delete {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-        .msg_txt {
-            max-height: 2rem;
-            text-overflow: ellipsis;
-        }
-    }
-    .rev_vote {
-        border-bottom: 1px solid lightgray;
-        padding: 5px 20px;
-        i {
-            color: gold;
-        }
+// .alert-box {
+//     .alert {
 
-    }
-}
+//     }
+// }
+
+
 
 // RESPONSIVE
 @media screen and (max-width: 540px) {
@@ -122,15 +89,19 @@
             }
         }
     }
-    .btn {
-        width: 80%;
-        margin: 5px auto;
+    .dashboard_home {
+        .btn {
+            width: 80%;
+            margin: 5px auto;
+        }
     }
 }
 
 @media screen and (max-width: 992px) {
-    .btn {
-        width: 50%;
-        margin: 15px auto;
+    .dashboard_home {
+        .btn {
+            width: 50%;
+            margin: 15px auto;
+        }
     }
 }

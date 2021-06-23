@@ -30,7 +30,8 @@
 			
             @if(count($my_user->reviews)>0)
 
-                @foreach ($my_user->reviews as $review)
+                {{-- @foreach ($my_user->reviews as $review) --}}
+                @foreach ($my_user->reviews->sortByDesc('created_at') as $review)
                     <div class="msg_box">
                         <div class="rev_vote">
                             @for ($i = 0; $i < $review->rev_vote; $i++)
@@ -38,10 +39,8 @@
                             @endfor
                         </div>
                         <div class="msg_head">
-                            <div class="row">
-                                <span class="msg_obj col-md-6">{{ $review->rev_subject}}</span>
-                                <span class="msg_sender col-md-6">{{ $review->created_at}}  from: {{ $review->rev_sender_name}}</span>
-                            </div>
+                            <div class="msg_sender">{{ $review->created_at}}  by <strong>{{ $review->rev_sender_name}}</strong></div>
+                            <div class="msg_obj">{{ $review->rev_subject}}</div>
                         </div>
                         @if ($review->rev_text)
                             <div class="msg_content">
