@@ -23,7 +23,7 @@
 
 <div class="container">
 	<div class="row justify-content-center">
-    	<div class="col-12">
+    	<div class="col-md-12">
         	
 			<div class="d-flex justify-content-between align-items-center">
             	<h2>Your message box</h2>
@@ -54,41 +54,30 @@
 						</ul>
 					</div>
 				@endif
-
 			</div>
-			@if(count($my_user->messages)>0)
-				<div class="row">
-					{{-- @foreach ($my_user->messages as $message) --}}
-					@foreach ($my_user->messages->sortByDesc('created_at') as $message)
-						<div class="msg_box col-xl-12">
-							<div class="msg_head">
-								<div class="row">
-									<span class="msg_date col-md-4">{{ $message->created_at}}</span>
-									<span class="msg_sender col-md-4">by <strong>{{ $message->msg_sender_name}}</strong></span>
-									<span class="msg_sender_mail col-md-4">{{ $message->msg_sender_email}}</span>
-									<span class="msg_obj col-md-12">{{ $message->msg_subject}}</span>
-								</div>
-							</div>
-							<div class="msg_content row">
-								<span class="msg_txt col-md-8">
-									@if (strlen($message->msg_text)>50)
-										
-									@endif{{ $message->msg_text}}</span>
-								
-								{{-- DELETE --}}
-								<form class="d-inline-block msg_delete" action="{{ route('admin.messages.destroy',$message->id) }}" method="post">
-									@csrf
-									@method('DELETE')
-									<button type="submit" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
-								</form>
+			{{-- FINE FEEDBACK MESSAGES --}}
 
-							</div>
-	
-	
-						</div>
-					@endforeach	
+			@if(count($my_user->messages)>0)
+			@foreach ($my_user->messages->sortByDesc('created_at') as $message)
+			{{-- MESSAGE BOX --}}
+			<div class="msg_box">
+				<div class="content">
+					<div class="msg_date">{{ $message->created_at}} by <span class="sender_name"> {{ $message->msg_sender_name}} </span> </div>
+					<div class="msg_sender_mail">{{ $message->msg_sender_email}} </div>
+					<div class="msg_obj">{{ $message->msg_subject}} </div>
+					<div class="msg_txt">{{ $message->msg_text}} </div>
+					{{-- DELETE --}}
+					<form class="d-inline-block msg_delete" action="{{ route('admin.messages.destroy',$message->id) }}" method="post">
+						@csrf
+						@method('DELETE')
+						<button type="submit" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+					</form>
 
 				</div>
+
+			</div>
+			@endforeach	
+
 			@else
 				<p>No messages to show.</p>
 			@endif

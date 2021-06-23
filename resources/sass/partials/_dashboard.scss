@@ -7,21 +7,22 @@
     background-size: contain;
     border-bottom: 0.5px solid $lightGray;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    .container-fluid {
+    .row {
+        position: relative;
         height: 100%;
-        .row {
-            position: relative;
+    
+        .over-jumbo {
+            background-color: #00000082;
             height: 100%;
-        
-            .over-jumbo {
-                background-color: #00000082;
-                height: 100%;
-                width: 100%;
-            }
+            width: 100%;
+        }
+        .container {
+
             .title-dash {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
+                padding: 0;
                 h1 {
                     font-size: 4rem;
                     color: $primaryWhite;
@@ -35,13 +36,30 @@
                 }
             }
         }
-        
+    }
+    
 
+}
+
+
+.dashboard_nav {
+    .container {
+        .nav {
+            min-height: 8vh;
+            align-items: center;
+            .my_active {
+                border-bottom: 2px solid goldenrod;
+            }
+        }
     }
 }
 
+.dashboard_main {
+    margin: 10vh 0;
+}
+
 // sidebar fissa a sx nella dashboard
-.dash_row {
+/* .dash_row {
     height: 100%;
     .sidebar {
         border-right: 0.5px solid $lightGray;
@@ -59,7 +77,7 @@
             }
         }
     }
-}
+} */
 
 // .alert-box {
 //     .alert {
@@ -70,38 +88,55 @@
 
 
 // RESPONSIVE
-@media screen and (max-width: 540px) {
-    .jumbo-dash {
-        .container-fluid {
-            .row {
+@media screen and (max-width: 992px) {
+.jumbo-dash {
+        .row {
+            .container {
                 .title-dash {
                     h1 {
-                        font-size: 2rem;
+                        font-size: 3rem;
                     }
                     h3 {
-                        font-size: 1.5rem;
+                        font-size: 2rem;
                     }
                     p {
-                        font-size: 1rem;
+                        font-size: 1.5rem;
                     }
-                }
 
             }
-        }
-    }
-    .dashboard_home {
-        .btn {
-            width: 80%;
-            margin: 5px auto;
+            }
+
         }
     }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 550px) {
+    .row {
+        .container {
+
+            .title-dash {
+    
+                h1 {
+                    font-size: 2rem;
+                }
+                h3 {
+                    font-size: 1.4rem;
+                }
+                p {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+    }
+}
+
+
+/* @media screen and (max-width: 992px) {
     .dashboard_home {
         .btn {
             width: 50%;
             margin: 15px auto;
         }
     }
-}
+} */

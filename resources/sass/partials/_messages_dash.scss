@@ -1,55 +1,64 @@
 // sezione messaggi
+
 .msg_box {
-    border-radius: 8px 8px 0 0;
-    box-shadow: 3px 3px 10px rgb(212, 212, 212);
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    i {
-        font-size: 1.5em;
+    margin: 20px 0;
+    .content
+    {
+        position: relative;
+
+        border-radius: 8px 8px 0 0;
+        box-shadow: 3px 3px 10px rgb(212, 212, 212);
+        padding: 25px;
     }
-    .msg_head, .msg_content {
-        padding: 5px 20px;
-    }
-    .msg_head {
-        // border-bottom: 1px solid lightgray;
+    .msg_date {
+        overflow: hidden;
         margin-bottom: 5px;
-        .msg_date {
-            margin-bottom: 5px;
-        }
-        .msg_sender {
-            color: $darkGray;
-            margin-bottom: 5px;
-        }
-        .msg_obj {
-            color: $primaryBlack;
+        color: $darkGray;
+        .sender_name {
+            font-size: 1.2em;
             font-weight: 800;
-            text-overflow: ellipsis;
-            margin-bottom: 5px;
         }
     }
-    .msg_content {
-        max-height: 2rem;
+    .msg_sender_mail {
+        overflow: hidden;
+        font-size: 0.9em;
+        color: $darkGray;
+        margin-bottom: 10px;
+    }
+    .msg_obj {
+        overflow: hidden;
+
+        color: $primaryBlack;
+        font-weight: 800;
+        font-size: 1.2em;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .msg_txt {
+        // display: block;
+        max-height: 1.5rem;
+        // max-width: 992px;
         overflow: hidden;
         text-overflow: ellipsis;
-        position: relative;
-        .msg_delete {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-        .msg_txt {
-            max-height: 2rem;
-            text-overflow: ellipsis;
-        }
+        white-space: nowrap;
     }
-    .rev_vote {
-        // border-bottom: 1px solid lightgray;
-        padding: 5px 20px;
+    .msg_delete {
+        position: absolute;
+        top: 5px;
+        right: 10px;
         i {
-            color: gold;
+            font-size: 1.5em;
         }
-
     }
 }
+
+.rev_vote {
+    margin-bottom: 10px;
+    i {
+        color: gold;
+    }
+
+}
+
 
 // RESPONSIVE

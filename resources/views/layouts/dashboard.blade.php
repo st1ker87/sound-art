@@ -63,41 +63,60 @@
 		@endphp
 
         {{-- JUMBOTRON DASHBOARD --}}
-        <div class="jumbo-dash">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="over-jumbo d-block d-xl-none col-xs-6"></div>
-                    <div class="container">
-                        
-                        
-                        <div class="title-dash col-xl-6">
-                            <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
-                            <h3>
-                                @foreach (Auth::user()->categories as $category)
-                                    @if($loop->last)
-                                        {{$category->name}}
-                                        @else
-                                        {{$category->name . ' |'}}
-                                    @endif
-                                @endforeach
-                            </h3>
-                            @if ($my_profile)
-                                <p>{{ $my_profile->work_town }}</p>  
-                            @endif
-                        </div>
-
-
+        <div class="jumbo-dash container-fluid">
+            <div class="row">
+                <div class="over-jumbo d-block d-xl-none"></div>
+                <div class="container">
+                    
+                    
+                    <div class="title-dash">
+                        <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                        <h3>
+                            @foreach (Auth::user()->categories as $category)
+                                @if($loop->last)
+                                    {{$category->name}}
+                                    @else
+                                    {{$category->name . ' |'}}
+                                @endif
+                            @endforeach
+                        </h3>
+                        @if ($my_profile)
+                            <p>{{ $my_profile->work_town }}</p>  
+                        @endif
                     </div>
+
+
                 </div>
             </div>
         </div>
 
+        {{-- DA CANCELLARE E RIPRENDERE VECCHIO STILE SE NON PIACE --}}
+
+        {{-- PROVA NAVBAR SOTTO AL JUMBO AL POSTO DELLA NAV A SX --}}
+        <div class="bar_under_jumbo container-fluid dashboard_nav">
+            <div class="container">
+                <nav class="nav nav-pills flex-column flex-sm-row">
+                    {{-- VALUTARE SE USARE O TOGLIERE BORDO PER ROTTA ATTIVA --}}
+                    {{-- @if (request()->is('admin/dashboard')) --}}
+                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                    {{-- @else
+                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                    @endif --}}
+
+                    @if ($my_profile)
+                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">My Profile</a>
+                    @endif
+                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('admin.messages.index') }}">Messages</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('admin.reviews.index') }}">Reviews</a>
+                </nav>
+            </div>
+        </div>
             
-        <div class="container-fluid">
-            <div class="row dash_row">
+        <div class="container">
+            <div class="row">
 
                 {{-- DA QUI NAVBAR COMUNE A SX --}}
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
+                {{-- <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
                     <div class="sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -138,24 +157,24 @@
                                 </a>
                             </li>
                             
-                            {{-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <div class="row">
                                         <i class="fas fa-chart-line col-lg-12 col-xl-3"></i>
                                         Statistics                             
                                     </div>
                                 </a>
-                            </li> --}}
+                            </li> 
                         </ul>
 
                     </div>
-                </nav>
+                </nav> --}}
                 
                 {{-- FINO A QUI NAVBAR COMUNE A SX --}}
 
 
 
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-4">
+                <main role="main" class="dashboard_main col-12">
                     @yield('content')
                 </main>
             </div>

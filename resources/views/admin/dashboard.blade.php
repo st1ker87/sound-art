@@ -91,7 +91,7 @@
 
 
 <div class="row dashboard_home">
-	<div class="col-md-4 offset-md-1">
+	<div class="{{-- col-md-4 offset-md-1 --}}">
 		@if ($my_profile)
 			{{-- EDIT --}}
 			<a class="btn btn-primary btn-block" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
