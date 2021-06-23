@@ -57,6 +57,9 @@ class ReviewController extends Controller
      */
     public function store(Request $request, $id)
     {
+		// validazione parte post 
+		$this->reviewValidation($request);
+
 		// review recipient is user $id
 		$profile = Profile::where('user_id',$id)->first();
 
@@ -95,12 +98,20 @@ class ReviewController extends Controller
 	}
 
 
-
-
-
-
-
-
+	/**
+	 * Review: form data validation
+	 * https://laravel.com/docs/7.x/validation
+	 * errors shown in EDIT/CREATE view
+	 * 
+	 * @param  \Illuminate\Http\Request  $req
+	 */
+	protected function reviewValidation($req) {
+		$req->validate([
+			'subject'	=> 'required|max:255',
+			'vote'		=> 'required',
+			'text'		=> 'required',
+		]);
+	}
 
 
 

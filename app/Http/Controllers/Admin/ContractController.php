@@ -116,7 +116,7 @@ class ContractController extends Controller
     public function store(Request $request)
     {
 		// validazione 
-		$this->profileValidation($request);
+		$this->contractValidation($request);
 
 		$gateway = new \Braintree\Gateway([
 			'environment' 	=> config('services.braintree.environment'),
@@ -188,13 +188,13 @@ class ContractController extends Controller
 
 
 	/**
-	 * Profile: form data validation
+	 * Contract: form data validation
 	 * https://laravel.com/docs/7.x/validation
 	 * errors shown in EDIT/CREATE view
 	 * 
 	 * @param  \Illuminate\Http\Request  $req
 	 */
-	protected function profileValidation($req) {
+	protected function contractValidation($req) {
 		$req->validate([
 			'email'			=> 'required',
 			'name_on_card'	=> 'required',

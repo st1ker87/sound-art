@@ -57,6 +57,9 @@ class MessageController extends Controller
      */
     public function store(Request $request, $id)
     {
+		// validazione parte post 
+		$this->messageValidation($request);
+
 		// message recipient is user $id
 		$profile = Profile::where('user_id',$id)->first();
 
@@ -74,6 +77,22 @@ class MessageController extends Controller
 
 		return redirect()->route('profiles.show',$profile->slug)->with('status','Message sent');
     }
+
+
+	/**
+	 * Message: form data validation
+	 * https://laravel.com/docs/7.x/validation
+	 * errors shown in EDIT/CREATE view
+	 * 
+	 * @param  \Illuminate\Http\Request  $req
+	 */
+	protected function messageValidation($req) {
+		$req->validate([
+			'email'		=> 'required',
+			'subject'	=> 'required|max:255',
+			'text'		=> 'required',
+		]);
+	}
 
 	/**
 	 * Creazione slug a partire da stringa sorgente
