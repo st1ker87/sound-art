@@ -58,7 +58,6 @@ const app = new Vue({
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
 		iper_profiles		: [],
 		iper_profiles_display: [],
-
 	},
 	methods: {
 		showHumburger : function() {
@@ -112,6 +111,9 @@ const app = new Vue({
 			}
 			this.btnVotes = vote;
 			this.showVotePannel = false;	
+		},
+		stopProp: function(e) {
+			e.stopPropagation();
 		},
 		// INTERNAL APIs
 		filterCall() {
@@ -167,9 +169,14 @@ const app = new Vue({
 		},
 
 		addEventClickListener() {
+			document.addEventListener('click', () => {
+				this.showCategoryPannel = false;
+				this.showGenrePannel = false;
+				this.showVotePannel = false;
+				this.searchHome = false;
+			});
 			return;
 		}
-
 	},
 	mounted() {
 
@@ -185,10 +192,8 @@ const app = new Vue({
 			this.searchDefault();
 			this.addEventClickListener();
 		}
-
 	},
-	created() {
-			
+	created() {			
 	},
 	updated() {
 	}
