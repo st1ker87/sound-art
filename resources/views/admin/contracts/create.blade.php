@@ -67,146 +67,122 @@
 </style>
 @endpush
 
+<div class="container" id="bt_form">
+	<div class="row justify-content-center">
+		<div class="col-8 col-sm-8 col-md-9 col-lg-6">
 
-<div id="bt_form" class="container">
-	<div class="col-md-6 offset-md-3">
 
-
-		<h1>{{$sponsorship->name}}</h1>
-		<div class="vertical_spacer"></div>
-		<h4>{{$sponsorship->description}}</h4>
-		<div class="vertical_spacer"></div>
-
-		{{-- FORM FEEDBACK MESSAGE (retrieved via js) --}}
-		<div id="bt_message_container">
-			<div id="bt_message_box" class="alert alert-danger"></div>
+			<h1>{{$sponsorship->name}}</h1>
 			<div class="vertical_spacer"></div>
-		</div>
-
-		{{-- TRANSACTION FORM --}}	
-		<form action="{{ route('checkout') }}" method="POST" id="payment-form">
-			@csrf
-
-			<div class="form-group">
-				<label for="email">Email Address</label>
-				<input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
-			</div>
-			<div class="form-group">
-				<label for="name_on_card">Name on Card <span class="required_input_field">*</span></label>
-				<input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ Auth::user()->name.' '.Auth::user()->surname }}" required>
-			</div>
-
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="address">Address</label>
-						<input type="text" class="form-control" id="address" name="address">
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="city">City</label>
-						<input type="text" class="form-control" id="city" name="city">
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="province">Province</label>
-						<input type="text" class="form-control" id="province" name="province">
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="postalcode">Postal Code</label>
-						<input type="text" class="form-control" id="postalcode" name="postalcode">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="country">Country</label>
-						<input type="text" class="form-control" id="country" name="country">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="phone">Phone</label>
-						<input type="text" class="form-control" id="phone" name="phone">
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="amount">Amount (€)</label>
-						<input type="text" class="form-control" id="amount" name="amount" value="{{ $sponsorship->price }}" data-type="currency" readonly> 
-					</div>
-				</div>
-			</div>
-
-			{{-- VERSIONE NON HOSTED FIELDS - COME FARLA FUNZIONARE ?? --}}
-			{{-- <div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="cc_number">Credit Card Number*</label>
-						<input type="text" class="form-control" id="cc_number" name="cc_number" required>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="expiry">Expiry*</label>
-						<input type="text" class="form-control" id="expiry" name="expiry" required>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="cvc">CVC*</label>
-						<input type="text" class="form-control" id="cvc" name="cvc" required>
-					</div>
-				</div>
-			</div> --}}
-
-			{{-- VERSIONE HOSTED FIELDS --}}
-			<div class="row">
-				<div class="col-md-6">
-					<label for="cc_number">Credit Card Number <span class="required_input_field">*</span></label>
-					<div class="form-group" id="card-number"></div>
-				</div>
-
-				<div class="col-md-3">
-					<label for="expiry">Expiry <span class="required_input_field">*</span></label>
-					<div class="form-group" id="expiration-date"></div>
-				</div>
-
-				<div class="col-md-3">
-					<label for="cvv">CVV <span class="required_input_field">*</span></label>
-					<div class="form-group" id="cvv"></div>
-				</div>
-			</div>
-
-
-			<div><span class="required_input_field">* Required informations</span></div>
+			<h4>{{$sponsorship->description}}</h4>
 			<div class="vertical_spacer"></div>
-			<div id="paypal-button"></div>
-			<div class="vertical_spacer"></div>
-
-			<input id="nonce" name="payment_method_nonce" type="hidden" />
-
-			{{-- faccio confluire di nascosto nel form id e durata della sponsorship --}}
-			<input id="nonce" name="sponsorship_id" type="hidden" value="{{$sponsorship->id}}" />
-			<input id="nonce" name="sponsorship_hour_duration" type="hidden" value="{{$sponsorship->hour_duration}}" />
-
-			<button type="submit" class="btn btn-success">Submit Payment</button>
-			<div class="vertical_spacer"></div>
-			<div class="vertical_spacer"></div>
-
-		</form>
-
-
 	
+			{{-- FORM FEEDBACK MESSAGE (retrieved via js) --}}
+			<div id="bt_message_container">
+				<div id="bt_message_box" class="alert alert-danger"></div>
+				<div class="vertical_spacer"></div>
+			</div>
+	
+			{{-- TRANSACTION FORM --}}	
+			<form action="{{ route('checkout') }}" method="POST" id="payment-form">
+				@csrf
+	
+				<div class="form-group">
+					<label for="email">Email Address</label>
+					<input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly required>
+				</div>
+				<div class="form-group">
+					<label for="name_on_card">Name on Card <span class="required_input_field">*</span></label>
+					<input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ Auth::user()->name.' '.Auth::user()->surname }}" required>
+				</div>
+	
+				{{-- <div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="address">Address</label>
+							<input type="text" class="form-control" id="address" name="address">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="city">City</label>
+							<input type="text" class="form-control" id="city" name="city">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="province">Province</label>
+							<input type="text" class="form-control" id="province" name="province">
+						</div>
+					</div>
+				</div> --}}
+	
+				{{-- <div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="postalcode">Postal Code</label>
+							<input type="text" class="form-control" id="postalcode" name="postalcode">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="country">Country</label>
+							<input type="text" class="form-control" id="country" name="country">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="phone">Phone</label>
+							<input type="text" class="form-control" id="phone" name="phone">
+						</div>
+					</div>
+				</div> --}}
+	
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="amount">Amount (€)</label>
+							<input type="text" class="form-control" id="amount" name="amount" value="{{ $sponsorship->price }}" data-type="currency" readonly required> 
+						</div>
+					</div>
+				</div>
+	
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<label for="cc_number">Credit Card Number <span class="required_input_field">*</span></label>
+						<div class="form-group" id="card-number"></div>
+					</div>
+	
+					<div class="col-6 col-md-3">
+						<label for="expiry">Expiry <span class="required_input_field">*</span></label>
+						<div class="form-group" id="expiration-date"></div>
+					</div>
+	
+					<div class="col-6 col-md-3">
+						<label for="cvv">CVV <span class="required_input_field">*</span></label>
+						<div class="form-group" id="cvv"></div>
+					</div>
+				</div>
+	
+	
+				<div><span class="required_input_field">* Required informations</span></div>
+				<div class="vertical_spacer"></div>
+				<div id="paypal-button"></div>
+				<div class="vertical_spacer"></div>
+	
+				<input id="nonce" name="payment_method_nonce" type="hidden" />
+	
+				{{-- faccio confluire di nascosto nel form id e durata della sponsorship --}}
+				<input id="nonce" name="sponsorship_id" type="hidden" value="{{$sponsorship->id}}" />
+				<input id="nonce" name="sponsorship_hour_duration" type="hidden" value="{{$sponsorship->hour_duration}}" />
+	
+				<button type="submit" class="btn btn-success">Submit Payment</button>
+				<div class="vertical_spacer"></div>
+				<div class="vertical_spacer"></div>
+	
+			</form>
+	
+		</div>
 	</div>
 </div>
 
@@ -292,9 +268,9 @@
 						const msg_box = document.getElementById('bt_message_box');
 						var msg = tokenizeErr['message'];
 						if (msg.includes('All fields are empty')) {
-							msg = 'All fields are empty';
+							msg = 'All credit card input fields are empty';
 						} else if (msg.includes('Some payment input fields are invalid')) {
-							msg = 'Some payment input fields are invalid';
+							msg = 'Some credit card input fields are invalid';
 						}
 						msg_box.innerHTML = msg;
 						/////////////////////////////////////////////////////////////
