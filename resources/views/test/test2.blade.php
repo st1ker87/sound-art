@@ -1,14 +1,21 @@
 <h2>TESTACODICE #2</h2>
 {{-- ///////////////////////////////////////////// --}}
 
+
+
+
+
+
+
+
+
+{{-- ///////////////////////////////////////////// --}}
+
+{{-- 
 @extends('layouts.dashboard')
 @section('title','dashboard')
 @section('content')
 
-
-
-
-{{-- ##### QUESTA PARTE DI CALCOLI È CAMBIATA >> SOSTITUIRE IL BLOCCO ##### --}}
 @php
 	date_default_timezone_set('Europe/Rome');
 	$my_user		= Auth::user();
@@ -29,24 +36,15 @@
 
 
 
-{{-- ##### PULSANTE PER FARE SPONSORSHIP (se non ne hai nessuna attiva) ##### --}}
 @if (!$is_active_sponsorship)
-{{-- SPONSOR YOUR PROFILE --}}
 <a class="btn btn-primary" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
 @endif
 
-{{-- ##### PULSANTE PER VEDERE I CONTRATTI PASSATI (se ce ne sono) ##### --}}
 @if ($is_any_contract)
-{{-- CHECK YOUR SPONSORSHIPS --}}
 <a class="btn btn-primary" href="{{ route('my_sponsorships') }}">Check your Sponsorships</a>	
 @endif
 
-
-
-
-
-
-@endsection
+@endsection --}}
 
 
 {{-- ///////////////////////////////////////////// --}}
@@ -55,6 +53,87 @@
 @php
 /////////////////////////////////////////////
 ////////// qua sotto scrivi in php //////////
+/////////////////////////////////////////////
+
+
+
+date_default_timezone_set('Europe/Rome');
+
+// $hours = 3;
+
+// echo 'dateTime (tutte le funzioni php):';
+// $date = new DateTime();
+// @dump($date);
+
+// echo 'da dateTime a created_at (per il db):';
+// // $date = $date->format('Y-m-d H:i:s');
+// $date = date_format($date, 'Y-m-d H:i:s');
+// @dump($date);
+
+// echo 'da created_at a dateTime (tutte le funzioni php):';
+// $date = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+// @dump($date); 
+
+// echo 'aggiungo 3 ore a dateTime:';
+// // $date->add(new DateInterval("PT{$hours}H"));
+// date_add($date, date_interval_create_from_date_string($hours.' hours'));
+// @dump($date);
+
+// echo 'e dopo ritorno a created_at:';
+// // $date = $date->format('Y-m-d H:i:s');
+// $date = date_format($date, 'Y-m-d H:i:s');
+// @dump($date);
+
+
+
+
+use App\User;
+use App\Sponsorship;
+use App\Contract;
+
+$fraction_of_users_with_contract = 0.3;
+
+$users = User::all();
+foreach ($users as $user) $user_ids[] = $user->id;
+$number_of_contracts = round($fraction_of_users_with_contract*count($users));
+		
+		$sponsosrships = Sponsorship::all();
+		foreach ($sponsosrships as $sponsosrship) $sponsosrship_ids[] = $sponsosrship->id;
+
+		$sel_user_ids =[];
+		while (count($sel_user_ids) < $number_of_contracts) {
+			$sel_user_id = $user_ids[random_int(0,count($user_ids)-1)];
+			if (!in_array($sel_user_id,$sel_user_ids)) $sel_user_ids[] = $sel_user_id;
+		}
+		
+		for ($i=0; $i<$number_of_contracts; $i++) {
+
+			$new_contract = new Contract;
+			$new_contract['user_id'] = $sel_user_ids[$i];
+			$new_contract['sponsorship_id'] = $sponsosrship_ids[random_int(0,count($sponsosrship_ids)-1)];
+
+			$date = new DateTime();
+			date_add($date, date_interval_create_from_date_string(($i).' minutes'));
+			$date_start = date_format($date, 'Y-m-d H:i:s');
+			date_add($date, date_interval_create_from_date_string((15+$i).' hours'));
+			$date_end = date_format($date, 'Y-m-d H:i:s');
+			$new_contract['date_start'] = $date_start;
+			$new_contract['date_end'] 	= $date_end;
+			
+			$new_contract['transaction_status'] = 'submitted_for_settlement';
+
+			// $new_contract->save(); // ! DB writing here ! 
+			@dump($new_contract);
+		}
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////
 
 

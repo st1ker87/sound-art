@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 		// sponsorships
         $this->call(SponsorshipSeeder::class);
 
-		// ! NON PREVEDIAMO IL SEED DEI CONTRATTI !
-        // $this->call(ContractSeeder::class);
+		// contracts
+        $this->call(ContractSeeder::class);
     }
 }
