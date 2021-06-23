@@ -88,7 +88,7 @@ else {
               <div v-if="showCategoryPannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-if="btnCategories != '-- No filter --'" v-on:click="setCategory($event.target.value)" type="button" value="-- No filter --"></li>
+                      <li><input class="btn-no-filter" v-if="btnCategories != 'No filter'" v-on:click="setCategory($event.target.value)" type="button" value="No filter"></li>
                         @foreach($categories as $category)
                         <li>
                             <input v-on:click="setCategory($event.target.value)" type="button" value="{{$category->name}}">
@@ -108,7 +108,7 @@ else {
               <div v-if="showGenrePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-if="btnGeneres != '-- No filter --'" v-on:click="setGenre($event.target.value)" type="button" value="-- No filter --"></li>
+                      <li><input class="btn-no-filter" v-if="btnGeneres != 'No filter'" v-on:click="setGenre($event.target.value)" type="button" value="No filter"></li>
                         @foreach($genres as $genre)
                         <li>
                             <input v-on:click="setGenre($event.target.value)" type="button" value="{{$genre->name}}">
@@ -128,7 +128,7 @@ else {
               <div v-if="showVotePannel" class="search">
                 <div class="categories-cnt">
                     <ul>
-                      <li><input v-if="btnVotes != '-- No filter --'" v-on:click="setVote($event.target.value)" type="button" value="-- No filter --"></li>
+                      <li><input class="btn-no-filter" v-if="btnVotes != 'No filter'" v-on:click="setVote($event.target.value)" type="button" value="No filter"></li>
                       @for($i = 1; $i <= 5; $i++)
                         <li>
                           <input v-on:click="setVote($event.target.value)" type="button" value="{{$i}}">
@@ -147,7 +147,7 @@ else {
           </div>
 
           {{-- SUBMIT --}}
-          <div class="col-lg-1 col-md-12 flex">
+          <div class="col-lg-3 col-md-12 flex">
             <button id="submit-advanced-search" v-on:click="filterCall">Submit</button>
           </div>
         </div>
