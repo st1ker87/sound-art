@@ -163,7 +163,7 @@ else {
 
               {{-- CARD IMAGE --}}
               <div class="card-image">
-                <img src="{{ asset('img/singer_photo.jpg') }}" alt="Artist image">
+                <img :src="'../storage/' + card.image_url" alt="Artist image">
               </div>
 
               {{-- BODY DELLA CARTA --}}
