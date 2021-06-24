@@ -53,9 +53,7 @@
 </head>
 <body>
     <div id="app">
-      
-        @include('partials.header_dash')
-     
+        @include('partials.header_search')
 
         {{-- FINO A QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
 
@@ -65,7 +63,32 @@
 		@endphp
 
         {{-- JUMBOTRON DASHBOARD --}}
-        @include('partials.jumbo_dashboard')
+        <div class="jumbo-dash container-fluid">
+            <div class="row">
+                <div class="over-jumbo d-block d-xl-none"></div>
+                <div class="container">
+                    
+                    
+                    <div class="title-dash">
+                        <h1>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                        <h3>
+                            @foreach (Auth::user()->categories as $category)
+                                @if($loop->last)
+                                    {{$category->name}}
+                                    @else
+                                    {{$category->name . ' |'}}
+                                @endif
+                            @endforeach
+                        </h3>
+                        @if ($my_profile)
+                            <p>{{ $my_profile->work_town }}</p>  
+                        @endif
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
 
         {{-- DA CANCELLARE E RIPRENDERE VECCHIO STILE SE NON PIACE --}}
 

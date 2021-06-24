@@ -1,0 +1,67 @@
+/* 
+
+QUESTO E' HEADER
+
+*/
+/* HEADER INHERIT */
+%header {
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  .nav-link {
+      color: $primaryWhite;
+      &:hover {
+          color: $primaryWhite;
+          text-decoration: underline;
+      }
+    }
+}
+
+/* HEADERS */
+.header-home {
+  @extend %header;
+  background-color: $primaryBlack;
+}
+/* Header Search */
+.header-search {
+  @extend %header;
+  background-color: $primaryDarkBlue;
+}
+.header-dash {
+  @extend %header;
+  background-color: transparent;
+  position: absolute;
+}
+
+
+/* TODO */
+.change_color {
+  background-color: white;
+  color: black;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  
+}
+.change_color_text {
+  color: $primaryDarkBlue !important;
+}
+.change_color_btn {
+  color: $primaryDarkBlue !important;
+  border-color: $primaryDarkBlue  !important;
+}
+
+ul.navbar-nav {
+    flex-direction: row;
+    li:not(:first-child) {
+        margin-left: 20px;
+    }
+}
+
+#logo-link {
+    display: block;
+    width: 30%;
+    max-width: 100px;
+}
+#logo {
+    width: 100%;
+}
