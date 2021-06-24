@@ -54,8 +54,14 @@ const app = new Vue({
 
 
 
-
-
+		// ARRAY CARDS 
+		displayProfiles: [],
+		groupCount : 0,
+		start : 1,
+		end : 24,
+		groupLen : 24,
+		more : false,
+		
 
 		// API FILTERS
 		category_selected	: null,
@@ -69,7 +75,9 @@ const app = new Vue({
 		// INTERNAL APIs
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
 		iper_profiles		: [],
-		iper_profiles_display: [],
+		is_last_profile_group : null,
+
+
 
 
 
@@ -143,12 +151,25 @@ const app = new Vue({
 			this.showCategoryPannel = false;
 			this.showGenrePannel = false;
 			this.showVotePannel = false;
-			this.profile_num_start = 1;	//Costante = profile_num_start + (counter * 24)
-			this.profile_num_end = 24;  //Costante
+			this.displayProfiles = [];
+			this.groupCount = 0;
+			this.start = 1;
+			this.end = 24;
 			this.filterCall();
 		},
 		btnMore() {
-
+			this.groupCount++;
+			this.start += this.groupLen;
+			this.end = this.start + this.groupLen - 1;
+			console.log('start',this.start);
+			console.log('end',this.end);
+			this.more = true;
+			this.filterCall();
+		},
+		buildHTML() {
+			let currentArray = this.displayProfiles[this.groupCount];
+			console.log('currentArray',currentArray);
+			console.log(this.groupCount);
 		},
 		// INTERNAL APIs
 		filterCall() {		
@@ -159,13 +180,21 @@ const app = new Vue({
 					vote		: this.vote_selected,
 					reviewNum	: this.reviewNum_selected,
 					only_sponsorship: this.onlySponsorship,
-					profile_num_start : this.profile_num_start,
-					profile_num_end : this.profile_num_end
+					profile_num_start : this.start,
+					profile_num_end : this.end
 				}
 			})
 			.then((resp) => {
 				this.iper_profiles = resp.data.results;
-				console.log('this.iper_profiles',this.iper_profiles);
+				this.is_last_profile_group = resp.data.is_last_profile_group;
+				this.displayProfiles.push(this.iper_profiles);
+				console.log(this.displayProfiles),
+				console.log('is_last_profile_group', this.is_last_profile_group);
+				// console.log('this.iper_profiles',this.iper_profiles);
+				if(this.more) {
+					this.buildHTML();
+				}
+
 			})
 			.catch((error) => {
 				console.error(error);
@@ -173,8 +202,8 @@ const app = new Vue({
 		},
 		
 		searchDefault() {
-			this.profile_num_start = 1;
-			this.profile_num_end = 24;
+			this.profile_num_start = this.start;
+			this.profile_num_end = this.end;
 			if(typeof(search_from_home_key) !== 'undefined'){
 				if(search_from_home_key === 'category') {
 					this.btnCategories = search_from_home_value;

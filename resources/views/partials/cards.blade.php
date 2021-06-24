@@ -1,8 +1,9 @@
 {{-- CARDS --}}
 <section class="card-list">
+  <button v-if='!is_last_profile_group' v-on:click.stop="btnMore">Continua</button>
     <div class="container">
       <div class="row">
-        <div v-for="(card, index) in iper_profiles" :key="card.id" class="col-lg-3 col-md-4 col-sm-6">
+        <div v-for="(card, index) in displayProfiles[0]" :key="card.id" class="col-lg-3 col-md-4 col-sm-6">
           <div class="card-cnt">
 
             {{-- CARD IMAGE --}}
