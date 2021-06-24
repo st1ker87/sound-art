@@ -25,6 +25,7 @@
 {{-- JUMBOTRON DASHBOARD --}}
 <div class="jumbo-dash container-fluid">
     <div class="row">
+      <img src="{{asset('storage/'.$my_profile->image_url)}}" alt="">
         <div class="over-jumbo d-block d-xl-none"></div>
         <div class="container">
             
