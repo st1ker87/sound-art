@@ -25,12 +25,14 @@
 {{-- JUMBOTRON DASHBOARD --}}
 <div class="jumbo-dash container-fluid">
     <div class="row jumbo_height">
-        <div class="over-jumbo d-block d-xl-none"></div>
+        {{-- <div class="over-jumbo d-block d-xl-none"></div> --}}
         <div class="container jumbo_height">
             
-            <span class="diagonal"></span>
             <div class="jumbo_img jumbo_height d-none d-lg-block">
-                <img class="jumbo_height" src="{{asset('storage/'.$my_profile->image_url)}}" alt="">
+                <div class="diagonal_container">
+                    <div class="diagonal"></div>
+                    <img class="jumbo_height" src="{{asset('storage/'.$my_profile->image_url)}}" alt="">
+                </div>
             </div>
             <div class="title-dash">
                 <h1>{{ $my_user->name }} {{ $my_user->surname }}</h1>

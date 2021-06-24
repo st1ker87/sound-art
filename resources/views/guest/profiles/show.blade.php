@@ -3,7 +3,7 @@
 @section('title', 'Search')
 
 @section('header')
-  @include('partials.header_search')
+  @include('partials.header_dash')
 @endsection
 
 @section('content')
@@ -33,8 +33,13 @@
 
   <main class="main_show">  
     <div class="torno_su" id="up"></div>
+
+    {{-- NUOVO JUMBO --}}
+    @include('partials.jumbo_dashboard')
+
+    {{-- VECCHIO JUMBO SOSTITUITO --}}
     {{-- pensavo di mettere la foto nel jumbo come da sito  --}}
-    <section class="jumbotron-container-show">
+    {{-- <section class="jumbotron-container-show">
       <div class="container">
         <div class="title-search">
           <h1>{{$profile->user->name}} {{$profile->user->surname}}</h1>
@@ -58,7 +63,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
     {{-- d-flex my_flex --}}
     {{-- per i standard da noi dati il div sottostante dovrebbe essere una section 
     ma anche per questa sezione usero un div <3 --}}
@@ -101,9 +106,7 @@
             <p>{{$profile->bio_text2}}</p>
           @endif
         </div>
-        <div class="pic-show col-sm-12 col-md-12 col-md-6 col-lg-6">
-          <img src="{{asset('storage/'.$profile->image_url)}}" alt="">
-        </div>
+        {{-- IMMAGINE RIMOSSA --}}
       </div>
     </section>
     <section class="container main-show">
