@@ -187,8 +187,10 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 // #          DEV ROUTES         # 
 // ############################### 
 
-Route::get('/test1', 'HomeController@test1')->name('test1');  		// ! SOLO PER TESTARE CODICE 
+Route::get('/test1', 'HomeController@test1')->name('test1');  	// ! SOLO PER TESTARE CODICE 
 Route::get('/test2', 'HomeController@test2')->name('test2');  	// ! SOLO PER TESTARE CODICE 
-Route::get('/test3', 'HomeController@test3')->name('test3');  	// ! SOLO PER TESTARE CODICE PER LE STATISTICHE
+Route::get('/test3', 'HomeController@test3')->name('test3');  	// ! SOLO PER TESTARE CODICE PER LE STATISTICHE DI LEO
+Route::get('/test4', 'HomeController@test4')->name('test4');  	// ! SOLO PER TESTARE CODICE 
+Route::get('/modal', 'HomeController@modal')->name('modal');  	// ! MODAL TEMPLATE 
 
 
