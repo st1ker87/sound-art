@@ -1,6 +1,11 @@
 @php
-    $my_user 	= Auth::user();
-    $my_profile = Auth::user()->profile;
+    
+    if (Auth::user()) {
+        // $my_profile->user 	= Auth::user();
+        $my_profile = Auth::user()->profile;
+    } else {
+        $my_profile = $profile;
+    }
     
     $votes = $my_profile->user->reviews;
     // Set average vote to false
@@ -35,9 +40,9 @@
                 </div>
             </div>
             <div class="title-dash">
-                <h1>{{ $my_user->name }} {{ $my_user->surname }}</h1>
+                <h1>{{ $my_profile->user->name }} {{ $my_profile->user->surname }}</h1>
                 <h3>
-                    @foreach ($my_user->categories as $category)
+                    @foreach ($my_profile->user->categories as $category)
                     @if($loop->last)
                     {{$category->name}}
                     @else
