@@ -15,7 +15,7 @@
 
               {{-- Categories --}}
               <div class="provided-card-title">
-                <a class="provided-categories" v-bind:href="'search/' + card.slug">
+                <a class="provided-categories" v-bind:href="base_url + card.slug">
                   <h3>
                     <span  v-for="category, index in card.categories" :key="category.id" v-if="index < 3">@{{category.toUpperCase()}}
                       <span v-if="index < (card.categories.length - 1)">/</span>
@@ -24,7 +24,7 @@
                 </a>
 
                 {{--Name, Surname, Work town--}}
-                <a class="provided-name" v-bind:href="'search/' + card.slug">
+                <a class="provided-name" v-bind:href="base_url + card.slug">
                   <span>@{{card.name}} @{{card.surname}}</span>
                 </a>
                 <span>, @{{card.work_town}}</span>

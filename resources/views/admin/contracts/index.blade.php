@@ -47,27 +47,32 @@
 
 @foreach ($my_contracts->sortByDesc('created_at') as $contract)
 
-	<p>{{$counter}} (id: {{$contract->id}}) - {{$contract->sponsorship->name}} (duration: {{$contract->sponsorship->hour_duration}} hours)</p>
-	<p>start: {{$contract->date_start}} - end: {{$contract->date_end}}</p>
+	<div class="msg_box">
+		<div class="content">
+			<p>{{$counter}} (id: {{$contract->id}}) - {{$contract->sponsorship->name}} (duration: {{$contract->sponsorship->hour_duration}} hours)</p>
+			<p>start: {{$contract->date_start}} - end: {{$contract->date_end}}</p>
+		
+			@php
+				$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
+				$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_end);
+				$now 		= new DateTime();
+			@endphp
+		
+			@if ($contract->transaction_status == 'submitted_for_settlement')
+				<p>Payed</p>
+			@else
+				<p>Issues occurred</p>
+			@endif
+		
+			@if ($date_start < $now && $date_end >= $now)
+				<p>Currently active</p>
+			@else 
+				<p>Expired</p>
+			@endif
 
-	@php
-		$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
-		$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_end);
-		$now 		= new DateTime();
-	@endphp
+		</div>
 
-	@if ($contract->transaction_status == 'submitted_for_settlement')
-		<p>Payed</p>
-	@else
-		<p>Issues occurred</p>
-	@endif
-
-	@if ($date_start < $now && $date_end >= $now)
-		<p>Currently active</p>
-	@else 
-		<p>Expired</p>
-	@endif
-	<hr>
+	</div>
 
 @endforeach
 
