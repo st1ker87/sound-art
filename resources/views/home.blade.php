@@ -102,10 +102,9 @@
             <p>Now you can, through SoundArt</p>
         </div>
     </section>
-    <section class="artist-in-evidence">
-        <h1>In Evidence</h1>
-    </section>
+
     @include('partials.cards')
+    
     <section class="how-it-works">
         <div class="container-fluid">
             <div class="row">
