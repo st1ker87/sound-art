@@ -133,11 +133,10 @@
             	<div class="form-group">
 					@if($profile->image_url)
 						<p>Your profile image <span class="required_input_field">*</span></p>
-						<img style="max-width:600px;" src="{{asset('storage/'.$profile->image_url)}}" alt="">
+						<img id="preview-image-before-upload" src="{{asset('storage/'.$profile->image_url)}}" alt="preview image" style="max-height:400px;">
 						<div class="vertical_spacer"></div>
-
 						<label>Change image</label>
-						<input type="file" name="image_url" class="form-control-file @error('image_url') is-invalid @enderror" value="{{ old('image_url', $profile->image_url) }}">
+						<input type="file" name="image_url" id="image_url" class="form-control-file @error('image_url') is-invalid @enderror" value="{{ old('image_url', $profile->image_url) }}">
 					@else 
 						<p>Image not present</p>
 						<label>Upload your profile image <span class="required_input_field">*</span></label>

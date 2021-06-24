@@ -120,7 +120,7 @@ class ProfileController extends Controller
         $form_data = $request->all();
 		
 		// validazione parte post 
-		$this->profileValidation($request);
+		$this->profileValidation($request,'store');
 
 		// $new_profile è il nuovo profile da mettere in DB 
 		$new_profile = new Profile;
@@ -235,7 +235,7 @@ class ProfileController extends Controller
 		$form_data = $request->all();
 			
 		// validazione parte post 
-		$this->profileValidation($request);
+		$this->profileValidation($request,'update');
 	  
 		// gestione media
 		if(array_key_exists('image_url',$form_data)) {
@@ -325,7 +325,8 @@ class ProfileController extends Controller
 	 * 
 	 * @param  \Illuminate\Http\Request  $req
 	 */
-	protected function profileValidation($req) {
+	protected function profileValidation($req,$method) {
+		$image_val = (($method=='update') ? '' : 'required|').'mimes:jpg,png,jpeg,gif,svg|max:2048';
 		$req->validate([
 			'work_town'		=> 'required|max:255',
 			'work_address'	=> 'max:255',
@@ -334,7 +335,7 @@ class ProfileController extends Controller
 			// 'bio_text2'		=> '',
 			// 'bio_text3'		=> '',
 			'bio_text4'		=> 'required',
-			// 'image_url'		=> 'required',  // non possibile in edit se immagine e già presente e un'altra non è caricata
+			'image_url'		=> $image_val,  // required non possibile in edit se immagine e già presente e un'altra non è caricata
 			'categories'	=> 'required',
 			'offers'		=> 'required',
 		]);

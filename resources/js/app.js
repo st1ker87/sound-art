@@ -7,6 +7,7 @@
 const { split } = require('lodash');
 
 require('./bootstrap');
+require('./aux1');
 
 window.Vue = require('vue');
 

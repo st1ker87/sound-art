@@ -41,6 +41,7 @@
 		color: #e3342f; /* $red */
 	}
 </style>
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 @endpush
 
 <div class="container">
@@ -126,11 +127,14 @@
                 </div>
                 <div class="form-group">
                     <label>Your profile image <span class="required_input_field">*</span></label>
-                    <input type="file" name="image_url" class="form-control-file @error('image_url') is-invalid @enderror" value="{{ old('image_url') }}" required>
+                    <input type="file" name="image_url" id="image_url" class="form-control-file @error('image_url') is-invalid @enderror" value="{{ old('image_url') }}" required>
                     @error('image_url')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+					<div class="vertical_spacer"></div>
+					<img id="preview-image-before-upload" src="{{ asset('img/choose_your_image.png') }}" alt="preview image" style="max-height:400px;">
                 </div>
+
                 {{-- <div class="form-group">
                     <label>Your video essay</label>
                     <input type="file" name="video_url" class="form-control-file @error('video_url') is-invalid @enderror" value="{{ old('video_url') }}">
@@ -145,7 +149,6 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div> --}}
-
 
 				<div class="vertical_spacer"></div>
 				<div class="row">
@@ -214,5 +217,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection
