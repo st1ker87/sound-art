@@ -4,6 +4,8 @@
     height: 40vh;
     background-color: $primaryDarkBlue;
     // background: $primaryDarkBlue url("../img/singer_photo.jpg") no-repeat right;
+    // background: $primaryDarkBlue url("{{asset('../img/singer_photo.jpg')}}") no-repeat right;
+    // src="{{asset('storage/'.$profile->image_url)}}"
     background: $primaryDarkBlue url('../storage/profile_image/image_placeholder.jpg') no-repeat right;
     background-size: contain;
     border-bottom: 0.5px solid $lightGray;
