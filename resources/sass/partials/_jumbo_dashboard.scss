@@ -85,14 +85,12 @@
     height: 45vh;
         .row {
             .container {
-                /* .jumbo_img {
-                    right: -20vw;
+                .jumbo_img {
+                    overflow: hidden !important;
                     .diagonal_container {
-                        img {
-                            overflow: hidden;
-                        }
+                        right: -20vw;
                     }
-                } */
+                }
                 .title-dash {
                     h1 {
                         font-size: 2.5rem;
@@ -112,23 +110,26 @@
 }
 
 @media screen and (max-width: 550px) {
-    .row {
-        .container {
+    .jumbo-dash {
+        height: 30vh;
+        .row {
+            .container {
 
-            .title-dash {
-    
-                h1 {
-                    font-size: 1.8rem;
-                }
-                h3 {
-                    font-size: 1.4rem;
-                }
-                p {
-                    font-size: 1rem;
+                .title-dash {
+        
+                    h1 {
+                        font-size: 1.8rem;
+                    }
+                    h3 {
+                        font-size: 1.4rem;
+                    }
+                    p {
+                        font-size: 1rem;
+                    }
                 }
             }
-        }
 
+        }
     }
 }
 
