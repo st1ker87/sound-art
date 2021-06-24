@@ -53,11 +53,16 @@ $primaryLogin: #1FC9B4;
     color: blanchedalmond;
   }
   .freccia_su {
+    // display: none;
     position: fixed;
     scroll-behavior: smooth;
-    bottom: 0px;
+    bottom: -2px;
     right: 50px;
-   a {
-     color: black;
-   }
+    background-color: $primaryDarkBlue;
+    border-radius: 5px;
+    padding: 10px 15px;
+    i {
+      font-size: 18px;
+      color: white;
+    }
   }

@@ -31,8 +31,8 @@
 
 @endphp
 
-  <main>  
-    <div class="torno_su" id="torno_su"></div>
+  <main class="main_show">  
+    <div class="torno_su" id="up"></div>
     {{-- pensavo di mettere la foto nel jumbo come da sito  --}}
     <section class="jumbotron-container-show">
       <div class="container">
@@ -59,18 +59,23 @@
         </div>
       </div>
     </section>
+    {{-- d-flex my_flex --}}
     {{-- per i standard da noi dati il div sottostante dovrebbe essere una section 
     ma anche per questa sezione usero un div <3 --}}
     <div class="bar_under_jumbo container-fluid">
       <div class="row search-nav">
         <div class="container d-flex my_flex">
-          <a href="#about_me">About Me</a>
-          <a href="#genres">Genres</a>
-          <a href="#genres">Reviews</a>
-          <a href="#offers">Offers</a>
+          <div class="to_page_link">
+            <a href="#about_me">About Me</a>
+            <a href="#genres">Genres</a>
+            <a href="#genres">Reviews</a>
+            <a href="#offers">Offers</a>
+          </div>
           {{-- <button  class="btn btn-primary">Contact {{$profile->user->name}}</button> --}}
-		  <a class="btn btn-primary" href="{{ route('messages_create',$profile->slug) }}">Contact {{$profile->user->name}}</a>
-		  <a class="btn btn-primary" href="{{ route('reviews_create',$profile->slug) }}">Write a Review for {{$profile->user->name}}</a>
+          <div class="contacts_btn">
+            <a class="btn btn-primary my-color" href="{{ route('messages_create',$profile->slug) }}">Contact {{$profile->user->name}}</a>
+            <a class="btn btn-primary my-color" href="{{ route('reviews_create',$profile->slug) }}">Write a Review for {{$profile->user->name}}</a>
+          </div>
         </div>
       </div>
     </div>
@@ -97,14 +102,14 @@
           @endif
         </div>
         <div class="pic-show col-sm-12 col-md-12 col-md-6 col-lg-6">
-          <img src="{{ asset('img/singer_photo.jpg') }}" alt="">
+          <img src="{{asset('storage/'.$profile->image_url)}}" alt="">
         </div>
       </div>
     </section>
     <section class="container main-show">
       <div class="row border_bottom">
         <div id="offers" class="offert">
-          <h2>Offerts</h2>
+          <h2>Offerts</h2>         
           @foreach($profile->user->offers as $offer)
           @if($loop->last)
             <span>{{$offer->name}}</span>
@@ -130,25 +135,36 @@
       </div>
     </section>
     <section class="container main-show">
-      <div class="row border_bottom">
+      <h2>Reviews</h2>
+     @foreach($profile->user->reviews as $review)
         <div id="reviews" class="reviews">
-          <h2>Reviews</h2>
-          @foreach($profile->user->reviews as $review)
-          <p>{{$review->rev_sender_name}}</p>
-          <p>{{$review->vote}}</p>
-          <p>{{$review->rev_subject}}</p>
-          <p>{{$review->rev_text}}</p>
-          <hr>
-      @endforeach
+            <div class="rev_vote">
+              <div class="stars">
+                @for ($i = 0; $i < $review->rev_vote; $i++)
+                  <i class='fas fa-star'></i>   
+                @endfor
+              </div>
+              <div class="name">
+                <p>{{$review->rev_sender_name}}</p>
+              </div>
+            </div>
+            <div class="text_area">
+              <p class="bold">{{$review->rev_subject}}</p>
+              <p>{{$review->rev_text}}</p>
+              <p>{{$review->created_at}}</p>
+
+            </div>
+          {{-- <hr> --}}
         </div>
-      </div>
+
+          @endforeach
     </section>
-
-
-
-    <div class="freccia_su">
-      <a href="#torno_su">freccia su</a>
-    </div>
+    {{--:class="{(scrollPosition > scrollChange) ? 'appear' : ''}" --}}
+    <a href="#up">
+      <div class="freccia_su" >
+      <i class="fas fa-arrow-up"></i>
+      </div>
+    </a>
   </main>
 
   
