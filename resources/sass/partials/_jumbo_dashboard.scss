@@ -1,0 +1,107 @@
+//jumbo e testo
+.jumbo-dash {
+    width: 100%;
+    height: 55vh;
+    background-color: $primaryDarkBlue;
+    // background: $primaryDarkBlue url('../storage/profile_image/image_placeholder.jpg') no-repeat right;
+    background-size: contain;
+    border-bottom: 0.5px solid $lightGray;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    .row {
+        position: relative;
+        height: 100%;
+    
+        .over-jumbo {
+            background-color: #00000082;
+            height: 100%;
+            width: 100%;
+        }
+        .container {
+
+            .title-dash {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 0;
+                h1 {
+                    font-size: 4rem;
+                    color: $primaryWhite;
+                    margin-bottom: 10px;
+                }
+                h3 {
+                    color: $primaryWhite;
+                    margin-bottom: 10px;
+                }
+                .votes {
+                    margin-bottom: 10px;
+                    i {
+                        font-size: 1.3em;
+                        margin-right: 3px;
+                        color: $starsYellow;
+                    }
+                }
+                p {
+                    font-size: 1.5em;
+                    color: $primaryWhite;
+                }
+            }
+        }
+    }
+    
+
+}
+
+
+// RESPONSIVE
+@media screen and (max-width: 992px) {
+.jumbo-dash {
+        .row {
+            .container {
+                .title-dash {
+                    h1 {
+                        font-size: 3rem;
+                    }
+                    h3 {
+                        font-size: 2rem;
+                    }
+                    p {
+                        font-size: 1.5rem;
+                    }
+
+            }
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .row {
+        .container {
+
+            .title-dash {
+    
+                h1 {
+                    font-size: 2rem;
+                }
+                h3 {
+                    font-size: 1.4rem;
+                }
+                p {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+    }
+}
+
+
+/* @media screen and (max-width: 992px) {
+    .dashboard_home {
+        .btn {
+            width: 50%;
+            margin: 15px auto;
+        }
+    }
+} */
