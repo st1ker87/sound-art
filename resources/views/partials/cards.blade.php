@@ -17,7 +17,7 @@
               <div class="provided-card-title">
                 <a class="provided-categories" v-bind:href="'search/' + card.slug">
                   <h3>
-                    <span  v-for="category, index in card.categories" :key="category.id" v-if="index < 3">@{{category}}
+                    <span  v-for="category, index in card.categories" :key="category.id" v-if="index < 3">@{{category.toUpperCase()}}
                       <span v-if="index < (card.categories.length - 1)">/</span>
                     </span>          
                   </h3>
@@ -49,7 +49,7 @@
               <div class="provided-genres">
                 <h6>Genres</h6>
                 <span v-for="genre, index in card.genres" :key="genre.id" v-if="index < 5">
-                    @{{genre}}
+                    @{{genre.toUpperCase()}}
                     <span v-if="index < card.genres.length - 1">/</span>
                 </span>
             </div>
