@@ -156,9 +156,9 @@ class ProfileController extends Controller
 			$rem_profiles 	= array_slice($filtered_iper_profiles, $profile_num_end);
 		
 			if (count($rem_profiles) > 0) 
-				$iper_profile['is_last_profile_group'] = false;
+				$is_last_profile_group = false;
 			else	
-				$iper_profile['is_last_profile_group'] = true;
+				$is_last_profile_group = true;
 		
 			$filtered_iper_profiles = $slice_profiles;
 		}
@@ -167,7 +167,8 @@ class ProfileController extends Controller
 
 		return response()->json([
 			'success' => true,
-			'results' => $filtered_iper_profiles
+			'results' => $filtered_iper_profiles,
+			'is_last_profile_group' => $is_last_profile_group
 		]);
 
 	}
