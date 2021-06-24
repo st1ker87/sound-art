@@ -1,4 +1,8 @@
 //jumbo e testo
+.jumbo_height {
+    height: 100%;
+}
+
 .jumbo-dash {
     width: 100%;
     height: 55vh;
@@ -17,7 +21,25 @@
             width: 100%;
         }
         .container {
-
+            .jumbo_img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                // clip-path: polygon(
+                //     0 calc(100% - 5vw),
+                //     100% 0,
+                //     0 100%,
+                //     100% 100%);
+            }
+            .diagonal {
+                z-index: 1000;
+                position: absolute;
+                top: 0;
+                right: 550px;
+                height: 100%;
+                width: 10vw;
+                background-image: linear-gradient(-80deg, transparent 5%, transparent 50%, $primaryDarkBlue 50%, $primaryDarkBlue 100%);
+            }
             .title-dash {
                 position: absolute;
                 top: 50%;
@@ -59,13 +81,13 @@
             .container {
                 .title-dash {
                     h1 {
-                        font-size: 3rem;
+                        font-size: 2.5rem;
                     }
                     h3 {
-                        font-size: 2rem;
+                        font-size: 1.8rem;
                     }
                     p {
-                        font-size: 1.5rem;
+                        font-size: 1.4rem;
                     }
 
             }
@@ -82,7 +104,7 @@
             .title-dash {
     
                 h1 {
-                    font-size: 2rem;
+                    font-size: 1.8rem;
                 }
                 h3 {
                     font-size: 1.4rem;

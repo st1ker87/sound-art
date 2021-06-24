@@ -24,33 +24,35 @@
 
 {{-- JUMBOTRON DASHBOARD --}}
 <div class="jumbo-dash container-fluid">
-    <div class="row">
-      <img src="{{asset('storage/'.$my_profile->image_url)}}" alt="">
+    <div class="row jumbo_height">
         <div class="over-jumbo d-block d-xl-none"></div>
-        <div class="container">
+        <div class="container jumbo_height">
             
-            
+            <span class="diagonal"></span>
+            <div class="jumbo_img jumbo_height d-none d-lg-block">
+                <img class="jumbo_height" src="{{asset('storage/'.$my_profile->image_url)}}" alt="">
+            </div>
             <div class="title-dash">
                 <h1>{{ $my_user->name }} {{ $my_user->surname }}</h1>
                 <h3>
                     @foreach ($my_user->categories as $category)
-                        @if($loop->last)
-                            {{$category->name}}
-                            @else
-                            {{$category->name . ' |'}}
-                        @endif
+                    @if($loop->last)
+                    {{$category->name}}
+                    @else
+                    {{$category->name . ' |'}}
+                    @endif
                     @endforeach
                 </h3>
                 <div class="votes">
                     @if ($average_vote)
-                        @for ($i = 0; $i < $average_vote; $i++)
-                        <i class='fas fa-star'></i>   
-                        @endfor
+                    @for ($i = 0; $i < $average_vote; $i++)
+                    <i class='fas fa-star'></i>   
+                    @endfor
                     @else <span>No raiting</span>
                     @endif 
                 </div>
                 @if ($my_profile)
-                    <p>{{ $my_profile->work_town }}</p>  
+                <p>{{ $my_profile->work_town }}</p>  
                 @endif
             </div>
 

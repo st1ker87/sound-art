@@ -2,7 +2,7 @@
 
 <header class="header-dash q-fluid">
 	<div class="container">
-		<nav class="navbar justify-content-around col-lg-6 col-md-6 col-sm-12">
+		<nav class="navbar justify-content-around col-lg-6 col-md-12">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
 				<img id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
 			</a>
