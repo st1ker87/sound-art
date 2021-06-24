@@ -184,7 +184,7 @@
 							<input name="categories[]" class="form-check-input" type="checkbox" value="{{ $category->id }}"
 							{{$profile->user->categories->contains($category) ? 'checked=checked' : ''}}>
 							<label class="form-check-label">
-							{{ $category->name }}
+							{{ ucwords($category->name) }}
 							</label>
 						</div>
 						@endforeach
@@ -201,7 +201,7 @@
 							<input name="genres[]" class="form-check-input" type="checkbox" value="{{ $genre->id }}"
 							{{$profile->user->genres->contains($genre) ? 'checked=checked' : ''}}>
 							<label class="form-check-label">
-							{{ $genre->name }}
+							{{ ucwords($genre->name) }}
 							</label>
 						</div>
 						@endforeach
@@ -218,7 +218,7 @@
 							<input name="offers[]" class="form-check-input" type="checkbox" value="{{ $offer->id }}"
 							{{$profile->user->offers->contains($offer) ? 'checked=checked' : ''}}>
 							<label class="form-check-label">
-							{{ $offer->name }}
+							{{ ucwords($offer->name) }}
 							</label>
 						</div>
 						@endforeach

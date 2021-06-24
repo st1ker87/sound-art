@@ -160,7 +160,7 @@
 									<input name="categories[]" class="form-check-input" type="checkbox" value="{{ $category->id }}"
 									{{ in_array($category->id, old('categories', [])) ? 'checked=checked' : '' }}>
 									<label class="form-check-label">
-										{{ $category->name }}
+										{{ ucwords($category->name) }}
 									</label>
 								</div>
 							@endforeach
@@ -177,7 +177,7 @@
 									<input name="genres[]" class="form-check-input" type="checkbox" value="{{ $genre->id }}"
 									{{ in_array($genre->id, old('genres', [])) ? 'checked=checked' : '' }}>
 									<label class="form-check-label">
-										{{ $genre->name }}
+										{{ ucwords($genre->name) }}
 									</label>
 								</div>
 							@endforeach
@@ -194,7 +194,7 @@
 									<input name="offers[]" class="form-check-input" type="checkbox" value="{{ $offer->id }}"
 									{{ in_array($offer->id, old('offers', [])) ? 'checked=checked' : '' }}>
 									<label class="form-check-label">
-										{{ $offer->name }}
+										{{ ucwords($offer->name) }}
 									</label>
 								</div>
 							@endforeach
