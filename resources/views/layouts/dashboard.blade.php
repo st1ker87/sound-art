@@ -53,7 +53,9 @@
 </head>
 <body>
     <div id="app">
-        @include('partials.header_search')
+      
+        @include('partials.header_dash')
+     
 
         {{-- FINO A QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
 
