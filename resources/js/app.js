@@ -48,6 +48,9 @@ const app = new Vue({
 		scrollPosition: null,
 		scrollChange: 400,
 
+		//BASE URL CARDS
+		base_url : null,
+
 		// API FILTERS
 		category_selected	: null,
 		genre_selected		: null,
@@ -202,13 +205,14 @@ const app = new Vue({
 			this.onlySponsorship = true,
 			this.searchDefault();
 			this.addEventClickListener();
+			this.base_url = 'profiles/search/';
 		}	
 		if (ulr_path == '/profiles/search') {
 			this.onlySponsorship = false,
 			this.searchDefault();
 			this.addEventClickListener();
-			
 			this.scrollSearch();
+			this.base_url = 'search/';
 		}
 	},
 	created() {			
