@@ -148,7 +148,7 @@ else {
 
           {{-- SUBMIT --}}
           <div class="col-lg-3 col-md-12 flex">
-            <button id="submit-advanced-search" v-on:click="filterCall">Submit</button>
+            <button id="submit-advanced-search" v-on:click="btnSubmit">Submit</button>
           </div>
         </div>
       </div>

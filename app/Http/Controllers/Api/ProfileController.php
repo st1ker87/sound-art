@@ -106,6 +106,10 @@ class ProfileController extends Controller
 		// only profiles with sponsorship requested
 		$only_sponsorship = ($request->get('only_sponsorship') == 'true') ? true : false;
 
+		// list segment requested
+		$profile_num_start	= $request->get('profile_num_start');
+		$profile_num_end	= $request->get('profile_num_end');
+
 		// # FILTER 1: USER'S REQUEST # 
 
 		// building filter set (only not null values)
@@ -126,36 +130,45 @@ class ProfileController extends Controller
 			$tmp_iper_profiles = $filtered_iper_profiles;
 		}
 
-		// # SHUFFLE FOR PAR CONDICIO # 
-
-		// filtered iper profile array shuffle
-		shuffle($filtered_iper_profiles);
-
-		// ! after shuffle !
-		// # SPLIT BY SPONSORSHIP # 
-
-		$spons_f_i_profiles = [];
-		$no_spons_f_i_profiles = [];
-		foreach ($filtered_iper_profiles as $f_i_profile) {
-			if ($f_i_profile['is_active_sponsorship'])
-				$spons_f_i_profiles[] = $f_i_profile;
-			else 
-				$no_spons_f_i_profiles[] = $f_i_profile;
-		}
-
 		// # FILTER 2: ONLY PROFILES WITH SPONSORSHIP # 
 
+		// split by sponsorship
+		$spons_profiles = [];
+		$no_spons_profiles = [];
+		foreach ($filtered_iper_profiles as $f_i_profile) {
+			if ($f_i_profile['is_active_sponsorship'])
+				$spons_profiles[] = $f_i_profile;
+			else
+				$no_spons_profiles[] = $f_i_profile;
+		}
+
 		if ($only_sponsorship) {
-			$filtered_iper_profiles = $spons_f_i_profiles;
+			$filtered_iper_profiles = $spons_profiles;
 		} else {
-			$filtered_iper_profiles = [...$spons_f_i_profiles, ...$no_spons_f_i_profiles];
+			$filtered_iper_profiles = [...$spons_profiles, ...$no_spons_profiles];
+		}
+
+		// # LIST PACKETIZATION #
+
+		// only $filtered_iper_profiles from ($profile_num_start - 1) to ($profile_num_end - 1)
+		if ($profile_num_start && $profile_num_end) {
+			$slice_profiles = array_slice($filtered_iper_profiles, $profile_num_start - 1, ($profile_num_end - $profile_num_start + 1));
+			$rem_profiles 	= array_slice($filtered_iper_profiles, $profile_num_end);
+		
+			if (count($rem_profiles) > 0) 
+				$is_last_profile_group = false;
+			else	
+				$is_last_profile_group = true;
+		
+			$filtered_iper_profiles = $slice_profiles;
 		}
 
 		// # RESPONSE EJECT # 
 
 		return response()->json([
 			'success' => true,
-			'results' => $filtered_iper_profiles
+			'results' => $filtered_iper_profiles,
+			'is_last_profile_group' => $is_last_profile_group
 		]);
 
 	}

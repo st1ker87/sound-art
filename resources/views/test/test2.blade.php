@@ -10,11 +10,6 @@
 
 
 
-{{-- ///////////////////////////////////////////// --}}
-
-
-
-
 
 
 
@@ -26,6 +21,24 @@
 ////////// qua sotto scrivi in php //////////
 /////////////////////////////////////////////
 
+$start = 5;
+$end = 7;
+
+//              1    2   [3    4]   5
+//              0    1    2    3    4
+$input = array("a", "b", "c", "d", "e");
+@dump($input);
+
+$output = array_slice($input, $start-1,($end-$start+1));      // returns "c", "d", and "e"
+@dump($output);
+
+$rem = array_slice($input, $end);
+@dump($rem);
+@dump(count($rem));
+
+
+
+/////////////////////////////////////////////
 
 
 // date_default_timezone_set('Europe/Rome');

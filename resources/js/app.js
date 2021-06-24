@@ -51,17 +51,38 @@ const app = new Vue({
 		//BASE URL CARDS
 		base_url : null,
 
+
+
+
+
+
+
 		// API FILTERS
 		category_selected	: null,
 		genre_selected		: null,
 		vote_selected 		: null,
 		reviewNum_selected	: null,
 		onlySponsorship		: false,
+		profile_num_start : null,
+		profile_num_end : null,
 
 		// INTERNAL APIs
 		iper_profiles_url	: 'http://localhost:8000/api/profiles',
 		iper_profiles		: [],
 		iper_profiles_display: [],
+
+
+
+
+
+
+
+
+
+
+
+
+
 	},
 	methods: {
 		showHumburger : function() {
@@ -118,12 +139,19 @@ const app = new Vue({
 		stopProp: function(e) {
 			e.stopPropagation();
 		},
-		// INTERNAL APIs
-		filterCall() {
+		btnSubmit() {
 			this.showCategoryPannel = false;
 			this.showGenrePannel = false;
 			this.showVotePannel = false;
-			
+			this.profile_num_start = 1;	//Costante = profile_num_start + (counter * 24)
+			this.profile_num_end = 24;  //Costante
+			this.filterCall();
+		},
+		btnMore() {
+
+		},
+		// INTERNAL APIs
+		filterCall() {		
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
@@ -131,6 +159,8 @@ const app = new Vue({
 					vote		: this.vote_selected,
 					reviewNum	: this.reviewNum_selected,
 					only_sponsorship: this.onlySponsorship,
+					profile_num_start : this.profile_num_start,
+					profile_num_end : this.profile_num_end
 				}
 			})
 			.then((resp) => {
@@ -143,6 +173,8 @@ const app = new Vue({
 		},
 		
 		searchDefault() {
+			this.profile_num_start = 1;
+			this.profile_num_end = 24;
 			if(typeof(search_from_home_key) !== 'undefined'){
 				if(search_from_home_key === 'category') {
 					this.btnCategories = search_from_home_value;
@@ -161,14 +193,13 @@ const app = new Vue({
 					this.btnGeneres = 'No filter';
 					this.btnVotes = 'No filter';
 				}
-				this.filterCall();
 			}
 			else {
 				this.btnCategories = 'No filter';
 				this.btnGeneres = 'No filter';
 				this.btnVotes = 'No filter';
-				this.filterCall();
 			}
+			this.filterCall();
 		},
 
 		addEventClickListener() {
