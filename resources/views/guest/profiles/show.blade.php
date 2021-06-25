@@ -137,9 +137,9 @@
 	@endif
 
 	{{-- sempre presente --}}
-	<section class="container main-show">
+	<section class="container main-show" id="about_me">
 		<div class="row border_bottom">
-			<div id="about_me" class="description col-sm-12 col-md-12 col-md-6 col-lg-6">
+			<div  class="description col-sm-12 col-md-12 col-md-6 col-lg-6">
 				@if($profile->bio_text1 && $profile->bio_text2)
 				<h2>About me</h2>
 				<p>{{$profile->bio_text1}}</p>
@@ -155,9 +155,9 @@
 PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI SOPRA E SOTTO ? 	
 --}}
 	{{-- sempre presente --}}
-	<section class="container main-show">
+	<section class="container main-show" id="offers">
 		<div class="row border_bottom">
-			<div id="offers" class="offert">
+			<div  class="offert">
 				<h2>Services Provided</h2>         
 				@foreach($profile->user->offers as $offer)
 					@if($loop->last)
@@ -171,9 +171,9 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 	</section>
 
 	@if ($genres->isNotEmpty())
-		<section class="container main-show">
+		<section class="container main-show" id="genres">
 			<div class="row border_bottom">
-				<div id="genres" class="genres">
+				<div  class="genres">
 					<h2>My favorite music</h2>
 					@foreach($genres as $genre)
 						{{-- @if($loop->last) --}}
@@ -188,10 +188,10 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 	@endif
 
 	@if ($reviews->isNotEmpty()) 
-		<section class="container main-show">
+		<section class="container main-show" id="reviews">
 			<h2>Reviews</h2>
 			@foreach($reviews->sortByDesc('created_at') as $review)
-				<div id="reviews" class="reviews">
+				<div class="reviews">
 					<div class="rev_vote">
 						<div class="stars">
 							@for ($i = 0; $i < $review->rev_vote; $i++)
