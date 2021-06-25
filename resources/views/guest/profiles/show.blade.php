@@ -24,6 +24,15 @@
 	.required_input_field {
 		color: #e3342f; /* $red */
 	}
+	.modal-header {
+		border: none;
+	}
+	.modal-title {
+		color: #212949; /* $primaryDarkBlue */
+	}
+	.modal-footer {
+		border: none;
+	}
 </style>
 @endpush
 

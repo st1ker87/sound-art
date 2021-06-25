@@ -16,6 +16,32 @@
 
 @extends('layouts.dashboard')
 @section('title','My Sponsorship')
+
+{{----------------------------------------------------------- 
+	AGGIUNTO IN layouts/dashboard.blade.php
+
+	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
+
+	<!-- Styles: single page addendum -->
+	@stack('dashboard_head')
+
+-----------------------------------------------------------}}
+@push('dashboard_head')
+<style>
+	.vertical_spacer {
+		margin-bottom: 24px;
+	}
+	.highlight_text {
+    	font-size: 1.2em;
+    	font-weight: 800;
+		color: gray;
+	}
+	.txt_1 {
+    	font-size: 1em;
+	}
+</style>
+@endpush
+
 @section('content')
 
 
@@ -45,33 +71,49 @@
 
 	<div class="msg_box">
 		<div class="content">
-			<div>Contract id: {{$contract->id}} - {{ucwords($contract->sponsorship->name)}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
-			<div>Start: {{$contract->date_start}} - End: {{$contract->date_end}}</div>
-		
+
+			<div class="highlight_text">{{ucwords($contract->sponsorship->name)}}</div>
+			<div>Contract id: {{$contract->id}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
+
+			<p>
+				<table>
+					<tr><td>Start</td><td>: {{getTimeDisplay($contract->date_start)}}</td></tr>
+					<tr><td>End  </td><td>: {{getTimeDisplay($contract->date_end)}}</td></tr>
+				</table>
+			</p>
+
 			@php
 				$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
 				$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_end);
 				$now 		= new DateTime();
 			@endphp
 		
-			@if ($contract->transaction_status == 'submitted_for_settlement')
-				<span>Payed</span>
-			@else
-				<span>Issues occurred</span>
-			@endif
-		
+			<div>Transactions status: 
+				@if ($contract->transaction_status == 'submitted_for_settlement')
+					<span>Payed</span>
+				@else
+					<span>Issues occurred</span>
+				@endif				
+			</div>
+
 			@if ($date_start < $now && $date_end >= $now)
-				<span class="msg_delete">Currently active</span>
+				<span class="msg_delete badge badge-success txt_1">Currently active</span>
 			@else 
-				<span class="msg_delete">Expired</span>
+				<span class="msg_delete badge badge-secondary txt_1">Expired</span>
 			@endif
 
 		</div>
-
 	</div>
 
 @endforeach
 
-
+@php
+function getTimeDisplay($db_time) {
+	// create DateTime object
+	$db_time = DateTime::createFromFormat('Y-m-d H:i:s', $db_time);
+	// get string time
+	return date_format($db_time, 'l F j, Y, G:i:s');
+}
+@endphp
 
 @endsection
