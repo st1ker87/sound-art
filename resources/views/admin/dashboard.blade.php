@@ -2,8 +2,25 @@
 
 @section('title','Dashboard')
 
-
 @section('content')
+
+@php
+
+	use App\Classes\IsNowInInterval;
+
+	$my_user		= Auth::user();
+	$my_profile		= $my_user->profile;
+	$my_contracts	= $my_user->contracts;
+	$is_any_contract = (!$my_contracts->isEmpty());
+	$is_active_sponsorship = false;
+	foreach ($my_contracts as $my_contract) {
+		if ((new IsNowInInterval)->get($my_contract->date_start,$my_contract->date_end)) {
+			$is_active_sponsorship = true;
+		}
+	}
+
+@endphp
+
 
 {{-- <h1>{{ Auth::user()->name }}'s Dashboard</h1> --}}
 
@@ -40,28 +57,6 @@
 		</div>
 	@endif
 </div>
-
-
-
-{{-- dati user autenticato --}}
-@php
-	date_default_timezone_set('Europe/Rome');
-	$my_user		= Auth::user();
-	$my_profile		= $my_user->profile;
-	$my_contracts	= $my_user->contracts;
-	$is_any_contract = (!$my_contracts->isEmpty());
-	$is_active_sponsorship = false;
-	foreach ($my_contracts as $my_contract) {
-		$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
-		$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);
-		$now 		= new DateTime();
-		if ($date_start < $now && $date_end >= $now) {
-			$is_active_sponsorship = true;
-		}
-	}
-@endphp
-
-
 
 <div class="row dashboard_home">
 	<div class="{{-- col-md-4 offset-md-1 --}}">
