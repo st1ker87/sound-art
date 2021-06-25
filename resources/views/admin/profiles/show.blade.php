@@ -12,53 +12,43 @@
 
 {{-- sempre presente --}}
 	<section class="container main-show" id="about_me">
-		<div class="row border_bottom">
-			<div  class="description col-8">
-				@if($profile->bio_text1 && $profile->bio_text2)
-				<p>{{$profile->bio_text1}}</p>
-				<p>{{$profile->bio_text2}}</p>
+		<div class="row">
+			<div  class="description col-sm-12 col-md-7 col-lg-7">
+				@if($my_profile->bio_text1 && $my_profile->bio_text2)
+				{{-- <h2>About me</h2> --}}
+				<p>{{$my_profile->bio_text1}}</p>
+				<p>{{$my_profile->bio_text2}}</p>
+				<p>{{$my_profile->bio_text2}}</p>
+
 				@endif
 			</div>
 		{{-- IMMAGINE RIMOSSA --}}
+        	<div  class="offert col-sm-12 col-md-4 offset-md-1 col-lg-4 offest-lg-1">
+          		<div class="services">
+            		<h2>Services Provided</h2>     
+            		<hr>
+          			@foreach($my_user->offers as $offer)
+						@if($loop->last)
+						<p>{{$offer->name}}</p>
+						@else
+						{{$offer->name . ','}}
+						@endif
+          			@endforeach
+          		</div>
+		  		@if ($my_user->genres->isNotEmpty())
+         			<div class="fav_music">
+                		<div  class="genres">
+							<h2>My favorite music</h2>
+							<hr>
+							@foreach($my_user->genres as $genre)
+								<span>{{$genre->name}}</span>
+							@endforeach
+                		</div>
+					</div> 
+				@endif
+        	</div>
 		</div>
 	</section>
-
-
-{{-- 
-PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI SOPRA E SOTTO ? 	
---}}
-	{{-- sempre presente --}}
-	<section class="container main-show" id="offers">
-		<div class="row border_bottom">
-			<div  class="offert">
-				<h2>Services Provided</h2>         
-				@foreach($my_user->offers as $offer)
-					@if($loop->last)
-						<span>{{$offer->name}}</span>
-					@else
-					{{$offer->name . ','}}
-					@endif
-				@endforeach
-			</div>
-		</div>
-	</section>
-
-	@if (count($my_user->genres)>0)
-		<section class="container main-show" id="genres">
-			<div class="row border_bottom">
-				<div  class="genres col-12">
-					<h2>My favorite music</h2>
-					@foreach($my_user->genres as $genre)
-						{{-- @if($loop->last) --}}
-						<span>{{$genre->name}}</span>
-						{{-- @else
-						{{$genre->name}}
-						@endif --}}
-					@endforeach
-				</div>
-			</div>
-		</section>  
-	@endif
 
     {{--:class="{(scrollPosition > scrollChange) ? 'appear' : ''}" --}}
     <a href="#up">

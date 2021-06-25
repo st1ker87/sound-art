@@ -120,27 +120,9 @@
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 540px) {
     .jumbo-dash {
-        height: 30vh;
-        .row {
-            .container {
-
-                .title-dash {
-        
-                    h1 {
-                        font-size: 1.8rem;
-                    }
-                    h3 {
-                        font-size: 1.4rem;
-                    }
-                    p {
-                        font-size: 1rem;
-                    }
-                }
-            }
-
-        }
+        height: 40vh;
     }
 }
 
