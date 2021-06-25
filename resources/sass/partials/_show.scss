@@ -51,15 +51,15 @@
         margin: 0 10px;
       }
     }
-    .to_page_link {
-      a {
-        color: $darkGray;
-        font-weight: bolder;
-      }
+  }
+  .to_page_link {
+    a {
+      color: $primaryDarkBlue;
+      font-weight: bolder;
     }
   }
   .my-color {
-    background-color: $blue;
+    background-color: $primaryLighterBlue;
     
   }
   .my-color:hover {
@@ -69,8 +69,11 @@
 .main-show{
   padding: 20px 0;
   h2 {
-    color: $darkGray;
+    color: $primaryDarkBlue;
     // padding-bottom: 20px;
+  }
+  p {
+    font-size: 1.1em;
   }
   .pic-show {
     img {
@@ -78,9 +81,32 @@
        height: 100%;
     }
   }
+  .offert{
+    .services, .fav_music {
+      min-height: 170px;
+      background-color: white;
+      box-shadow: 3px 3px 10px rgb(212, 212, 212);
+      margin-bottom: 20px;
+      padding: 30px 10px;
+      border-radius: 2px;
+      h2 {
+        margin-bottom: 10px;
+        color: $primaryDarkBlue;
+      }
+      .genres {
+        span {
+          margin: 0 5px;
+          font-size: 1.1em;
+          background-color: $primaryGray;
+          border-radius: 10px;
+          padding: 5px 8px;
+        }
+      }
+    }
+    
+  }
   .reviews {
-    width: 500px;
-    min-width: 300px;
+
     margin: 50px 0;
     padding: 20px;
     // border: 1px solid $primaryGray;
@@ -118,12 +144,6 @@
   .border_bottom {
     padding-bottom: 20px;
     border-bottom: 1px solid $primaryGray;
-    .genres {
-      span {
-      background-color: $primaryGray;
-      border-radius: 10px;
-      padding: 5px 8px;
-      }
-    }
+    
   }
 }

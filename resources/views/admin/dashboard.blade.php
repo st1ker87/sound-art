@@ -1,31 +1,6 @@
-{{------------------------------------------------------------------
-	DASHBOARD ADMIN
-
-	si vede
-
-		pulsante: 
-			vedi/modifica tuo profilo > [ProfileController@show]
-			crea profilo > [Admin/ProfileController@create]
-
-		pulsante:
-			fai la sponsorship > [sponsorship.blade.php]
-
-		vedi i messaggi > [MessageController@index]
-
-		vedi i review > [ReviewController@index]
-
-		vedi le statistiche
-
-	altre funzioni quali?
-
-	DISPONIBILE IN PAGINA:
-			$my_user 	= Auth::user();
-			$my_profile = Auth::user()->profile;
-
-------------------------------------------------------------------}}
 @extends('layouts.dashboard')
 
-@section('title','dashboard')
+@section('title','Dashboard')
 
 
 @section('content')
@@ -117,3 +92,30 @@
 
 
 @endsection
+
+
+{{------------------------------------------------------------------
+	DASHBOARD ADMIN
+
+	si vede
+
+		pulsante: 
+			vedi/modifica tuo profilo > [ProfileController@show]
+			crea profilo > [Admin/ProfileController@create]
+
+		pulsante:
+			fai la sponsorship > [sponsorship.blade.php]
+
+		vedi i messaggi > [MessageController@index]
+
+		vedi i review > [ReviewController@index]
+
+		vedi le statistiche
+
+	altre funzioni quali?
+
+	DISPONIBILE IN PAGINA:
+			$my_user 	= Auth::user();
+			$my_profile = Auth::user()->profile;
+
+------------------------------------------------------------------}}

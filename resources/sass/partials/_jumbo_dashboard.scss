@@ -46,6 +46,8 @@
                 }
             }
             .title-dash {
+              font-family: Arial, Helvetica, sans-serif;
+
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -53,31 +55,40 @@
                 h1 {
                     font-size: 4rem;
                     color: $primaryWhite;
-                    margin-bottom: 10px;
+                    line-height: 50px;
+                    font-weight: bolder;
                 }
                 h3 {
+                    font-size: 2.8rem;
                     color: $primaryWhite;
-                    margin-bottom: 10px;
+                    line-height: 50px;
+                    font-weight: bolder;
                 }
                 .votes {
-                    margin-bottom: 10px;
+                    // margin-bottom: 10px;
                     i {
                         font-size: 1.3em;
                         margin-right: 3px;
                         color: $starsYellow;
                     }
+                    span {
+                      color: white;
+                      font-size: 1.2em;
+                      margin-left: 10px;
+                    }
+                    
                 }
                 p {
-                    font-size: 1.5em;
-                    color: $primaryWhite;
-                }
+                  font-size: 1.2em;
+                  color: $primaryWhite;
+              }
+                
             }
         }
     }
     
 
 }
-
 
 // RESPONSIVE
 @media screen and (max-width: 1024px) {

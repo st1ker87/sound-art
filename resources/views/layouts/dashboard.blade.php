@@ -1,22 +1,3 @@
-{{------------------------------------------------------------------
-	LAYOUT DASHBOARD
-	contiene 
-		in <head> (originale di laravel) 
-			CSRF Token: ci serve?
-			puntamento a app.css e app.js: NON ELIMINARE!
-			Fonts: modificare
-		in <body> 
-			scatola Vue.js: NON ELIMINARE!
-
-	in seguito si può differenziare per guest/admin
-
-	DEFINITO QUI:
-			$my_user 	= Auth::user();
-			$my_profile = Auth::user()->profile;
-
-
-------------------------------------------------------------------}}
-
 {{-- DA QUI TUTTO UGUALE AL LAYOUT PRINCIPALE --}}
 
 <!doctype html>
@@ -34,6 +15,9 @@
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Scripts -->
+	<script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -150,7 +134,25 @@
             </div>
         </div>
 
-		@include('partials.footer_home')
+		@include('partials.footer_search')
     </div>
 </body>
 </html>
+{{------------------------------------------------------------------
+	LAYOUT DASHBOARD
+	contiene 
+		in <head> (originale di laravel) 
+			CSRF Token: ci serve?
+			puntamento a app.css e app.js: NON ELIMINARE!
+			Fonts: modificare
+		in <body> 
+			scatola Vue.js: NON ELIMINARE!
+
+	in seguito si può differenziare per guest/admin
+
+	DEFINITO QUI:
+			$my_user 	= Auth::user();
+			$my_profile = Auth::user()->profile;
+
+
+------------------------------------------------------------------}}

@@ -62,10 +62,10 @@
 
 <div class="container" id="bt_form">
 	<div class="row justify-content-center">
-		<div class="col-8 col-sm-8 col-md-9 col-lg-6">
+		<div class="col-8 col-sm-8 col-lg-6">
 
 
-			<h1>{{$sponsorship->name}}</h1>
+			<h1>{{ucwords($sponsorship->name)}}</h1>
 			<div class="vertical_spacer"></div>
 			<h4>{{$sponsorship->description}}</h4>
 			<div class="vertical_spacer"></div>
@@ -169,9 +169,14 @@
 				<input id="nonce" name="sponsorship_id" type="hidden" value="{{$sponsorship->id}}" />
 				<input id="nonce" name="sponsorship_hour_duration" type="hidden" value="{{$sponsorship->hour_duration}}" />
 	
-				<button type="submit" class="btn btn-success">Submit Payment</button>
-				<div class="vertical_spacer"></div>
-				<div class="vertical_spacer"></div>
+				<div class="row">
+					<div class="col-12">
+						<div class="float-right">
+							<a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+							<button type="submit" class="btn btn-success">Submit Payment</button>
+						</div>
+					</div>
+				</div>
 	
 			</form>
 	
