@@ -11,6 +11,7 @@
 		// per profiles.show (PROFILO ESISTE)
 		// visto da guest o admin: $profile viene da ProfileController
 		$my_profile = $profile;
+		$my_user = $profile->user;
 	} else {
 		// per dashboard e simili (PROFILO PUÒ NON ESISTERE usare user)
 		// visto da admin: $my_profile = Auth::user()->profile;
