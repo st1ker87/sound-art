@@ -49,19 +49,21 @@
         {{-- PROVA NAVBAR SOTTO AL JUMBO AL POSTO DELLA NAV A SX --}}
         <div class="bar_under_jumbo container-fluid dashboard_nav">
             <div class="container">
-                <nav class="nav nav-pills flex-column flex-sm-row">
+                <nav class="nav flex-column flex-md-row to_underscore_link">
+                
                     {{-- VALUTARE SE USARE O TOGLIERE BORDO PER ROTTA ATTIVA --}}
                     {{-- @if (request()->is('admin/dashboard')) --}}
-                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                    <a class="text-sm-center nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                     {{-- @else
                     <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                     @endif --}}
 
                     @if ($my_profile)
-                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">My Profile</a>
+                    <a class="text-sm-center nav-link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">My Profile</a>
                     @endif
-                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('admin.messages.index') }}">Messages</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" href="{{ route('admin.reviews.index') }}">Reviews</a>
+                    <a class="text-sm-center nav-link" href="{{ route('admin.messages.index') }}">Messages</a>
+                    <a class="text-sm-center nav-link" href="{{ route('admin.reviews.index') }}">Reviews</a>
+
                 </nav>
             </div>
         </div>

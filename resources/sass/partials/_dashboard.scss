@@ -10,6 +10,18 @@
         }
     }
 }
+.bar_under_jumbo {
+
+    background-color: white;
+    border-bottom: 0.5px solid $lightGray;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    a {
+        color: $darkGray;
+        font-weight: bolder;
+    }
+}
+
 
 .dashboard_main {
     margin: 10vh 0;
