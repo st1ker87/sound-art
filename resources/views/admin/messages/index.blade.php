@@ -25,10 +25,6 @@
 	<div class="row justify-content-center">
     	<div class="col-md-12">
         	
-			<div class="d-flex justify-content-between align-items-center">
-            	<h2>Your message box</h2>
-			</div>
-
 			{{-- FEEDBACK MESSAGES --}}
 			<div class="d-flex justify-content-between align-items-center">
 				
@@ -56,6 +52,10 @@
 				@endif
 			</div>
 			{{-- FINE FEEDBACK MESSAGES --}}
+
+			<div class="d-flex justify-content-between align-items-center">
+            	<h2>Your message box</h2>
+			</div>
 
 			@if(count($my_user->messages)>0)
 			@foreach ($my_user->messages->sortByDesc('created_at') as $message)

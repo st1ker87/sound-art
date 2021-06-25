@@ -30,17 +30,10 @@
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
 
-	@if (Request::is('admin/sponsorship/*'))
-		conflitto vuejs nel form di braintree!
-	@else
-		<script src="{{ asset('js/app.js') }}" defer></script>	
-	@endif
-
 	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
 
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 
 -----------------------------------------------------------}}
 @push('dashboard_head')
@@ -190,13 +183,13 @@
 
 {{-- RISORSE ESTERNE --}}
 <!-- Braintree + form customizzabile -->
-<script src="https://js.braintreegateway.com/web/3.38.1/js/client.min.js"></script>
-<script src="https://js.braintreegateway.com/web/3.38.1/js/hosted-fields.min.js"></script>
+<script type="application/javascript" src="https://js.braintreegateway.com/web/3.38.1/js/client.min.js"></script>
+<script type="application/javascript" src="https://js.braintreegateway.com/web/3.38.1/js/hosted-fields.min.js"></script>
 <!-- PayPal + Checkout -->
-<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
-<script src="https://js.braintreegateway.com/web/3.38.1/js/paypal-checkout.min.js"></script>
+<script type="application/javascript" src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+<script type="application/javascript" src="https://js.braintreegateway.com/web/3.38.1/js/paypal-checkout.min.js"></script>
 
-<script>
+<script type="application/javascript">
 	var form = document.querySelector('#payment-form');
 	var submit = document.querySelector('input[type="submit"]'); // ! QUESTO È SBAGLIATO !
 
