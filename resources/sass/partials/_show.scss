@@ -42,11 +42,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 8vh;
+    min-height: 8vh;
     width: 100%;
     .my_flex {
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       a {
         margin: 0 10px;
       }
@@ -97,7 +98,7 @@
         span {
           margin: 0 5px;
           font-size: 1.1em;
-          background-color: $primaryGray;
+          background-color: #eceaea;
           border-radius: 10px;
           padding: 5px 8px;
         }
