@@ -5,15 +5,14 @@
 	INPUT  : data-ora del DB (created_at) [ 2021-06-25 13:00:20 ]
 	OUTPUT : data-ora leggibile, inglese  [ Friday June 25, 2021, 13:00:20 ]
 --}}
-@php
+{{-- @php
 function getTimeDisplay($db_time) {
 	// create DateTime object
 	$db_time = DateTime::createFromFormat('Y-m-d H:i:s', $db_time);
 	// get string time
 	return date_format($db_time, 'l F j, Y, G:i:s');
 }
-@endphp
-
+@endphp --}}
 
 
 {{-- NON CANCELLARE QUESTA PAGINA DI TEST --}}
@@ -111,6 +110,24 @@ function getTimeDisplay($db_time) {
 /////////////////////////////////////////////
 ////////// qua sotto scrivi in php //////////
 /////////////////////////////////////////////
+
+date_default_timezone_set('Europe/Rome');
+
+use App\Classes\DateDisplay;
+
+echo 'dateTime (tutte le funzioni php):';
+$date = new DateTime();
+@dump($date);
+
+echo 'da dateTime a created_at (per il db):';
+// $date = $date->format('Y-m-d H:i:s');
+$date = date_format($date, 'Y-m-d H:i:s');
+@dump($date);
+
+$date = (new DateDisplay)->get($date);
+@dump($date);
+
+
 
 // $start = 5;
 // $end = 7;
