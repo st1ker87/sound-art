@@ -64,10 +64,10 @@
 
 
 <div class="row dashboard_home">
-	<div class="{{-- col-md-4 offset-md-1 --}}">
+	<div>
 		@if ($my_profile)
 			{{-- EDIT PROFILE BUTTON --}}
-			<a class="btn btn-primary btn-block" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
+			<a type="button" class="btn btn-primary my-color btn-block" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
 			{{-- DELETE PROFILE BUTTON --}}
 			<form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
 				@csrf

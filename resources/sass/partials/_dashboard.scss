@@ -23,5 +23,22 @@
     
 }
 
+<<<<<<< HEAD
 
 
+=======
+.my-color {
+    background-color: $primaryLighterBlue;
+
+}
+.my-color:hover {
+    background-color: $primaryDarkBlue;
+}
+
+.btn-sponsor {
+    background-color: gold;
+    :hover {
+        background-color: goldenrod;
+    }
+}
+>>>>>>> master
