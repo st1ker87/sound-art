@@ -1,10 +1,10 @@
 <h2>TESTACODICE #2</h2>
 {{-- ///////////////////////////////////////////// --}}
 
-
-INPUT: data-ora del DB (created_at)
-OUTPUT: data-ora completa, leggibile, inglese
-
+{{-- 
+	INPUT  : data-ora del DB (created_at) [ 2021-06-25 13:00:20 ]
+	OUTPUT : data-ora leggibile, inglese  [ Friday June 25, 2021, 13:00:20 ]
+--}}
 @php
 function getTimeDisplay($db_time) {
 	// create DateTime object
