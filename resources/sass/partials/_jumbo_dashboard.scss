@@ -132,7 +132,13 @@
         }
     }
 }
-
+.votes {
+  span {
+    color: white;
+    font-size: 1.2em;
+    margin-left: 10px;
+  }
+}
 
 /* @media screen and (max-width: 992px) {
     .dashboard_home {

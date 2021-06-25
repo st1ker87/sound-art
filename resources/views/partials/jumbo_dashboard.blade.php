@@ -74,10 +74,12 @@
                 <div class="votes">
                     @if ($average_vote)
                     @for ($i = 0; $i < $average_vote; $i++)
-                    <i class='fas fa-star'></i>   
+                      <i class='fas fa-star'></i>   
                     @endfor
+                      <span class="n_rev">{{count($reviews)}} Reviews</span>
                     @else <span>No raiting</span>
                     @endif 
+                    
                 </div>
                     <p>{{ $my_profile->work_town }}</p>  
                 @endif

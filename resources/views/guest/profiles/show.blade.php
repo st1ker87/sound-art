@@ -62,7 +62,12 @@
     $average_vote = round($average_vote / $counter);
   }
 
-
+  function getTimeDisplay($db_time) {
+	// create DateTime object
+	$db_time = DateTime::createFromFormat('Y-m-d H:i:s', $db_time);
+	// get string time
+	return date_format($db_time, 'l F j, Y, G:i:s');
+}
 @endphp
 
   <main class="main_show">  
@@ -391,8 +396,6 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 
 {{-- MODAL CONTENTS end ------------------------------------------------------}}
 {{----------------------------------------------------------------------------}}
-
-
 
 
 
