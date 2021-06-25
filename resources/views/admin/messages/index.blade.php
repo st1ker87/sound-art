@@ -44,8 +44,8 @@
 			</div>
 			{{-- FINE FEEDBACK MESSAGES --}}
 
-			<div class="d-flex justify-content-between align-items-center">
-            	<h2>Your message box</h2>
+			<div class="d-flex">
+				<h2 class="mr-auto p-2">Your Message Box</h2>
 			</div>
 
 			@if(count($my_user->messages)>0)
