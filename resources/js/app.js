@@ -307,6 +307,7 @@ const app = new Vue({
 				}
 			})
 			.then((resp) => {
+				
 				this.iper_profiles = resp.data.results;
 				this.is_last_profile_group = resp.data.is_last_profile_group;
 				this.displayProfiles.push(this.iper_profiles);
