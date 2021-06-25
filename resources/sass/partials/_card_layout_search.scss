@@ -76,4 +76,26 @@
             }
         }
     }
+    .show-more-container {
+        width: 100%;
+        #btn-show-more {
+            display: block;
+            width: 100%;
+            font-size: .9rem;
+            margin: 40px 0;
+            background-color: white;
+            border-radius: .3em;
+            text-transform: uppercase;
+            border: 1px solid $primaryWhite;
+            padding: .5em 2em;
+            box-shadow: 1px 1px 7px $primaryDarkBlue;
+            transition: 
+            box-shadow  1000ms,
+            border  1000ms;
+            &:hover {
+                border: 1px solid $primaryDarkBlue;
+                box-shadow: 0 0 7px $primaryDarkBlue inset;
+            }
+        }
+    }
 }
