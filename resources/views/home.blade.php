@@ -104,6 +104,12 @@
     </section>
 
     @include('partials.cards_home')
+
+    <!-- Get started -->
+    <section class="get-started">
+        <h3>Discover Artists</h3>
+        <a href="{{ route('search') }}" class="btn btn-outline-dark btn-lg">Search for artists</a>
+    </section>
     
     <section class="how-it-works">
         <div class="container-fluid">

@@ -41,6 +41,7 @@ const app = new Vue({
 		humburger : false,
 
 		/*BUTTONS IN PAGINA SEARCH*/
+		filters : false,
 		btnCategories : null,
 		btnGeneres : null,
 		btnVotes : null,
@@ -59,6 +60,7 @@ const app = new Vue({
 		end : 24,
 		groupLen : 24,
 		more : false,
+		showCards : false,
 		
 		// API FILTERS
 		category_selected	: null,
@@ -86,6 +88,47 @@ const app = new Vue({
 			this.showGenrePannel = false;
 			this.showVotePannel = false;
 		},
+
+		/* SHOW FILTERS LG */
+		showFilters: function() {		
+			if (this.filters == true) {
+				let filtersCnt = document.getElementById('filters-cnt');
+				let childrenLength = filtersCnt.children.length;
+				console.log(filtersCnt.children);
+				for(let i = 0; i < childrenLength; i++) {
+					filtersCnt.children[i].style.width = '0';
+					filtersCnt.children[i].style.visibility = 'hidden';
+					filtersCnt.children[i].style.overflow = 'hidden';
+				}
+				let submitBtn = document.getElementById('submit-advanced-search');
+				submitBtn.style.opacity = '0';
+				setTimeout(function() {
+					submitBtn.style.display = 'none';
+				}, 1000);
+				this.filters = false;
+			}
+			else {
+				let filtersCnt = document.getElementById('filters-cnt');
+				let childrenLength = filtersCnt.children.length;
+				console.log(filtersCnt.children);
+				for(let i = 0; i < childrenLength; i++) {
+					filtersCnt.children[i].style.width = '25%';
+					filtersCnt.children[i].style.visibility = 'visible';
+					setTimeout(function() {
+						filtersCnt.children[i].style.overflow = 'initial';
+					}, 1000);
+				}
+				let submitBtn = document.getElementById('submit-advanced-search');
+				setTimeout(function() {
+					submitBtn.style.display = 'block';
+				}, 1000);
+				setTimeout(function() {
+					submitBtn.style.opacity = '1';
+				}, 1010);
+				this.filters = true;
+			}
+		},
+		
 		showGenres: function() {
 			this.showGenrePannel = !this.showGenrePannel;
 			this.showCategoryPannel = false;
@@ -312,7 +355,9 @@ const app = new Vue({
 				this.iper_profiles = resp.data.results;
 				this.is_last_profile_group = resp.data.is_last_profile_group;
 				this.displayProfiles.push(this.iper_profiles);
-				console.log(this.displayProfiles);
+				if(this.displayProfiles[0].length > 0) {
+					this.showCards = true;
+				}
 				if(this.more) {
 					this.buildHTML();
 				}
@@ -381,12 +426,15 @@ const app = new Vue({
 		var ulr_path = window.location.pathname;
 		if (ulr_path == '/') {
 			this.onlySponsorship = true,
+			this.showCards = false,
 			this.searchDefault();
 			this.addEventClickListener();
 			this.base_url = 'profiles/search/';
 		}	
 		if (ulr_path == '/profiles/search') {
+			this.filters = false;
 			this.onlySponsorship = false,
+			this.showCards = false,
 			this.searchDefault();
 			this.addEventClickListener();
 			this.scrollSearch();

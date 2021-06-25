@@ -76,14 +76,13 @@ else {
         <div class="row">
 
           {{-- FILTER --}}
-          <div class="col-lg-1 col-md-12 flex border-right">
-            <span>Filters</span>
+          <div class="col-lg-1 flex border-right">
+            <button v-on:click="showFilters">Filters</button>
           </div>
 
-          <div class="col-lg-11 col-md-12 filters-cnt">
+          <div id="filters-cnt" class="col-lg-10 filters-cnt">
             {{-- CATEGORY --}}
-            <div class="border-right">
-              <div class="categories-pannel  flex">
+              <div class="categories-pannel flex">
                 <label for="category-button">Category:</label>
                 <button id="category-button" v-on:click.stop="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
                 <div v-if="showCategoryPannel" class="search">
@@ -99,10 +98,8 @@ else {
                   </div>
                 </div>
               </div>
-            </div>
   
             {{-- GENRE --}}
-            <div class="border-right">
               <div class="categories-pannel flex">
                 <label for="genre-button">Genre:</label>
                 <button id="genre-button" v-on:click.stop="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
@@ -119,10 +116,8 @@ else {
                   </div>
                 </div>
               </div>
-            </div>
   
             {{-- VOTES --}}
-            <div class="border-right">
               <div class="categories-pannel flex">
                 <label for="votes-button">Votes:</label>
                 <button id="votes-button" v-on:click.stop="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
@@ -139,18 +134,17 @@ else {
                   </div>
                 </div>
               </div>
-            </div>
   
             {{-- REVIEWS --}}
-            <div class="flex border-right">
+            <div class="flex">
               <label for="number-of-views">Reviews:</label>
               <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="number">
             </div>
   
-            {{-- SUBMIT --}}
-            <div class="flex">
-              <button id="submit-advanced-search" v-on:click="btnSubmit">Submit</button>
-            </div>
+          </div>
+          {{-- SUBMIT --}}
+          <div class="col-lg-1 flex">
+            <button id="submit-advanced-search" v-on:click="btnSubmit">Submit</button>
           </div>
         </div>
       </div>
