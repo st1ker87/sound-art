@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-{{-- @section('title', '{{$profile->slug}}') --}}
-@section('title', 'SLUG')
+@section('title', '{{$profile->user->name}}')
+{{-- @section('title', 'nome') --}}
 
 
 @section('header')
@@ -115,15 +115,15 @@
     ma anche per questa sezione usero un div <3 --}}
 	<div class="bar_under_jumbo container-fluid">
 		<div class="row search-nav">
-			<div class="container d-flex my_flex">
-				<div class="to_page_link">
-					<a href="#about_me">About Me</a>
+			<div class="container d-flex my_flex flex-column flex-md-row">
+				<div class="to_page_link flex-column flex-md-row">
+					<a href="#about_me" class="">About Me</a>
 					{{-- <a href="#offers">Services Provided</a> --}}
 					{{-- @if ($genres->isNotEmpty()) <a href="#genres">My favorite music</a> @endif --}}
-					@if ($reviews->isNotEmpty()) <a href="#reviews">Reviews</a> @endif
+					@if ($reviews->isNotEmpty()) <a href="#reviews">Reviews ({{count($reviews)}})</a> @endif
 				</div>
 				{{-- <button  class="btn btn-primary">Contact {{$profile->user->name}}</button> --}}
-				<div class="contacts_btn">
+				<div class="contacts_btn flex-column flex-md-row">
 					{{-- ORIGINAL BUTTONS ---------------------------------------------------------}}
 					{{-- <a class="btn btn-primary my-color" href="{{ route('messages_create',$profile->slug) }}">Contact {{$profile->user->name}}</a> --}}
 					{{-- <a class="btn btn-primary my-color" href="{{ route('reviews_create',$profile->slug) }}">Write a Review for {{$profile->user->name}}</a> --}}
@@ -165,25 +165,28 @@
           <div class="services">
             <h2>Services Provided</h2>     
             <hr>
-          @foreach($profile->user->offers as $offer)
-            @if($loop->last)
-              <p>{{$offer->name}}</p>
-            @else
-            {{$offer->name . ','}}
-            @endif
-          @endforeach
+            <div class="genres">
+              @foreach($profile->user->offers as $offer)
+                @if($loop->last)
+                  <span>{{$offer->name}}</span>
+                @else
+                  <span>{{$offer->name}}</span>
+                @endif
+              @endforeach
+            </div>
           </div>
-         <div class="fav_music">
-            @if ($genres->isNotEmpty())
-                <div  class="genres">
-                  <h2>My favorite music</h2>
-                  <hr>
-                  @foreach($genres as $genre)
-                    <span>{{$genre->name}}</span>
-                  @endforeach
-                </div>
-            @endif
-          </div> 
+          @if ($genres->isNotEmpty())
+            <div class="fav_music">
+              <div  class="genres">
+                <h2>My favorite music</h2>
+                <hr>
+                @foreach($genres as $genre)
+                  <span>{{$genre->name}}</span>
+                @endforeach
+              </div>
+            </div> 
+          @endif
+
         </div>
 		</div>
 	</section>
@@ -227,7 +230,11 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 
 	@if ($reviews->isNotEmpty()) 
 		<section class="container main-show" id="reviews">
-			<h2>Reviews</h2>
+      @if(count($reviews)==1)
+			<h2>{{count($reviews)}} Review</h2>
+      @else
+			  <h2>{{count($reviews)}} Reviews</h2>
+      @endif
 			@foreach($reviews->sortByDesc('created_at') as $review)
 				<div class="reviews col-sm-12 col-md-8 col-lg-5">
 					<div class="rev_vote">
