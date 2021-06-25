@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Search')
+{{-- @section('title', '{{$profile->slug}}') --}}
+@section('title', 'SLUG')
+
 
 @section('header')
   @include('partials.header_dash')
 @endsection
 
+{{-- @php echo $profile->slug @endphp --}}
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/app.blade.php
@@ -70,6 +73,10 @@
 }
 @endphp
 
+
+
+
+
   <main class="main_show">  
     <div class="torno_su" id="up"></div>
 
@@ -111,8 +118,8 @@
 			<div class="container d-flex my_flex">
 				<div class="to_page_link">
 					<a href="#about_me">About Me</a>
-					<a href="#offers">Services Provided</a>
-					@if ($genres->isNotEmpty()) <a href="#genres">My favorite music</a> @endif
+					{{-- <a href="#offers">Services Provided</a> --}}
+					{{-- @if ($genres->isNotEmpty()) <a href="#genres">My favorite music</a> @endif --}}
 					@if ($reviews->isNotEmpty()) <a href="#reviews">Reviews</a> @endif
 				</div>
 				{{-- <button  class="btn btn-primary">Contact {{$profile->user->name}}</button> --}}
@@ -144,14 +151,40 @@
 	{{-- sempre presente --}}
 	<section class="container main-show" id="about_me">
 		<div class="row border_bottom">
-			<div  class="description col-sm-12 col-md-12 col-md-6 col-lg-6">
+			<div  class="description col-sm-12 col-md-7 col-lg-7">
 				@if($profile->bio_text1 && $profile->bio_text2)
-				<h2>About me</h2>
+				{{-- <h2>About me</h2> --}}
 				<p>{{$profile->bio_text1}}</p>
 				<p>{{$profile->bio_text2}}</p>
+				<p>{{$profile->bio_text2}}</p>
+
 				@endif
 			</div>
 		{{-- IMMAGINE RIMOSSA --}}
+        <div  class="offert col-sm-12 col-md-4 offset-md-1 col-lg-4 offest-lg-1">
+          <div class="services">
+            <h2>Services Provided</h2>     
+            <hr>
+          @foreach($profile->user->offers as $offer)
+            @if($loop->last)
+              <p>{{$offer->name}}</p>
+            @else
+            {{$offer->name . ','}}
+            @endif
+          @endforeach
+          </div>
+         <div class="fav_music">
+            @if ($genres->isNotEmpty())
+                <div  class="genres">
+                  <h2>My favorite music</h2>
+                  <hr>
+                  @foreach($genres as $genre)
+                    <span>{{$genre->name}}</span>
+                  @endforeach
+                </div>
+            @endif
+          </div> 
+        </div>
 		</div>
 	</section>
 
@@ -160,43 +193,43 @@
 PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI SOPRA E SOTTO ? 	
 --}}
 	{{-- sempre presente --}}
-	<section class="container main-show" id="offers">
+	{{-- <section class="container main-show" id="offers">
 		<div class="row border_bottom">
-			<div  class="offert">
+			<div  class="offert col-sm-12 col-md-12 col-lg-12">
 				<h2>Services Provided</h2>         
 				@foreach($profile->user->offers as $offer)
 					@if($loop->last)
-						<span>{{$offer->name}}</span>
+						<p>{{$offer->name}}</p>
 					@else
 					{{$offer->name . ','}}
 					@endif
 				@endforeach
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
-	@if ($genres->isNotEmpty())
+	{{-- @if ($genres->isNotEmpty())
 		<section class="container main-show" id="genres">
 			<div class="row border_bottom">
-				<div  class="genres">
+				<div  class="genres col-sm-12 col-md-8 col-lg-8">
 					<h2>My favorite music</h2>
 					@foreach($genres as $genre)
 						{{-- @if($loop->last) --}}
-						<span>{{$genre->name}}</span>
+						{{-- <span>{{$genre->name}}</span> --}}
 						{{-- @else
 						{{$genre->name}}
 						@endif --}}
-					@endforeach
+					{{-- @endforeach
 				</div>
 			</div>
-		</section>  
-	@endif
+		</section>   --}}
+	{{-- @endif} --}}
 
 	@if ($reviews->isNotEmpty()) 
 		<section class="container main-show" id="reviews">
 			<h2>Reviews</h2>
 			@foreach($reviews->sortByDesc('created_at') as $review)
-				<div class="reviews">
+				<div class="reviews col-sm-12 col-md-8 col-lg-5">
 					<div class="rev_vote">
 						<div class="stars">
 							@for ($i = 0; $i < $review->rev_vote; $i++)
