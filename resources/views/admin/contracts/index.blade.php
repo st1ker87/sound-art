@@ -41,16 +41,12 @@
 
 <h2>Your Sponsorships</h2>
 
-@php
-	$counter = 1;
-@endphp
-
 @foreach ($my_contracts->sortByDesc('created_at') as $contract)
 
 	<div class="msg_box">
 		<div class="content">
-			<p>{{$counter}} (id: {{$contract->id}}) - {{$contract->sponsorship->name}} (duration: {{$contract->sponsorship->hour_duration}} hours)</p>
-			<p>start: {{$contract->date_start}} - end: {{$contract->date_end}}</p>
+			<div>Contract id: {{$contract->id}} - {{ucwords($contract->sponsorship->name)}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
+			<div>Start: {{$contract->date_start}} - End: {{$contract->date_end}}</div>
 		
 			@php
 				$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
@@ -59,15 +55,15 @@
 			@endphp
 		
 			@if ($contract->transaction_status == 'submitted_for_settlement')
-				<p>Payed</p>
+				<span>Payed</span>
 			@else
-				<p>Issues occurred</p>
+				<span>Issues occurred</span>
 			@endif
 		
 			@if ($date_start < $now && $date_end >= $now)
-				<p>Currently active</p>
+				<span class="msg_delete">Currently active</span>
 			@else 
-				<p>Expired</p>
+				<span class="msg_delete">Expired</span>
 			@endif
 
 		</div>
