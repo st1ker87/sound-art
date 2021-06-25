@@ -2,6 +2,34 @@
 
 @section('title','Dashboard')
 
+{{----------------------------------------------------------- 
+	AGGIUNTO IN layouts/dashboard.blade.php
+
+	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
+
+	<!-- Styles: single page addendum -->
+	@stack('dashboard_head')
+
+-----------------------------------------------------------}}
+@push('dashboard_head')
+<style>
+	.vertical_spacer {
+		margin-bottom: 24px;
+	}	
+	.required_input_field {
+		color: #e3342f; /* $red */
+	}
+	.modal-header,
+	.modal-footer {
+		border: none;
+	}
+	.modal-title {
+		color: #212949; /* $primaryDarkBlue */
+	}
+</style>
+@endpush
+
+
 @section('content')
 
 @php
@@ -64,11 +92,15 @@
 			{{-- EDIT PROFILE BUTTON --}}
 			<a type="button" class="btn btn-primary my-color btn-block" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
 			{{-- DELETE PROFILE BUTTON --}}
-			<form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
+			{{-- ORIGINAL BUTTON ----------------------------------------------------------}}
+			{{-- <form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
 				@csrf
 				@method('DELETE')
 				<button type="submit" class="btn btn-danger btn-block">Delete your Profile</button>
-			</form>
+			</form> --}}
+			{{-- MODAL BUTTON -------------------------------------------------------------}}
+			<button type="submit" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-delete">Delete your Profile</button>
+			{{----------------------------------------------------------------------------}}
 		@else
 			{{-- CREATE PROFILE BUTTON --}}
 			<a class="btn btn-primary btn-block" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
@@ -86,7 +118,74 @@
 
 
 
+
+{{----------------------------------------------------------------------------}}
+{{-- MODAL CONTENTS start ----------------------------------------------------}}
+
+@if ($my_profile)
+	<!-- MODAL DELTE start-->
+	<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header" style="border:none;">
+					<h5 class="modal-title" id="demoModalLabel" style="color: #212949;">Profile Removal</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+
+				<div class="modal-body">
+					<p>You are about to remove all your Profile's informations from this platform. No one will be able to reach you.</p>
+					<p>
+						@if ($is_active_sponsorship)
+							Your current Sponsorship will cease immediately.				
+						@endif
+					</p>
+					<p>All your past activities (sponsorships, messages, reviews) will remain in our database, unless you decide to cancel your account.</p>
+					<p>This action can't be undone.</p>
+				</div>
+
+				<div class="modal-footer" style="border:none;">
+					<div>
+						<form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
+							@csrf
+							@method('DELETE')
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+							<button type="submit" class="btn btn-danger">Confirm Delete</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- MODAL DELETE End-->
+
+	<script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	{{-- <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> --}}
+	{{-- <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> --}}
+
+@endif
+
+{{-- MODAL CONTENTS end ------------------------------------------------------}}
+{{----------------------------------------------------------------------------}}
+
+
+
+
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {{------------------------------------------------------------------
