@@ -150,7 +150,7 @@
             </div>
         </div>
 
-		@include('partials.footer_home')
+		@include('partials.footer_search')
     </div>
 </body>
 </html>
