@@ -79,9 +79,11 @@
                       <span class="n_rev">{{count($reviews)}} Reviews</span>
                     @else <span>No raiting</span>
                     @endif 
-                    
+                    <!--TODO-->
+                    {{--Togliere "italy" dopo aver cambiato db--}}
+
                 </div>
-                    <p>{{ $my_profile->work_town }}</p>  
+                    <p>{{ $my_profile->work_town }}, Italy</p>  
                 @endif
             </div>
 
