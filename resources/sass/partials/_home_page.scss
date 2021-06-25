@@ -119,13 +119,14 @@
 
 // Want to work section
 .want-to-work {
+    color: white;
     h3 {
         margin: 0 auto;
         font-size: 2.8rem;
         width: 15ch;
         text-align: center;
         span {
-            color: #858585;
+            color: #cecece;
         }
     }
     p {
@@ -133,7 +134,7 @@
         font-size: 1rem;
         margin-top: 20px;
     }
-    background-color: #ececec;
+    background: linear-gradient(black, $primaryDarkBlue);
 }
 
 /* END WANT TO WORK */

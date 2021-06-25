@@ -44,6 +44,7 @@ const app = new Vue({
 		btnCategories : null,
 		btnGeneres : null,
 		btnVotes : null,
+
 		//scroll per nav bar (per ora solo in search.blade)
 		scrollPosition: null,
 		scrollChange: 400,
@@ -311,6 +312,7 @@ const app = new Vue({
 				this.iper_profiles = resp.data.results;
 				this.is_last_profile_group = resp.data.is_last_profile_group;
 				this.displayProfiles.push(this.iper_profiles);
+				console.log(this.displayProfiles);
 				if(this.more) {
 					this.buildHTML();
 				}
@@ -322,8 +324,6 @@ const app = new Vue({
 		},
 		
 		searchDefault() {
-			this.profile_num_start = this.start;
-			this.profile_num_end = this.end;
 			if(typeof(search_from_home_key) !== 'undefined'){
 				if(search_from_home_key === 'category') {
 					this.btnCategories = search_from_home_value;

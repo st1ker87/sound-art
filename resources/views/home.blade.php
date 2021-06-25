@@ -103,7 +103,7 @@
         </div>
     </section>
 
-    @include('partials.cards')
+    @include('partials.cards_home')
     
     <section class="how-it-works">
         <div class="container-fluid">

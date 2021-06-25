@@ -156,7 +156,7 @@ else {
       </div>
     </section>
 
-    @include('partials.cards')
+    @include('partials.cards_search')
   </main>
 
 @endsection
