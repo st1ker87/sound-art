@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\User;
+
 use App\Profile;
-use App\Category;
-use App\Genre;
-use App\Offer;
-use App\Review;
 use App\Message;
 
 class MessageController extends Controller
@@ -22,28 +18,25 @@ class MessageController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    public function create($slug)
-    {
-		// recipient: from profile $slug to $user
-		$profile = Profile::where('slug',$slug)->first();
-		$user 	 = User::where('id',$profile->user_id)->first();
+	 * 
+	 * ! OBSOLETO PER MODALITÀ MODAL
+	 */
+    // public function create($slug)
+    // {
+	// 	// recipient: from profile $slug to $user
+	// 	$profile = Profile::where('slug',$slug)->first();
+	// 	$user 	 = User::where('id',$profile->user_id)->first();
 
-		$data = [
-			// main infos
-			'user'			=> $user,
-			// aux infos
-			'users' 		=> User::all(),
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
- 		];
-		
-		 return view('guest.messages.create',$data);
-    }
+	// 	$data = [
+	// 		'user' => $user,
+ 	// 	];
+
+	// 	if(!$data['user']) {
+	// 		abort(404);
+	// 	}
+
+	// 	return view('guest.messages.create',$data);
+    // }
 
     /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,8 +75,11 @@ class MessageController extends Controller
 		return redirect()->route('profiles.show',$profile->slug)->with('status','Message sent');
     }
 
-
 	/**
+	 * #################################
+	 * #       MESSAGE VALIDATION      #
+	 * #################################
+     *
 	 * Message: form data validation
 	 * https://laravel.com/docs/7.x/validation
 	 * errors shown in EDIT/CREATE view
@@ -99,6 +95,10 @@ class MessageController extends Controller
 	}
 
 	/**
+	 * #################################
+	 * #         MESSAGE SLUG          #
+	 * #################################
+     *
 	 * Creazione slug a partire da stringa sorgente
 	 * deve essere unico nellla tabella profiles
 	 * 
