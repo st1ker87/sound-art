@@ -41,7 +41,6 @@ const app = new Vue({
 		humburger : false,
 
 		/*BUTTONS IN PAGINA SEARCH*/
-		filters : false,
 		btnCategories : null,
 		btnGeneres : null,
 		btnVotes : null,
@@ -87,48 +86,7 @@ const app = new Vue({
 			this.showCategoryPannel = !this.showCategoryPannel;
 			this.showGenrePannel = false;
 			this.showVotePannel = false;
-		},
-
-		/* SHOW FILTERS LG */
-		showFilters: function() {		
-			if (this.filters == true) {
-				let filtersCnt = document.getElementById('filters-cnt');
-				let childrenLength = filtersCnt.children.length;
-				console.log(filtersCnt.children);
-				for(let i = 0; i < childrenLength; i++) {
-					filtersCnt.children[i].style.width = '0';
-					filtersCnt.children[i].style.visibility = 'hidden';
-					filtersCnt.children[i].style.overflow = 'hidden';
-				}
-				let submitBtn = document.getElementById('submit-advanced-search');
-				submitBtn.style.opacity = '0';
-				setTimeout(function() {
-					submitBtn.style.display = 'none';
-				}, 1000);
-				this.filters = false;
-			}
-			else {
-				let filtersCnt = document.getElementById('filters-cnt');
-				let childrenLength = filtersCnt.children.length;
-				console.log(filtersCnt.children);
-				for(let i = 0; i < childrenLength; i++) {
-					filtersCnt.children[i].style.width = '25%';
-					filtersCnt.children[i].style.visibility = 'visible';
-					setTimeout(function() {
-						filtersCnt.children[i].style.overflow = 'initial';
-					}, 1000);
-				}
-				let submitBtn = document.getElementById('submit-advanced-search');
-				setTimeout(function() {
-					submitBtn.style.display = 'block';
-				}, 1000);
-				setTimeout(function() {
-					submitBtn.style.opacity = '1';
-				}, 1010);
-				this.filters = true;
-			}
-		},
-		
+		},		
 		showGenres: function() {
 			this.showGenrePannel = !this.showGenrePannel;
 			this.showCategoryPannel = false;
@@ -432,7 +390,6 @@ const app = new Vue({
 			this.base_url = 'profiles/search/';
 		}	
 		if (ulr_path == '/profiles/search') {
-			this.filters = false;
 			this.onlySponsorship = false,
 			this.showCards = false,
 			this.searchDefault();

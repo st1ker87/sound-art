@@ -77,7 +77,7 @@ else {
 
           {{-- FILTER --}}
           <div class="col-lg-1 flex border-right">
-            <button v-on:click="showFilters">Filters</button>
+            <button>Filters</button>
           </div>
 
           <div id="filters-cnt" class="col-lg-10 filters-cnt">
