@@ -27,14 +27,12 @@
 	.required_input_field {
 		color: #e3342f; /* $red */
 	}
-	.modal-header {
+	.modal-header,
+	.modal-footer {
 		border: none;
 	}
 	.modal-title {
 		color: #212949; /* $primaryDarkBlue */
-	}
-	.modal-footer {
-		border: none;
 	}
 </style>
 @endpush
@@ -47,30 +45,24 @@
 	$genres = $profile->user->genres;
 	$reviews = $profile->user->reviews;
 
-// Set average vote to false
-  $average_vote = false;
-// If collection of votes is not empty
-  if($reviews->isNotEmpty()) {
-    // Set average vote to 0 so I can start adding the votes found
-    $average_vote = 0;
-    // Keeps track of number of votes
-    $counter = 0;
-    foreach($reviews as $review) {
-      // For each vote add +1 to counter
-      $counter++;
-      // Update average vote
-      $average_vote += $review->rev_vote;
-    }
-    // When for loop ends, do average and round the result
-    $average_vote = round($average_vote / $counter);
-  }
+	// Set average vote to false
+	$average_vote = false;
+	// If collection of votes is not empty
+	if($reviews->isNotEmpty()) {
+		// Set average vote to 0 so I can start adding the votes found
+		$average_vote = 0;
+		// Keeps track of number of votes
+		$counter = 0;
+		foreach($reviews as $review) {
+			// For each vote add +1 to counter
+			$counter++;
+			// Update average vote
+			$average_vote += $review->rev_vote;
+		}
+		// When for loop ends, do average and round the result
+		$average_vote = round($average_vote / $counter);
+	}
 
-  function getTimeDisplay($db_time) {
-	// create DateTime object
-	$db_time = DateTime::createFromFormat('Y-m-d H:i:s', $db_time);
-	// get string time
-	return date_format($db_time, 'l F j, Y, G:i:s');
-}
 @endphp
 
 
