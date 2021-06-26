@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use DateTime;
 
 use App\Contract;
-use App\User;
-use App\Profile;
-use App\Category;
-use App\Genre;
-use App\Offer;
-use App\Message;
-use App\Review;
+// use App\User;
+// use App\Profile;
+// use App\Category;
+// use App\Genre;
+// use App\Offer;
+// use App\Message;
+// use App\Review;
 use App\Sponsorship;
 
 date_default_timezone_set('Europe/Rome');
@@ -34,15 +34,15 @@ class ContractController extends Controller
     public function index() // originale: show(Contract $contract)
     {
 		$data = [
-			'users' 		=> User::all(),		
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			'contracts' 	=> Contract::all(),
-			'sponsorships' 	=> Sponsorship::all(),
+			// 'users' 		=> User::all(),		
+			// 'profiles' 		=> Profile::all(),
+			// 'categories' 	=> Category::all(),
+			// 'genres' 		=> Genre::all(),
+			// 'offers' 		=> Offer::all(),
+			// 'messages' 		=> Message::all(),
+			// 'reviews' 		=> Review::all(),
+			// 'contracts' 	=> Contract::all(),
+			// 'sponsorships' 	=> Sponsorship::all(),
 		];
 
 		return view('admin.contracts.index',$data);
@@ -90,15 +90,15 @@ class ContractController extends Controller
 			'sponsorship'	=> $sponsorship,
 			'token'			=> $token,
 			// aux infos
-			'users' 		=> User::all(),		
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			'contracts' 	=> Contract::all(),
-			'sponsorships' 	=> Sponsorship::all(),
+			// 'users' 		=> User::all(),		
+			// 'profiles' 		=> Profile::all(),
+			// 'categories' 	=> Category::all(),
+			// 'genres' 		=> Genre::all(),
+			// 'offers' 		=> Offer::all(),
+			// 'messages' 		=> Message::all(),
+			// 'reviews' 		=> Review::all(),
+			// 'contracts' 	=> Contract::all(),
+			// 'sponsorships' 	=> Sponsorship::all(),
 		];
 
 		return view('admin.contracts.create',$data); 
@@ -188,6 +188,10 @@ class ContractController extends Controller
 
 
 	/**
+	 * #################################
+	 * #           VALIDATION          #
+	 * #################################
+     *
 	 * Contract: form data validation
 	 * https://laravel.com/docs/7.x/validation
 	 * errors shown in EDIT/CREATE view

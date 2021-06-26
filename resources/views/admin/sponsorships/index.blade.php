@@ -6,10 +6,8 @@
 	AGGIUNTO IN layouts/dashboard.blade.php
 
 	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
-
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
@@ -45,14 +43,25 @@
 @foreach ($sponsorships as $sponsorship)
 	@if ($sponsorship->is_active)
 
-		<div class="msg_box">
-			<div class="content">
-				<h4>{{ucwords($sponsorship->name)}}</h4>
-				<p>Only €{{$sponsorship->price}}</p>
-				<div>{{$sponsorship->description}}</div>
-				<a class="btn btn-success btn-sm msg_delete" href="{{ route('sponsorship',$sponsorship->id) }}">Buy</a>
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10 col-lg-8 col-xl-7">
+
+					<div class="msg_box">
+						<div class="content">
+
+							<h4>{{ucwords($sponsorship->name)}}</h4>
+							<p>Only €{{$sponsorship->price}}</p>
+							<div>{{$sponsorship->description}}</div>
+							<a class="btn btn-success btn-sm msg_delete" href="{{ route('sponsorship',$sponsorship->id) }}">Buy</a>
+
+						</div>
+					</div>
+
+				</div>
 			</div>
-		</div>
+		</div>		
 
 	@endif
 @endforeach

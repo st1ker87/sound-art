@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
 
-use App\User;
-use App\Profile;
-use App\Category;
-use App\Genre;
-use App\Offer;
-use App\Review;
-use App\Message;
+// use App\User;
+// use App\Profile;
+// use App\Category;
+// use App\Genre;
+// use App\Offer;
+// use App\Review;
+// use App\Message;
 use App\Sponsorship;
-use App\Contract;
+// use App\Contract;
 
 date_default_timezone_set('Europe/Rome');
 
@@ -45,84 +45,57 @@ class SponsorshipController extends Controller
 			return redirect()->route('dashboard')->withErrors('A Sponsorship is already active!');
 
 		$data = [
-			'users'			=> User::all(),
-			'profiles'		=> Profile::all(),
-			'categories'	=> Category::all(),
-			'genres'		=> Genre::all(),
-			'offers'		=> Offer::all(),
-			'messages'		=> Message::all(),
-			'reviews'		=> Review::all(),
+			// 'users'			=> User::all(),
+			// 'profiles'		=> Profile::all(),
+			// 'categories'	=> Category::all(),
+			// 'genres'		=> Genre::all(),
+			// 'offers'		=> Offer::all(),
+			// 'messages'		=> Message::all(),
+			// 'reviews'		=> Review::all(),
 			'sponsorships'	=> Sponsorship::all(),
-			'contracts'		=> Contract::all(),
+			// 'contracts'		=> Contract::all(),
  		];
 
 		return view('admin.sponsorships.index',$data);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
-	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	 * %             SHOW              %
-	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	 * 
      * Display the specified resource.
      *
      * @param  \App\Sponsorship  $sponsorship
      * @return \Illuminate\Http\Response
      */
-    public function show($id) // origniale: show(Sponsorship $sponsorship)
+    public function show(Sponsorship $sponsorship)
     {
-		$data = [
-			// main info: passed resource
-			'sponsorship'	=> Sponsorship::where('id',$id)->first(),
-			// aux infos: db tables
-			'users' 		=> User::all(),
-			'profiles'		=> Profile::all(),
-			'categories'	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			'sponsorships'	=> Sponsorship::all(),
-			'contracts'		=> Contract::all(),
- 		];
-
-		if(!$data['sponsorship']) {
-			abort(404);
-		}
-
-		return view('admin.sponsorships.DELETE_show',$data);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		//
+	}
 
     /**
      * Show the form for creating a new resource.
