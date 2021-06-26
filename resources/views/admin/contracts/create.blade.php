@@ -54,7 +54,10 @@
 
 			<div class="content">
 
-				<h1>{{ucwords($sponsorship->name)}}</h1>
+				<div class="d-flex justify-content-between align-items-center">
+					<h1>{{ucwords($sponsorship->name)}}</h1>
+					<a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+				</div>
 				<div class="vertical_spacer"></div>
 				<h4>{{$sponsorship->description}}</h4>
 				<div class="vertical_spacer"></div>
@@ -170,6 +173,7 @@
 				</form>
 
 			</div> <!-- content (card) -->
+			<div class="vertical_spacer"></div>
 	
 		</div>
 	</div>
