@@ -8,7 +8,6 @@
 	TODO >>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>

@@ -73,6 +73,10 @@ class MessageController extends Controller
 		$new_message['msg_subject']			= $form_data['subject'];
 		$new_message['msg_text']			= $form_data['text'];
 		$new_message['msg_read_status']		= 0;
+
+		// ! before writing in DB the created_at
+		date_default_timezone_set('Europe/Rome');
+
 		$new_message->save(); // ! DB writing here !
 
 		return redirect()->route('profiles.show',$profile->slug)->with('status','Message sent');
