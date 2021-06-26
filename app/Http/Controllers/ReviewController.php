@@ -72,6 +72,10 @@ class ReviewController extends Controller
 		$new_review['rev_subject']		= $form_data['subject'];
 		$new_review['rev_vote']			= $form_data['vote'];
 		$new_review['rev_text']			= $form_data['text'];
+
+		// ! before writing in DB the created_at
+		date_default_timezone_set('Europe/Rome');
+
 		$new_review->save(); // ! DB writing here !
 
 		return redirect()->route('profiles.show',$profile->slug)->with('status','Review sent');
