@@ -63,9 +63,9 @@
                     @if ($my_profile)
                         @foreach ($my_user->categories as $category)
                             @if($loop->last)
-                                {{$category->name}}
+                                {{ucwords($category->name)}}
                             @else
-                                {{$category->name . ' |'}}
+                                {{ucwords($category->name) . ' |'}}
                             @endif
                         @endforeach
                     @endif

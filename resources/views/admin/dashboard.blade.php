@@ -141,15 +141,17 @@
 		{{-- IMMAGINE RIMOSSA --}}
         	<div  class="offert col-sm-12 col-md-4 offset-md-1 col-lg-4 offest-lg-1">
           		<div class="services">
-            		<h2>Services Provided</h2>     
-            		<hr>
-          			@foreach($my_user->offers as $offer)
-						@if($loop->last)
-						<p>{{$offer->name}}</p>
-						@else
-						{{$offer->name . ','}}
-						@endif
-          			@endforeach
+					  <div class="genres">
+						  <h2>Services Provided</h2>     
+						  <hr>
+							@foreach($my_user->offers as $offer)
+							  @if($loop->last)
+							  <span>{{ucwords($offer->name)}}</span>
+							  @else
+							  <span>{{ucwords($offer->name) . ','}}</span>
+							  @endif
+							@endforeach
+					  </div>
           		</div>
 		  		@if ($my_user->genres->isNotEmpty())
          			<div class="fav_music">
@@ -157,7 +159,7 @@
 							<h2>My favorite music</h2>
 							<hr>
 							@foreach($my_user->genres as $genre)
-								<span>{{$genre->name}}</span>
+								<span>{{ucwords($genre->name)}}</span>
 							@endforeach
                 		</div>
 					</div> 
