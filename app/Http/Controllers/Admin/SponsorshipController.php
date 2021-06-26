@@ -56,6 +56,10 @@ class SponsorshipController extends Controller
 			// 'contracts'		=> Contract::all(),
  		];
 
+		if(!$data['sponsorships']) {
+			abort(404);
+		}
+
 		return view('admin.sponsorships.index',$data);
     }
 

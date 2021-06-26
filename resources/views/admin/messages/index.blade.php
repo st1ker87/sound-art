@@ -18,6 +18,9 @@
 	.required_input_field {
 		color: #e3342f; /* $red */
 	}
+	.msg_delete:hover {
+		color: #d3231d; /* custom */
+	}
 	.modal-header,
 	.modal-footer {
 		border: none;
