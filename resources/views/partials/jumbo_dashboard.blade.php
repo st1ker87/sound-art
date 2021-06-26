@@ -57,7 +57,7 @@
                     @endif
                 </div>
             </div>
-            <div class="title-dash">
+            <div class="title-dash col-lg-6">
                 <h1>{{ $my_user->name }} {{ $my_user->surname }}</h1>
                 <h3>
                     @if ($my_profile)

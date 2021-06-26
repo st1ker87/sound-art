@@ -1,31 +1,6 @@
-{{-- <h2>MODEL: Contract, CRUD: create, AREA: admin - FORM CREAZIONE CONTRACT (info pagamento)</h2>
-<h5>URL</h5>
-<p>url: http://localhost:8000/admin/sponsorship (get)</p>
-<h5>SINGOLA SPONSORSHIP PASSATA</h5>
-<p>sponsorship->id = @php echo $sponsorship->id @endphp</p>
-<p>sponsorship->name = @php echo $sponsorship->name @endphp</p>
-<p>dump($sponsorship) = @dump($sponsorship)</p>
-<h5>TOKEN PASSATO</h5>
-<p>dump($token) = @dump($token)</p>
-<h5>ALTRE TABELLE DISPONIBILI</h5>
-<p>dump($users) = @dump($users)</p>
-<p>dump($profiles) = @dump($profiles)</p>
-<p>dump($categories) = @dump($categories)</p>
-<p>dump($genres) = @dump($genres)</p>
-<p>dump($offers) = @dump($offers)</p>
-<p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p>
-<p>dump($sponsorships) = @dump($sponsorships)</p>
-@dd('') --}}
-
-{{-- 
-	VALORI DI IMMISSIONE PER TEST TRANSAZIONE
-	https://developer.paypal.com/braintree/docs/reference/general/testing 
---}}
-
 @extends('layouts.dashboard')
+
 @section('title','Sponsorship Gateway')
-@section('content')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
@@ -38,6 +13,12 @@
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
+	.content {
+		background-color: white;
+		border-radius: 8px 8px 0 0;
+    	box-shadow: 3px 3px 10px #d4d4d4;
+    	padding: 25px;
+	}
 	#bt_form #card-number, 
 	#bt_form #cvv, 
 	#bt_form #expiration-date {
@@ -57,128 +38,138 @@
 	.required_input_field {
 		color: #e3342f; /* $red */
 	}
+	button {
+		margin-left: 5px;
+	}
 </style>
 @endpush
 
+
+@section('content')
+
+
 <div class="container" id="bt_form">
 	<div class="row justify-content-center">
-		<div class="col-8 col-sm-8 col-lg-6">
+		<div class="col-xs-10 col-sm-12 col-md-9 col-lg-7 col-xl-6">
 
+			<div class="content">
 
-			<h1>{{ucwords($sponsorship->name)}}</h1>
-			<div class="vertical_spacer"></div>
-			<h4>{{$sponsorship->description}}</h4>
-			<div class="vertical_spacer"></div>
-	
-			{{-- FORM FEEDBACK MESSAGE (retrieved via js) --}}
-			<div id="bt_message_container">
-				<div id="bt_message_box" class="alert alert-danger"></div>
+				<h1>{{ucwords($sponsorship->name)}}</h1>
 				<div class="vertical_spacer"></div>
-			</div>
-	
-			{{-- TRANSACTION FORM --}}	
-			<form action="{{ route('checkout') }}" method="POST" id="payment-form">
-				@csrf
-	
-				<div class="form-group">
-					<label for="email">Email Address</label>
-					<input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly required>
-				</div>
-				<div class="form-group">
-					<label for="name_on_card">Name on Card <span class="required_input_field">*</span></label>
-					<input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ Auth::user()->name.' '.Auth::user()->surname }}" required>
-				</div>
-	
-				{{-- <div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="address">Address</label>
-							<input type="text" class="form-control" id="address" name="address">
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label for="city">City</label>
-							<input type="text" class="form-control" id="city" name="city">
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label for="province">Province</label>
-							<input type="text" class="form-control" id="province" name="province">
-						</div>
-					</div>
-				</div> --}}
-	
-				{{-- <div class="row">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="postalcode">Postal Code</label>
-							<input type="text" class="form-control" id="postalcode" name="postalcode">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="country">Country</label>
-							<input type="text" class="form-control" id="country" name="country">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="phone">Phone</label>
-							<input type="text" class="form-control" id="phone" name="phone">
-						</div>
-					</div>
-				</div> --}}
-	
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="amount">Amount (€)</label>
-							<input type="text" class="form-control" id="amount" name="amount" value="{{ $sponsorship->price }}" data-type="currency" readonly required> 
-						</div>
-					</div>
-				</div>
-	
-				<div class="row">
-					<div class="col-12 col-md-6">
-						<label for="cc_number">Credit Card Number <span class="required_input_field">*</span></label>
-						<div class="form-group" id="card-number"></div>
-					</div>
-	
-					<div class="col-6 col-md-3">
-						<label for="expiry">Expiry <span class="required_input_field">*</span></label>
-						<div class="form-group" id="expiration-date"></div>
-					</div>
-	
-					<div class="col-6 col-md-3">
-						<label for="cvv">CVV <span class="required_input_field">*</span></label>
-						<div class="form-group" id="cvv"></div>
-					</div>
-				</div>
-	
-	
-				<div><span class="required_input_field">* Required informations</span></div>
+				<h4>{{$sponsorship->description}}</h4>
 				<div class="vertical_spacer"></div>
-				<div id="paypal-button"></div>
-				<div class="vertical_spacer"></div>
-	
-				<input id="nonce" name="payment_method_nonce" type="hidden" />
-	
-				{{-- faccio confluire di nascosto nel form id e durata della sponsorship --}}
-				<input id="nonce" name="sponsorship_id" type="hidden" value="{{$sponsorship->id}}" />
-				<input id="nonce" name="sponsorship_hour_duration" type="hidden" value="{{$sponsorship->hour_duration}}" />
-	
-				<div class="row">
-					<div class="col-12">
-						<div class="float-right">
-							<a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
-							<button type="submit" class="btn btn-success">Submit Payment</button>
+		
+				{{-- FORM FEEDBACK MESSAGE (retrieved via js) --}}
+				<div id="bt_message_container">
+					<div id="bt_message_box" class="alert alert-danger"></div>
+					<div class="vertical_spacer"></div>
+				</div>
+		
+				{{-- TRANSACTION FORM --}}	
+				<form action="{{ route('checkout') }}" method="POST" id="payment-form">
+					@csrf
+		
+					<div class="form-group">
+						<label for="email">Email Address</label>
+						<input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly required>
+					</div>
+					<div class="form-group">
+						<label for="name_on_card">Name on Card <span class="required_input_field">*</span></label>
+						<input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ Auth::user()->name.' '.Auth::user()->surname }}" required>
+					</div>
+		
+					{{-- <div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="address">Address</label>
+								<input type="text" class="form-control" id="address" name="address">
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="city">City</label>
+								<input type="text" class="form-control" id="city" name="city">
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="province">Province</label>
+								<input type="text" class="form-control" id="province" name="province">
+							</div>
+						</div>
+					</div> --}}
+		
+					{{-- <div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="postalcode">Postal Code</label>
+								<input type="text" class="form-control" id="postalcode" name="postalcode">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="country">Country</label>
+								<input type="text" class="form-control" id="country" name="country">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="phone">Phone</label>
+								<input type="text" class="form-control" id="phone" name="phone">
+							</div>
+						</div>
+					</div> --}}
+		
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="amount">Amount (€)</label>
+								<input type="text" class="form-control" id="amount" name="amount" value="{{ $sponsorship->price }}" data-type="currency" readonly required> 
+							</div>
 						</div>
 					</div>
-				</div>
-	
-			</form>
+		
+					<div class="row">
+						<div class="col-12 col-md-6">
+							<label for="cc_number">Credit Card Number <span class="required_input_field">*</span></label>
+							<div class="form-group" id="card-number"></div>
+						</div>
+		
+						<div class="col-6 col-md-3">
+							<label for="expiry">Expiry <span class="required_input_field">*</span></label>
+							<div class="form-group" id="expiration-date"></div>
+						</div>
+		
+						<div class="col-6 col-md-3">
+							<label for="cvv">CVV <span class="required_input_field">*</span></label>
+							<div class="form-group" id="cvv"></div>
+						</div>
+					</div>
+		
+		
+					<div><span class="required_input_field">* Required informations</span></div>
+					<div class="vertical_spacer"></div>
+					<div id="paypal-button"></div>
+					<div class="vertical_spacer"></div>
+		
+					<input id="nonce" name="payment_method_nonce" type="hidden" />
+		
+					{{-- faccio confluire di nascosto nel form id e durata della sponsorship --}}
+					<input id="nonce" name="sponsorship_id" type="hidden" value="{{$sponsorship->id}}" />
+					<input id="nonce" name="sponsorship_hour_duration" type="hidden" value="{{$sponsorship->hour_duration}}" />
+		
+					<div class="row">
+						<div class="col-12">
+							<div class="float-right">
+								<a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+								<button type="submit" class="btn btn-success">Submit Payment</button>
+							</div>
+						</div>
+					</div>
+		
+				</form>
+
+			</div> <!-- content (card) -->
 	
 		</div>
 	</div>
@@ -334,3 +325,32 @@
 
 
 @endsection
+
+
+
+
+
+{{-- <h2>MODEL: Contract, CRUD: create, AREA: admin - FORM CREAZIONE CONTRACT (info pagamento)</h2>
+<h5>URL</h5>
+<p>url: http://localhost:8000/admin/sponsorship (get)</p>
+<h5>SINGOLA SPONSORSHIP PASSATA</h5>
+<p>sponsorship->id = @php echo $sponsorship->id @endphp</p>
+<p>sponsorship->name = @php echo $sponsorship->name @endphp</p>
+<p>dump($sponsorship) = @dump($sponsorship)</p>
+<h5>TOKEN PASSATO</h5>
+<p>dump($token) = @dump($token)</p>
+<h5>ALTRE TABELLE DISPONIBILI</h5>
+<p>dump($users) = @dump($users)</p>
+<p>dump($profiles) = @dump($profiles)</p>
+<p>dump($categories) = @dump($categories)</p>
+<p>dump($genres) = @dump($genres)</p>
+<p>dump($offers) = @dump($offers)</p>
+<p>dump($messages) = @dump($messages)</p>
+<p>dump($reviews) = @dump($reviews)</p>
+<p>dump($sponsorships) = @dump($sponsorships)</p>
+@dd('') --}}
+
+{{-- 
+	VALORI DI IMMISSIONE PER TEST TRANSAZIONE
+	https://developer.paypal.com/braintree/docs/reference/general/testing 
+--}}

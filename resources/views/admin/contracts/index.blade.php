@@ -1,20 +1,5 @@
-{{-- <h2>MODEL: Contract, CRUD: index, AREA: admin - DETTAGLIO SINGOLO CONTRATTO MIO</h2>
-<h5>URL</h5>
-<p>url: http://localhost:8000/admin/sponsorship/list (get)</p>
-<h5>ALTRE TABELLE DISPONIBILI</h5>
-<p>dump($users) = @dump($users)</p>
-<p>dump($profiles) = @dump($profiles)</p>
-<p>dump($categories) = @dump($categories)</p>
-<p>dump($genres) = @dump($genres)</p>
-<p>dump($offers) = @dump($offers)</p>
-<p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p>
-<p>dump($sponsorships) = @dump($sponsorships)</p>
-<p>dump($contracts) = @dump($contracts)</p>
-@dd('') --}}
-
-
 @extends('layouts.dashboard')
+
 @section('title','My Sponsorship')
 
 {{----------------------------------------------------------- 
@@ -44,76 +29,94 @@
 
 @section('content')
 
-
-{{-- dati user autenticato --}}
 @php
-	date_default_timezone_set('Europe/Rome');
+
+	use App\Classes\DateDisplay;
+	use App\Classes\IsNowInInterval;
 
 	$my_user		= Auth::user();
 	$my_profile		= $my_user->profile;
 	$my_contracts	= $my_user->contracts;
 	$is_active_sponsorship = false;
-	$my_sponsorship_id = null;
 	foreach ($my_contracts as $my_contract) {
-		$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
-		$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);
-		$now 		= new DateTime();
-		if ($date_start < $now && $date_end >= $now) {
+		if ((new IsNowInInterval)->get($my_contract->date_start,$my_contract->date_end)) {
 			$is_active_sponsorship = true;
-			$my_contract_id = $my_contract->id;
 		}
 	}
+
 @endphp
 
-<h2>Your Sponsorships</h2>
+<div class="container">
+	<div class="row justify-content-center">
+    	<div class="col-md-12">
 
-@foreach ($my_contracts->sortByDesc('created_at') as $contract)
-
-	<div class="msg_box">
-		<div class="content">
-
-			<div class="highlight_text">{{ucwords($contract->sponsorship->name)}}</div>
-			<div>Contract id: {{$contract->id}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
-
-			<p>
-				<table>
-					<tr><td>Start</td><td>: {{getTimeDisplay($contract->date_start)}}</td></tr>
-					<tr><td>End  </td><td>: {{getTimeDisplay($contract->date_end)}}</td></tr>
-				</table>
-			</p>
-
-			@php
-				$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
-				$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_end);
-				$now 		= new DateTime();
-			@endphp
-		
-			<div>Transactions status: 
-				@if ($contract->transaction_status == 'submitted_for_settlement')
-					<span>Payed</span>
-				@else
-					<span>Issues occurred</span>
-				@endif				
+			<div class="d-flex">
+				<h2 class="mr-auto p-2">Your Sponsorships</h2>
+				@if (!$is_active_sponsorship && $my_profile)
+					<div class="p-2">
+						<a class="btn btn-success btn-block" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
+					</div>
+				@endif
 			</div>
 
-			@if ($date_start < $now && $date_end >= $now)
-				<span class="msg_delete badge badge-success txt_1">Currently active</span>
-			@else 
-				<span class="msg_delete badge badge-secondary txt_1">Expired</span>
-			@endif
+			@foreach ($my_contracts->sortByDesc('created_at') as $contract)
 
-		</div>
+				<div class="msg_box">
+					<div class="content">
+
+						<div class="highlight_text">{{ucwords($contract->sponsorship->name)}}</div>
+						<div>Contract id: {{$contract->id}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
+
+						<p>
+							<table>
+								<tr><td>Start</td><td>: {{ (new DateDisplay)->get($contract->date_start) }}</td></tr>
+								<tr><td>End  </td><td>: {{ (new DateDisplay)->get($contract->date_end)   }}</td></tr>
+							</table>
+						</p>
+					
+						<div>Transactions status: 
+							@if ($contract->transaction_status == 'submitted_for_settlement')
+								<span class="badge badge-success">Payed</span>
+							@else
+								<span class="badge badge-warning">Issues occurred</span>
+							@endif				
+						</div>
+
+						@if ((new IsNowInInterval)->get($contract->date_start,$contract->date_end))
+							<span class="msg_delete badge badge-success txt_1">Currently active</span>
+						@else 
+							<span class="msg_delete badge badge-secondary txt_1">Expired</span>
+						@endif
+
+					</div>
+				</div>
+
+			@endforeach
+
+        </div>
 	</div>
+</div>
 
-@endforeach
-
-@php
-function getTimeDisplay($db_time) {
-	// create DateTime object
-	$db_time = DateTime::createFromFormat('Y-m-d H:i:s', $db_time);
-	// get string time
-	return date_format($db_time, 'l F j, Y, G:i:s');
-}
-@endphp
 
 @endsection
+
+
+
+
+
+{{-- <h2>MODEL: Contract, CRUD: index, AREA: admin - DETTAGLIO SINGOLO CONTRATTO MIO</h2>
+<h5>URL</h5>
+<p>url: http://localhost:8000/admin/sponsorship/list (get)</p>
+<h5>ALTRE TABELLE DISPONIBILI</h5>
+<p>dump($users) = @dump($users)</p>
+<p>dump($profiles) = @dump($profiles)</p>
+<p>dump($categories) = @dump($categories)</p>
+<p>dump($genres) = @dump($genres)</p>
+<p>dump($offers) = @dump($offers)</p>
+<p>dump($messages) = @dump($messages)</p>
+<p>dump($reviews) = @dump($reviews)</p>
+<p>dump($sponsorships) = @dump($sponsorships)</p>
+<p>dump($contracts) = @dump($contracts)</p>
+@dd('') --}}
+
+

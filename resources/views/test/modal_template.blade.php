@@ -8,9 +8,15 @@
 </head>
 <body>
 
+	{{-- MODAL BUTTON -------------------------------------------------------------}}
 	<!-- pulsante apri popup -->
 	<button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#modal-element-1">Click Here</button>
+	{{----------------------------------------------------------------------------}}
 				
+
+
+	{{----------------------------------------------------------------------------}}
+	{{-- MODAL CONTENTS start ----------------------------------------------------}}
 
 	<!-- Modal Start-->
 	<div class="modal fade" id="modal-element-1" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
@@ -40,10 +46,13 @@
 	<!-- Modal End-->
 
 
-
 	<script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	{{-- <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> --}}
 	<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+	{{-- MODAL CONTENTS end ------------------------------------------------------}}
+	{{----------------------------------------------------------------------------}}
 
 
 </body>
