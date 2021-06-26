@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','dashboard-reviews')
+@section('title','Your Reviews')
 
 @section('content')
 
@@ -18,7 +18,7 @@
     	<div class="col-12 col-md-10 col-lg-8 col-xl-7">
 
 			<div class="d-flex justify-content-between align-items-center">
-				<h2>Your reviews</h2>
+				<h2>Your Reviews</h2>
 			</div>
 
 			@if(count($my_user->reviews)>0)

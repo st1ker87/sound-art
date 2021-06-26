@@ -6,10 +6,8 @@
 	AGGIUNTO IN layouts/dashboard.blade.php
 
 	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
-
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
@@ -25,6 +23,9 @@
 	}
 	.modal-title {
 		color: #212949; /* $primaryDarkBlue */
+	}
+	.modal-footer button {
+		margin-left: 5px;
 	}
 </style>
 @endpush
@@ -187,8 +188,8 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
-				<div class="modal-header" style="border:none;">
-					<h5 class="modal-title" id="demoModalLabel" style="color: #212949;">Profile Removal</h5>
+				<div class="modal-header">
+					<h3 class="modal-title" id="demoModalLabel">Profile Removal</h3>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 
@@ -203,7 +204,7 @@
 					<p>This action can't be undone.</p>
 				</div>
 
-				<div class="modal-footer" style="border:none;">
+				<div class="modal-footer">
 					<div>
 						<form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
 							@csrf

@@ -1,15 +1,13 @@
 @extends('layouts.dashboard')
 
-@section('title','My Sponsorship')
+@section('title','Your Sponsorship')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
 
 	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
-
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
