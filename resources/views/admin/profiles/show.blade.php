@@ -10,6 +10,25 @@
 
 @section('content')
 
+<div class="row dashboard_home">
+	<div class="btn_box col-12">
+		<div class="row flex-column align-items-end">
+			@if ($my_profile)
+				{{-- EDIT PROFILE BUTTON --}}
+				<a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
+				{{-- DELETE PROFILE BUTTON --}}
+				<form class="d-inline-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
+					@csrf
+					@method('DELETE')
+					<button type="submit" class="btn btn-danger btn-block">Delete Profile</button>
+				</form>
+			@else
+				{{-- CREATE PROFILE BUTTON --}}
+				<a class="btn btn-primary btn-block" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
+			@endif
+		</div>		
+	</div>
+</div>
 {{-- sempre presente --}}
 	<section class="container main-show" id="about_me">
 		<div class="row">

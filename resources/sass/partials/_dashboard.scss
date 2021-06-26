@@ -20,25 +20,32 @@
         padding: 0 20px;
         line-height: 8vh;
     }
+    .to_page_link {
+        .btn_create {
+            color: white;
+        }
+    }
     
 }
 
-<<<<<<< HEAD
-
-
-=======
-.my-color {
-    background-color: $primaryLighterBlue;
-
-}
-.my-color:hover {
-    background-color: $primaryDarkBlue;
-}
-
-.btn-sponsor {
-    background-color: gold;
-    :hover {
-        background-color: goldenrod;
+.dashboard_home {
+    .btn_box {
+        margin-bottom: 20px;
+        .my-color {
+            background-color: $primaryLighterBlue;
+        
+        }
+        .my-color:hover {
+            background-color: $primaryDarkBlue;
+        }
+        
+        .btn-sponsor {
+            background-color: $primarySpotify;
+            color: white;
+            
+        }
+        .btn-sponsor:hover {
+                background-color: $spotify_hover;
+        }
     }
 }
->>>>>>> master
