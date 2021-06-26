@@ -25,19 +25,30 @@ class HomeController extends Controller
     public function index()
     {
 		$data = [
-			'users' 		=> User::all(),
-			'profiles' 		=> Profile::all(),
 			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			'contracts' 	=> Contract::all(),
-			'sponsorships' 	=> Sponsorship::all(),
  		];
+		
+		 if(!$data['categories'] || !$data['genres'] || !$data['offers']) {
+			abort(404);
+		}
+
         return view('home',$data);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+	
 	/**
 	 * #################################
 	 * #         CODE TEST PAGE        #
