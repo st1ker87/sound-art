@@ -82,68 +82,70 @@ else {
 
           <div id="filters-cnt" class="col-lg-10 filters-cnt">
             {{-- CATEGORY --}}
-              <div class="categories-pannel flex">
-                <label for="category-button">Category:</label>
-                <button id="category-button" v-on:click.stop="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
-                <div v-if="showCategoryPannel" class="search">
-                  <div class="categories-cnt">
-                      <ul>
-                        <li><input class="btn-no-filter" v-if="btnCategories != 'No filter'" v-on:click="setCategory($event.target.value)" type="button" value="No filter"></li>
-                          @foreach($categories as $category)
-                          <li>
-                              <input v-on:click="setCategory($event.target.value)" type="button" value="{{ucwords($category->name)}}">
-                          </li>
-                          @endforeach
-                      </ul>
-                  </div>
+            <div class="categories-pannel flex">
+              <label for="category-button">Category:</label>
+              <button id="category-button" v-on:click.stop="showCategory" type="button">@{{btnCategories}} <i class="fas fa-sort-down"></i></button>
+              <div v-if="showCategoryPannel" class="search">
+                <div class="categories-cnt">
+                    <ul>
+                      <li><input class="btn-no-filter" v-if="btnCategories != 'No filter'" v-on:click="setCategory($event.target.value)" type="button" value="No filter"></li>
+                        @foreach($categories as $category)
+                        <li>
+                            <input v-on:click="setCategory($event.target.value)" type="button" value="{{ucwords($category->name)}}">
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
               </div>
+            </div>
   
             {{-- GENRE --}}
-              <div class="categories-pannel flex">
-                <label for="genre-button">Genre:</label>
-                <button id="genre-button" v-on:click.stop="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
-                <div v-if="showGenrePannel" class="search">
-                  <div class="categories-cnt">
-                      <ul>
-                        <li><input class="btn-no-filter" v-if="btnGeneres != 'No filter'" v-on:click="setGenre($event.target.value)" type="button" value="No filter"></li>
-                          @foreach($genres as $genre)
-                          <li>
-                              <input v-on:click="setGenre($event.target.value)" type="button" value="{{ucwords($genre->name)}}">
-                          </li>
-                          @endforeach
-                      </ul>
-                  </div>
+            <div class="categories-pannel flex">
+              <label for="genre-button">Genre:</label>
+              <button id="genre-button" v-on:click.stop="showGenres">@{{btnGeneres}} <i class="fas fa-sort-down"></i></button>
+              <div v-if="showGenrePannel" class="search">
+                <div class="categories-cnt">
+                    <ul>
+                      <li><input class="btn-no-filter" v-if="btnGeneres != 'No filter'" v-on:click="setGenre($event.target.value)" type="button" value="No filter"></li>
+                        @foreach($genres as $genre)
+                        <li>
+                            <input v-on:click="setGenre($event.target.value)" type="button" value="{{ucwords($genre->name)}}">
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
               </div>
+            </div>
   
             {{-- VOTES --}}
-              <div class="categories-pannel flex">
-                <label for="votes-button">Votes:</label>
-                <button id="votes-button" v-on:click.stop="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
-                <div v-if="showVotePannel" class="search">
-                  <div class="votes-cnt">
-                      <ul>
-                        <li><input class="btn-no-filter" v-if="btnVotes != 'No filter'" v-on:click="setVote($event.target.value)" type="button" value="No filter"></li>
-                        @for($i = 1; $i <= 5; $i++)
-                          <li>
-                            <input v-on:click="setVote($event.target.value)" type="button" value="{{$i}}">
-                          </li>
-                        @endfor
-                      </ul>
-                  </div>
+            <div class="categories-pannel flex">
+              <label for="votes-button">Votes:</label>
+              <button id="votes-button" v-on:click.stop="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
+              <div v-if="showVotePannel" class="search">
+                <div class="votes-cnt">
+                    <ul>
+                      <li><input class="btn-no-filter" v-if="btnVotes != 'No filter'" v-on:click="setVote($event.target.value)" type="button" value="No filter"></li>
+                      @for($i = 1; $i <= 5; $i++)
+                        <li>
+                          <input v-on:click="setVote($event.target.value)" type="button" value="{{$i}}">
+                        </li>
+                      @endfor
+                    </ul>
                 </div>
               </div>
+            </div>
   
             {{-- REVIEWS --}}
-            <div class="flex">
+            <div class="reviews-pannel flex">
               <label for="number-of-views">Reviews:</label>
-              <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="number">
+              <div class="input-cnt">
+                <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="number">
+              </div>
             </div>
   
           </div>
           {{-- SUBMIT --}}
-          <div class="col-lg-1 flex">
+          <div class="col-lg-1 flex submit-btn-cnt">
             <button id="submit-advanced-search" v-on:click="btnSubmit">Submit</button>
           </div>
         </div>
