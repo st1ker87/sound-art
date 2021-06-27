@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Profile;
-use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Profile;
+use App\User;
+use App\Category;
+use App\Genre;
+use App\Offer;
 
 class SuperSeeder extends Seeder
 {
@@ -15,11 +18,8 @@ class SuperSeeder extends Seeder
      */
     public function run()
     {
-
-		// @php $pars = preg_split("/\r\n|\n|\r/", $post['content']); @endphp
-		// @foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-
 		// % USER % 
 		$name 		= 'Kate';
 		$surname 	= 'Glock';
@@ -70,13 +70,13 @@ class SuperSeeder extends Seeder
 		$image_url = 'profile_image/IMG_4960.jpg';
 
 		// % CATEGORIES % 
-		$category = ['lyricist','topliner','vocalist'];
+		$categories = ['lyricist','topliner','vocalist'];
 		
 		// % GENRES % 
-
+		$genres = ['','',''];
 
 		// % OFFERS % 
-
+		$offers = ['','',''];
 
 		// % MESSAGES % 
 
@@ -88,7 +88,7 @@ class SuperSeeder extends Seeder
 
 
 
-		// # USER #
+		// # USER # 
 
 		// email must be unique
 		$email_name = strtolower(str_replace(' ', '', $name));
@@ -109,7 +109,7 @@ class SuperSeeder extends Seeder
 		$new_user['password'] 	= Hash::make($password);
 		$new_user->save(); // ! DB writing here ! 
 
-		// # PROFILE #
+		// # PROFILE # 
 
 		// slug must be unique
 		$slug = Str::slug($name.' '.$surname,'-');
@@ -137,6 +137,32 @@ class SuperSeeder extends Seeder
 		$new_profile['public'] = 1;
 		$new_profile->save(); // ! DB writing here ! 
 
+		// # CATEGORIES # 
+
+		$categories_ids = [];
+
+		foreach ($categories as $category) {
+			
+			// se non c'è nella tabella aggiungi
+			$db_categories = Category::all();
+			$is_category_present = false;
+			foreach ($db_categories as $db_category) {
+				if ($db_category->name == $category) $is_category_present = true;
+			}
+			if (!$is_category_present) {
+				$new_category = new Category();
+				$new_category['name'] = $category;
+				$new_category->save(); // ! DB writing here ! 
+			}
+
+			// costruisce array di id corrispondenti ai nomi dati
+			$category_id = Category::where('name',$category)->first()->id;
+			$categories_ids[] = $category_id;
+		}
+		
+		// aggiungi categorie a questa persona
+		$new_user->categories()->sync($categories_ids);
+		
 
 
 
@@ -150,10 +176,6 @@ class SuperSeeder extends Seeder
 
 
 
-
-
-
-
-
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 }

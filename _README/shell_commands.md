@@ -135,6 +135,8 @@ php artisan db:seed --class=ProductsTableSeeder
 *FAKER sostituzione zaninotto->fakerphp (https://fakerphp.github.io/)*
 composer remove fzaninotto/faker
 composer require fakerphp/faker
+*in caso di problemi sul riconoscimento delle classi*
+composer dump-autoload
 
 **DATE management**
 *carbon (https://carbon.nesbot.com/)*
