@@ -1,9 +1,16 @@
 
 
-
+.login_main {
+    min-height: calc(100vh - 30vh);
+}
 .card_login {
-    padding-top: 30px;
     margin: 10vh 0;
+    .card-header {
+        height: 100%;
+    }
+    .card-body {
+        padding-top: 30px;
+    }
     .btn-facebook {
         background-color: $primaryFacebook;
         color: white;

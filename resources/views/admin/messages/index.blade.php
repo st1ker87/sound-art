@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','dashboard-messages')
+@section('title','My Message Box')
 @section('content')
 
 @php
