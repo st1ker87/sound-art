@@ -3,11 +3,15 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Faker\Generator as Faker;
+
 use App\Profile;
 use App\User;
 use App\Category;
 use App\Genre;
 use App\Offer;
+use App\Message;
+use App\Review;
 
 class SuperSeeder extends Seeder
 {
@@ -16,18 +20,28 @@ class SuperSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 		// % USER % 
+
 		$name 		= 'Kate';
 		$surname 	= 'Glock';
 
 		// % PROFILE % 
+
 		$work_town		= 'London, UK';
 		$work_address 	= '168A Grange Rd, London SE1 3BN';
 		$phone 			= '+44 378 922 25 66';
+
+		/**
+		 * ! TESTO
+		 * !	>> copiare testo da soundbetter, dividendo in 2 o 3 parti (per ogni bio_text1,2,3)
+		 * ! 	>> ATTENZIONE all'escape di eventuali doppi apici (") dentro il testo ( " diventa \" )
+		 * ! 	>> lasciare una riga vuota nel testo per separare i paragafi (renderizzazione in pagina)
+		 * ! 	>> bio_text3 può essere lasciato vuoto
+		 */
 
 		// * About me
 		$bio_text1 = 
@@ -61,30 +75,111 @@ class SuperSeeder extends Seeder
 			
 			- You retain all rights to anything I produce for you. It's yours! Period! If you want to use my name as a vocalist that's fine.";
 
-		// * ??
+		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
 		$bio_text4 = "Professional touring singer/songwriter based out of London, from East European origin.";
 
-		$image_url = 'profile_image/IMG_4960.jpg';
+		/**
+		 * ! IMMAGINE
+		 * !	>> scaricare immagine da soundbetter (inspector > Application > Frames > top > Images)
+		 * !    >> posizionare dentro /storage/app/public/profile_image/ (!! NON dentro /public/storage/ !!)
+		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
+		 */
+
+		 $image_name = 'IMG_4960.jpg';
+
+		/**
+		 * ! CATEGORIES, GENRES, OFFERS
+		 * !	>> si possono usare categories, genres, offer già presenti nei rispettivi seeder
+		 * !    >> si possono introdurre nuove categories, genres, offer (vengono aggiunte nel DB)
+		 */
 
 		// % CATEGORIES % 
-		$categories = ['lyricist','topliner','vocalist'];
+
+		$categories = ['lyricist','topliner','vocalist']; // ! obbligatorio !
 		
 		// % GENRES % 
-		$genres = ['','',''];
+
+		$genres = ['classical','pop','dark'];
 
 		// % OFFERS % 
-		$offers = ['','',''];
+
+		$offers = ['teaching','writing']; // ! obbligatorio !
+
+		/**
+		 * ! MESSAGES & REVIEWS
+		 * !	>> copiare da soundbetter
+		 * !	>> NON lasciare campi obbligatori vuoti
+		 * !    >> per ridurre/aumentare il numero di messaggi/review eliminare/duplicare i corrispondenti elementi dagli array
+		 * !	>> nel subject potete spostare l'inizio del text (togliendolo dal text)
+		 * !	>> messaggi generici: copiabili anche per altri profili
+		 * ! 	>> ATTENZIONE all'escape di eventuali doppi apici (") dentro il testo ( " diventa \" )
+		 */
 
 		// % MESSAGES % 
 
+		$messages = [
+			[
+				'msg_subject' => "Collaboration", // ! obbligatorio !
+				'msg_text'    => "We are interested in a collaboration for our productions. I'll be in touch next week", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "I need your services", // ! obbligatorio !
+				'msg_text'    => "Your talent is amazing! I'm compleyely bewitched. I'll contact you for learn more about you", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "We would like to know you", // ! obbligatorio !
+				'msg_text'    => "We are interested in you services. Please call +44 333 765 2956 or email us. Regards", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Hiring proposal", // ! obbligatorio !
+				'msg_text'    => "Please contact us for a very important proposal about our events. Cheers", // ! obbligatorio !
+			],
+		];
 
 		// % REVIEWS % 
 
+		$reviews = [
+			[
+				'rev_vote'    => 5,  // ! obbligatorio !
+				'rev_subject' => "Very good!", // ! obbligatorio !
+				'rev_text'    => "Its so good to be back working with Kate again! she did another amazing job and we are both super excited to work on the rest of the songs i got in plan.", // ! obbligatorio !
+			],
+			[
+				'rev_vote'    => 5,  // ! obbligatorio !
+				'rev_subject' => "All amazing", // ! obbligatorio !
+				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!", // ! obbligatorio !
+			],
+			[
+				'rev_vote'    => 5,  // ! obbligatorio !
+				'rev_subject' => "Five stars!!!!", // ! obbligatorio !
+				'rev_text'    => "Kate is my favorite person to work with. Great vocals, suggestions to make your songs better, and a great personality! always a joy to come back and work with her. I will be back to work with her for my second album! going to be amazing.", // ! obbligatorio !
+			],
+			[
+				'rev_vote'    => 5,  // ! obbligatorio !
+				'rev_subject' => "A pro from top to bottom!", // ! obbligatorio !
+				'rev_text'    => "Such an easy going, down to earth, fun experience working with Kate! Will definitely want to do another project with her. warmly recommended!", // ! obbligatorio !
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "Effortless", // ! obbligatorio !
+				'rev_text'    => "Making new music with Kate has become almost effortless now. We know how each other works and what each other wants. I am doing my best work i have ever done with Kate. She just adds so much to my stuff and takes it to the next level. 5/5 again no surprise there :)", // ! obbligatorio !
+			],
+		];
+
 
 		// % CONTRACTS % 
+
+
+
+
+
+
+
+
+
 
 
 
@@ -133,7 +228,7 @@ class SuperSeeder extends Seeder
 		$new_profile['bio_text2'] = $bio_text2;
 		$new_profile['bio_text3'] = $bio_text3;
 		$new_profile['bio_text4'] = $bio_text4;
-		$new_profile['image_url'] = $image_url;
+		$new_profile['image_url'] = 'profile_image/'.$image_name;
 		$new_profile['public'] = 1;
 		$new_profile->save(); // ! DB writing here ! 
 
@@ -163,13 +258,96 @@ class SuperSeeder extends Seeder
 		// aggiungi categorie a questa persona
 		$new_user->categories()->sync($categories_ids);
 		
+		// # GENRES # 
 
+		$genres_ids = [];
+		foreach ($genres as $genre) {
+			// se non c'è nella tabella aggiungi
+			$db_genres = Genre::all();
+			$is_genre_present = false;
+			foreach ($db_genres as $db_genre) {
+				if ($db_genre->name == $genre) $is_genre_present = true;
+			}
+			if (!$is_genre_present) {
+				$new_genre = new Genre();
+				$new_genre['name'] = $genre;
+				$new_genre->save(); // ! DB writing here ! 
+			}
+			// costruisce array di id corrispondenti ai nomi dati
+			$genre_id = Genre::where('name',$genre)->first()->id;
+			$genres_ids[] = $genre_id;
+		}
+		// aggiungi categorie a questa persona
+		$new_user->genres()->sync($genres_ids);
 
+		// # OFFERS # 
 
+		$offers_ids = [];
+		foreach ($offers as $offer) {
+			// se non c'è nella tabella aggiungi
+			$db_offers = Offer::all();
+			$is_offer_present = false;
+			foreach ($db_offers as $db_offer) {
+				if ($db_offer->name == $offer) $is_offer_present = true;
+			}
+			if (!$is_offer_present) {
+				$new_offer = new Offer();
+				$new_offer['name'] = $offer;
+				$new_offer->save(); // ! DB writing here ! 
+			}
+			// costruisce array di id corrispondenti ai nomi dati
+			$offer_id = Offer::where('name',$offer)->first()->id;
+			$offers_ids[] = $offer_id;
+		}
+		// aggiungi categorie a questa persona
+		$new_user->offers()->sync($offers_ids);
 
+		// # MESSAGES # 
 
+		foreach ($messages as $message) {
+			$new_message = new Message();
+			$new_message['user_id'] = $new_user['id'];
+			$new_message['msg_sender_email'] = $faker->freeEmail();
+			$new_message['msg_sender_name'] = $faker->name();
+			$new_message['msg_subject'] = $message['msg_subject'];
+			$new_message['msg_text'] = $message['msg_text'];
+			// slug must be unique
+			$slug = Str::slug($new_message['msg_subject'],'-');
+			$slug_tmp = $slug;
+			$slug_is_present = Message::where('slug',$slug)->first();
+			$counter = 1;
+			while ($slug_is_present) {
+				$slug = $slug_tmp.'-'.$counter;
+				$counter++;
+				$slug_is_present = Message::where('slug',$slug)->first();
+			}
+			$new_message['slug'] = $slug;
+			$new_message['msg_read_status'] = 0;
+			$new_message->save(); // ! DB writing here ! 
+		}
 
+		// # REVIEWS # 
 
+		foreach ($reviews as $review) {
+			$new_review = new Review();
+			$new_review['user_id'] = $new_user['id'];
+			$new_review['rev_sender_name'] = $faker->name();
+			$new_review['rev_vote'] = $review['rev_vote'];
+			$new_review['rev_subject'] = $review['rev_subject']; // ! required for slug
+			$new_review['rev_text'] = $review['rev_text'];
+			// slug must be unique
+			$slug = Str::slug($new_review['rev_subject'],'-');
+			$slug_tmp = $slug;
+			$slug_is_present = Review::where('slug',$slug)->first();
+			$counter = 1;
+			while ($slug_is_present) {
+				$slug = $slug_tmp.'-'.$counter;
+				$counter++;
+				$slug_is_present = Review::where('slug',$slug)->first();
+			}
+			$new_review['slug'] = $slug;
+			$new_review->save(); // ! DB writing here ! 
+		}
 
 
 
