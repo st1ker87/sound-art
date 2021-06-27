@@ -234,19 +234,26 @@ const app = new Vue({
 							// Vote
 							let cardVoteCnt = document.createElement('div');
 							cardVoteCnt.classList.add('vote');
-							let cardVote = Math.round(currentArray[i]['average_vote']);
-							for(let z = 0; z < cardVote; z++) {
-								let fullStar = document.createElement('i');
-								fullStar.classList.add('fas', 'fa-star', 'filled');
-								cardVoteCnt.appendChild(fullStar);
-							}
-							if((5 - cardVote) > 0 ) {
-								for(let z = 0; z < (5 - cardVote); z++) {
-									let emptyStar = document.createElement('i');
-									emptyStar.classList.add('fas', 'fa-star', 'empty')
-									cardVoteCnt.appendChild(emptyStar);
-								}
-							}
+								
+								// Stars Container
+								let stars = document.createElement('div');
+								stars.classList.add('stars');
+								cardVoteCnt.appendChild(stars);
+								
+									// Stars
+									let cardVote = Math.round(currentArray[i]['average_vote']);
+									for(let z = 0; z < cardVote; z++) {
+										let fullStar = document.createElement('i');
+										fullStar.classList.add('fas', 'fa-star', 'filled');
+										stars.appendChild(fullStar);
+									}
+									if((5 - cardVote) > 0 ) {
+										for(let z = 0; z < (5 - cardVote); z++) {
+											let emptyStar = document.createElement('i');
+											emptyStar.classList.add('fas', 'fa-star', 'empty')
+											stars.appendChild(emptyStar);
+										}
+									}
 							let revCount = document.createElement('span');
 							revCount.innerHTML = '(' + currentArray[i]['rev_count'] + ')';
 							cardVoteCnt.appendChild(revCount);
