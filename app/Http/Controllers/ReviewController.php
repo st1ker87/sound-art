@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\User;
+
 use App\Profile;
-use App\Category;
-use App\Genre;
-use App\Offer;
-use App\Message;
 use App\Review;
 
 class ReviewController extends Controller
@@ -22,28 +18,25 @@ class ReviewController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+	 * 
+	 * ! OBSOLETO PER MODALITÀ MODAL
      */
-    public function create($slug)
-    {
-		// recipient: from profile $slug to $user
-		$profile = Profile::where('slug',$slug)->first();
-		$user 	 = User::where('id',$profile->user_id)->first();
+    // public function create($slug)
+    // {
+	// 	// recipient: from profile $slug to $user
+	// 	$profile = Profile::where('slug',$slug)->first();
+	// 	$user 	 = User::where('id',$profile->user_id)->first();
 
-		$data = [
-			// main infos
-			'user'			=> $user,
-			// aux infos
-			'users' 		=> User::all(),
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
- 		];
+	// 	$data = [
+	// 		'user' => $user,
+ 	// 	];
 		
-		return view('guest.reviews.create',$data);
-    }
+	// 	if(!$data['user']) {
+	// 		abort(404);
+	// 	}
+
+	// 	return view('guest.reviews.create',$data);
+    // }
 
     /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,12 +65,39 @@ class ReviewController extends Controller
 		$new_review['rev_subject']		= $form_data['subject'];
 		$new_review['rev_vote']			= $form_data['vote'];
 		$new_review['rev_text']			= $form_data['text'];
+
+		// ! before writing in DB the created_at
+		date_default_timezone_set('Europe/Rome');
+
 		$new_review->save(); // ! DB writing here !
 
 		return redirect()->route('profiles.show',$profile->slug)->with('status','Review sent');
     }
 
 	/**
+	 * #################################
+	 * #       REVIEW VALIDATION       #
+	 * #################################
+     *
+	 * Review: form data validation
+	 * https://laravel.com/docs/7.x/validation
+	 * errors shown in EDIT/CREATE view
+	 * 
+	 * @param  \Illuminate\Http\Request  $req
+	 */
+	protected function reviewValidation($req) {
+		$req->validate([
+			'subject'	=> 'required|max:255',
+			'vote'		=> 'required',
+			'text'		=> 'required',
+		]);
+	}
+
+	/**
+	 * #################################
+	 * #          REVIEW SLUG          #
+	 * #################################
+     *
 	 * Creazione slug a partire da stringa sorgente
 	 * deve essere unico nellla tabella profiles
 	 * 
@@ -97,21 +117,6 @@ class ReviewController extends Controller
 		return $slug;
 	}
 
-
-	/**
-	 * Review: form data validation
-	 * https://laravel.com/docs/7.x/validation
-	 * errors shown in EDIT/CREATE view
-	 * 
-	 * @param  \Illuminate\Http\Request  $req
-	 */
-	protected function reviewValidation($req) {
-		$req->validate([
-			'subject'	=> 'required|max:255',
-			'vote'		=> 'required',
-			'text'		=> 'required',
-		]);
-	}
 
 
 

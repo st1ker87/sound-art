@@ -26,7 +26,7 @@
                         <div class="categories-cnt">
                             <h5>Categories</h5>
                             <ul>
-                                @foreach($categories as $category)
+                                @foreach($categories->sortBy('name') as $category)
                                 <li>
                                     <form action="{{ route('search') }}" method="post">
                                         @csrf
@@ -41,7 +41,7 @@
                         <div class="genres-cnt">
                             <h5>Genres</h5>
                             <ul>
-                                @foreach($genres as $genre)
+                                @foreach($genres->sortBy('name') as $genre)
                                 <li>
                                     <form action="{{ route('search') }}" method="post">
                                         @csrf

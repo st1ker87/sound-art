@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use Illuminate\Http\Request;
-use App\User;
+// use App\User;
 use App\Category;
 use App\Genre;
 use App\Offer;
-use App\Message;
-use App\Review;
+// use App\Message;
+// use App\Review;
 
 class ProfileController extends Controller
 {
@@ -25,14 +25,19 @@ class ProfileController extends Controller
     public function search() // originale: index()
     {
 		$data = [
-			'users' 		=> User::all(),
-			'profiles' 		=> Profile::all(),
+			// 'users' 		=> User::all(),
+			// 'profiles' 		=> Profile::all(),
 			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
+			// 'messages' 		=> Message::all(),
+			// 'reviews' 		=> Review::all(),
  		];
+
+		if(!$data['categories'] || !$data['genres'] || !$data['offers']) {
+			abort(404);
+		}
+
         return view('guest.profiles.search',$data);
     }
 
@@ -49,17 +54,20 @@ class ProfileController extends Controller
         $form_data = $request->all();
         
 		$data = [
-			// main info: passed filter
 			'search_from_home' => $form_data,
-			// aux infos: db tables	
-			'users' 		=> User::all(),
-			'profiles' 		=> Profile::all(),
+			// 'users' 		=> User::all(),
+			// 'profiles' 		=> Profile::all(),
 			'categories' 	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
+			// 'messages' 		=> Message::all(),
+			// 'reviews' 		=> Review::all(),
  		];
+
+		if(!$data['search_from_home'] || !$data['categories'] || !$data['genres'] || !$data['offers']) {
+			abort(404);
+		}
+
         return view('guest.profiles.search',$data); // CRUD index profiles 
     }
 
@@ -76,18 +84,14 @@ class ProfileController extends Controller
     public function show($slug) // originale: show(Profile $profile)
     {
 		$data = [
-			// main info: passed profile
 			'profile' 		=> Profile::where('slug',$slug)->first(),
-			// aux infos: db tables
-			'users' 		=> User::all(),
-			'profiles'		=> Profile::all(),
-			'categories'	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			// ! info assemblate
-			// ! da definire
+			// 'users' 		=> User::all(),
+			// 'profiles'		=> Profile::all(),
+			// 'categories'	=> Category::all(),
+			// 'genres' 		=> Genre::all(),
+			// 'offers' 		=> Offer::all(),
+			// 'messages' 		=> Message::all(),
+			// 'reviews' 		=> Review::all(),
  		];
 
 		if(!$data['profile']) {

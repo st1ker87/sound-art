@@ -1,15 +1,13 @@
 @extends('layouts.dashboard')
 
-@section('title','My Sponsorship')
+@section('title','Your Sponsorship')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
 
 	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
-
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
@@ -48,7 +46,7 @@
 
 <div class="container">
 	<div class="row justify-content-center">
-    	<div class="col-md-12">
+    	<div class="col-12 col-md-10 col-lg-8 col-xl-7">
 
 			<div class="d-flex">
 				<h2 class="mr-auto p-2">Your Sponsorships</h2>
