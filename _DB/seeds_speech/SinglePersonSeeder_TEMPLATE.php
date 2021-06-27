@@ -31,7 +31,7 @@ class SinglePersonSeeder extends Seeder
 
 
 	// #################################################################################################################
-	// #  TEMPLATE EDIT START                                                                                           
+	// #  MINIMAL EDIT START                                                                                            
 
 
 		// % USER % 
@@ -112,7 +112,7 @@ class SinglePersonSeeder extends Seeder
 		
 		// % GENRES % 
 
-		$genres = ['classical','pop','dark'];
+		$genres = ['classical','pop','chill'];
 
 		// % OFFERS % 
 
@@ -120,20 +120,20 @@ class SinglePersonSeeder extends Seeder
 
 		// % MESSAGES % 
 
-		$min_num_of_messages = 1;
+		$min_num_of_messages = 1; // max 25
 
 		// % REVIEWS % 
 
-		$min_num_of_reviews = 1;
+		$min_num_of_reviews = 10; // max 25
 
 		// % CONTRACTS % 
 
-		$min_number_of_past_contracts = 4;
-		$max_number_of_past_contracts = 7;
+		$min_number_of_past_contracts = 4; // less than max
+		$max_number_of_past_contracts = 7; // no limits
 		$is_active_contract = 1; // 1 or 0
 
 
-	// #  TEMPLATE EDIT END                                                                                             
+	// #  MINIMAL EDIT END                                                                                              
 	// #################################################################################################################
 
 		/**
@@ -159,11 +159,95 @@ class SinglePersonSeeder extends Seeder
 			],
 			[
 				'msg_subject' => "We would like to know you", // ! obbligatorio !
-				'msg_text'    => "We are interested in you services. Please call +44 333 765 2956 or email us. Regards", // ! obbligatorio !
+				'msg_text'    => "We are interested in your services. Please call +44 333 765 2956 or email us. Regards", // ! obbligatorio !
 			],
 			[
 				'msg_subject' => "Hiring proposal", // ! obbligatorio !
 				'msg_text'    => "Please contact us for a very important proposal about our events. Cheers", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Hiring proposal", // ! obbligatorio !
+				'msg_text'    => "Wery interested in your work. Please email us. Regards", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Contact", // ! obbligatorio !
+				'msg_text'    => "I'll call you in few days", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Hiring", // ! obbligatorio !
+				'msg_text'    => "I find you very talented. Need your work. Please contact me", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Discuss rates", // ! obbligatorio !
+				'msg_text'    => "If you agree to organize a meeting at your earliest convenience, we would likne to discuss rates and details", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Very fascinating", // ! obbligatorio !
+				'msg_text'    => "Please contact me at +44 789 234 33 25", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Hiring", // ! obbligatorio !
+				'msg_text'    => "We are intrestad in your activities. We'll get in touch for hiring", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Proposal", // ! obbligatorio !
+				'msg_text'    => "", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Intrested", // ! obbligatorio !
+				'msg_text'    => "I'd like to know if you could be interested in some kind of collaboration with my Record company.", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "We need you", // ! obbligatorio !
+				'msg_text'    => "Email us as soon as possible", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Collaboration and more", // ! obbligatorio !
+				'msg_text'    => "Please accept a date with me", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Collaboration", // ! obbligatorio !
+				'msg_text'    => "We have been in the Industry for almost a century and we would like to meet you for a colaboration. Regards", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Amazing job!", // ! obbligatorio !
+				'msg_text'    => "I absolutely like you pro skill and I was wandering if you are available for a live event next month. Please contact me", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Love your productions", // ! obbligatorio !
+				'msg_text'    => "Interested in some collaboration. Please call me at this number +44 654 372 89 22", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "We are looking for a pro like you", // ! obbligatorio !
+				'msg_text'    => "For concerts and recordings. We are a new company in this industry. Email us please", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Eventually someone who we were expecting for", // ! obbligatorio !
+				'msg_text'    => "We are interested in your pro services. Let's stay in touch", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Hiring proposal", // ! obbligatorio !
+				'msg_text'    => "Please let us know how to reach you for a collaboration.", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Intresting solutions for you", // ! obbligatorio !
+				'msg_text'    => "We would like to have your attention on our services. We are able to provide you with serveral solutions for you career.", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "We can help each other", // ! obbligatorio !
+				'msg_text'    => "It would be our pleasure to show you all services we provide for professionals like you. Please let us know how to reach you", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Dogs&Cats Records Inc.", // ! obbligatorio !
+				'msg_text'    => "We was wondering if your performances are suitable for our productions.", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Collaboration search", // ! obbligatorio !
+				'msg_text'    => "We are looking for a pro like you. Please accept our meeting proposal the last week of next month.", // ! obbligatorio !
+			],
+			[
+				'msg_subject' => "Boolean hiring programme", // ! obbligatorio !
+				'msg_text'    => "We are seeking entertrainers for our prom", // ! obbligatorio !
 			],
 		];
 
@@ -204,6 +288,96 @@ class SinglePersonSeeder extends Seeder
 				'rev_vote'    => 3, // ! obbligatorio !
 				'rev_subject' => "Something cheaper would be better", // ! obbligatorio !
 				'rev_text'    => "Nothing to complain but the fee",
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "Very easy to work with", // ! obbligatorio !
+				'rev_text'    => "We got this done at its best. Very easy to work with. Good results. What more could you ask for?",
+			],
+			[
+				'rev_vote'    => 4, // ! obbligatorio !
+				'rev_subject' => "Achieved what I wanted", // ! obbligatorio !
+				'rev_text'    => "Very professional and quick. Clearly looked over my rough way, references, and suggestions well to make sure we were on the same page and it was easy to work with him to edit and achieve sound I wanted.",
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "Finished ahead of schedule!", // ! obbligatorio !
+				'rev_text'    => "This is the third song we have done with this artist and this was our tightest schedule yet. We stepped up to the plate and made sure we got it done. We actually finished ahead of schedule!",
+			],
+			[
+				'rev_vote'    => 4, // ! obbligatorio !
+				'rev_subject' => "Would recommend!", // ! obbligatorio !
+				'rev_text'    => "Great to work with and keeps a great line of communication. Would recommend!",
+			],
+			[
+				'rev_vote'    => 3, // ! obbligatorio !
+				'rev_subject' => "Almost satisfiend", // ! obbligatorio !
+				'rev_text'    => "Starting with some problem and finishing with decent work done.",
+			],
+			[
+				'rev_vote'    => 4, // ! obbligatorio !
+				'rev_subject' => "Very good", // ! obbligatorio !
+				'rev_text'    => "This artist is a talented and versatile professional with a beautiful attitude that works across genres.",
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "Great experience", // ! obbligatorio !
+				'rev_text'    => "Super professional and nice, looking forward to our next cooperation!!!",
+			],
+			[
+				'rev_vote'    => 2, // ! obbligatorio !
+				'rev_subject' => "Difficult communication", // ! obbligatorio !
+				'rev_text'    => "",
+			],
+			[
+				'rev_vote'    => 1, // ! obbligatorio !
+				'rev_subject' => "Not achieved my goal", // ! obbligatorio !
+				'rev_text'    => "",
+			],
+			[
+				'rev_vote'    => 1, // ! obbligatorio !
+				'rev_subject' => "I don't like the professional sttitude", // ! obbligatorio !
+				'rev_text'    => "",
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "KILLER!", // ! obbligatorio !
+				'rev_text'    => "We are always blown away with the results, but this time was even more awesome than we could have imagined. Amazing person. LOVE working with this artist.",
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "An absolute star!", // ! obbligatorio !
+				'rev_text'    => "I provided a type of sound and style that I was looking for, after a very short while he sent over EXACTLY what I was looking for AND played it, that’s both dedication and custom care! An awesome guy and great musician, will definitely hire again and so should you",
+			],
+			[
+				'rev_vote'    => 3, // ! obbligatorio !
+				'rev_subject' => "A joy to work with but...", // ! obbligatorio !
+				'rev_text'    => "A true pro who can create the beat you're looking for. Some high rate though",
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "A ninja! 10/10", // ! obbligatorio !
+				'rev_text'    => "",
+			],
+			[
+				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_subject' => "Always an amazing job!!!", // ! obbligatorio !
+				'rev_text'    => "This artist goes above and beyond to make the client happy. I wouldn't use another pro!!!!",
+			],
+			[
+				'rev_vote'    => 4, // ! obbligatorio !
+				'rev_subject' => "Love his work.", // ! obbligatorio !
+				'rev_text'    => "An outstanding creative individual to work with. Versatile and responsive artist and seeks to find the best “take” for a song.",
+			],
+			[
+				'rev_vote'    => 4, // ! obbligatorio !
+				'rev_subject' => "Quite good", // ! obbligatorio !
+				'rev_text'    => "Recommended! Very cooperative and talented.",
+			],
+			[
+				'rev_vote'    => 2, // ! obbligatorio !
+				'rev_subject' => "What could I say...", // ! obbligatorio !
+				'rev_text'    => "Yes and no",
 			],
 		];
 
@@ -274,7 +448,6 @@ class SinglePersonSeeder extends Seeder
 			$category_id = Category::where('name',$category)->first()->id;
 			$categories_ids[] = $category_id;
 		}
-		
 		// aggiungi categorie a questa persona
 		$new_user->categories()->sync($categories_ids);
 		
@@ -358,6 +531,7 @@ class SinglePersonSeeder extends Seeder
 			$counter++;
 			date_sub($tmp_datetime, date_interval_create_from_date_string($counter.' days')); 
 			$new_message['created_at'] = date_format($tmp_datetime, 'Y-m-d H:i:s');
+			$new_message->update(); // ! DB writing here ! 
 		}
 
 		// # REVIEWS # 
@@ -395,6 +569,7 @@ class SinglePersonSeeder extends Seeder
 			$counter++;
 			date_sub($tmp_datetime, date_interval_create_from_date_string($counter.' days')); 
 			$new_review['created_at'] = date_format($tmp_datetime, 'Y-m-d H:i:s');
+			$new_review->update(); // ! DB writing here ! 
 		}
 
 		// # CONTRACTS # 
