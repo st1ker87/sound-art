@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', '{{$profile->user->name}}')
-{{-- @section('title', 'nome') --}}
-
+@section('title')
+	{{$profile->user->name}}
+@endsection
 
 @section('header')
-  @include('partials.header_dash')
+	@include('partials.header_dash')
 @endsection
 
 {{-- @php echo $profile->slug @endphp --}}
@@ -13,11 +13,9 @@
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/app.blade.php
 
-	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
-
+	TODO >>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
 	<!-- Styles: single page addendum -->
 	@stack('app_head')
-
 -----------------------------------------------------------}}
 @push('app_head')
 <style>
@@ -39,6 +37,7 @@
 
 
 @section('content')
+
 
 @php
 
@@ -64,9 +63,6 @@
 	}
 
 @endphp
-
-
-
 
 
   <main class="main_show">  
@@ -133,8 +129,11 @@
 	@if (session()->has('status'))
 		<section class="container main-show">
 			<div class="row border_bottom">
-				<div class="alert alert-success">
+				<div class="alert alert-success col-12 col-md-4">
 					{{ session()->get('status') }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>			
 				</div>
 			</div>
 		</section>
@@ -144,12 +143,21 @@
 	<section class="container main-show" id="about_me">
 		<div class="row border_bottom">
 			<div  class="description col-sm-12 col-md-7 col-lg-7">
-				@if($profile->bio_text1 && $profile->bio_text2)
 				{{-- <h2>About me</h2> --}}
-				<p>{{$profile->bio_text1}}</p>
-				<p>{{$profile->bio_text2}}</p>
-				<p>{{$profile->bio_text2}}</p>
-
+				@if($profile->bio_text1)
+					{{-- <p>{{$profile->bio_text1}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $profile->bio_text1); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($profile->bio_text2)
+					{{-- <p>{{$profile->bio_text2}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $profile->bio_text2); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($profile->bio_text3)
+					{{-- <p>{{$profile->bio_text3}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $profile->bio_text3); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
 				@endif
 			</div>
 		{{-- IMMAGINE RIMOSSA --}}
@@ -160,9 +168,9 @@
             <div class="genres">
               @foreach($profile->user->offers as $offer)
                 @if($loop->last)
-                  <span>{{$offer->name}}</span>
+                  <span>{{ucwords($offer->name)}}</span>
                 @else
-                  <span>{{$offer->name}}</span>
+                  <span>{{ucwords($offer->name)}}</span>
                 @endif
               @endforeach
             </div>
@@ -173,7 +181,7 @@
                 <h2>My favorite music</h2>
                 <hr>
                 @foreach($genres as $genre)
-                  <span>{{$genre->name}}</span>
+                  <span>{{ucwords($genre->name)}}</span>
                 @endforeach
               </div>
             </div> 
@@ -264,7 +272,7 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
   {{-- foto
     visualizzazione form messaggio, visualizzazione review --}}
   @section('footer')
-    @include('partials.footer_search')
+	@include('partials.footer_search')
   @endsection
 
 
@@ -273,26 +281,19 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 {{----------------------------------------------------------------------------}}
 {{-- MODAL CONTENTS start ----------------------------------------------------}}
 
-@php
-	// former guest/messages/create.blade.php
-	// $profile esiste già in questa pagina
-	use App\User;
-	$user = User::where('id',$profile->user_id)->first();
-	$slug = $profile->slug;					
-@endphp
 
-
-<!-- MODAL MESSAGE start-->
+<!-- MODAL MESSAGE start -->
+<!-- former guest/messages/create.blade.php -->
 <div class="modal fade" id="modal-message" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 
-			<form action="{{ route('messages_store',$user->id) }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('messages_store',$profile->user->id) }}" method="post" enctype="multipart/form-data">
 				@csrf
 				@method('POST') 
 
 				<div class="modal-header">
-					<h1 class="modal-title" id="demoModalLabel">Contact {{$user->name}}</h1>
+					<h1 class="modal-title" id="demoModalLabel">Contact {{$profile->user->name}}</h1>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 	
@@ -340,7 +341,7 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 	
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-success">Send your message to {{$user->name}}</button>
+					<button type="submit" class="btn btn-success">Send your message to {{$profile->user->name}}</button>
 				</div>
 
 			</form>
@@ -352,16 +353,17 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 
 
 <!-- MODAL REVIEW start-->
+<!-- former guest/reviews/create.blade.php -->
 <div class="modal fade" id="modal-review" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 
-			<form action="{{ route('reviews_store',$user->id) }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('reviews_store',$profile->user->id) }}" method="post" enctype="multipart/form-data">
 				@csrf
 				@method('POST') 
 
 				<div class="modal-header">
-					<h1 class="modal-title" id="demoModalLabel">Write a review for {{$user->name}}</h1>
+					<h1 class="modal-title" id="demoModalLabel">Write a review for {{$profile->user->name}}</h1>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 	
@@ -397,15 +399,15 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 						</div>
 						<div class="form-group">
 							<label>Subject <span class="required_input_field">*</span></label>
-							<input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="You ask for..." value="{{ old('subject') }}" required>
+							<input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="What about {{$profile->user->name}}..." value="{{ old('subject') }}" required>
 							@error('subject')
 								<div class="invalid-feedback">{{ $message }}</div>
 							@enderror
 						</div>
 						<div class="form-group">
 							<label>Text <span class="required_input_field">*</span></label>
-							<textarea rows="5" name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your message please..." required>{{ old('text') }}</textarea>
-							@error('bio_text1')
+							<textarea rows="5" name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your review please..." required>{{ old('text') }}</textarea>
+							@error('text')
 								<div class="invalid-feedback">{{ $message }}</div>
 							@enderror
 						</div>
@@ -416,7 +418,7 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 	
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-success">Submit your review for {{$user->name}}</button>
+					<button type="submit" class="btn btn-success">Submit your review for {{$profile->user->name}}</button>
 				</div>
 
 			</form>
@@ -426,12 +428,16 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 </div>
 <!-- MODAL REVIEW end-->
 
+
 {{-- MODAL CONTENTS end ------------------------------------------------------}}
 {{----------------------------------------------------------------------------}}
 
 
 
 @endsection
+
+
+
 
 
 
@@ -447,22 +453,6 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
     "rev_text" => "Sapiente dolores hic molestias sint tempore. Ducimus reiciendis nostrum unde laudantium. Sequi enim voluptatem corporis est ut voluptas."
     "created_at" => "2021-06-22 09:47:15"
     "updated_at" => "2021-06-22 09:47:15" --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {{------------------------------------------------------------------

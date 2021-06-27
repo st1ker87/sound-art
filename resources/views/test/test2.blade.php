@@ -111,21 +111,60 @@ function getTimeDisplay($db_time) {
 ////////// qua sotto scrivi in php //////////
 /////////////////////////////////////////////
 
-date_default_timezone_set('Europe/Rome');
+use App\Category;
 
-use App\Classes\DateDisplay;
+$categories = ['lyricist','vocalist'];
 
-echo 'dateTime (tutte le funzioni php):';
-$date = new DateTime();
-@dump($date);
 
-echo 'da dateTime a created_at (per il db):';
-// $date = $date->format('Y-m-d H:i:s');
-$date = date_format($date, 'Y-m-d H:i:s');
-@dump($date);
+foreach ($categories as $category) {
+			
+	// se non c'è nella tabella categories aggiungi
+	$db_categories = Category::all();
+	$is_category_present = false;
+	foreach ($db_categories as $db_category) {
+		if ($db_category->name == $category) $is_category_present = true;
+	}
+	if (!$is_category_present) {
+		$new_category = new Category();
+		$new_category['name'] = $category;
+		@dump($new_category['name']);
+		// $new_category->save(); // ! DB writing here ! 
+	}
 
-$date = (new DateDisplay)->get($date);
-@dump($date);
+	// costruisce array di id corrispondenti ai nomi dati
+	$category_id = Category::where('name',$category)->first()->id;
+	$categories_ids[] = $category_id;
+}
+@dump($categories);
+@dump($categories_ids);
+
+// aggiungi categorie a questa persona
+// $new_user->categories()->sync($categories_ids);
+		
+
+
+
+
+
+/////////////////////////////////////////////
+
+
+
+// date_default_timezone_set('Europe/Rome');
+
+// use App\Classes\DateDisplay;
+
+// echo 'dateTime (tutte le funzioni php):';
+// $date = new DateTime();
+// @dump($date);
+
+// echo 'da dateTime a created_at (per il db):';
+// // $date = $date->format('Y-m-d H:i:s');
+// $date = date_format($date, 'Y-m-d H:i:s');
+// @dump($date);
+
+// $date = (new DateDisplay)->get($date);
+// @dump($date);
 
 
 

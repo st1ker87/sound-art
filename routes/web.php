@@ -70,7 +70,7 @@ Route::prefix('profiles')   // prefisso URI raggruppamento sezione /search/...
  * * .../{slug} : slug of user recipient
  * * .../{id} 	: id of user recipient
  */
-Route::get('/messages/create/{slug}',	'MessageController@create')->name('messages_create');	// ! GET	/messages/create/{slug}	return view('guest.messages.create');
+/* IN DISUSO PER PASSAGGIO A MODAL *///Route::get('/messages/create/{slug}',	'MessageController@create')->name('messages_create');	// ! GET	/messages/create/{slug}	return view('guest.messages.create');
 Route::post('/messages/{id}', 			'MessageController@store')->name('messages_store'); 	// ! GET	/messages/{id}			return redirect()->route('profiles.show')->with('status','Message sent');
 
 /**
@@ -84,7 +84,7 @@ Route::post('/messages/{id}', 			'MessageController@store')->name('messages_stor
  * * .../{slug} : slug of user recipient
  * * .../{id} 	: id of user recipient
  */
-Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');		// ! GET	/reviews/create/{slug}	return view('guest.reviews.create');
+/* IN DISUSO PER PASSAGGIO A MODAL *///Route::get('/reviews/create/{slug}',	'ReviewController@create')->name('reviews_create');		// ! GET	/reviews/create/{slug}	return view('guest.reviews.create');
 Route::post('/reviews/{id}',			'ReviewController@store')->name('reviews_store');		// ! GET	/reviews/{id}			return redirect()->route('profiles.show')->with('status','Review created');
 
 
@@ -101,16 +101,18 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 	->group(function () {	// rotte specifiche admin
 
 		/**
-		 * # DASHBOARD #
+		 * # DASHBOARD + STATISTICS #
 		 * 
-		 * home dell'utente loggato >>> definita in laravel qua:
+		 * dashboard = home dell'utente loggato >>> definita in laravel qua:
 		 * 
 		 * /app/Http/Providers/RouteServiceProvider
 		 *		public const HOME = '/admin/dashboard';
 		 *
 		 * http://localhost:8000/admin/dashboard
+		 * http://localhost:8000/admin/statistics
 		 */
-		Route::get('/dashboard', 'HomeController@index')->name('dashboard'); // ! GET	/admin/dashboard	return view('admin.dashboard');
+		Route::get('/dashboard',  'HomeController@index')->name('dashboard'); 		// ! GET	/admin/dashboard	return view('admin.dashboard');
+		Route::get('/statistics', 'HomeController@statistics')->name('statistics'); // ! GET	/admin/statistics	return view('admin.statistics');
 
 		/**
 		 * # PROFILES #
@@ -123,7 +125,7 @@ Route::prefix('admin')   	// prefisso URI raggruppamento sezione /admin/...
 		 * * {slug} : profile slug
 		 */
 		Route::resource('/profiles', ProfileController::class)->names([
-			'index'		=> 'admin.profiles.index',		// ! GET	/admin/profiles				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
+			// 'index'		=> 'admin.profiles.index',	// ! GET	/admin/profiles				return view('admin.profiles.index'); >>>>>>> È DIVERSA DALLA DASHBOARD !!!
 			'show'		=> 'admin.profiles.show',		// ! GET	/admin/profiles/{slug}		return view('admin.profiles.show');
 			'create' 	=> 'admin.profiles.create',		// ! GET	/admin/profiles/create		return view('admin.profiles.create');
 			'store' 	=> 'admin.profiles.store',		// ! POST	/admin/profiles				return redirect()->route('dashboard')->with('status','Profile created');

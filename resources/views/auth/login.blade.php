@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container login_main">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card_login">

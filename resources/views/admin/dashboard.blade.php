@@ -6,10 +6,8 @@
 	AGGIUNTO IN layouts/dashboard.blade.php
 
 	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
-
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
@@ -25,6 +23,9 @@
 	}
 	.modal-title {
 		color: #212949; /* $primaryDarkBlue */
+	}
+	.modal-footer button {
+		margin-left: 5px;
 	}
 </style>
 @endpush
@@ -130,26 +131,37 @@
 	<section class="container main-show" id="about_me">
 		<div class="row">
 			<div  class="description col-sm-12 col-md-7 col-lg-7">
-				@if($my_profile->bio_text1 && $my_profile->bio_text2)
 				{{-- <h2>About me</h2> --}}
-				<p>{{$my_profile->bio_text1}}</p>
-				<p>{{$my_profile->bio_text2}}</p>
-				<p>{{$my_profile->bio_text2}}</p>
-
+				@if($my_profile->bio_text1)
+					{{-- <p>{{$my_profile->bio_text1}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $my_profile->bio_text1); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($my_profile->bio_text2)
+					{{-- <p>{{$my_profile->bio_text2}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $my_profile->bio_text2); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($my_profile->bio_text3)
+					{{-- <p>{{$my_profile->bio_text3}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $my_profile->bio_text3); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
 				@endif
 			</div>
 		{{-- IMMAGINE RIMOSSA --}}
         	<div  class="offert col-sm-12 col-md-4 offset-md-1 col-lg-4 offest-lg-1">
           		<div class="services">
-            		<h2>Services Provided</h2>     
-            		<hr>
-          			@foreach($my_user->offers as $offer)
-						@if($loop->last)
-						<p>{{$offer->name}}</p>
-						@else
-						{{$offer->name . ','}}
-						@endif
-          			@endforeach
+					  <div class="genres">
+						  <h2>Services Provided</h2>     
+						  <hr>
+							@foreach($my_user->offers as $offer)
+							  @if($loop->last)
+							  <span>{{ucwords($offer->name)}}</span>
+							  @else
+							  <span>{{ucwords($offer->name) . ','}}</span>
+							  @endif
+							@endforeach
+					  </div>
           		</div>
 		  		@if ($my_user->genres->isNotEmpty())
          			<div class="fav_music">
@@ -157,7 +169,7 @@
 							<h2>My favorite music</h2>
 							<hr>
 							@foreach($my_user->genres as $genre)
-								<span>{{$genre->name}}</span>
+								<span>{{ucwords($genre->name)}}</span>
 							@endforeach
                 		</div>
 					</div> 
@@ -178,19 +190,20 @@
 {{----------------------------------------------------------------------------}}
 {{-- MODAL CONTENTS start ----------------------------------------------------}}
 
+
 @if ($my_profile)
-	<!-- MODAL DELTE start-->
+	<!-- MODAL DELETE PROFILE start-->
 	<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
-				<div class="modal-header" style="border:none;">
-					<h5 class="modal-title" id="demoModalLabel" style="color: #212949;">Profile Removal</h5>
+				<div class="modal-header">
+					<h3 class="modal-title" id="demoModalLabel">Profile Removal</h3>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 
 				<div class="modal-body">
-					<p>You are about to remove all your Profile's informations from this platform. No one will be able to reach you.</p>
+					<p>You are about to remove all your Profile's informations from this platform. No one will be able to reach you in the search area.</p>
 					<p>
 						@if ($is_active_sponsorship)
 							Your current Sponsorship will cease immediately.				
@@ -200,7 +213,7 @@
 					<p>This action can't be undone.</p>
 				</div>
 
-				<div class="modal-footer" style="border:none;">
+				<div class="modal-footer">
 					<div>
 						<form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
 							@csrf
@@ -214,13 +227,9 @@
 			</div>
 		</div>
 	</div>
-	<!-- MODAL DELETE End-->
-
-	<script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	{{-- <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> --}}
-	{{-- <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> --}}
-
+	<!-- MODAL DELETE PROFILE end-->
 @endif
+
 
 {{-- MODAL CONTENTS end ------------------------------------------------------}}
 {{----------------------------------------------------------------------------}}

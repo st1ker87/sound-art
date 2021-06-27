@@ -52,12 +52,9 @@
         <div class="bar_under_jumbo container-fluid dashboard_nav">
             <div class="container">
                 <nav class="nav flex-column flex-md-row to_page_link">
-                
                     {{-- VALUTARE SE USARE O TOGLIERE BORDO PER ROTTA ATTIVA --}}
                     {{-- @if (request()->is('admin/dashboard')) --}}
                     <a class="dashboard_nav_link" href="{{ route('dashboard') }}">Dashboard</a>
-                    
-
 
                     {{-- LINK MY PROFILE RIMOSSO -> MY PROFILE INSERITO IN DASHBOARD --}}
                     {{-- @if ($my_profile)
@@ -67,8 +64,7 @@
                     @endif --}}
                     <a class="dashboard_nav_link" href="{{ route('admin.messages.index') }}">Messages</a>
                     <a class="dashboard_nav_link" href="{{ route('admin.reviews.index') }}">Reviews</a>
-                    <a class="dashboard_nav_link mr-auto" href="{{-- route('admin.statistics') --}}">Statistics</a>
-                    
+                    <a class="dashboard_nav_link" href="{{-- route('admin.statistics') --}}">Statistics</a>  
                     
                 </nav>
             </div>

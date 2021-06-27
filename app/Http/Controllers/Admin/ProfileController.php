@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Classes\IsNowInInterval;
 use DateTime;
 
 use App\User;
@@ -14,34 +15,9 @@ use App\Profile;
 use App\Category;
 use App\Genre;
 use App\Offer;
-use App\Message;
-use App\Review;
 
 class ProfileController extends Controller
 {
-	/**
-	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	 * %             INDEX             %
-	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     *
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-		$data = [
-			'users' 		=> User::all(),
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
- 		];
-        return view('admin.profiles.index',$data);
-    }
-
     /**
 	 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	 * %             SHOW              %
@@ -55,18 +31,7 @@ class ProfileController extends Controller
     public function show($slug) // originale: show(Profile $profile)
     {
 		$data = [
-			// main info: passed profile
-			'profile' 		=> Profile::where('slug',$slug)->first(),
-			// aux infos: db tables
-			'users' 		=> User::all(),
-			'profiles'		=> Profile::all(),
-			'categories'	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			// ! info assemblate
-			// ! da definire
+			'profile' => Profile::where('slug',$slug)->first(),
  		];
 
 		if(!$data['profile']) {
@@ -87,20 +52,20 @@ class ProfileController extends Controller
      */
     public function create()
     {
-		// creation only for users without profile
+		// only logged users without profile can create
 		$profile_is_present = Profile::where('user_id',Auth::user()->id)->first();
 		if ($profile_is_present) 
 			return redirect()->route('dashboard')->with('status','Profile already exists!');
 
 		$data = [
-			'users' 		=> User::all(),
-			'profiles'		=> Profile::all(),
 			'categories'	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
 		];
+
+		if(!$data['categories'] || !$data['genres'] || !$data['offers']) {
+			abort(404);
+		}
 
 		return view('admin.profiles.create',$data);
     }
@@ -117,10 +82,18 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+		// only logged users without profile can store
+		$profile_is_present = Profile::where('user_id',Auth::user()->id)->first();
+		if ($profile_is_present) 
+			return redirect()->route('dashboard')->with('status','Profile already exists!');
+
         $form_data = $request->all();
 		
 		// validazione parte post 
 		$this->profileValidation($request,'store');
+
+		// utente che crea il profilo
+		$user = Auth::user();
 
 		// $new_profile è il nuovo profile da mettere in DB 
 		$new_profile = new Profile;
@@ -129,53 +102,38 @@ class ProfileController extends Controller
 		$new_profile['user_id'] = Auth::id();
 
 		// generazione slug da nome e cognome di me stesso!
-		$user = Auth::user();
 		$pre_slug = $user->name.' '.$user->surname;
 		$new_profile['slug'] = $this->slugGeneration($pre_slug);
 
 		// gestione immagine
 		if(array_key_exists('image_url',$form_data)) {
-			// salvo immagine in /storage/app/public/profile_image/ e recupero path
 			$image_path = Storage::put('profile_image',$form_data['image_url']);
-			// modifico il default path del form
 			$form_data['image_url'] = $image_path; 
 		}
 
 		// gestione video
 		if(array_key_exists('video_url',$form_data)) {
-			// salvo immagine in /storage/app/public/profile_video/ e recupero path
 			$image_path = Storage::put('profile_video',$form_data['video_url']);
-			// modifico il default path del form
 			$form_data['video_url'] = $image_path; 
 		}
 
 		// gestione audio
 		if(array_key_exists('audio_url',$form_data)) {
-			// salvo immagine in /storage/app/public/profile_audio/ e recupero path
 			$image_path = Storage::put('profile_audio',$form_data['audio_url']);
-			// modifico il default path del form
 			$form_data['audio_url'] = $image_path; 
 		}
 
-		// ! aggiungo $new_profile nella table profiles; NON sono qui i 3 tag !
 		// il nuovo profile acquisisce i dati del form e viene buttato nel DB
 		$new_profile->fill($form_data);
 		$new_profile->save(); // ! DB writing here !
 
-		// categories,genres,offers in pivot table
-		$user = Auth::user();
+		// pivot tables for categories, genres, offers
 		if(array_key_exists('categories', $form_data)) 
 			$user->categories()->sync($form_data['categories']);
-		else 
-			$user->categories()->sync([]);
 		if(array_key_exists('genres', $form_data)) 
 			$user->genres()->sync($form_data['genres']);
-		else
-			$user->genres()->sync([]);
 		if(array_key_exists('offers', $form_data))
 			$user->offers()->sync($form_data['offers']);
-		else
-			$user->offers()->sync([]);
 
 		return redirect()->route('dashboard')->with('status','Profile created');
     }
@@ -192,27 +150,19 @@ class ProfileController extends Controller
      */
     public function edit($slug) // originale: edit(Profile $profile)
     {
-		// only profile owner can edit
+		// only logged profile owner can edit
 		$my_slug = Auth::user()->profile->slug;
 		if ($slug != $my_slug) 
-			// return redirect()->route('dashboard')->with('status','You are not authorized!');
-			// return redirect()->route('dashboard')->with('status','Something went wrong');
 			return redirect()->route('dashboard');
 
 		$data = [
-			// main info: passed profile
 			'profile' 		=> Profile::where('slug',$slug)->first(),
-			// aux infos: db tables
-			'users' 		=> User::all(),
-			'profiles'		=> Profile::all(),
 			'categories'	=> Category::all(),
 			'genres' 		=> Genre::all(),
 			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
  		];
 
-		if(!$data['profile']) {
+		if(!$data['profile'] || !$data['categories'] || !$data['genres'] || !$data['offers']) {
 			abort(404);
 		}
 
@@ -232,6 +182,10 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
+		// only logged profile owner can update
+		if ($profile->user_id != Auth::id())
+			return redirect()->route('dashboard');
+
 		$form_data = $request->all();
 			
 		// validazione parte post 
@@ -254,7 +208,7 @@ class ProfileController extends Controller
 		// profile update
 		$profile->update($form_data);
 
-		// categories,genres,offers update
+		// pivot tables for categories, genres, offers
 		$user = Auth::user();
 		if(array_key_exists('categories', $form_data)) 
 			$user->categories()->sync($form_data['categories']);
@@ -286,6 +240,10 @@ class ProfileController extends Controller
     {
 		// il profile in questione
 		$profile = Profile::find($id);
+		
+		// only logged profile owner can destroy
+		if ($profile->user_id != Auth::id())
+			return redirect()->route('dashboard');
 
 		// lo user corrispondente a questo profile
 		$user = User::where('id',$profile->user->id)->first();
@@ -295,30 +253,30 @@ class ProfileController extends Controller
 		$user->genres()->sync([]);
 		$user->offers()->sync([]);
 
-		// ! lo user non ha più un profile 
-		// ! ma potrebbe ancora avere messages, reviews, cotracts (collegati a user)
-		// ! decisione: lasciare messages, reviews, contracts, ma...
-
 		// interruzione sponsorship attiva
 		date_default_timezone_set('Europe/Rome');
 		foreach ($user->contracts as $contract) {
-			$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_start);
-			$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $contract->date_end);
-			$now 		= new DateTime();
-			if ($date_start < $now && $date_end >= $now) {;
-				$contract['date_end'] = $now->format('Y-m-d H:i:s');
+			if ((new IsNowInInterval)->get($contract->date_start,$contract->date_end)) {;
+				$contract['date_end'] = (new DateTime())->format('Y-m-d H:i:s');
 				$contract->update();
 			}		
 		}
 
-		// cancellare il profile $id
+		// cancellare il profile
 		$profile->delete();
+
+		// ! lo user non ha più un profile 
+		// ! ma conserva messages, reviews, cotracts (collegati a user)
 
 		return redirect()->route('dashboard')->with('status','Profile deleted');
     }
 
 
 	/**
+	 * #################################
+	 * #       PROFILE VALIDATION      #
+	 * #################################
+     *
 	 * Profile: form data validation
 	 * https://laravel.com/docs/7.x/validation
 	 * errors shown in EDIT/CREATE view
@@ -342,6 +300,10 @@ class ProfileController extends Controller
 	}
 
 	/**
+	 * #################################
+	 * #          PROFILE SLUG         #
+	 * #################################
+     *
 	 * Creazione slug a partire da stringa sorgente
 	 * deve essere unico nellla tabella profiles
 	 * 
@@ -361,4 +323,44 @@ class ProfileController extends Controller
 		return $slug;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+	/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+		//
+	}
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

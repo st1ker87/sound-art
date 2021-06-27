@@ -5,16 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Classes\IsNowInInterval;
 use DateTime;
 
 use App\Contract;
-use App\User;
-use App\Profile;
-use App\Category;
-use App\Genre;
-use App\Offer;
-use App\Message;
-use App\Review;
 use App\Sponsorship;
 
 date_default_timezone_set('Europe/Rome');
@@ -33,19 +27,7 @@ class ContractController extends Controller
      */
     public function index() // originale: show(Contract $contract)
     {
-		$data = [
-			'users' 		=> User::all(),		
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			'contracts' 	=> Contract::all(),
-			'sponsorships' 	=> Sponsorship::all(),
-		];
-
-		return view('admin.contracts.index',$data);
+		return view('admin.contracts.index');
     }
 
 	/**
@@ -66,14 +48,11 @@ class ContractController extends Controller
 		$my_contracts = Auth::user()->contracts;
 		$is_active_sponsorship = false;
 		foreach ($my_contracts as $my_contract) {
-			$date_start = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_start);
-			$date_end   = DateTime::createFromFormat('Y-m-d H:i:s', $my_contract->date_end);
-			$now 		= new DateTime();
-			if ($date_start < $now && $date_end >= $now) $is_active_sponsorship = true;
+			if ((new IsNowInInterval)->get($my_contract->date_start,$my_contract->date_end)) 
+				$is_active_sponsorship = true;
 		}
 		if ($is_active_sponsorship)
 			return redirect()->route('dashboard')->withErrors('A Sponsorship is already active!');
-
 
 		// con \Braintree invece di Braintree risolvo la classe introvabile... 
 		$gateway = new \Braintree\Gateway([
@@ -86,20 +65,13 @@ class ContractController extends Controller
 		$token = $gateway->ClientToken()->generate();
 
 		$data = [
-			// main infos
 			'sponsorship'	=> $sponsorship,
 			'token'			=> $token,
-			// aux infos
-			'users' 		=> User::all(),		
-			'profiles' 		=> Profile::all(),
-			'categories' 	=> Category::all(),
-			'genres' 		=> Genre::all(),
-			'offers' 		=> Offer::all(),
-			'messages' 		=> Message::all(),
-			'reviews' 		=> Review::all(),
-			'contracts' 	=> Contract::all(),
-			'sponsorships' 	=> Sponsorship::all(),
 		];
+
+		if(!$data['sponsorship'] || !$data['token']) {
+			abort(404);
+		}
 
 		return view('admin.contracts.create',$data); 
 
@@ -143,8 +115,6 @@ class ContractController extends Controller
 			]
 		]);
 
-		// @dd($result);
-
 		// if ($result->success || !is_null($result->transaction)) {
 		if ($result->success) {
 			$transaction = $result->transaction;
@@ -152,7 +122,6 @@ class ContractController extends Controller
 
 			// sponsorship id & hour_duration here
 			$form_data = $request->all();
-			// @dd($form_data);
 
 			// # NEW CONTRACT #
 			$new_contract = new Contract;
@@ -188,6 +157,10 @@ class ContractController extends Controller
 
 
 	/**
+	 * #################################
+	 * #      CONTRACT VALIDATION      #
+	 * #################################
+     *
 	 * Contract: form data validation
 	 * https://laravel.com/docs/7.x/validation
 	 * errors shown in EDIT/CREATE view

@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('header')
-    @include('partials.header_home')
+    @include('partials.header_search')
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container login_main">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card card_login">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -95,5 +95,5 @@
 @endsection
 
 @section('footer')
-    @include('partials.footer_home')
+    @include('partials.footer_search')
 @endsection

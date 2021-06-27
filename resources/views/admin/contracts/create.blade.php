@@ -5,11 +5,9 @@
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
 
-	>>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
-
+	TODO >>> TEMPORANEO: PORTARE POI IN SASS QUESTO STILE <<<
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
-
 -----------------------------------------------------------}}
 @push('dashboard_head')
 <style>
@@ -47,6 +45,12 @@
 
 @section('content')
 
+@php
+
+	$my_user 	= Auth::user();
+	$my_profile = $my_user->profile;
+
+@endphp
 
 <div class="container" id="bt_form">
 	<div class="row justify-content-center">
@@ -54,7 +58,10 @@
 
 			<div class="content">
 
-				<h1>{{ucwords($sponsorship->name)}}</h1>
+				<div class="d-flex justify-content-between align-items-center">
+					<h1>{{ucwords($sponsorship->name)}}</h1>
+					<a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+				</div>
 				<div class="vertical_spacer"></div>
 				<h4>{{$sponsorship->description}}</h4>
 				<div class="vertical_spacer"></div>
@@ -71,11 +78,11 @@
 		
 					<div class="form-group">
 						<label for="email">Email Address</label>
-						<input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly required>
+						<input type="email" class="form-control" id="email" name="email" value="{{ $my_user->email }}" readonly required>
 					</div>
 					<div class="form-group">
 						<label for="name_on_card">Name on Card <span class="required_input_field">*</span></label>
-						<input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ Auth::user()->name.' '.Auth::user()->surname }}" required>
+						<input type="text" class="form-control" id="name_on_card" name="name_on_card" value="{{ $my_user->name.' '.$my_user->surname }}" required>
 					</div>
 		
 					{{-- <div class="row">
@@ -170,6 +177,7 @@
 				</form>
 
 			</div> <!-- content (card) -->
+			<div class="vertical_spacer"></div>
 	
 		</div>
 	</div>
@@ -191,7 +199,7 @@
 
 	braintree.client.create({
 		// Insert your tokenization key here
-		authorization: '{{ $token }}'
+		authorization: '{{ $token }}'  			// ! TOKEN HERE !
 	}, function (clientErr, clientInstance) {
 		if (clientErr) {
 			console.log('error1');
