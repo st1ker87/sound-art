@@ -32,7 +32,7 @@
                                         @csrf
                                         @method('POST')
                                         <input type="hidden" id="category" name="category" value="{{$category->name}}">
-                                        <input v-on:click="stopProp" type="submit" role="button" value="{{$category->name}}">
+                                        <input v-on:click="stopProp" type="submit" role="button" value="{{ucwords($category->name)}}">
                                     </form>
                                 </li>
                                 @endforeach
@@ -47,7 +47,7 @@
                                         @csrf
                                         @method('POST')
                                         <input type="hidden" id="genre" name="genre" value="{{$genre->name}}">
-                                        <input v-on:click="stopProp" type="submit" value="{{$genre->name}}">
+                                        <input v-on:click="stopProp" type="submit" value="{{ucwords($genre->name)}}">
                                     </form>
                                 </li>
                                 @endforeach

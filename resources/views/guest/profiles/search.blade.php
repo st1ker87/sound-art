@@ -91,7 +91,7 @@ else {
                         <li><input class="btn-no-filter" v-if="btnCategories != 'No filter'" v-on:click="setCategory($event.target.value)" type="button" value="No filter"></li>
                           @foreach($categories as $category)
                           <li>
-                              <input v-on:click="setCategory($event.target.value)" type="button" value="{{$category->name}}">
+                              <input v-on:click="setCategory($event.target.value)" type="button" value="{{ucwords($category->name)}}">
                           </li>
                           @endforeach
                       </ul>
@@ -109,7 +109,7 @@ else {
                         <li><input class="btn-no-filter" v-if="btnGeneres != 'No filter'" v-on:click="setGenre($event.target.value)" type="button" value="No filter"></li>
                           @foreach($genres as $genre)
                           <li>
-                              <input v-on:click="setGenre($event.target.value)" type="button" value="{{$genre->name}}">
+                              <input v-on:click="setGenre($event.target.value)" type="button" value="{{ucwords($genre->name)}}">
                           </li>
                           @endforeach
                       </ul>
@@ -122,7 +122,7 @@ else {
                 <label for="votes-button">Votes:</label>
                 <button id="votes-button" v-on:click.stop="showVotes">@{{btnVotes}} <i class="fas fa-sort-down"></i></button>
                 <div v-if="showVotePannel" class="search">
-                  <div class="categories-cnt">
+                  <div class="votes-cnt">
                       <ul>
                         <li><input class="btn-no-filter" v-if="btnVotes != 'No filter'" v-on:click="setVote($event.target.value)" type="button" value="No filter"></li>
                         @for($i = 1; $i <= 5; $i++)

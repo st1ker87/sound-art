@@ -62,7 +62,7 @@
         }
         ul {
             padding: 0;
-            height: 18vh;
+            height: 20vh;
             overflow: auto;
             background-color: $primaryDarkBlue;
             li {
@@ -80,7 +80,14 @@
         }
         .categories-cnt ,
         .genres-cnt {
-            width: 200px;
+            width: 220px;
+            padding: 20px;
+            background-color: $primaryDarkBlue;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        .votes-cnt {
+            width: 100px;
             padding: 20px;
             background-color: $primaryDarkBlue;
             border: 1px solid white;
