@@ -303,7 +303,13 @@ const app = new Vue({
 			}
 		},
 		// INTERNAL APIs
-		filterCall() {		
+		filterCall() {
+			if (this.category_selected !== null) {
+				this.category_selected = this.category_selected.toLowerCase();
+			}
+			if (this.genre_selected !== null) {
+				this.genre_selected = this.genre_selected.toLowerCase();
+			}
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
