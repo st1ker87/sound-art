@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Faker\Generator as Faker;
+use DateTime;
 
 use App\Profile;
 use App\User;
@@ -12,8 +13,10 @@ use App\Genre;
 use App\Offer;
 use App\Message;
 use App\Review;
+use App\Contract;
+use App\Sponsorship;
 
-class SuperSeeder extends Seeder
+class SinglePersonSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,8 +25,9 @@ class SuperSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	// #################################################################################################################
+	// #  TEMPLATE EDIT START                                                                                           
+
 		// % USER % 
 
 		$name 		= 'Kate';
@@ -143,29 +147,39 @@ class SuperSeeder extends Seeder
 
 		$reviews = [
 			[
-				'rev_vote'    => 5,  // ! obbligatorio !
+				'rev_vote'    => 4,  // ! obbligatorio !
 				'rev_subject' => "Very good!", // ! obbligatorio !
-				'rev_text'    => "Its so good to be back working with Kate again! she did another amazing job and we are both super excited to work on the rest of the songs i got in plan.", // ! obbligatorio !
+				'rev_text'    => "Its so good to be back working with Kate again! she did another amazing job and we are both super excited to work on the rest of the songs i got in plan.",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!", // ! obbligatorio !
+				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "Five stars!!!!", // ! obbligatorio !
-				'rev_text'    => "Kate is my favorite person to work with. Great vocals, suggestions to make your songs better, and a great personality! always a joy to come back and work with her. I will be back to work with her for my second album! going to be amazing.", // ! obbligatorio !
+				'rev_text'    => "Kate is my favorite person to work with. Great vocals, suggestions to make your songs better, and a great personality! always a joy to come back and work with her. I will be back to work with her for my second album! going to be amazing.",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "A pro from top to bottom!", // ! obbligatorio !
-				'rev_text'    => "Such an easy going, down to earth, fun experience working with Kate! Will definitely want to do another project with her. warmly recommended!", // ! obbligatorio !
+				'rev_text'    => "Such an easy going, down to earth, fun experience working with Kate! Will definitely want to do another project with her. warmly recommended!",
 			],
 			[
-				'rev_vote'    => 5, // ! obbligatorio !
+				'rev_vote'    => 4, // ! obbligatorio !
 				'rev_subject' => "Effortless", // ! obbligatorio !
-				'rev_text'    => "Making new music with Kate has become almost effortless now. We know how each other works and what each other wants. I am doing my best work i have ever done with Kate. She just adds so much to my stuff and takes it to the next level. 5/5 again no surprise there :)", // ! obbligatorio !
+				'rev_text'    => "Making new music with Kate has become almost effortless now. We know how each other works and what each other wants. I am doing my best work i have ever done with Kate. She just adds so much to my stuff and takes it to the next level. 5/5 again no surprise there :)",
+			],
+			[
+				'rev_vote'    => 2, // ! obbligatorio !
+				'rev_subject' => "Disappointed Expectations", // ! obbligatorio !
+				'rev_text'    => "",
+			],
+			[
+				'rev_vote'    => 3, // ! obbligatorio !
+				'rev_subject' => "Something cheaper would be better", // ! obbligatorio !
+				'rev_text'    => "Nothing to complain but the fee",
 			],
 		];
 
@@ -173,7 +187,8 @@ class SuperSeeder extends Seeder
 		// % CONTRACTS % 
 
 
-
+	// #  TEMPLATE EDIT END                                                                                             
+	// #################################################################################################################
 
 
 
@@ -304,6 +319,7 @@ class SuperSeeder extends Seeder
 
 		// # MESSAGES # 
 
+		$counter = 0;
 		foreach ($messages as $message) {
 			$new_message = new Message();
 			$new_message['user_id'] = $new_user['id'];
@@ -324,10 +340,16 @@ class SuperSeeder extends Seeder
 			$new_message['slug'] = $slug;
 			$new_message['msg_read_status'] = 0;
 			$new_message->save(); // ! DB writing here ! 
+			// change created_at (backward in time)
+			$tmp_datetime = DateTime::createFromFormat('Y-m-d H:i:s', $new_message['created_at']);
+			$counter++;
+			date_sub($tmp_datetime, date_interval_create_from_date_string($counter.' days')); 
+			$new_message['created_at'] = date_format($tmp_datetime, 'Y-m-d H:i:s');
 		}
 
 		// # REVIEWS # 
 
+		$counter = 0;
 		foreach ($reviews as $review) {
 			$new_review = new Review();
 			$new_review['user_id'] = $new_user['id'];
@@ -347,12 +369,64 @@ class SuperSeeder extends Seeder
 			}
 			$new_review['slug'] = $slug;
 			$new_review->save(); // ! DB writing here ! 
+			// change created_at (backward in time)
+			$tmp_datetime = DateTime::createFromFormat('Y-m-d H:i:s', $new_review['created_at']);
+			$counter++;
+			date_sub($tmp_datetime, date_interval_create_from_date_string($counter.' days')); 
+			$new_review['created_at'] = date_format($tmp_datetime, 'Y-m-d H:i:s');
 		}
 
+		// # CONTRACTS # 
 
+		// list of sponsorship's id
+		$db_sponsosrships = Sponsorship::all();
+		foreach ($db_sponsosrships as $db_sponsosrship) $db_sponsosrship_ids[] = $db_sponsosrship->id;
 
-
-
+		// * PAST CONTRACTS (expired) *
+		$min_number_of_past_contracts = 4;
+		$max_number_of_past_contracts = 7;
+		$number_of_past_contracts = random_int($min_number_of_past_contracts,$max_number_of_past_contracts);
+		// now & cycle frontier
+		date_default_timezone_set('Europe/Rome');
+		$tmp_time = new DateTime();
+		for ($i=0; $i<$number_of_past_contracts; $i++) {
+			$new_contract = new Contract;
+			$new_contract['user_id'] = $new_user['id'];
+			// contract with randomly selected sponsorship
+			$new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
+			$sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
+			// --------------|----------------------|----------------------|----------------------|----------------------|
+			//                                                                              start = tmp_time-24      end = tmp_time
+			//                                                       start = tmp_time-144     end = tmp_time
+			//                                start = tmp_time-24      end = tmp_time 
+			//         start = tmp_time-72      end = tmp_time
+			// --------------|----------------------|----------------------|----------------------|----------------------|
+			$date_db_end   = date_format($tmp_time, 'Y-m-d H:i:s');
+			date_sub($tmp_time, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
+			$date_db_start = date_format($tmp_time, 'Y-m-d H:i:s');
+			// results...
+			$new_contract['date_start'] = $date_db_start;
+			$new_contract['date_end'] 	= $date_db_end;
+			$new_contract['transaction_status'] = 'submitted_for_settlement';
+			$new_contract->save(); // ! DB writing here ! 
+		}
+		// * PRESENT CONTRACTS (if any, ramdomly active) *
+		$is_active_contract = random_int(0,1);
+		if ($is_active_contract) {
+			$new_contract = new Contract;
+			$new_contract['user_id'] = $new_user['id'];
+			$new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
+			$sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
+			date_default_timezone_set('Europe/Rome');
+			$now = new DateTime();
+			$date_db_start = date_format($now, 'Y-m-d H:i:s');
+			date_add($now, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
+			$date_db_end = date_format($now, 'Y-m-d H:i:s');
+			$new_contract['date_start'] = $date_db_start;
+			$new_contract['date_end'] 	= $date_db_end;
+			$new_contract['transaction_status'] = 'submitted_for_settlement';
+			$new_contract->save(); // ! DB writing here !
+		}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }

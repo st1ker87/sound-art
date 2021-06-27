@@ -111,35 +111,126 @@ function getTimeDisplay($db_time) {
 ////////// qua sotto scrivi in php //////////
 /////////////////////////////////////////////
 
-use App\Category;
-
-$categories = ['lyricist','vocalist'];
 
 
-foreach ($categories as $category) {
-			
-	// se non c'è nella tabella categories aggiungi
-	$db_categories = Category::all();
-	$is_category_present = false;
-	foreach ($db_categories as $db_category) {
-		if ($db_category->name == $category) $is_category_present = true;
-	}
-	if (!$is_category_present) {
-		$new_category = new Category();
-		$new_category['name'] = $category;
-		@dump($new_category['name']);
-		// $new_category->save(); // ! DB writing here ! 
-	}
 
-	// costruisce array di id corrispondenti ai nomi dati
-	$category_id = Category::where('name',$category)->first()->id;
-	$categories_ids[] = $category_id;
+
+use App\Sponsorship;
+use App\Contract;
+// use DateTime;
+
+
+$number_of_contracts = 5;
+
+// list of sponsorship's id
+$db_sponsosrships = Sponsorship::all();
+foreach ($db_sponsosrships as $db_sponsosrship) $db_sponsosrship_ids[] = $db_sponsosrship->id;
+
+
+// $new_contract = new Contract;
+// $new_contract['user_id'] = 44;
+// $new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
+// $sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
+// date_default_timezone_set('Europe/Rome');
+// $now = new DateTime();
+// $date_db_start = date_format($now, 'Y-m-d H:i:s');
+// date_add($now, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
+// $date_db_end = date_format($now, 'Y-m-d H:i:s');
+// $new_contract['date_start'] = $date_db_start;
+// $new_contract['date_end'] 	= $date_db_end;
+// $new_contract['transaction_status'] = 'submitted_for_settlement';
+// @dump($sel_sponsorship->hour_duration);
+// @dump($new_contract->toArray());
+
+
+
+
+// $past_sponsorship_sequence_duration = [];
+
+// now & cycle frontier
+date_default_timezone_set('Europe/Rome');
+$tmp_time = new DateTime();
+
+for ($i=0; $i<$number_of_contracts; $i++) {
+	$new_contract = new Contract;
+	$new_contract['user_id'] = 44;
+	// contract with randomly selected sponsorship
+	$new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
+	$sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
+	// $sel_sponsorship_duration = $sel_sponsorship->hour_duration;
+	// $past_sponsorship_sequence_duration[] = $sel_sponsorship_duration; // [24,144,24,72] backward in time
+	@dump($sel_sponsorship->hour_duration);
+	// |--------------------------|--------------------------|--------------------------|--------------------------|--------------------------|
+	//                                                                                                  date_start = tmp_time-24     date_end = tmp_time
+	//                                                                        tmp_start = tmp_time-144     tmp_end = tmp_time
+	//                                             tmp_start = tmp_time-24      tmp_end = tmp_time 
+	//                  tmp_start = tmp_time-72      tmp_end = tmp_time
+	$date_db_end   = date_format($tmp_time, 'Y-m-d H:i:s');
+	date_sub($tmp_time, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
+	$date_db_start = date_format($tmp_time, 'Y-m-d H:i:s');
+	// results
+	$new_contract['date_start'] = $date_db_start;
+	$new_contract['date_end'] 	= $date_db_end;
+	$new_contract['transaction_status'] = 'submitted_for_settlement';
+	// $new_contract->save(); // ! DB writing here ! 
+	echo '--------------------------------------------------------------------';
+	@dump($new_contract->toArray());
 }
-@dump($categories);
-@dump($categories_ids);
 
-// aggiungi categorie a questa persona
-// $new_user->categories()->sync($categories_ids);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// use App\Category;
+
+// $categories = ['lyricist','vocalist'];
+
+
+// foreach ($categories as $category) {
+			
+// 	// se non c'è nella tabella categories aggiungi
+// 	$db_categories = Category::all();
+// 	$is_category_present = false;
+// 	foreach ($db_categories as $db_category) {
+// 		if ($db_category->name == $category) $is_category_present = true;
+// 	}
+// 	if (!$is_category_present) {
+// 		$new_category = new Category();
+// 		$new_category['name'] = $category;
+// 		@dump($new_category['name']);
+// 		// $new_category->save(); // ! DB writing here ! 
+// 	}
+
+// 	// costruisce array di id corrispondenti ai nomi dati
+// 	$category_id = Category::where('name',$category)->first()->id;
+// 	$categories_ids[] = $category_id;
+// }
+// @dump($categories);
+// @dump($categories_ids);
+
 		
 
 
