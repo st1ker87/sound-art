@@ -27,7 +27,6 @@
   z-index: 400;
   .filters-cnt {
     display: flex;
-    padding-left: 0;
     div {
       border-right: 1px solid rgb(209, 209, 209);
       width: 100%;
@@ -48,10 +47,12 @@
   [class*='pannel'] {
     position: relative;
   }
+  .input-cnt {
+    display: flex;
+    justify-content: center;
+  }
   .categories-pannel {
-    position: relative;
     .search {
-        position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -162,6 +163,55 @@
       background-color: $lightGray;
       border: 1px solid $primaryDarkBlue;
       color: black;
+    }
+  }
+}
+
+// Aggiunta padding a filters container 992px
+@media screen and (max-width: 992px) {
+  %search-bar {
+    .filters-cnt {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      div:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+
+// Cambio display in colonne dei filtri 575px
+@media screen and (max-width: 575px) {
+  %search-bar {
+    .filters-cnt {
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      .categories-pannel {
+        display: flex;
+        flex-direction: row;
+        border-right: none;
+        width: 100%;
+        white-space: nowrap;
+        label , button {
+          width: 50%;
+        }
+      }
+      .reviews-pannel {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        white-space: nowrap;
+        label, .input-cnt {
+          width: 50%;
+        }
+        .input-cnt {
+          display: flex;
+          justify-content: center;
+        }
+      }
     }
   }
 }
