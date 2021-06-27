@@ -131,12 +131,21 @@
 	<section class="container main-show" id="about_me">
 		<div class="row">
 			<div  class="description col-sm-12 col-md-7 col-lg-7">
-				@if($my_profile->bio_text1 && $my_profile->bio_text2)
 				{{-- <h2>About me</h2> --}}
-				<p>{{$my_profile->bio_text1}}</p>
-				<p>{{$my_profile->bio_text2}}</p>
-				<p>{{$my_profile->bio_text2}}</p>
-
+				@if($my_profile->bio_text1)
+					{{-- <p>{{$my_profile->bio_text1}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $my_profile->bio_text1); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($my_profile->bio_text2)
+					{{-- <p>{{$my_profile->bio_text2}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $my_profile->bio_text2); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($my_profile->bio_text3)
+					{{-- <p>{{$my_profile->bio_text3}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $my_profile->bio_text3); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
 				@endif
 			</div>
 		{{-- IMMAGINE RIMOSSA --}}

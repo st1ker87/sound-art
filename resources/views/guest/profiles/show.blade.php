@@ -143,12 +143,21 @@
 	<section class="container main-show" id="about_me">
 		<div class="row border_bottom">
 			<div  class="description col-sm-12 col-md-7 col-lg-7">
-				@if($profile->bio_text1 && $profile->bio_text2)
 				{{-- <h2>About me</h2> --}}
-				<p>{{$profile->bio_text1}}</p>
-				<p>{{$profile->bio_text2}}</p>
-				<p>{{$profile->bio_text2}}</p>
-
+				@if($profile->bio_text1)
+					{{-- <p>{{$profile->bio_text1}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $profile->bio_text1); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($profile->bio_text2)
+					{{-- <p>{{$profile->bio_text2}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $profile->bio_text2); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
+				@endif
+				@if($profile->bio_text3)
+					{{-- <p>{{$profile->bio_text3}}</p> --}}
+					@php $pars = preg_split("/\r\n|\n|\r/", $profile->bio_text3); @endphp
+					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
 				@endif
 			</div>
 		{{-- IMMAGINE RIMOSSA --}}
@@ -398,7 +407,7 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 						<div class="form-group">
 							<label>Text <span class="required_input_field">*</span></label>
 							<textarea rows="5" name="text" class="form-control @error('text') is-invalid @enderror" rows="10" placeholder="Write here your review please..." required>{{ old('text') }}</textarea>
-							@error('bio_text1')
+							@error('text')
 								<div class="invalid-feedback">{{ $message }}</div>
 							@enderror
 						</div>
