@@ -111,71 +111,102 @@ function getTimeDisplay($db_time) {
 ////////// qua sotto scrivi in php //////////
 /////////////////////////////////////////////
 
+$messages = [
+	[
+		'msg_subject' => "Collaboration", // ! obbligatorio !
+		'msg_text'    => "We are interested in a collaboration for our productions. I'll be in touch next week", // ! obbligatorio !
+	],
+	[
+		'msg_subject' => "I need your services", // ! obbligatorio !
+		'msg_text'    => "Your talent is amazing! I'm compleyely bewitched. I'll contact you for learn more about you", // ! obbligatorio !
+	],
+	[
+		'msg_subject' => "We would like to know you", // ! obbligatorio !
+		'msg_text'    => "We are interested in you services. Please call +44 333 765 2956 or email us. Regards", // ! obbligatorio !
+	],
+	[
+		'msg_subject' => "Hiring proposal", // ! obbligatorio !
+		'msg_text'    => "Please contact us for a very important proposal about our events. Cheers", // ! obbligatorio !
+	],
+];
 
+$min_num_of_messages = 1;
+$max_num_of_messages = count($messages);
 
-
-
-use App\Sponsorship;
-use App\Contract;
-// use DateTime;
-
-
-$number_of_contracts = 5;
-
-// list of sponsorship's id
-$db_sponsosrships = Sponsorship::all();
-foreach ($db_sponsosrships as $db_sponsosrship) $db_sponsosrship_ids[] = $db_sponsosrship->id;
-
-
-// $new_contract = new Contract;
-// $new_contract['user_id'] = 44;
-// $new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
-// $sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
-// date_default_timezone_set('Europe/Rome');
-// $now = new DateTime();
-// $date_db_start = date_format($now, 'Y-m-d H:i:s');
-// date_add($now, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
-// $date_db_end = date_format($now, 'Y-m-d H:i:s');
-// $new_contract['date_start'] = $date_db_start;
-// $new_contract['date_end'] 	= $date_db_end;
-// $new_contract['transaction_status'] = 'submitted_for_settlement';
-// @dump($sel_sponsorship->hour_duration);
-// @dump($new_contract->toArray());
-
-
-
-
-// $past_sponsorship_sequence_duration = [];
-
-// now & cycle frontier
-date_default_timezone_set('Europe/Rome');
-$tmp_time = new DateTime();
-
-for ($i=0; $i<$number_of_contracts; $i++) {
-	$new_contract = new Contract;
-	$new_contract['user_id'] = 44;
-	// contract with randomly selected sponsorship
-	$new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
-	$sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
-	// $sel_sponsorship_duration = $sel_sponsorship->hour_duration;
-	// $past_sponsorship_sequence_duration[] = $sel_sponsorship_duration; // [24,144,24,72] backward in time
-	@dump($sel_sponsorship->hour_duration);
-	// |--------------------------|--------------------------|--------------------------|--------------------------|--------------------------|
-	//                                                                                                  date_start = tmp_time-24     date_end = tmp_time
-	//                                                                        tmp_start = tmp_time-144     tmp_end = tmp_time
-	//                                             tmp_start = tmp_time-24      tmp_end = tmp_time 
-	//                  tmp_start = tmp_time-72      tmp_end = tmp_time
-	$date_db_end   = date_format($tmp_time, 'Y-m-d H:i:s');
-	date_sub($tmp_time, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
-	$date_db_start = date_format($tmp_time, 'Y-m-d H:i:s');
-	// results
-	$new_contract['date_start'] = $date_db_start;
-	$new_contract['date_end'] 	= $date_db_end;
-	$new_contract['transaction_status'] = 'submitted_for_settlement';
-	// $new_contract->save(); // ! DB writing here ! 
-	echo '--------------------------------------------------------------------';
-	@dump($new_contract->toArray());
+$num_of_messages = random_int($min_num_of_messages, $max_num_of_messages);
+$rand_messages_keys = array_rand($messages, $num_of_messages);
+if($num_of_messages == 1) $rand_messages_keys = [$rand_messages_keys];
+$rand_messages = [];
+foreach ($rand_messages_keys as $key) {
+	$rand_messages[] = $messages[$key];
 }
+@dump($rand_messages);
+
+
+/////////////////////////////////////////////
+
+
+// use App\Sponsorship;
+// use App\Contract;
+// // use DateTime;
+
+
+// $number_of_contracts = 5;
+
+// // list of sponsorship's id
+// $db_sponsosrships = Sponsorship::all();
+// foreach ($db_sponsosrships as $db_sponsosrship) $db_sponsosrship_ids[] = $db_sponsosrship->id;
+
+
+// // $new_contract = new Contract;
+// // $new_contract['user_id'] = 44;
+// // $new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
+// // $sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
+// // date_default_timezone_set('Europe/Rome');
+// // $now = new DateTime();
+// // $date_db_start = date_format($now, 'Y-m-d H:i:s');
+// // date_add($now, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
+// // $date_db_end = date_format($now, 'Y-m-d H:i:s');
+// // $new_contract['date_start'] = $date_db_start;
+// // $new_contract['date_end'] 	= $date_db_end;
+// // $new_contract['transaction_status'] = 'submitted_for_settlement';
+// // @dump($sel_sponsorship->hour_duration);
+// // @dump($new_contract->toArray());
+
+
+
+
+// // $past_sponsorship_sequence_duration = [];
+
+// // now & cycle frontier
+// date_default_timezone_set('Europe/Rome');
+// $tmp_time = new DateTime();
+
+// for ($i=0; $i<$number_of_contracts; $i++) {
+// 	$new_contract = new Contract;
+// 	$new_contract['user_id'] = 44;
+// 	// contract with randomly selected sponsorship
+// 	$new_contract['sponsorship_id'] = $db_sponsosrship_ids[random_int(0,count($db_sponsosrship_ids)-1)];
+// 	$sel_sponsorship = Sponsorship::where('id',$new_contract['sponsorship_id'])->first();
+// 	// $sel_sponsorship_duration = $sel_sponsorship->hour_duration;
+// 	// $past_sponsorship_sequence_duration[] = $sel_sponsorship_duration; // [24,144,24,72] backward in time
+// 	@dump($sel_sponsorship->hour_duration);
+// 	// |--------------------------|--------------------------|--------------------------|--------------------------|--------------------------|
+// 	//                                                                                                  date_start = tmp_time-24     date_end = tmp_time
+// 	//                                                                        tmp_start = tmp_time-144     tmp_end = tmp_time
+// 	//                                             tmp_start = tmp_time-24      tmp_end = tmp_time 
+// 	//                  tmp_start = tmp_time-72      tmp_end = tmp_time
+// 	$date_db_end   = date_format($tmp_time, 'Y-m-d H:i:s');
+// 	date_sub($tmp_time, date_interval_create_from_date_string($sel_sponsorship->hour_duration.' hours'));
+// 	$date_db_start = date_format($tmp_time, 'Y-m-d H:i:s');
+// 	// results
+// 	$new_contract['date_start'] = $date_db_start;
+// 	$new_contract['date_end'] 	= $date_db_end;
+// 	$new_contract['transaction_status'] = 'submitted_for_settlement';
+// 	// $new_contract->save(); // ! DB writing here ! 
+// 	echo '--------------------------------------------------------------------';
+// 	@dump($new_contract->toArray());
+// }
 
 
 
