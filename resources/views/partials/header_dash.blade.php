@@ -1,4 +1,4 @@
-@include('partials.home_humburger')
+@include('partials.search_humburger')
 
 <header class="header-dash q-fluid">
 	<div class="container">
@@ -10,12 +10,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('search') }}">Explore</a>
 				</li>  
-			@guest
-			@else
-			<li class="nav-item">
-				<a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
-			</li>					
-			@endguest
       		</ul>
 			<ul class="navbar-nav ml-auto">
 			<!-- Authentication Links -->
@@ -29,6 +23,9 @@
 					</li>
 				@endif
 			@else
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+				</li>	
 				<li class="nav-item dropdown">
 					<a id="navbarDropdown btn btn-outline-light" :class="{change_color_btn: scrollPosition > scrollChange}" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						{{ Auth::user()->name }}
