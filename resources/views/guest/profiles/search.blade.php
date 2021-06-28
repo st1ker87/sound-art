@@ -153,6 +153,9 @@ else {
     </section>
 
     @include('partials.cards_search')
+    <section v-if="resultsNotFound" class="no-results">
+      <p>You search did not return any results...</p>
+    </section>
   </main>
 
 @endsection
