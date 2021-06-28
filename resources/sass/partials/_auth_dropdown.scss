@@ -1,0 +1,65 @@
+.auth-pannel-dropdown {
+    position: relative;
+    .auth-btn {
+        color: white;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        &::after {
+            display: inline-block;
+            margin-left: .5vw;
+            vertical-align: middle;
+            content: "";
+            border-top: 0.3em solid;
+            border-right: 0.3em solid transparent;
+            border-bottom: 0;
+            border-left: 0.3em solid transparent;
+        }
+    }
+    
+    .auth-pannel-cnt-white {
+        background-color: white;
+        border: 1px solid $primaryGray;
+        @extend %auth-pannel-cnt;
+        li {
+            color: black;
+            &:not(:last-child) {
+                border-bottom: 1px solid gray;
+            }
+            a {
+                color: black;
+            }
+        }
+    }
+    .auth-pannel-cnt-blue {
+        background-color: $primaryDarkBlue;
+        border: 1px solid white;
+        @extend %auth-pannel-cnt;
+        li {
+            color: white;
+            &:not(:last-child) {
+                border-bottom: 1px solid white;
+            }
+            a {
+                color: white;
+            }
+        }
+    }
+}
+
+%auth-pannel-cnt {
+    position: absolute;  
+    right: 0;
+    top: 100%;
+    width: 100px;
+    z-index: 1000;
+    border-radius: 3px;
+    .auth-pannel {
+        padding: .5em;
+        margin: 0;
+        li {
+          font-size: .8rem;
+          text-align: center;
+        }
+    }
+}

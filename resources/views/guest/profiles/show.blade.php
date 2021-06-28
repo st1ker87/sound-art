@@ -41,6 +41,8 @@
 
 @php
 
+	use App\Classes\DateDisplay;
+
 	$genres = $profile->user->genres;
 	$reviews = $profile->user->reviews;
 
@@ -168,9 +170,9 @@
             <div class="genres">
               @foreach($profile->user->offers as $offer)
                 @if($loop->last)
-                  <span>{{$offer->name}}</span>
+                  <span>{{ucwords($offer->name)}}</span>
                 @else
-                  <span>{{$offer->name}}</span>
+                  <span>{{ucwords($offer->name)}}</span>
                 @endif
               @endforeach
             </div>
@@ -181,7 +183,7 @@
                 <h2>My favorite music</h2>
                 <hr>
                 @foreach($genres as $genre)
-                  <span>{{$genre->name}}</span>
+                  <span>{{ucwords($genre->name)}}</span>
                 @endforeach
               </div>
             </div> 
@@ -250,7 +252,7 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 					<div class="text_area">
 						<p class="bold">{{$review->rev_subject}}</p>
 						<p>{{$review->rev_text}}</p>
-						<p>{{$review->created_at}}</p>
+						<p>{{(new DateDisplay)->get($review->created_at)}}</p>
 					</div>
 				{{-- <hr> --}}
 				</div>

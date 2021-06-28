@@ -36,7 +36,7 @@
                 <i v-for="filled in Math.round(card.average_vote)" :key="filled.id" class="fas fa-star filled"></i>
                 <i v-if="Math.round(card.average_vote) < 5" v-for="empty in (5 - Math.round(card.average_vote))" :key="empty.id" class="fas fa-star empty"></i>
               </div>
-                <span>(Rev. @{{card.rev_count}})</span>     
+                <span>(@{{card.rev_count}})</span>     
             </div>
 
             {{-- Description --}}

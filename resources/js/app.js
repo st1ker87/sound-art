@@ -38,6 +38,7 @@ const app = new Vue({
 		showCategoryPannel : false,
 		showGenrePannel : false,
 		showVotePannel : false,
+		showAuthPannel : false,
 		humburger : false,
 
 		/*BUTTONS IN PAGINA SEARCH*/
@@ -96,6 +97,9 @@ const app = new Vue({
 			this.showVotePannel = !this.showVotePannel;
 			this.showCategoryPannel = false;
 			this.showGenrePannel = false;
+		},
+		showAuth: function() {
+			this.showAuthPannel = !this.showAuthPannel;
 		},
 		setCategory: function (category) {
 			if(category === 'No filter') {
@@ -234,19 +238,26 @@ const app = new Vue({
 							// Vote
 							let cardVoteCnt = document.createElement('div');
 							cardVoteCnt.classList.add('vote');
-							let cardVote = Math.round(currentArray[i]['average_vote']);
-							for(let z = 0; z < cardVote; z++) {
-								let fullStar = document.createElement('i');
-								fullStar.classList.add('fas', 'fa-star', 'filled');
-								cardVoteCnt.appendChild(fullStar);
-							}
-							if((5 - cardVote) > 0 ) {
-								for(let z = 0; z < (5 - cardVote); z++) {
-									let emptyStar = document.createElement('i');
-									emptyStar.classList.add('fas', 'fa-star', 'empty')
-									cardVoteCnt.appendChild(emptyStar);
-								}
-							}
+								
+								// Stars Container
+								let stars = document.createElement('div');
+								stars.classList.add('stars');
+								cardVoteCnt.appendChild(stars);
+								
+									// Stars
+									let cardVote = Math.round(currentArray[i]['average_vote']);
+									for(let z = 0; z < cardVote; z++) {
+										let fullStar = document.createElement('i');
+										fullStar.classList.add('fas', 'fa-star', 'filled');
+										stars.appendChild(fullStar);
+									}
+									if((5 - cardVote) > 0 ) {
+										for(let z = 0; z < (5 - cardVote); z++) {
+											let emptyStar = document.createElement('i');
+											emptyStar.classList.add('fas', 'fa-star', 'empty')
+											stars.appendChild(emptyStar);
+										}
+									}
 							let revCount = document.createElement('span');
 							revCount.innerHTML = '(' + currentArray[i]['rev_count'] + ')';
 							cardVoteCnt.appendChild(revCount);
@@ -296,7 +307,13 @@ const app = new Vue({
 			}
 		},
 		// INTERNAL APIs
-		filterCall() {		
+		filterCall() {
+			if (this.category_selected !== null) {
+				this.category_selected = this.category_selected.toLowerCase();
+			}
+			if (this.genre_selected !== null) {
+				this.genre_selected = this.genre_selected.toLowerCase();
+			}
 			axios.get(this.iper_profiles_url, {
 				params: {
 					category	: this.category_selected,
@@ -363,6 +380,11 @@ const app = new Vue({
 			});
 			return;
 		},
+		addEventClickListenerAuth() {
+			document.addEventListener('click', () => {
+				this.showAuthPannel = false;
+			});
+		},
 		scrollSearch() {
 			let x = document.querySelector('.header-search');
 			let z = document.querySelector('.jumbotron-container-search');
@@ -381,6 +403,7 @@ const app = new Vue({
 		}
 	},
 	mounted() {
+		this.addEventClickListenerAuth();
 		var ulr_path = window.location.pathname;
 		if (ulr_path == '/') {
 			this.onlySponsorship = true,

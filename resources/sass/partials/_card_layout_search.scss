@@ -4,6 +4,9 @@
 .card-list {
     background-color: #eee;
     padding-top: 7vw;
+    .cards-575-cnt {
+        display: none;
+    }
     .card-cnt {
         h1, h2, h3, h4, h5, h6, p {
             margin: 0;
