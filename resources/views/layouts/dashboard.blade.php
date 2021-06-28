@@ -58,10 +58,55 @@
         {{-- JUMBOTRON DASHBOARD --}}
         @include('partials.jumbo_dashboard')
 
-        {{-- DA CANCELLARE E RIPRENDERE VECCHIO STILE SE NON PIACE --}}
+
+            <div class="pos-f-t">
+                <nav class="navbar navbar-light col-12 col-sm-12 d-md-none bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
+                <div class="collapse d-md-none" id="navbarToggleExternalContent">
+                    <div class="bar_under_jumbo container-fluid dashboard_nav">
+                        <div class="container">
+                            <nav class="nav flex-column to_page_link">
+                                {{-- VALUTARE SE USARE O TOGLIERE BORDO PER ROTTA ATTIVA --}}
+                                <div class="link_box nav flex-column">
+                                    <a class="dashboard_nav_link" href="{{ route('dashboard') }}">Dashboard</a>
+                                    <a class="dashboard_nav_link" href="{{ route('admin.messages.index') }}">Messages</a>
+                                    <a class="dashboard_nav_link" href="{{ route('admin.reviews.index') }}">Reviews</a>
+                                    <a class="dashboard_nav_link" href="route('admin.statistics')">Statistics</a>  
+                                </div>
+                                
+                                {{-- NUOVA PARTE BOTTONI A DESTRA --}}
+                                @if ($my_profile)
+                                    {{-- EDIT PROFILE BUTTON --}}
+                                    <a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
+                                
+                                    {{-- MODAL BUTTON -------------------------------------------------------------}}
+                                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">Delete Profile</button>
+                                    {{----------------------------------------------------------------------------}}
+                                @else
+                                    {{-- CREATE PROFILE BUTTON --}}
+                                    <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
+                                @endif
+                                @if (!$is_active_sponsorship && $my_profile)
+                                    {{-- SPONSOR YOUR PROFILE --}}
+                                    <a class="btn btn-sponsor" href="{{ route('admin.sponsorships.index') }}">Sponsor Profile</a>
+                                @endif
+                                @if ($is_any_contract)
+                                    {{-- CHECK YOUR SPONSORSHIPS --}}
+                                    <a class="btn btn-primary my-color" href="{{ route('my_sponsorships') }}">Check Sponsorships</a>	
+                                @endif
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
         {{-- PROVA NAVBAR SOTTO AL JUMBO AL POSTO DELLA NAV A SX --}}
-        <div class="bar_under_jumbo container-fluid dashboard_nav">
+        <div class="bar_under_jumbo d-none d-md-block container-fluid dashboard_nav">
             <div class="container">
                 <nav class="nav flex-column justify-content-between flex-md-row to_page_link">
                     {{-- VALUTARE SE USARE O TOGLIERE BORDO PER ROTTA ATTIVA --}}
