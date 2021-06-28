@@ -3,7 +3,7 @@
 	<div class="container">
 		<nav class="navbar">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
-				<img id="logo" src="{{ asset('img/logo-white.png') }}" alt="Sound Art logo">
+				<img id="logo" src="{{ asset('img/logo_small.png') }}" alt="Sound Art logo">
 			</a>
 			<ul class="humburger">
 				<li class="humburger-item">
