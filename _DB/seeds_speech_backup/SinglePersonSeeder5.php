@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Faker\Generator as Faker;
-use DateTime;
+// use DateTime;
 
 use App\Profile;
 use App\User;
@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder extends Seeder
+class SinglePersonSeeder5 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -29,6 +29,15 @@ class SinglePersonSeeder extends Seeder
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/**
+	 * 
+	 * php artisan make:seeder SinglePersonSeederN (change N)
+	 * copy //////...//////
+	 * copy use ...
+	 * copy run(Faker $faker)
+	 * php artisan db:seed --class=SinglePersonSeederN (change N)
+	 * 
+	 */
 
 	// #################################################################################################################
 	// #  MINIMAL EDIT START                                                                                            
@@ -36,60 +45,51 @@ class SinglePersonSeeder extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Kate';
-		$surname 	= 'Glock';
+		$name 		= 'Matias';
+		$surname 	= 'Menarguez';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '168A Grange Rd, London SE1 3BN';
-		$phone 			= '+44 378 922 25 66';
+		$work_town		= 'Buenos Aires, Argentina';
+		$work_address 	= 'Fray Justo Sta. María de Oro 2686, C1428 CABA';
+		$phone 			= '+54 11 3140-5576';
 
 		/**
 		 * ! TESTO
 		 * !	>> copiare testo da soundbetter, dividendo in 2 o 3 parti (per ogni bio_text1,2,3)
 		 * ! 	>> ATTENZIONE all'escape di eventuali doppi apici (") dentro il testo ( " diventa \" )
-		 * ! 	>> lasciare una riga vuota nel testo per separare i paragafi (renderizzazione in pagina)
+		 * ! 	>> lasciare una riga vuota nel testo per separare i paragafi (renderizzazione introdotta in pagina)
 		 * ! 	>> bio_text3 può essere lasciato vuoto
 		 */
 
 		// * About me
 		$bio_text1 = 
-			"Professional touring singer/songwriter based out of London, from East European origin. I am lead vocalist with my band who have produced and released two successful albums. We've played throughout Europe including Download, Glastonbury, Reading & Leeds, and supported Deftones in Hellfest. 
+			"Hi! My name is Matias Menarguez, I'm a professional drummer from Buenos Aires, Argentina. I've been playing drums and Jazz music for more than 17 years now, but I have also developed myself as a session drummer and got to work with a great variety of artists and music genres. I always do my best to serve the music, and I'd love to work with you.
+
+			Professional on-demand drummer based in Buenos Aires, Argentina.
+			I've pursued a career in music 17 years ago, since then I have focused mainly on Jazz music but developed in different musical genres. Studied with Mark Guiliana, Greg Hutchinson, Daniel \"Pipi\" Piazzolla, among many others.
 			
-			I specialise in strong vocal delivery, using my own pro-level studio and equipment. Please listen to my vocal sample upload. I can provide vocals either processed, or raw (clean, clear, without delay/reverb) for mixing in your own studio.
+			You can check my work on iTunes / Spotify / YouTube with Olvide San Telmo, Joyce, Perceptual trio, The Soho Rentals, Ankar, Belen Iglesias, James Dawkins, Natalie Bancroft, etc.
 			
-			Reviews:
+			I'm a very responsible artist who will hear what you need and deliver in a timely matter, always serving the music and doing my very best to exceed your expectations.
 			
-			\"A pro from top to bottom! Such an easy going, down to earth, fun experience working with Kate!\"
+			All you need to send me is an mp3 or wav file of your song and any indications/directions/references you have on drums. I will provide you with the multitrack WAV files and a mixdown of the drums + your song.
 			
-			\"Kate's really blown me away when it comes to fast delivery with high quality. She gets the concept with the song in no time!\"
+			I can deliver in 24-48hrs upon your request.
 			
-			\"I am doing my best work with Kate!\"";
+			I'm truly looking forward to making some music with you!";
 
 		// * Professional Services
 		$bio_text2 = 
-			"All clients receive final WAVs in 24bit/44Khz format (all takes, adlibs, backing etc), as well as bounced pro-demo-level tracks that should only require minor mixing and mastering adjustments to release.
-			
-			Approximate overall costs are listed but do let me know if you have a specific budget to work with.
-			
-			TERMS & CONDITIONS:
-			
-			- No free demo's/samples/tests. If you're not entirely sure about my voice listen to the multiple samples, listen to our last album, send me your track and I'll honestly tell you if I think it could work.
-			
-			- One free revision, any other changes after are $100 per revision across all services
-			
-			- Every job requires a fully funded project before we begin.
-			
-			- All jobs are completed within approx 1-2 week period
-			
-			- You retain all rights to anything I produce for you. It's yours! Period! If you want to use my name as a vocalist that's fine.";
+			"TERMS OF SERVICE
+
+			After receiving the song or/and music charts, I'll record one draft within 48hrs. After that, I'll allow 2 more revisions every 48hrs until the final multitrack take.";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional touring singer/songwriter based out of London, from East European origin.";
+		$bio_text4 = "Professional on-demand drummer based in Buenos Aires, Argentina";
 
 		/**
 		 * ! IMMAGINE
@@ -98,7 +98,7 @@ class SinglePersonSeeder extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_4960.jpg';
+		 $image_name = 'IMG_2462.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -108,28 +108,28 @@ class SinglePersonSeeder extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['lyricist','topliner','vocalist']; // ! obbligatorio !
+		$categories = ['Drummer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['classical','pop','chill'];
+		$genres = ['Blues','Funk','Jazz','Pop','Pop-Rock','R&B','Soul'];  
 
 		// % OFFERS % 
 
-		$offers = ['teaching','writing']; // ! obbligatorio !
+		$offers = ['collaboration','recording']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
-		$min_num_of_messages = 1; // max 25
+		$min_num_of_messages = 10; // max 25 (src list)
 
 		// % REVIEWS % 
 
-		$min_num_of_reviews = 10; // max 25
+		$min_num_of_reviews = 15; // max 25 (src list)
 
 		// % CONTRACTS % 
 
-		$min_number_of_past_contracts = 4; // less than max
-		$max_number_of_past_contracts = 7; // no limits
+		$min_number_of_past_contracts = 3; // less than max
+		$max_number_of_past_contracts = 9; // no limits
 		$is_active_contract = 1; // 1 or 0
 
 
@@ -137,8 +137,8 @@ class SinglePersonSeeder extends Seeder
 	// #################################################################################################################
 
 		/**
-		 * ! MESSAGES & REVIEWS
-		 * !	>> copiare da soundbetter
+		 * ! MESSAGES & REVIEWS (lista sorgente per numero di item randomici con limiti definiti sopra)
+		 * !	>> inventare o copiare da soundbetter
 		 * !	>> NON lasciare campi obbligatori vuoti
 		 * !    >> per ridurre/aumentare il numero di messaggi/review eliminare/duplicare i corrispondenti elementi dagli array
 		 * !	>> nel subject potete spostare l'inizio del text (togliendolo dal text)
@@ -336,7 +336,7 @@ class SinglePersonSeeder extends Seeder
 			],
 			[
 				'rev_vote'    => 1, // ! obbligatorio !
-				'rev_subject' => "I don't like the professional sttitude", // ! obbligatorio !
+				'rev_subject' => "I don't like the professional attitude", // ! obbligatorio !
 				'rev_text'    => "",
 			],
 			[
@@ -394,7 +394,6 @@ class SinglePersonSeeder extends Seeder
 			$email_is_present = User::where('email',$email)->first();
 		}
 		$password = explode('@', $email)[0].explode('@', $email)[0];
-		
 		$new_user = new User();
 		$new_user['name'] 		= $name;
 		$new_user['surname'] 	= $surname;
@@ -431,6 +430,7 @@ class SinglePersonSeeder extends Seeder
 
 		// # CATEGORIES # 
 
+		$categories = array_map('strtolower',$categories);
 		$categories_ids = [];
 		foreach ($categories as $category) {
 			// se non c'è nella tabella aggiungi
@@ -453,6 +453,7 @@ class SinglePersonSeeder extends Seeder
 		
 		// # GENRES # 
 
+		$genres = array_map('strtolower',$genres);
 		$genres_ids = [];
 		foreach ($genres as $genre) {
 			// se non c'è nella tabella aggiungi
@@ -475,6 +476,7 @@ class SinglePersonSeeder extends Seeder
 
 		// # OFFERS # 
 
+		$offers = array_map('strtolower',$offers);
 		$offers_ids = [];
 		foreach ($offers as $offer) {
 			// se non c'è nella tabella aggiungi
@@ -505,7 +507,6 @@ class SinglePersonSeeder extends Seeder
 		foreach ($rand_messages_keys as $key) {
 			$rand_messages[] = $messages[$key];
 		}
-		$counter = 0;
 		foreach ($rand_messages as $message) {
 			$new_message = new Message();
 			$new_message['user_id'] = $new_user['id'];
@@ -528,8 +529,12 @@ class SinglePersonSeeder extends Seeder
 			$new_message->save(); // ! DB writing here ! 
 			// change created_at (backward in time)
 			$tmp_datetime = DateTime::createFromFormat('Y-m-d H:i:s', $new_message['created_at']);
-			$counter++;
-			date_sub($tmp_datetime, date_interval_create_from_date_string($counter.' days')); 
+			$days = random_int(1, 30);
+			$hours = random_int(1, 24);
+			$minutes = random_int(1, 59);
+			date_sub($tmp_datetime, date_interval_create_from_date_string($days.' days')); 
+			date_sub($tmp_datetime, date_interval_create_from_date_string($hours.' hours')); 
+			date_sub($tmp_datetime, date_interval_create_from_date_string($minutes.' minutes')); 
 			$new_message['created_at'] = date_format($tmp_datetime, 'Y-m-d H:i:s');
 			$new_message->update(); // ! DB writing here ! 
 		}
@@ -544,7 +549,6 @@ class SinglePersonSeeder extends Seeder
 		foreach ($rand_reviews_keys as $key) {
 			$rand_reviews[] = $reviews[$key];
 		}
-		$counter = 0;
 		foreach ($rand_reviews as $review) {
 			$new_review = new Review();
 			$new_review['user_id'] = $new_user['id'];
@@ -566,8 +570,12 @@ class SinglePersonSeeder extends Seeder
 			$new_review->save(); // ! DB writing here ! 
 			// change created_at (backward in time)
 			$tmp_datetime = DateTime::createFromFormat('Y-m-d H:i:s', $new_review['created_at']);
-			$counter++;
-			date_sub($tmp_datetime, date_interval_create_from_date_string($counter.' days')); 
+			$days = random_int(1, 30);
+			$hours = random_int(1, 24);
+			$minutes = random_int(1, 59);
+			date_sub($tmp_datetime, date_interval_create_from_date_string($days.' days')); 
+			date_sub($tmp_datetime, date_interval_create_from_date_string($hours.' hours')); 
+			date_sub($tmp_datetime, date_interval_create_from_date_string($minutes.' minutes')); 
 			$new_review['created_at'] = date_format($tmp_datetime, 'Y-m-d H:i:s');
 			$new_review->update(); // ! DB writing here ! 
 		}
@@ -603,7 +611,7 @@ class SinglePersonSeeder extends Seeder
 			$new_contract['transaction_status'] = 'submitted_for_settlement';
 			$new_contract->save(); // ! DB writing here ! 
 		}
-		// * PRESENT CONTRACTS (if any, ramdomly active) *
+		// * PRESENT CONTRACTS (if any) *
 		if ($is_active_contract) {
 			$new_contract = new Contract;
 			$new_contract['user_id'] = $new_user['id'];

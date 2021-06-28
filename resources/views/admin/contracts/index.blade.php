@@ -57,7 +57,7 @@
 				@endif
 			</div>
 
-			@foreach ($my_contracts->sortByDesc('created_at') as $contract)
+			@foreach ($my_contracts->sortByDesc('date_start') as $contract)
 
 				<div class="msg_box">
 					<div class="content">

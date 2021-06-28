@@ -41,6 +41,8 @@
 
 @php
 
+	use App\Classes\DateDisplay;
+
 	$genres = $profile->user->genres;
 	$reviews = $profile->user->reviews;
 
@@ -250,7 +252,7 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 					<div class="text_area">
 						<p class="bold">{{$review->rev_subject}}</p>
 						<p>{{$review->rev_text}}</p>
-						<p>{{$review->created_at}}</p>
+						<p>{{(new DateDisplay)->get($review->created_at)}}</p>
 					</div>
 				{{-- <hr> --}}
 				</div>
