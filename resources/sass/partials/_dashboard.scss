@@ -11,41 +11,71 @@
     }
 }
 .bar_under_jumbo {
-
     background-color: white;
     border-bottom: 0.5px solid $lightGray;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    margin-bottom: 5vh;
-    .dashboard_nav_link {
-        padding: 0 20px;
-        line-height: 8vh;
-    }
-    .to_page_link {
-        .btn_create {
-            color: white;
+    // margin-bottom: 5vh;
+    .container {
+        
+        .dashboard_nav_link {
+            padding: 0 20px;
+            line-height: 8vh;
+
         }
-    }
-    
+        .to_page_link {
+            .link_box {
+                margin-right: auto;
+            }
+            
+                // margin-bottom: 20px;
+                line-height: 8vh;
+                .btn {
+                    margin: 0 5px;
+                }
+                .my-color {
+                    background-color: $primaryLighterBlue;
+                    color: white;          
+                }
+                .my-color:hover {
+                    background-color: $primaryDarkBlue;
+                    color: white;          
+                }      
+                .btn-sponsor {
+                    background-color: $primarySpotify;
+                    color: white;          
+                }
+                .btn-sponsor:hover {
+                        background-color: $spotify_hover;
+                    color: white;          
+                }
+        
+        }
+    }  
 }
 
-.dashboard_home {
-    .btn_box {
-        margin-bottom: 20px;
-        .my-color {
-            background-color: $primaryLighterBlue;
+
+// RESPONSIVE
+
+@media screen and (max-width: 1200px) {
+    
+    .to_page_link {
+        .link_box {
+            margin: 0 auto;
+        }
+    }
+    // .bar_under_jumbo {
+    //     .btn_box {
+    //         margin-bottom: 20px;
+    //     }
+    // }
+}
+
+@media screen and (max-width: 767px) {
+    .bar_under_jumbo .container .dashboard_nav_link {
+            line-height: 5vh;
         
-        }
-        .my-color:hover {
-            background-color: $primaryDarkBlue;
-        }
-        
-        .btn-sponsor {
-            background-color: $primarySpotify;
-            color: white;
-            
-        }
-        .btn-sponsor:hover {
-                background-color: $spotify_hover;
-        }
+    }
+    .bar_under_jumbo .container .to_page_link .btn {
+        margin: 10px 0;
     }
 }

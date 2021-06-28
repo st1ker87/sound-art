@@ -96,10 +96,10 @@
 	@endif
 </div>
 
-<div class="row dashboard_home">
+{{-- <div class="row dashboard_home">
 	<div class="btn_box col-8 offset-2">
 		@if ($my_profile)
-			{{-- EDIT PROFILE BUTTON --}}
+			{{-- EDIT PROFILE BUTTON --
 			<a type="button" class="btn btn-primary my-color btn-block" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit your Profile</a>
 			{{-- DELETE PROFILE BUTTON --}}
 			{{-- ORIGINAL BUTTON ----------------------------------------------------------}}
@@ -108,31 +108,33 @@
 				@method('DELETE')
 				<button type="submit" class="btn btn-danger btn-block">Delete your Profile</button>
 			</form> --}}
-			{{-- MODAL BUTTON -------------------------------------------------------------}}
+			{{-- MODAL BUTTON -------------------------------------------------------------
 			<button type="submit" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-delete">Delete your Profile</button>
-			{{----------------------------------------------------------------------------}}
+			{{----------------------------------------------------------------------------
 		@else
-			{{-- CREATE PROFILE BUTTON --}}
+			{{-- CREATE PROFILE BUTTON }}
 			<a class="btn btn-primary btn-block" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
 		@endif
 		@if (!$is_active_sponsorship && $my_profile)
-			{{-- SPONSOR YOUR PROFILE --}}
+			{{-- SPONSOR YOUR PROFILE }}
 			<a class="btn btn-sponsor btn-block" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
 		@endif
 		@if ($is_any_contract)
-			{{-- CHECK YOUR SPONSORSHIPS --}}
+			{{-- CHECK YOUR SPONSORSHIPS }}
 			<a class="btn btn-primary my-color btn-block" href="{{ route('my_sponsorships') }}">Check your Sponsorships</a>	
 		@endif		
 	</div>
-</div>
+</div> --}}
 
 {{-- INTEGRAZIONE SHOW PROFILE IN DASHBOARD --}}
 @if ($my_profile)
 	<section class="container main-show" id="about_me">
 		<div class="row">
 			<div  class="description col-sm-12 col-md-7 col-lg-7">
+
 				{{-- <h2>About me</h2> --}}
 				@if($my_profile->bio_text1)
+					<h2>About Me</h2>
 					{{-- <p>{{$my_profile->bio_text1}}</p> --}}
 					@php $pars = preg_split("/\r\n|\n|\r/", $my_profile->bio_text1); @endphp
 					@foreach ($pars as $par) <p>{{$par}}</p> @endforeach
@@ -179,11 +181,11 @@
 	</section>
 @endif
     {{--:class="{(scrollPosition > scrollChange) ? 'appear' : ''}" --}}
-<a href="#up">
+{{-- <a href="#up">
 	<div class="freccia_su" >
 	<i class="fas fa-arrow-up"></i>
 	</div>
-</a>
+</a> --}}
 
 
 
