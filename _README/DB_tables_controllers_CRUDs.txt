@@ -5,14 +5,21 @@
 --------------------------- seed INTERO database (SingleProfileSeeder)
 
 1. svuotamento db_sound_art (scatola rimane)
-2. aggiornamento /migrations/ >> /migrations_backup/ [14 file]
-3. aggiornamento /seeds/ >> /seeds_speech_backup/ [1x DatabaseSeeder.php, 4x {Tag}Seeder.php, Nx SingleProfileSeeder{N}.php]
-4. controllo DatabaseSeeder.php [attivare quello che serve]
+
+2. aggiornamento risorse 
+	/database/migrations/				>> 	/_DB/migrations_backup/ 			[14 file]
+	/database/seeds/					>> 	/_DB/seeds_people_backup/ 			[1x DatabaseSeeder.php, 4x {Tag}Seeder.php, Nx SingleProfileSeeder{N}.php]
+	/storage/app/public/profile_image/ 	>> 	/_DB/storage_profile_image_backup/	[60 immagini]
+
+3. controllo DatabaseSeeder.php [attivare 64 seeder]
+
 5. php artisan migrate
+
 6. composer dump-autoload
+
 7. php artisan db:seed
 
-
+----------------------------------------------------------------------
 
 
 

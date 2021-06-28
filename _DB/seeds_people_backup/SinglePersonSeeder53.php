@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder18 extends Seeder
+class SinglePersonSeeder53 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -45,14 +45,14 @@ class SinglePersonSeeder18 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Brendan';
-		$surname 	= 'Dekora';
+		$name 		= 'Ruth';
+		$surname 	= 'Royall';
 
 		// % PROFILE % 
 
-		$work_town		= 'Los Angeles, CA, USA';
-		$work_address 	= '601 11th St, Huntington Beach, CA 92648';
-		$phone 			= '+1 657-244-8084';
+		$work_town		= 'Bristol, UK';
+		$work_address 	= '28 Chelsea Rd, Easton, Bristol BS5 6AF';
+		$phone 			= '+44 11 7955 8820';
 
 		/**
 		 * ! TESTO
@@ -64,13 +64,53 @@ class SinglePersonSeeder18 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Grammy and Oscar-winning Engineer. Credits with NIN, Foo Fighters, Billy Idol, Steven Wilson, Moby, Danzig, Marylin Manson, Muse, Neil Young, Michael Bublé, and Keith Urban among others. Over 20 years experience with industry greats in coveted studios.
+			"Professional vocalist and songwriter with own set up that can produce high quality vocal stems quickly and easily. 7 Million + Spotify streams, 300k Monthly listeners. Collaborations include Grafix, Pola & Bryson, Bcee, Mackey Gee and more, regular play on Radio1, 1xtra, Kiss FM. Compose and feature on TV commercials worldwide.
 
-			Brendan has credits ranging from Steven Wilson and Foo Fighters, to Moby and Billy Idol. Recording and Mixing albums and films, Brendan is well versed in many type of productions, though his favorite is rock music. He has been working amongst the greats of the industry for over 20 years and has honed his skills in some of the best studios in Los Angeles, such as EastWest, Cherokee and Glenwood Place.
+			I work regularly with Sony Music, Universal and a number of major production houses worldwide. I'm used to producing pitches to a deadline and have a very versatile voice.
 			
-			Now offering Dolby Atmos mixing services, release your music in 360º immersive Dolby Atmos. This has been around in films for a while, but now every major label is pushing this new format for music. Tidal HiFi and Amazon Music HD now support it, it can be played back in regular headphones from your phone, and many soundbars and devices.
+			I specialise in EDM, DnB, House, Gospel, R&B and Pop.
 			
-			I'd love to hear about your project. Click the 'Contact' button above to get in touch.";
+			How it works:
+			
+			Simply get in touch providing a downloadable link to your track (Please always include the track or I will decline your project). Provide me with a brief, this can either be a description of what you want sang or a guide vocal. References are always useful as it will show me how you want the piece to be sang.
+			
+			What I offer:
+			
+			VOCALS ONLY -
+
+			Non-Featured Vocals for release - $450
+
+			Demo vocals (not for release) - $300
+
+			Featured Vocals (dependant on project) - Contact for pricing
+
+			Backing Vocal arrangement & recording - $400
+			
+			VOCALS & FULL TOPLINE - Contact for pricing
+
+			Songwriting (lyrics only)
+
+			Full Top Line (melody & lyrics)
+			
+			VOCAL ARRANGEMENT - $400
+
+			Backing Vocal arrangement
+			
+			T&C's
+			
+			- Dry stems will be sent once the balance is paid in full
+			
+			- I do NOT provide free demos at all
+			
+			- Featured artist releases will be determined on an individual basis.
+			
+			- Full top-line (50% of Master and 50% of the Publishing Splits)
+			
+			- Vocal projects (lyrics & melody pre-written) no royalty required
+			
+			- Recorded vocals may only be used for the session purchased and are not to be used without permission on any other track
+			
+			Send me an email through 'Contact' button above and I'll get back to you asap.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -79,7 +119,7 @@ class SinglePersonSeeder18 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Grammy and Oscar-winning Engineer";
+		$bio_text4 = "Professional vocalist and songwriter";
 
 		/**
 		 * ! IMMAGINE
@@ -88,7 +128,7 @@ class SinglePersonSeeder18 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'Kayrae_Phantoms_Promo_001_FINAL_test_4.jpg';
+		 $image_name = 'IMG_8859.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -98,28 +138,28 @@ class SinglePersonSeeder18 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['Mixer','engineer']; // ! obbligatorio ! 
+		$categories = ['Vocalist','Songwriter']; // ! obbligatorio !  
 		
 		// % GENRES % 
 
-		$genres = ['Funk','Heavy Rock','Pop','Pop Rock','Rock'];
+		$genres = ['EDM','Electronic','Funk','Gospel','House','Pop','R&B','Soul'];  
 
 		// % OFFERS % 
 
-		$offers = ['recording','arrangement','editing']; // ! obbligatorio !
+		$offers = ['recording','arrangement','writing']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
-		$min_num_of_messages = 10; // max 25 (src list)
+		$min_num_of_messages = 7; // max 25 (src list)
 
 		// % REVIEWS % 
 
-		$min_num_of_reviews = 15; // max 25 (src list)
+		$min_num_of_reviews = 10; // max 25 (src list)
 
 		// % CONTRACTS % 
 
-		$min_number_of_past_contracts = 3; // less than max
-		$max_number_of_past_contracts = 9; // no limits
+		$min_number_of_past_contracts = 2; // less than max
+		$max_number_of_past_contracts = 6; // no limits
 		$is_active_contract = 1; // 1 or 0
 
 
