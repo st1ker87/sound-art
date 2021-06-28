@@ -54,6 +54,8 @@
 	</div>
 </div>
 
+{{-- INCLUDE MODAL DELETE PROFILE --}}
+@include('partials.modal_profile_delete')
 
 @endsection
 

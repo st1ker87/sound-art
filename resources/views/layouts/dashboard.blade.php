@@ -84,25 +84,25 @@
                                     @endif	
                                 </div>
 
-                                @if (request()->is('admin/dashboard'))
-                                    {{-- NUOVA PARTE BOTTONI A DESTRA --}}
-                                    @if ($my_profile)
-                                        {{-- EDIT PROFILE BUTTON --}}
-                                        <a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
-                                    
-                                        {{-- MODAL BUTTON -------------------------------------------------------------}}
-                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">Delete Profile</button>
-                                        {{----------------------------------------------------------------------------}}
-                                    @else
-                                        {{-- CREATE PROFILE BUTTON --}}
-                                        <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
-                                    @endif
-                                    @if (!$is_active_sponsorship && $my_profile)
-                                        {{-- SPONSOR YOUR PROFILE --}}
-                                        <a class="btn btn-sponsor" href="{{ route('admin.sponsorships.index') }}">Sponsor Profile</a>
-                                    @endif
-                                    
+                                
+                                {{-- NUOVA PARTE BOTTONI A DESTRA --}}
+                                @if ($my_profile)
+                                    {{-- EDIT PROFILE BUTTON --}}
+                                    <a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
+                                
+                                    {{-- MODAL BUTTON -------------------------------------------------------------}}
+                                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">Delete Profile</button>
+                                    {{----------------------------------------------------------------------------}}
+                                @else
+                                    {{-- CREATE PROFILE BUTTON --}}
+                                    <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
                                 @endif
+                                @if (!$is_active_sponsorship && $my_profile)
+                                    {{-- SPONSOR YOUR PROFILE --}}
+                                    <a class="btn btn-sponsor" href="{{ route('admin.sponsorships.index') }}">Sponsor Profile</a>
+                                @endif
+                                
+                                
                             </nav>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                     </div>
                         
                         
-                    @if (request()->is('admin/dashboard'))
+                    {{-- @if (request()->is('admin/dashboard')) --}}
                         {{-- NUOVA PARTE BOTTONI A DESTRA --}}
                         <div class="btn_box nav flex-column flex-sm-column flex-md-row md-block">
                             @if ($my_profile)
@@ -161,7 +161,7 @@
                                 <a class="btn btn-primary my-color" href="{{ route('my_sponsorships') }}">Check Sponsorships</a>	
                             @endif --}}
                         </div>
-                    @endif
+                    {{-- @endif --}}
                 </nav>
             </div>
         </div>

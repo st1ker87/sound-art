@@ -193,9 +193,10 @@
 {{-- MODAL CONTENTS start ----------------------------------------------------}}
 
 
-@if ($my_profile)
+
+@include('partials.modal_profile_delete')
 	<!-- MODAL DELETE PROFILE start-->
-	<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+	{{-- <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
@@ -228,9 +229,9 @@
 
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- MODAL DELETE PROFILE end-->
-@endif
+
 
 
 {{-- MODAL CONTENTS end ------------------------------------------------------}}
