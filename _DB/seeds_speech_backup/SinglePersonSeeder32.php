@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder32 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Tony';
+		$surname 	= 'Guerrero';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Orange County, CA, USA';
+		$work_address 	= '460 The City Dr S, Orange, CA 92868';
+		$phone 			= '+1 71 4787 3925';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,11 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"If you need a moody muted trumpet or a pretty flugelhorn track, I'd love to work with you.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I'm not the guy to play screaming high trumpet parts, instead I specialize in the prettier, moodier side of the horn. I've played on over 300 albums and recorded with everyone from Dick Van Dyke to Paul McCartney. The AllMusicGuide is generally not very accurate, so please visit my website for a complete discography and list of artists I've worked with.
 			
-			Contact me through the blue button above and let's get to work.";
+			Send me a note through the contact button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +77,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "If you need a moody muted trumpet or a pretty flugelhorn track, I'd love to work with you";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +86,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'Tony_Guerrero_Headshot_Terence_Love_9-19.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +96,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['trumpeter','hornist','pianist','keyboardist']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Gospel','Hip Hop','Jazz','Pop Rock','Soft Pop']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +250,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

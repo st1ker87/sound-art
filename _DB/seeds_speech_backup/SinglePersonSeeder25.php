@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder25 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Ryan';
+		$surname 	= 'Svendsen';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Los Angeles, CA, USA';
+		$work_address 	= '337 Richmond St, El Segundo, CA 90245';
+		$phone 			= '+1 31 0322 3895';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,33 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Fast, Easy, Communicative. I layer myself w/ harmonies & mutes to build a full section. I can improv or you tell me what you want! Lets collab! Grammy Nominated Trumpet/Flugelhorn artist. Recorded for artists such as Shawn Mendes, Jon Bellion, Christina Aguilera, and more. I love creating horn lines that will suit your track. Socials: @Musicbefore
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Hi! I'm Ryan.
 			
-			Contact me through the blue button above and let's get to work.";
+			I am a trumpet and flugelhorn player and the Top Reviewed Trumpet player on Soundbetter! With over 15 years of experience, I am flexible and easy to work with!
+			
+			HOW IT ALL WORKS... easy peasy (all my work is one time fee/work for hire)
+
+			* Send me the track you want horns on and let me know the BPM with any notes you have.
+
+			* I will send you a quote
+
+			* If you have specific ideas, melodies, hooks, you can record them or play them on your track, and I will translate them to horns.
+
+			* If not, no worries, this is what I excel in!!! I will create my own horn parts and layer them so you have plenty of options to choose from!
+
+			* I will send you a link to the stems and a bounce of the track for reference after I record!
+
+			* I will work until you are happy with the horns for your track!!!
+			
+			I DO NOT CHARGE EXTRA FOR LAYERS. I am happy to do them for the overall quote price so if you want something to sound fuller, just ask! :)
+			
+			I treat every track like it is my own- with love and care, and I look forward to working with you. I want you to win! Also love to support your track and post about it when you release it.
+			
+			Want to hear every song released I have played trumpet on? Check out my horn playlist here: https://open.spotify.com/playlist/76xhH7m1vilW1zwZCfEUCh?si=5rjZgvgzQEaSSlk5YNXBpw
+			
+			Contact me through the green button above and let's get to work.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +99,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Grammy Nominated Trumpet/Flugelhorn artist";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +108,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'IMG_2090-Edit.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +118,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['trumpeter','hornist']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Electronic','Funk','Hip Hop','Jazz','Pop','Pop Rock','Rock'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +272,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

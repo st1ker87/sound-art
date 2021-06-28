@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder31 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Igort';
+		$surname 	= 'Rivas';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'La Havana, Cuba';
+		$work_address 	= 'Avenida Paseo, La Habana';
+		$phone 			= '+53 78 828 000';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,27 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"I am a Trumpeter with more than 30 years of experience in recording, I can be responsible for the Brass Session you need, I have the most competent recording equipment on the market, I guarantee fast and quality work.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			MY SETUP:
+
+			-APOLLO 8 INTERFACES
+
+			-BURL AUDIO ADC
+
+			-BURL B1 PREAMP
+
+			-API PREAMP
+
+			-ROYER 122
+
+			-AKG ULS 414
+
+			-SHURE KSM 44
+
+			-MOGAMI CABLE
 			
-			Contact me through the blue button above and let's get to work.";
+			Send me an email through 'Contact' button above and I'll get back to you asap.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +93,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Trumpeter with more than 30 years of experience";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +102,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'IMG_0044.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +112,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['trumpeter','Brass player']; // ! obbligatorio ! Trumpet & Brass Session
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Afrobeat','Funk','Jazz','Latin','Pop'];
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +266,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

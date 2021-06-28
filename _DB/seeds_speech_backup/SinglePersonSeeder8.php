@@ -93,7 +93,7 @@ class SinglePersonSeeder8 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "International Cello Performer/Recording artist with more than 10 years experience";
+		$bio_text4 = "I am a dedicated session cellist who would love to add layers of rich cello sound to your track.";
 
 		/**
 		 * ! IMMAGINE
@@ -116,7 +116,7 @@ class SinglePersonSeeder8 extends Seeder
 		
 		// % GENRES % 
 
-		$genres = ['Classical','Folk','Jazz','Pop','Pop Rock','Rock'];  
+		$genres = ['Classical','Folk','Jazz','Pop','pop rock','Rock'];  
 
 		// % OFFERS % 
 
@@ -266,7 +266,7 @@ class SinglePersonSeeder8 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

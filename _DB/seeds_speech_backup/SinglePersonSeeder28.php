@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder28 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Stephanie';
+		$surname 	= 'Patterson';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Fort Wayne, IN, USA';
+		$work_address 	= '1227 Herbert St, Fort Wayne, IN 46803';
+		$phone 			= '+1 26 0336 2102';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Professional oboe and English horn player with professional recording equipment available for remote recording.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			A native of Long Island, New York, Stephanie Patterson began playing the oboe at age 7. She holds a Master’s of Music Degree in oboe performance from Stony Brook University and a B.M. in Music Education from SUNY Fredonia. Stephanie currently resides in Fort Wayne, Indiana, works as an oboe tuner and adjuster at Fox Products, is the principal oboist for the Symphony of the Lakes in Warsaw, IN, and is a contributing musician with the Fort Wayne Philharmonic.
 			
-			Contact me through the blue button above and let's get to work.";
+			Professionally, Stephanie has played with numerous ensembles including the American Wind Symphony Orchestra, the Nassau Pops, the Western New York Chamber Orchestra, the Erie Chamber Orchestra, the Southern Tier Symphony and the Westchester Band. Stephanie also performed at a number of churches on Long Island and in Manhattan, and also performed in pits for musicals with theatre companies in Westchester and on Long Island.
+			
+			Stephanie has also worked in the world of film, acting as an “on-screen” oboist in the 2014 remake of “Annie”.
+			
+			Would love to hear from you. Click the contact button above to get in touch.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +81,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Professional oboe and English horn player";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +90,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = '1517899_10203620952348631_3705755583515103371_o.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +100,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['oboist','hornist','singer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Classical','Soundtrack'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +254,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

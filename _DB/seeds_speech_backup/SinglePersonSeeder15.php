@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder15 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Kayrae';
+		$surname 	= '';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Los Angeles, CA, USA';
+		$work_address 	= '601 11th St, Huntington Beach, CA 92648';
+		$phone 			= '+1 657-244-8084';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,53 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"LABEL RELEASES: Arkade/Aftercluv Dancelab/Columbia Deutschland/Mometum Records/Perfecto Records/BredNButter/Trap City/Tiger Records/AIA/Knight Vision/Gemstone Records/Physical Presents/Liftoff Recordings
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Hello! My name is Kayrae. I'm a professional singer/songwriter in the Los Angeles, CA area. I write/record/engineer everything for myself so you won't have to find a studio for me. With millions of plays, my original tracks have been featured on numerous Spotify Editorial playlists and played on SIRIUSXM. I've also worked with some very well known EDM artists like Kaskade and have been supported by Hardwell & Tritonal. I can sing in many different styles including opera, pop, country, and EDM so if you have any sync projects I can adapt to those as well. Also open to doing voice overs. On social media as @kayraelien :)
 			
-			Contact me through the blue button above and let's get to work.";
+			NEWEST RELEASES:
+
+			November 27, 2020
+
+			Jack Trades & Kayrae - Phantoms
+			
+			PAST RELEASES:
+
+			Merger & Kayrae - Boulevard
+
+			Joel Freck & Kayrae - Kyoto/No Surrender
+
+			Jack Trades & Kayrae - Sideways
+
+			DJ MEG & Red Square feat. Kayrae - One Life
+
+			SWU x Kayrae - Dubai
+
+			NOTOK, Kayrae - Category Five
+
+			Reveleries, Rob Tirea, Kayrae - Blue
+
+			Mademoiselle Luna, Sean Aaron, & Kayrae - Honey
+
+			Red Square & Jim feat. Kayrae - The Word (Go There)
+
+			LoKii - Shame ft. Kayrae
+
+			SWU x Kayrae - Lunar
+
+			Varun feat. Kayrae - We Can't Be Friends
+
+			Kaskade - In The Bleak Midwinter ft. Kayrae
+
+			Kaskade - Play With Me
+
+			Trouze - Busy feat. Kayrae
+
+			Lemarroy, Charlie & Zulu - Wide Awake feat. Trouze
+
+			Tom & Collins - Savage
+			
+			Send me a note through the contact button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +119,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Professional singer/songwriter in the Los Angeles, CA area";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +128,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'Kayrae_Phantoms_Promo_001_FINAL_test_4.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +138,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Songwriter','singer','engineer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Electric Pop','Electronic','Heavy Rock','Indie Pop','Pop','Pop Rock','Rock'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','editing']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +292,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

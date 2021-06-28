@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder12 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Kristin';
+		$surname 	= 'Weber';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Nashville, TN, USA';
+		$work_address 	= '715 Spence Ln, Nashville, TN 37217';
+		$phone 			= '+1 615-750-2744';
 
 		/**
 		 * ! TESTO
@@ -64,10 +64,13 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"String hooks are my passion. Credits: Dolly Parton, Cage the Elephant. Lush indie string section, fiddle lines, ripping bluegrass solo, string quartet, violin, viola, sweet/smokey female vocal.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			30 years of background in classical and fiddling and Berklee graduate, over a decade as a Nashville session violinist. My experience ranges from writing lush indie string parts for records, touring with a grammy-nominated bluegrass band as a fiddler, performing in a string quartet with Lorde, playing on tracks for Lauryn Hill, recording in a symphony for movie soundtracks, touring as a singer and violinist with various bands. I can give you lush indie strings, a simple violin/fiddle line, a ripping bluegrass solo, string quartet arrangements, female vocals or anything else you can imagine. I can arrange for and hire experienced session cellists and other violinists and violists if you seek a duo, quartet or full string section sound.
+			
+			My recording credits include: Dolly Parton, The Beach Boys, Little Big Town, Cage the Elephant, Roy Orbison, Midland, Margo Price, Brett Eldridge, Kelsea Ballerini, Burt Bacharach.
+			
+			My performance credits include: Lorde, Cage The Elephant, Eminem, Carrie Underwood, Michael Buble, Kacey Musgraves, Evanescence, Augustana, Midland, Margo Price.
 			
 			Contact me through the blue button above and let's get to work.";
 
@@ -78,7 +81,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "String hooks are my passion";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +90,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'Kristin_Weber.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +100,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Violinist','violist','vocalist','singer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Classical','Country','Hip Hop','Indie Pop','R&B','Soul','Rock'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement']; // ! obbligatorio !
 
 		// % MESSAGES % 
 

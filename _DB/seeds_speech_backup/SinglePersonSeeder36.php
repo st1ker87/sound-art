@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder36 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'AYLA';
+		$surname 	= '';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Heidelberg, Germany';
+		$work_address 	= 'Speyerer Str. 15, 69124 Heidelberg';
+		$phone 			= '+49 622 118 0011';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,17 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"QUALITY BEFORE QUANTITY
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I started writing songs when I was only seven years old and at the age of 9 I wrote my first musical.
+
+			I have a very philosophical view on the world, which I express with my thoughtful lyrics as in PURA VIDA's \"nobody's possessions in everybody's hands\" or ANTI TIME's \"all run out of time but nobody moves on\"
 			
-			Contact me through the blue button above and let's get to work.";
+			I am winner of the ONE WORLD SONG CONTEST (song: HANDS UP) and the MYSONGWINS POP MUSIC competition (song: ANTI TIME). I am finalist of \"DEIN SONG\" streamed by the german national television (with half a million views in the finals) (song: PURA VIDA)
+			
+			I have written the lyrics, melody, top line and recorded my vocals to many songs around the World, as for example \"downside up\" with Aardo and Wckd.
+			
+			Would love to hear from you. Click the contact button above to get in touch.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +83,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Quality before quantity";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +92,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'cover_draft.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +102,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['singer','songwriter','harpist']; // ! obbligatorio !  
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Chill','Electric Pop','Indie Pop','Soft Pop','Soundtrack','Trap']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['writing','recording','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +256,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

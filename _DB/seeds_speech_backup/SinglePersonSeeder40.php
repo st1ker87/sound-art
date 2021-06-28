@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder40 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Eleanor';
+		$surname 	= 'Turner';
 
 		// % PROFILE % 
 
 		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_address 	= 'THE BREWARY, 49 Chiswell St, London EC1Y 4SA';
+		$phone 			= '+44 20 8161 0190';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,11 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"I am a calm and focused acoustic and electro harpist, comfortable in classical, hip hop and improvisation. I read charts and sheet music fluently and am comfortable working by ear and coming up with my own ideas. I co-write songs with my band Ranagri and Ian Crabtree and have contributed harp to tracks by Deacon, Tertia May, Subculture and Ruti.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I can record at home with my Shure Beta 87A or Blue Yeti mic. Pre lockdown I worked every week in London and Birmingham with a variety of producers (now entirely remote recording!) and I live near Cambridge, UK. A quote about my session work in the field of hiphop, reggae and pop from Ivor Novello winning producer Cassell the Beatmaker: \"Working with Ellie is a breath of fresh air. She always brings an inspiring musical elegance that she is very good at applying to any genre, bringing a new fresh element to the way you can use the sound of the harp to elevate your music.\" Cassell the Beatmaker; songwriter, producer Plan B, Akala; drummer with The Streets.
 			
-			Contact me through the blue button above and let's get to work.";
+			Send me a note through the contact button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +77,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Calm and focused acoustic and electro harpist";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +86,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = '2019-08-24_20.43.37.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +96,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['harpist','Electro harpist']; // ! obbligatorio ! Electro/acoustic harpist
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Choral','Classical','Electric Pop','Electronic','Folk','Latin','R&B','Soul']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['live exhibition','teaching','recording']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +250,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

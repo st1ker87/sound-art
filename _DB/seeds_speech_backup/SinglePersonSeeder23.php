@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder23 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'soundzliketeo';
+		$surname 	= '';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'North Macedonia';
+		$work_address 	= 'MK, Skopska 5, Kochani 2300';
+		$phone 			= '+389 7021-3484';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,21 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"I'm a professional singer, songwriter and musician. Been singing for 11 years and have a band with released music. Now have my own recording studio at home which makes my work flow super smooth. My main instrument is ukulele and write most songs with it. I record my own projects and love to collaborate with other artists.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I will record exceptional lead vocals, backing vocals/harmonies & ad libs (deep, soulful, raspy or sweet) for your songs, tracks, demos, commercials, jingles, and reference tracks. I'm versatile and able to sing more genres including: Pop, R&B, Jazz, Soul, EDM, Soft Rock, Easy-listening, Spoken Word, Chanson, etc.
 			
-			Contact me through the blue button above and let's get to work.";
+			Upon completion, you will receive:
+
+			- Clean recordings (no effects, pops, buzzes and headphones bleeding through the microphone),
+
+			- Super organized audio tracks!
+			
+			I will provide great quality, communication and seamless, easy process with no stress. Feel free to message me with any questions you may have. I would love to hear from you!
+			
+			Teodora
+			
+			I'd love to hear about your project. Click the 'Contact' button above to get in touch.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +87,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Professional singer, songwriter and musician";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +96,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'upload-29.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +106,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Singer','Songwriter']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Chill','Folk','Indie Pop','Jazz','R&B','Soul'];
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','teaching']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +260,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

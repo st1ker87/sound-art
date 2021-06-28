@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder20 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Adriano';
+		$surname 	= 'Canetta';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'São Paulo, Brazil';
+		$work_address 	= 'Av. Professor Luiz Ignácio Anhaia Mello, 2665 - Vila Prudente, São Paulo - SP, 03155-000';
+		$phone 			= '+55 11 2213-8222';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,35 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"My name is Adriano de Oliveira, I am a saxophonist with almost 20 years of studio experience. I recorded and acted on tours with great artists from the Brazilian popular scene I have recorded many solos that play on Brazilian radios and on advertising channels, such as Tv Globo, the largest TV channel in Brazil I have also worked with musicians fro
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I offer here the best of my music to connect to the best of your music, with the maximum musicality and possible audio quality. I can record the saxophone Soprano, Alto, Tenor, Baritono. I Can Record Flute, Clarinet or Harmonic Too if you need.
+			I can create solos or interpret your written solo.
 			
-			Contact me through the blue button above and let's get to work.";
+			I am always very attentive to the music style of the track that is receiving my work so as to fit the best phrases, rhythms and expressions, at the right point!
+			be it sentimental, dramatic, frantic, happy or sad. I would love to hear your music and understand what you need to be broadcast.
+			
+			I love it,
+			
+			1. send me a message and tell me about your project.
+
+			2. send me the music in audio or midi.
+
+			3. Let's get to work
+			
+			Recording Equipment
+			
+			Macbook Pro
+
+			Lodic Pro - Daw
+
+			KrK Rokit 5 - Monitors
+
+			DPA and MXL 990 - Microphones
+
+			Bose and Extream Molded - Headphones
+			
+			Send me an email through 'Contact' button above and I'll get back to you asap.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +101,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Saxophonist with almost 20 years of studio experience";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +110,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'IMG_4445_2.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +120,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['saxophonist','hornist']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Afrobeat','Funk','Gospel','Jazz','Latin','Pop'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +274,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

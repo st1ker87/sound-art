@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder29 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Rafael';
+		$surname 	= 'Rocha';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Rio de Janeiro, Brazil';
+		$work_address 	= 'R. São Francisco Xavier, 175 - Tijuca, Rio de Janeiro - RJ, 20550-010';
+		$phone 			= '+55 219 7955 0079';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,21 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Brazilian trombonist, arranger, composer and producer. Participated in concerts and recordings with artists such as: Ivan Lins, João Bosco, Bob Mintzer (USA), Erika Ender (PAN/EUA),Hamilton de Holanda, Carlinhos Brown, Ludmila, Roberto Menescal, Melim, Silva and others. Works for The Voice Brasil, Pop Star and plays and writes for several tv shows.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Trombonist, arranger, composer and producer.
+
+			Specialization in recording. I record in my home studio, but if necessary, I can do it in a friend's studio.
+
+			Trombone Solo (jazz, brazilian music, pop, funk, gospel, soul).
+
+			Arrangement and recording fo Horns (trumpet, sax, trombone and other)
+
+			Arrangement and recording for Big Band
+
+			Arrangement and recording for strings section (quartet, quintet or full ensemble)
 			
-			Contact me through the blue button above and let's get to work.";
+			Would love to hear from you. Click the contact button above to get in touch.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +87,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Brazilian trombonist, arranger, composer and producer";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +96,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'C0006.00_04_57_11.Still005_copy.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +106,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['trombonist','composer','producer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Funk','Gospel','Jazz','Latin','Pop','Soul','Rock'];
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','collaboration']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +260,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

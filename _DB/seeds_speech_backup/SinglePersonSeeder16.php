@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder16 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Kyle';
+		$surname 	= 'May';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Nashville, TN, USA';
+		$work_address 	= '33 Peabody St, Nashville, TN 37210';
+		$phone 			= '+1 615-751-8111';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,59 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Hello! My name is Kyle and I am a session drummer, producer, and engineer based out of Nashville, TN.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I will record high quality drum tracks from my home studio for your song! All I need is an mp3 or wav of your song with any instruction and I will deliver tracks to you within a few short days! Recording to a metronome is preferred, but if not I will still play my best to bring your song to the next level! I play on many sessions and tour professionally. I have appeared on Good Morning America, The TODAY show, CMT's Hot 20 Countdown, Pickler and Ben, and many more.
 			
-			Contact me through the blue button above and let's get to work.";
+			I can also remotely mix, edit and master any song or podcast. I mix with Neumann, Dangerous Music, Lynx., Universal Audio, Waves, and Soundtoys gear.
+			
+			Drums:
+
+			Gretsch Broadkaster Drum Kit
+
+			Gretsch USA Custom Kit
+
+			Craviotto Ash Snare (the go-to snare)
+
+			Ludwig Black Beauty Snare (the other go-to snare)
+
+			Ludwig Acrolite Snare (classic dry sound)
+
+			Pearl Masters Maple Snare (super low & dead for the perfect \"buzz\" sound)
+
+			Gretsch Maple Snare w/ Walnut Hoops (awesome \"crack\" for pop/country)
+
+			Vintage Wood-hooped snare (dirty, wide open ring)
+
+			Meinl Byzance, Zildjian, & Sabian Cymbals
+			
+			Mics:
+
+			1. Kick in (beta 52)
+
+			2. Kick out (miktek c7)
+
+			3. Snare Top (sE7)
+
+			4. Snare Top (m60)
+
+			5. Snare btm (m60)
+
+			6. Snare Side (sm57)
+
+			7. hat (akg451)
+
+			8. tom 1 (414 b-uls)
+
+			9. tom 2 (414 b-uls)
+
+			10. ORTF Overheads (miktek cv4s)
+
+			11. Spaced Overheads (Coles 4038s)
+
+			12. Mono Room (AEA R84)
+			
+			Send me a note through the contact button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +125,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Session drummer, producer, and engineer";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +134,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = '1x1_profile.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +144,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Drummer','Mixer','Producer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Country','Indie Pop','Pop','Pop Rock','Rock'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','editing','collaboration']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +298,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

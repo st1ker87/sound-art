@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder17 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Jason';
+		$surname 	= 'Boshoff';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Barcelona, Spain';
+		$work_address 	= 'Carrer de Mallorca, 401, 08013 Barcelona';
+		$phone 			= '+34 932 08 04 14';
 
 		/**
 		 * ! TESTO
@@ -64,10 +64,17 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Credits with David Gray, Rufus Wainwright, Josh Groban and more, I am a Mercury Music Awards and MPG nominated producer and mixer specialising in the alt and indie genres. Alt-pop, rock and folk. With my team of world class session musicians I combine the best live performances with synths, programmed drums and creative layering.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Send me your demo, whether it’s simply voice and guitar or a full recording, and I will suggest a creative direction either in writing or with an initial programmed sketch. From there I will record, program and arrange your track ready for final vocals and mix.
+			
+			Budgets are flexible according to your requirements and situation. You will not find a more affordable route to production and musicianship of this level.
+			
+			I am fortunate to have developed my skills in both traditional and modern production environments. I have tracked to 2” tape on the Studer A80 and recorded and mixed through both Neve VR and SSL G, E and K series boards and have completed productions entirely in-the-box using Pro Tools, Logic and Reaper.
+			
+			As engineer programmer and assistant I have worked on multi-million selling records for artists such as David Gray and Josh Groban. I have produced and mixed a mercury nominated album (Lisa Hannigan - Sea Sew 2009), been nominated as break-through producer of the year (UK MPG awards 2010) and won best producer and best rock album in China (Tan Wei Wei - The Tortoise and the Achilles 2013).
+			
+			Some notable past clients: The Basement Jaxx, Elbow, Rufus Wainwright and Gabriella Cilmi. I now focus on remote production and mixing providing top level productions to independent artists around the world.
 			
 			Contact me through the blue button above and let's get to work.";
 
@@ -78,7 +85,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Mercury Music Awards and MPG nominated producer and mixer";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +94,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'Swivel_Chair_EDIT_--18_Small_1088.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +104,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Producer','Mixer','engineer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Electric Pop','Electronic','Indie Pop','Pop','Pop Rock','Folk'];
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','editing']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +258,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder33 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Maisie';
+		$surname 	= 'Ireland';
 
 		// % PROFILE % 
 
 		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_address 	= '4 Kingsman St, London SE18 5QE';
+		$phone 			= '+44 208 312 5777';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Session Oboe and Cor Anglais player. My aim is to realize your vision, whether it's recording written parts or working together to craft a unique oboe line, I'm sure we can find the perfect sound for your project.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Following my studies at the Royal Academy of Music, in London UK, I have performed solo recitals and orchestral concerts around the UK, whilst working on copious session music for adverts, soundtracks and films, most notably appearing in Elton John's 'Rocketman'.
 			
-			Contact me through the blue button above and let's get to work.";
+			Performance highlights include the BBC Proms at the Royal Albert Hall under the baton of Edward Gardner, London Mahler Orchestra, Royal Academy of Music Symphony Orchestra at the Royal Festival Hall led by Semyon Bychkov, Westminster Opera Company, Berkshire Chamber Music Festival, ‘3 Decades of Film Music’ at the Royal Albert Hall, under the baton of James Newton Howard (performing Howard’s triumphs from Batman The Dark Knight, the Hunger Games series, blockbusters including The Sixth Sense and Peter Jackson’s King Kong, rom-coms Pretty Woman and My Best Friend’s Wedding, to name a few).
+			
+			Drop me a message if you are interested in working together!
+			
+			Send me a note through the contact button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +81,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Session Oboe and Cor Anglais player";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +90,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'Headshot_b_w.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +100,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['oboist','Cor anglais player']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Chill','Choral','Classical','Gospel','Pop','Soundtrack']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +254,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

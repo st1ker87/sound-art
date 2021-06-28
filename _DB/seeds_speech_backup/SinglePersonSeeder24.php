@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder24 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Rachel';
+		$surname 	= 'Redman';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Reading, UK';
+		$work_address 	= '62 St Mary\'s Butts, Reading RG1 2LG, United Kingdom';
+		$phone 			= '+44 11 8959 8877';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,23 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Highly qualified (Teaching Degree (PGCE Music), BA HONS Degree in Music/Music Technology. Professional Female Vocalist, Backing Vocalist, Acoustic Guitarist, Vocal production, Songwriter/Arranger, Producer. Experienced in the studio and as a live wedding Singer/Guitarist.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I'm a professional Female Vocalist, Backing Vocalist, Acoustic Guitarist, Keyboard/Synth player who also plays the Penny Whistle and Oboe. I am highly qualified with PGCE (Teaching qualification in Music/Music Tech for High/Secondary School) BA HONS Degree in Music, and a HND in Popular Music and Music Technology. I am signed to a publisher songwriting in the Pop genre for artists all over the world! I have a fantastic home studio with high quality equipment. I am dedicated to providing a bespoke vocal or instrumental part for your track, and also strive to make my clients 100% happy! If you would like to work with me, we can talk through your requirements, I will create your track(s) then we can discuss any edits you would require (up to 2 consultations to discuss edits/changes)
 			
-			Contact me through the blue button above and let's get to work.";
+			Services
+
+			- Demo/Commercial Vocal tracks
+
+			- Acoustic Guitar tracks/Instrumental tracks
+
+			- Professional Songwriting/Top-Line (Lyrics and Melody)
+
+			- Vocal Production/Backing Vocals
+
+			- Music Production/Backing Tracks/Instrumentals
+			
+			Would love to hear from you. Click the contact button above to get in touch.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +89,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Experienced in the studio and as a live wedding Singer/Guitarist";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +98,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'redman-44.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +108,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Vocalist','Guitarist','Songwriter']; // ! obbligatorio ! Female Vocalist, Backing Vocal
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Electric Pop','Folk','Pop','Soft Pop']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +262,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

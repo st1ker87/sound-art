@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder27 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Juliane';
+		$surname 	= 'Gralle';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Los Angeles, CA, USA';
+		$work_address 	= '800 W Olympic Blvd A-115, Los Angeles, CA 90015';
+		$phone 			= '+1 21 3745 9273';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,24 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Recording artist in Los Angeles with wide ranging experience from horn sections to motion pictures in any conceivable genre.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Juliane covers all low brass (trombone, bass trombone, tuba, contra bass trombone, euphonium etc) and can compose (or help you write) the parts for your project. She works in all genres and styles of music and is always open to new ideas.
+			Let her know what you need and she'll deliver - committed to a quick turn around and professional product.
 			
-			Contact me through the blue button above and let's get to work.";
+			www.julianegralle.com
+			
+			Selected credits:
+
+			Pop: Lady Gaga, Michael Bolton, Dirty Projectors, Adele, Lady Antebellum, Jessie J, Dave Matthews Band, Jordan Smith, Mar J Blige, Trisha Yearwood, The Voice
+
+			Jazz: Quincy Jones, John Clayton, Jeff Hamilton, Bob Brookmeyer, Johnny Mandel, Bob Mintzer, Peter Erskine
+
+			Movies: Spiderman - Far From Home, Shaft (2019), Baywatch 2, Bad Times at the El Royal, Wreck It Ralph 2, Hands of Stone
+
+			TV: ELF, Galavant, Agent Carter, What/If, Once Upon A Time
+			
+			Tell me about your project and how I can help, through the 'Contact' button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +90,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Recording artist in Los Angeles with wide ranging experience";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +99,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'IMG_20190601_115802_603.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +109,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['trombonist','tubist']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Classical','Funk','Jazz','Rock','Pop'];
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +263,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

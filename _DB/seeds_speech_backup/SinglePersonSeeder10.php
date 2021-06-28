@@ -51,7 +51,7 @@ class SinglePersonSeeder10 extends Seeder
 		// % PROFILE % 
 
 		$work_town		= 'Portland, OR, USA';
-		$work_address 	= '4790 SE Milwaukie Ave #4730, Portland, OR 97202';
+		$work_address 	= '4790 SE Milwaukie Ave 4730, Portland, OR 97202';
 		$phone 			= '+1 971-302-7445';
 
 		/**
@@ -254,7 +254,7 @@ class SinglePersonSeeder10 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

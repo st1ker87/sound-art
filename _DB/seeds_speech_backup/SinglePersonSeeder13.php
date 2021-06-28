@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder13 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Silke';
+		$surname 	= '';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'London, UK / Rome, Italy';
+		$work_address 	= 'Piazza di Trevi, 00187 Roma RM';
+		$phone 			= '+39 06 06 08';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,18 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"I am a pro British session singer, songwriter & composer and I have been specializing in online sessions since 2005. My tone is very versatile yet unique: if you're looking for a singer who will listen to you and bring your vision to life but always add emotion, personality, urgency, top-notch audio quality and dedication look no further.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I work from my own recording studio and having recorded for many sync pitches with super-tight deadlines, I have developed a very fast turnaround - always guaranteeing quality and care.
+			My studio is equipped with high end preamps, compressors and mics (Chandler, Neve, API, UA, Neumann, Flea) and it has a beautifully sounding live room.
+			I have engineered my own sessions for years and I take extra care in choosing the right mic-pre combination for each track, whether I am looking for a sparkly pop sound, a smooth and intimate acoustic vibe or a steaming hot rock tone.
+			I am a trained musician with great ear and a songwriter & composer, and I will always be happy to provide vocal arrangements and top lines on request.
 			
-			Contact me through the blue button above and let's get to work.";
+			My voice has appeared on Kygo's \"monthly\" masterclass and on tracks featuring amazing musicians such as Dominic Miller (Sting) Andy Treacey (Faithless) and Paul Winter-Hart (Kula Shaker) , producers like Matt Butler (Paul McCartney) and Tommaso Colliva (Muse), Ranji & Ghost Rider and labels like Sony Music, Universal Music, Defected Records and Almighty Records. I have worked extensively on music for media (movies, TV series, adverts) for brands like Fox, Netflix, Showtime Networks, MTV, Nivea, Breil, Miller, Lotos, Gabriele Muccino, Channel 4, New Look, Ferrero, Applebees, Harvester Games and more.
+			
+			SORRY - I DO NOT OFFER FREE TESTS UPFRONT
+			
+			Click the 'Contact' above to get in touch. Looking forward to hearing from you.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +84,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Pro British session singer, songwriter & composer";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +93,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = '774231_1381824985416545_1978161150_o_1_.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +103,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Singer','Composer','Songwriter']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Electronic','Folk','Pop','Pop Rock','Rock'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','teaching']; // ! obbligatorio !
 
 		// % MESSAGES % 
 

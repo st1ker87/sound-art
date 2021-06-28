@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder21 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Matheus';
+		$surname 	= 'Abner';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Ribeirão Preto, State of São Paulo, Brazil';
+		$work_address 	= 'R. José Aissum, 125 - Parque dos Bandeirantes, Ribeirão Preto - SP, 14090-370';
+		$phone 			= '+55 16 3618-1393';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,23 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+		"My name is Matheus, I've been a professional trombonist for 7 years, I played in different bands and different styles and I am currently studying Music at the University of São Paulo, Bachelor of Trombone.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
-			
-			Contact me through the blue button above and let's get to work.";
+		I had experiences as a score arranger for wind groups and experiences with different musical genres such as: Funk, pop, jazz, soul, rap, raggae, samba, choro, bossa and classical music. One of my greatest works is the recording of the album \"Still behind the sunset\" made in Salvador - BA in honor of the great reference of Afro-Brazilian music Lazzo Matumbi, the album has the participation of several renowned artistar of Brazilian music.
+		
+		If you want to record the wind trio and don't have the arrangement, we can talk because, I can write the scores and also record the three voices for your project to happen.
+		
+		My recording settings:
+		
+		King 2B Libert Gold Trombone - with mute option
+		
+		Shure M57 microphone
+		
+		Protools Ultimate
+		
+		Contact me and tell me what I can help with your project.
+		
+		Contact me through the blue button above and let's get to work.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +89,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Professional trombonist for 7 years";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +98,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'FB_IMG_1591392633314.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +108,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['trombonist','trumpeter','ukulelist']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Afrobeat','Blues','Funk','Jazz','Latin','Pop','R&B','Soul','Reggae'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +262,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

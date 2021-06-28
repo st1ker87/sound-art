@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder14 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'TJ';
+		$surname 	= 'Hartmann';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Dayton, OH, USA';
+		$work_address 	= '1800 N Main St, Dayton, OH 45405';
+		$phone 			= '+1 937-277-3030';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,23 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Session Drummer / Producer / Recording Engineer
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Working from my home studio in Dayton, OH, I've had the privilege to provide high quality, studio drum-tracks for Artists across the world. Additionally, I have been brought on as a Session Musician, Songwriter and Producer for Static Flight Music Group based in Nashville, TN. I'm thankful to have been called upon to fill roles in touring bands crossing genres from Pop, Country-Pop, DJ/Live Drums, and pop rock.
 			
-			Contact me through the blue button above and let's get to work.";
+			I have had the honor of joining artist rosters for many prestigious companies including: Pearl Drums, Meinl Cymbals, Evans Drumheads, and sE Electronics.
+			
+			Currently Offering:
+			
+			- Live Drum Tracks
+
+			- Beat and Drum Programming
+
+			- Drum Track Editing
+			
+			Feel free to contact me, I would love to be a part of your project!
+			
+			Tell me about your project and how I can help, through the 'Contact' button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +89,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "High quality, studio drum-tracks for Artists across the world";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +98,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'IMG_8511.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +108,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Drummer','Producer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Electric Pop','Electronic','Heavy Rock','Indie Pop','Pop','Pop Rock','Rock'];  
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement']; // ! obbligatorio !
 
 		// % MESSAGES % 
 

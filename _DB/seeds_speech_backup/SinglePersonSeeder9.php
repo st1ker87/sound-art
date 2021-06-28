@@ -102,7 +102,7 @@ class SinglePersonSeeder9 extends Seeder
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Country','Heavy Rock','Pop','Pop Rock','Rock'];  
+		$genres = ['Blues','Country','Heavy Rock','Pop','pop rock','Rock'];  
 
 		// % OFFERS % 
 
@@ -252,7 +252,7 @@ class SinglePersonSeeder9 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

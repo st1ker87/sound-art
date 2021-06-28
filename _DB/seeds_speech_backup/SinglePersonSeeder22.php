@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder22 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'German';
+		$surname 	= 'Domador';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Caracas, Capital District, Venezuela';
+		$work_address 	= 'Calle Simón Planas, Caracas 1041, Distrito Capital';
+		$phone 			= '+58 41 2324 3511';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,27 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Caracas based musician with over 20 years of experience as a professional Drummer and Percussionist. Working as the Main Timpanist and Drummer of the 'Municipal Symphonic Orchestra of Caracas' and also as the Main Percussionist of the 'National Typical Orchestra'. I always try to deliver my best performance on every track I'd recorded.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Hi!, my name is Germán Domador, I'm a professional musician based on Caracas, Venezuela.
 			
-			Contact me through the blue button above and let's get to work.";
+			I have worked with producers around the world, I also have played in Live Stage with Gustavo Cerati when he did come to Venezuela.
+			
+			I'm available to record Drums, Electronic Drums, Symphonic Percussion and Typical Venezuelan Instruments, doesn't matter the genre you are producing I'll do my best to accomplish your goal!.
+			
+			If you need to record real Symphonic Percussion Instruments, (Timpani,Glockenspiel,Cymbals, Bass Drum, tam-tam,etc)to your Film music,or Video game music Orchestral score. I can do it for you!I can make that dream come true for you in a competitive price!
+			
+			I record the Drums on my own studio called 'Doma Estudio', we have the necessary equipment to make the Drums you have been dreaming
+			
+			We record the Kick, Snare, Hi-Hat, Floor Tom, Mid Tom and High Tom (if needed) and one pair of Overheads, if you need a pair of Room Mics, feel free to ask for them!.
+			
+			If you want a Timpani record, we record with 3 mics: One pair of Overheads and a Room Mic.
+			
+			If you need a Electronic Drum kit, feel free to ask for it, It would be great if you have the samples that you want me to play, but in case you don't have it, I have enough sample packs to choose from.
+			
+			Send me an email through the Contact button, I'll be reading and get back to you as soon as I can!.
+			
+			Send me an email through 'Contact' button above and I'll get back to you asap.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +93,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Over 20 years of experience as a professional Drummer and Percussionist";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +102,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = '_MG_9735-Edit.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +112,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Timpanist','Drummer','producer']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Classical','Jazz','Latin','Pop','Pop Rock','Rock']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +266,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

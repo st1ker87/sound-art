@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder35 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'LUXXURY';
+		$surname 	= '';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Los Angeles, CA, USA';
+		$work_address 	= '210 The Promenade N, Long Beach, CA 90802';
+		$phone 			= '+1 56 2676 4261';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,19 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"KCRW, MTV, Carson Daly, Netflix, CSI Miami, XBOX games, Pontiac & KMART ads have featured my music for Fitz & The Tantrums, Melanie Martinez & Goldroom, as have Spin, Complex, Interview, LA Times & The Wall Street Journal; as LUXXURY I've performed everywhere from LA to London, Mexico City to Madrid, & Berlin to Delhi, India.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			I specialize in electronic and dance with an indie feel, but I also love pop songs and melodies, so my favorite music is dance-able pop. My productions have gotten millions of Spotify and Soundcloud streams and my work has been featured in dozens of films, TV shows, ads and games.
 			
-			Contact me through the blue button above and let's get to work.";
+			But enough about me, let’s talk about you!
+			
+			Do you feel stuck, like your song is so close but it’s missing something? Whether you just need additional beats or a few new synths - or if all you have is an a capella vocal and need to build an entire song around it - I can help you figure out what the song needs and bring it to life. As a producer, songwriter and multi instrumentalist I can help you turn anything into a completed, full, professional sounding final mix.
+			
+			One more thing: unlike many producers, as an artist myself I know *exactly* what its like to be in your shoes. I’m not gonna try to impress/intimidate you by talking about reverb convolution and Fletcher/Munson curves; all that matters is your music, and that you are happy with it. I love talking to musicians and helping them figure out the best way to achieve their goals, both musically and as an artist. I’m here to help you finish your music so the world can hear it, period.
+			
+			I’m happy to answer any questions you might have, just click “contact” and let’s talk.
+			
+			Send me a note through the contact button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +85,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Electronic and dance with an indie feel";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +94,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'BaronVonLuxxury_cigarette.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +104,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['mixer','Songwriter','Producer']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Electric Pop','Electronic','Funk','House','Indie Pop']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['mixing','collaboration','recording']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +258,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

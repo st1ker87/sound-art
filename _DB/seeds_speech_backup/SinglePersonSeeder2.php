@@ -250,7 +250,7 @@ class SinglePersonSeeder2 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

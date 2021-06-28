@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder39 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Carmen';
+		$surname 	= 'Elisa';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Caracas, Venezuela';
+		$work_address 	= 'Intercolinas Club Tachira, Calle Caurimare, Caracas 1080';
+		$phone 			= '+58 42 4127 0555';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Carmen Elisa Vargas Assistant Principal and Percussionist at the Venezuela Symphony Orchestra
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Hello! I am Carmen Elisa Vargas, a professional musician with more than 12 years of experience on stage and in the music industry. I graduated in academic percussion at the Simón Bolivar Conservatory of music in Caracas. Currently, I hold the position of Assistant Principal and Percussionist at the Venezuela Symphony Orchestra. this has allowed me to work in great projects that has been nominated to a Latin Grammy and have played with a great variety of musicians in different styles and genres from orchestal and classical music, latin music to afro-music.
 			
-			Contact me through the blue button above and let's get to work.";
+			I record marimba, vibes, classical percussion, latin and afro-percussion and have access to a large variety of instruments. If you want to record another instrument like strings, winds and brass I count with the equitments and the musicians to make your project shine.
+			
+			I record in Ableton and StudioOne but If you have a personal DAW request let me know so I can deliver the work in the way you most like it. Don´t hesitate to write me I am looking forward to work with you.
+			
+			Send me a note through the contact button above.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +81,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Assistant Principal and Percussionist at the Venezuela Symphony Orchestra";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +90,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'IMG-20180116-WA0009-1.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +100,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['percussionist','Timpanist','singer']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Classical','Latin','Pop','Soft Pop','Soundtrack']; 
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['live exhibition','recording','teaching']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +254,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

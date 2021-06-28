@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder3 extends Seeder
+class SinglePersonSeeder18 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder3 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Gregory';
-		$surname 	= 'Heath';
+		$name 		= 'Brendan';
+		$surname 	= 'Dekora';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '392 Romford Rd, London E7 8DF';
-		$phone 			= '+44 20 3601 9692';
+		$work_town		= 'Los Angeles, CA, USA';
+		$work_address 	= '601 11th St, Huntington Beach, CA 92648';
+		$phone 			= '+1 657-244-8084';
 
 		/**
 		 * ! TESTO
@@ -64,12 +64,13 @@ class SinglePersonSeeder3 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms including:  Marcella Detroit, Roy Ayers, Dr John, Mica Paris, Maceo Parker, Nile Rogers, Lemar, Beverley Knight, Jocelyn Brown, Terence Trent D’Arby, Sister Sledge, Philip Bailey (Earth Wind & Fire), Marrianne Faithful.
+			"Grammy and Oscar-winning Engineer. Credits with NIN, Foo Fighters, Billy Idol, Steven Wilson, Moby, Danzig, Marylin Manson, Muse, Neil Young, Michael Bublé, and Keith Urban among others. Over 20 years experience with industry greats in coveted studios.
 
-			Greg performs all popular styles, Rock, funk, jazz etc...
-			Brass arranging
+			Brendan has credits ranging from Steven Wilson and Foo Fighters, to Moby and Billy Idol. Recording and Mixing albums and films, Brendan is well versed in many type of productions, though his favorite is rock music. He has been working amongst the greats of the industry for over 20 years and has honed his skills in some of the best studios in Los Angeles, such as EastWest, Cherokee and Glenwood Place.
 			
-			Contact me through the blue button above and let's get to work.";
+			Now offering Dolby Atmos mixing services, release your music in 360º immersive Dolby Atmos. This has been around in films for a while, but now every major label is pushing this new format for music. Tidal HiFi and Amazon Music HD now support it, it can be played back in regular headphones from your phone, and many soundbars and devices.
+			
+			I'd love to hear about your project. Click the 'Contact' button above to get in touch.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -78,7 +79,7 @@ class SinglePersonSeeder3 extends Seeder
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "UK based, Greg has toured and recorded with a diverse range of artists both in the Jazz and Pop idioms";
+		$bio_text4 = "Grammy and Oscar-winning Engineer";
 
 		/**
 		 * ! IMMAGINE
@@ -87,7 +88,7 @@ class SinglePersonSeeder3 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'GHQ-Pic-small.jpg';
+		 $image_name = 'Kayrae_Phantoms_Promo_001_FINAL_test_4.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -97,15 +98,15 @@ class SinglePersonSeeder3 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['saxophonist','flautist']; // ! obbligatorio ! 
+		$categories = ['Mixer','engineer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['afrobeat','funk','jazz','pop','R&B','soul'];
+		$genres = ['Funk','Heavy Rock','Pop','Pop Rock','Rock'];
 
 		// % OFFERS % 
 
-		$offers = ['live exhibition','collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','editing']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -251,7 +252,7 @@ class SinglePersonSeeder3 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
