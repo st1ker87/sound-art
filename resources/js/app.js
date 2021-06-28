@@ -61,6 +61,7 @@ const app = new Vue({
 		groupLen : 24,
 		more : false,
 		showCards : false,
+		resultsNotFound : false,
 		
 		// API FILTERS
 		category_selected	: null,
@@ -134,7 +135,31 @@ const app = new Vue({
 		stopProp: function(e) {
 			e.stopPropagation();
 		},
+		wantToWork : function() {
+			let wantToWork = [
+				"BTS's songwriter ?", 
+				"The Killers’ Mixing Engineer ?",
+				"Beyonce’s Songwriter ?",
+				"Jamiroquai’s Guitarist ?",
+				"Joe Cocker’s Bass Player ?",
+				"Morrissey’s Guitarist ?"
+			]
+			let startActive = 1;
+			let activePhrase = document.getElementById('active-phrase');
+			setInterval(function() {
+				activePhrase.style.opacity = '0';
+				setTimeout(function() {
+					if(startActive == wantToWork.length) {
+						startActive = 0;
+					}
+					activePhrase.innerHTML = wantToWork[startActive];
+					activePhrase.style.opacity = '1';
+					startActive++;
+				}, 500);
+			}, 3000);	
+		},
 		btnSubmit() {
+			this.resultsNotFound = false;
 			this.showCategoryPannel = false;
 			this.showGenrePannel = false;
 			this.showVotePannel = false;
@@ -333,6 +358,10 @@ const app = new Vue({
 				if(this.displayProfiles[0].length > 0) {
 					this.showCards = true;
 				}
+				else {
+					this.resultsNotFound = true;
+					this.showCards = false;
+				}
 				if(this.more) {
 					this.buildHTML();
 				}
@@ -403,6 +432,7 @@ const app = new Vue({
 		}
 	},
 	mounted() {
+		this.resultsNotFound = false;
 		this.addEventClickListenerAuth();
 		var ulr_path = window.location.pathname;
 		if (ulr_path == '/') {
@@ -411,6 +441,7 @@ const app = new Vue({
 			this.searchDefault();
 			this.addEventClickListener();
 			this.base_url = 'profiles/search/';
+			this.wantToWork();
 		}	
 		if (ulr_path == '/profiles/search') {
 			this.onlySponsorship = false,

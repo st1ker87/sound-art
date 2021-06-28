@@ -98,7 +98,7 @@
     <!-- Want to work -->
     <section class="want-to-work">
         <div class="container">
-            <h3>Want to work with <span>BTS's songwriter ?</span></h3>
+            <h3>Want to work with <br><span id="active-phrase">BTS's songwriter ?</span></h3>
             <p>Now you can, through SoundArt</p>
         </div>
     </section>
