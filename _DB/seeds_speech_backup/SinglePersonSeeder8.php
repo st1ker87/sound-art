@@ -116,7 +116,7 @@ class SinglePersonSeeder8 extends Seeder
 		
 		// % GENRES % 
 
-		$genres = ['Classical','Folk','Jazz','Pop','pop rock','Rock'];  
+		$genres = ['Classical','Folk','Jazz','Pop','Pop-Rock','Rock'];  
 
 		// % OFFERS % 
 

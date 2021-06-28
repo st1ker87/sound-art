@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder5 extends Seeder
+class SinglePersonSeeder49 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder5 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Matias';
-		$surname 	= 'Menarguez';
+		$name 		= 'Jessie';
+		$surname 	= 'Wagner';
 
 		// % PROFILE % 
 
-		$work_town		= 'Buenos Aires, Argentina';
-		$work_address 	= 'Fray Justo Sta. María de Oro 2686, C1428 CABA';
-		$phone 			= '+54 11 3140-5576';
+		$work_town		= 'New York, NY, USA';
+		$work_address 	= '457 Baldwin Ave, Jersey City, NJ 07306';
+		$phone 			= '+1 20 1653 4592';
 
 		/**
 		 * ! TESTO
@@ -64,32 +64,36 @@ class SinglePersonSeeder5 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Hi! My name is Matias Menarguez, I'm a professional drummer from Buenos Aires, Argentina. I've been playing drums and Jazz music for more than 17 years now, but I have also developed myself as a session drummer and got to work with a great variety of artists and music genres. I always do my best to serve the music, and I'd love to work with you.
+			"DYNAMIC SINGER ★ TOPLINE WRITER ★ VOCAL ARRANGER Jessie Wagner, has toured with Lenny Kravitz, Chic, Kid Rock, Stevie Van Zandt and Duran Duran. Her powerful yet articulate vocal style lends itself to EDM, RnB, Gospel, Soul, Hip Hop and Rock with ease. Book her today to add star power to your tracks! ★ Jessie proudly uses Telefunken products!
 
-			Professional on-demand drummer based in Buenos Aires, Argentina.
-			I've pursued a career in music 17 years ago, since then I have focused mainly on Jazz music but developed in different musical genres. Studied with Mark Guiliana, Greg Hutchinson, Daniel \"Pipi\" Piazzolla, among many others.
+			Jessie's star continues to rise in the music world. A native of Norfolk, Virginia, her career blossomed when her live performance caught the attention of Bo Bice, and she began singing and touring with his band, Sugar Money. Shortly after completing the tour, Jessie took a leap of faith and moved to New York City, the perfect setting for her talent to shine.
 			
-			You can check my work on iTunes / Spotify / YouTube with Olvide San Telmo, Joyce, Perceptual trio, The Soho Rentals, Ankar, Belen Iglesias, James Dawkins, Natalie Bancroft, etc.
+			Her big break happened when renowned drummer Omar Hakim had audition for legendary disco band Chic where she became one of the lead singers. This the launching pad led to her destiny. If Lenny Kravitz, Duran Duran, Chic, Stevie Van Zandt and Kid Rock weren't enough, Jessie has also had the honor of singing with artists from all facets of the music industry, including Patti Labelle, Sir Elton John, Peter Gabriel, Sister Sledge, Musiq, the Pointer Sisters, Bebe Winans, Eric Bene and she has performed live at such prestigious venues as the Montreux Jazz Festival, the legendary Roskilde Rock Festival, and the Grammys.
 			
-			I'm a very responsible artist who will hear what you need and deliver in a timely matter, always serving the music and doing my very best to exceed your expectations.
+			Ownership/Publishing
+
+			- 50% Top Line (melody/lyrics/ full song)
+
+			- 25% Hooks
+
+			- 25% Co-writes and Edits
 			
-			All you need to send me is an mp3 or wav file of your song and any indications/directions/references you have on drums. I will provide you with the multitrack WAV files and a mixdown of the drums + your song.
+			For buyouts and work for hires (contact for pricing).
+
+			Commercial release upon approval.
+
+			Featured artists TBD on song by song basis.
 			
-			I can deliver in 24-48hrs upon your request.
-			
-			I'm truly looking forward to making some music with you!";
+			Tell me about your project and how I can help, through the 'Contact' button above.";
 
 		// * Professional Services
-		$bio_text2 = 
-			"TERMS OF SERVICE
-
-			After receiving the song or/and music charts, I'll record one draft within 48hrs. After that, I'll allow 2 more revisions every 48hrs until the final multitrack take.";
+		$bio_text2 = "";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional on-demand drummer based in Buenos Aires, Argentina";
+		$bio_text4 = "Dynamic singer - Topline writer - Vocal arranger";
 
 		/**
 		 * ! IMMAGINE
@@ -98,7 +102,7 @@ class SinglePersonSeeder5 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_2462.jpg';
+		 $image_name = 'Jessie_Wagner_122Waterbury_TrudyGiordano_-IMG_6147.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -108,15 +112,15 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['Drummer']; // ! obbligatorio ! 
+		$categories = ['singer','Songwriter']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Funk','Jazz','Pop','Pop-Rock','R&B','Soul'];  
+		$genres = ['Afrobeat','Funk','Gospel','Jazz','Latin','Pop'];  
 
 		// % OFFERS % 
 
-		$offers = ['collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','writing']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -262,7 +266,7 @@ class SinglePersonSeeder5 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

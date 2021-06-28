@@ -66,7 +66,7 @@ class SinglePersonSeeder14 extends Seeder
 		$bio_text1 = 
 			"Session Drummer / Producer / Recording Engineer
 
-			Working from my home studio in Dayton, OH, I've had the privilege to provide high quality, studio drum-tracks for Artists across the world. Additionally, I have been brought on as a Session Musician, Songwriter and Producer for Static Flight Music Group based in Nashville, TN. I'm thankful to have been called upon to fill roles in touring bands crossing genres from Pop, Country-Pop, DJ/Live Drums, and pop rock.
+			Working from my home studio in Dayton, OH, I've had the privilege to provide high quality, studio drum-tracks for Artists across the world. Additionally, I have been brought on as a Session Musician, Songwriter and Producer for Static Flight Music Group based in Nashville, TN. I'm thankful to have been called upon to fill roles in touring bands crossing genres from Pop, Country-Pop, DJ/Live Drums, and Pop-Rock.
 			
 			I have had the honor of joining artist rosters for many prestigious companies including: Pearl Drums, Meinl Cymbals, Evans Drumheads, and sE Electronics.
 			

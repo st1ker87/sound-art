@@ -102,7 +102,7 @@ class SinglePersonSeeder9 extends Seeder
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Country','Heavy Rock','Pop','pop rock','Rock'];  
+		$genres = ['Blues','Country','Heavy Rock','Pop','Pop-Rock','Rock'];  
 
 		// % OFFERS % 
 

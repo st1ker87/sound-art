@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder5 extends Seeder
+class SinglePersonSeeder46 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder5 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Matias';
-		$surname 	= 'Menarguez';
+		$name 		= 'Kharfi';
+		$surname 	= '';
 
 		// % PROFILE % 
 
-		$work_town		= 'Buenos Aires, Argentina';
-		$work_address 	= 'Fray Justo Sta. María de Oro 2686, C1428 CABA';
-		$phone 			= '+54 11 3140-5576';
+		$work_town		= 'Milan, Italy';
+		$work_address 	= 'Via Sabatino Lopez, 9, 20157 Milano MI';
+		$phone 			= '+39 02 355 9167';
 
 		/**
 		 * ! TESTO
@@ -64,32 +64,18 @@ class SinglePersonSeeder5 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Hi! My name is Matias Menarguez, I'm a professional drummer from Buenos Aires, Argentina. I've been playing drums and Jazz music for more than 17 years now, but I have also developed myself as a session drummer and got to work with a great variety of artists and music genres. I always do my best to serve the music, and I'd love to work with you.
+			"Kharfi is a Italian producer from Milan, Italy Born in 1997, he has already played in some of the most important Italian festivals, receiving support by top artists like Kiesza, Diplo, The Chainsmokers, Don Diablo and by media like Dj Mag, Dancing Astronaut, ThisSongIsSick and NestHQ.
 
-			Professional on-demand drummer based in Buenos Aires, Argentina.
-			I've pursued a career in music 17 years ago, since then I have focused mainly on Jazz music but developed in different musical genres. Studied with Mark Guiliana, Greg Hutchinson, Daniel \"Pipi\" Piazzolla, among many others.
-			
-			You can check my work on iTunes / Spotify / YouTube with Olvide San Telmo, Joyce, Perceptual trio, The Soho Rentals, Ankar, Belen Iglesias, James Dawkins, Natalie Bancroft, etc.
-			
-			I'm a very responsible artist who will hear what you need and deliver in a timely matter, always serving the music and doing my very best to exceed your expectations.
-			
-			All you need to send me is an mp3 or wav file of your song and any indications/directions/references you have on drums. I will provide you with the multitrack WAV files and a mixdown of the drums + your song.
-			
-			I can deliver in 24-48hrs upon your request.
-			
-			I'm truly looking forward to making some music with you!";
+			Send me a note through the contact button above.";
 
 		// * Professional Services
-		$bio_text2 = 
-			"TERMS OF SERVICE
-
-			After receiving the song or/and music charts, I'll record one draft within 48hrs. After that, I'll allow 2 more revisions every 48hrs until the final multitrack take.";
+		$bio_text2 = "";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional on-demand drummer based in Buenos Aires, Argentina";
+		$bio_text4 = "Italian producer from Milan";
 
 		/**
 		 * ! IMMAGINE
@@ -98,7 +84,7 @@ class SinglePersonSeeder5 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_2462.jpg';
+		 $image_name = 'DSC_0812-1.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -108,15 +94,15 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['Drummer']; // ! obbligatorio ! 
+		$categories = ['Producer','Topliner']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Funk','Jazz','Pop','Pop-Rock','R&B','Soul'];  
+		$genres = ['Chill','EDM','Pop','R&B','Soundtrack','Trap'];  
 
 		// % OFFERS % 
 
-		$offers = ['collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','editing']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -262,7 +248,7 @@ class SinglePersonSeeder5 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
