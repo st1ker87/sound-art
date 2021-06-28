@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder5 extends Seeder
+class SinglePersonSeeder50 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder5 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Matias';
-		$surname 	= 'Menarguez';
+		$name 		= 'Anna';
+		$surname 	= 'Chart';
 
 		// % PROFILE % 
 
-		$work_town		= 'Buenos Aires, Argentina';
-		$work_address 	= 'Fray Justo Sta. María de Oro 2686, C1428 CABA';
-		$phone 			= '+54 11 3140-5576';
+		$work_town		= 'Los Angeles, CA, USA';
+		$work_address 	= '1495 N Wilmington Ave, Compton, CA 90222';
+		$phone 			= '+1 31 0627 9099';
 
 		/**
 		 * ! TESTO
@@ -64,32 +64,51 @@ class SinglePersonSeeder5 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Hi! My name is Matias Menarguez, I'm a professional drummer from Buenos Aires, Argentina. I've been playing drums and Jazz music for more than 17 years now, but I have also developed myself as a session drummer and got to work with a great variety of artists and music genres. I always do my best to serve the music, and I'd love to work with you.
+			"TOP 100 Dance Charts collaborates with Paramount Recording Studios. Hey, I’m Anna split-time working between Hamburg Los Angeles US.
 
-			Professional on-demand drummer based in Buenos Aires, Argentina.
-			I've pursued a career in music 17 years ago, since then I have focused mainly on Jazz music but developed in different musical genres. Studied with Mark Guiliana, Greg Hutchinson, Daniel \"Pipi\" Piazzolla, among many others.
+			Studied Vocal Performance and Recording Engineering at Berklee
+
+			Recording, editing, and mixing vocals for over 7 years
+
+			Sync placements on Paramount Pictures Movies
+
+			Collaborations with the best European DJs as a ghost-writer
+
+			I can help you with the marketing & promotion of your track on Spotify
+
 			
-			You can check my work on iTunes / Spotify / YouTube with Olvide San Telmo, Joyce, Perceptual trio, The Soho Rentals, Ankar, Belen Iglesias, James Dawkins, Natalie Bancroft, etc.
+			My voice described as:
+
+			unique, angelic, velvet, deep, soft, powerful, authentic, commercial
 			
-			I'm a very responsible artist who will hear what you need and deliver in a timely matter, always serving the music and doing my very best to exceed your expectations.
+			I write CATCHY melodies!
 			
-			All you need to send me is an mp3 or wav file of your song and any indications/directions/references you have on drums. I will provide you with the multitrack WAV files and a mixdown of the drums + your song.
+			Services
+
+			Full Topline (Melodies + Lyrics + Vocals)
+
+			Vocals (Lead, Doubles, Harmonies, Backgrounds, Adlibs)
+
+			Lyrics (English)
+
+			Melodies (Toplines without Lyrics - catchy melodic hooks usually written for instrumentals in EDM, but could be sung as well)
 			
-			I can deliver in 24-48hrs upon your request.
+			Send me a message and we’ll discuss your project and see if I’m a fit for you! I’ll send you an mp3 rough mix for your approval, do one or two rounds of *revisions for free if needed, then once you approve and release funds, I will send all stems as 32 bit (float) 48k .wav files dry/raw, completely tuned and edited. Turn around times vary based on scheduling at this time. Reach out to discuss!
 			
-			I'm truly looking forward to making some music with you!";
+			I provide a rough mix with wet vocals so you get the idea and feel as well.
+			
+			*revisions - small changes, not a rerecording
+						
+			Click the 'Contact' above to get in touch. Looking forward to hearing from you.";
 
 		// * Professional Services
-		$bio_text2 = 
-			"TERMS OF SERVICE
-
-			After receiving the song or/and music charts, I'll record one draft within 48hrs. After that, I'll allow 2 more revisions every 48hrs until the final multitrack take.";
+		$bio_text2 = "";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional on-demand drummer based in Buenos Aires, Argentina";
+		$bio_text4 = "Unique, angelic, velvet, deep, soft, powerful, authentic, commercial";
 
 		/**
 		 * ! IMMAGINE
@@ -98,7 +117,7 @@ class SinglePersonSeeder5 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_2462.jpg';
+		 $image_name = 'ANNA_COVER_BILD_2________.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -108,15 +127,15 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['Drummer']; // ! obbligatorio ! 
+		$categories = ['Singer','Songwriter','producer']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Funk','Jazz','Pop','Pop-Rock','R&B','Soul'];  
+		$genres = ['Chill','EDM','House','Pop','R&B','Soul','Soundtrack','Tropical'];  
 
 		// % OFFERS % 
 
-		$offers = ['collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','writing','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -262,7 +281,7 @@ class SinglePersonSeeder5 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

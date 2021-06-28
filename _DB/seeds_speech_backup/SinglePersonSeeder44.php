@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder5 extends Seeder
+class SinglePersonSeeder44 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder5 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Matias';
-		$surname 	= 'Menarguez';
+		$name 		= 'Brenda Dor-Groot';
+		$surname 	= 'Dor-Groot';
 
 		// % PROFILE % 
 
-		$work_town		= 'Buenos Aires, Argentina';
-		$work_address 	= 'Fray Justo Sta. María de Oro 2686, C1428 CABA';
-		$phone 			= '+54 11 3140-5576';
+		$work_town		= 'London, UK';
+		$work_address 	= '6 Portland Rd, London W11 4LA';
+		$phone 			= '+44 20 7229 3130';
 
 		/**
 		 * ! TESTO
@@ -64,32 +64,23 @@ class SinglePersonSeeder5 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Hi! My name is Matias Menarguez, I'm a professional drummer from Buenos Aires, Argentina. I've been playing drums and Jazz music for more than 17 years now, but I have also developed myself as a session drummer and got to work with a great variety of artists and music genres. I always do my best to serve the music, and I'd love to work with you.
+			"Acoustic & electric harpist - Specialised in blues, house & techno, plus jazz and free improv - Classically trained & graduated. Throw me a challenge!
 
-			Professional on-demand drummer based in Buenos Aires, Argentina.
-			I've pursued a career in music 17 years ago, since then I have focused mainly on Jazz music but developed in different musical genres. Studied with Mark Guiliana, Greg Hutchinson, Daniel \"Pipi\" Piazzolla, among many others.
+			Can deliver home studio tracks, or come to studios in/near London and Amsterdam depending on dates.
+			High quality instruments including Salvi Aurora concert grand pedal harp, Killarney superb Irish folk harp, and Camac solid body electric lever harp w. effect pedals (whammy, wah, octaver, distortion and more).
 			
-			You can check my work on iTunes / Spotify / YouTube with Olvide San Telmo, Joyce, Perceptual trio, The Soho Rentals, Ankar, Belen Iglesias, James Dawkins, Natalie Bancroft, etc.
+			I can either play from your written parts or demo recording exactly, or improvise or properly arrange my part from a chord chart or any recording.
 			
-			I'm a very responsible artist who will hear what you need and deliver in a timely matter, always serving the music and doing my very best to exceed your expectations.
-			
-			All you need to send me is an mp3 or wav file of your song and any indications/directions/references you have on drums. I will provide you with the multitrack WAV files and a mixdown of the drums + your song.
-			
-			I can deliver in 24-48hrs upon your request.
-			
-			I'm truly looking forward to making some music with you!";
+			Contact me through the blue button above and let's get to work.";
 
 		// * Professional Services
-		$bio_text2 = 
-			"TERMS OF SERVICE
-
-			After receiving the song or/and music charts, I'll record one draft within 48hrs. After that, I'll allow 2 more revisions every 48hrs until the final multitrack take.";
+		$bio_text2 = "";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional on-demand drummer based in Buenos Aires, Argentina";
+		$bio_text4 = "Acoustic & electric harpist";
 
 		/**
 		 * ! IMMAGINE
@@ -98,7 +89,7 @@ class SinglePersonSeeder5 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_2462.jpg';
+		 $image_name = 'Brenda_Camac_stagepic_blue_crop.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -108,15 +99,15 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['Drummer']; // ! obbligatorio ! 
+		$categories = ['Harpist']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Funk','Jazz','Pop','Pop-Rock','R&B','Soul'];  
+		$genres = ['Blues','Classical','EDM','House','Jazz','Techno'];  
 
 		// % OFFERS % 
 
-		$offers = ['collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','collaboration']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -262,7 +253,7 @@ class SinglePersonSeeder5 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

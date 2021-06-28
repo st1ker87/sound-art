@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder5 extends Seeder
+class SinglePersonSeeder41 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder5 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Matias';
-		$surname 	= 'Menarguez';
+		$name 		= 'Adryelle';
+		$surname 	= '';
 
 		// % PROFILE % 
 
-		$work_town		= 'Buenos Aires, Argentina';
-		$work_address 	= 'Fray Justo Sta. María de Oro 2686, C1428 CABA';
-		$phone 			= '+54 11 3140-5576';
+		$work_town		= 'Los Angeles, CA, USA';
+		$work_address 	= '16944 S Western Ave, Gardena, CA 90247';
+		$phone 			= '+1 31 0538 8848';
 
 		/**
 		 * ! TESTO
@@ -64,32 +64,20 @@ class SinglePersonSeeder5 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Hi! My name is Matias Menarguez, I'm a professional drummer from Buenos Aires, Argentina. I've been playing drums and Jazz music for more than 17 years now, but I have also developed myself as a session drummer and got to work with a great variety of artists and music genres. I always do my best to serve the music, and I'd love to work with you.
+			"I have written/produced songs that have been aired on Comcast's BET and Home & Family, as well as On-Demand. With 18 years of experience in the audio production/songwriting field, I have written melodies and recorded vocals for producers from all over the world, mostly within the electronic genre. I am also a multi-instrumentalist.
 
-			Professional on-demand drummer based in Buenos Aires, Argentina.
-			I've pursued a career in music 17 years ago, since then I have focused mainly on Jazz music but developed in different musical genres. Studied with Mark Guiliana, Greg Hutchinson, Daniel \"Pipi\" Piazzolla, among many others.
+			Instruments: Guitar, Piano, Vocals, Synths, Midi Production, Lyre, Psaltry harps, Melodica, Tin Whistle, Tongue Drum, Ukulele
 			
-			You can check my work on iTunes / Spotify / YouTube with Olvide San Telmo, Joyce, Perceptual trio, The Soho Rentals, Ankar, Belen Iglesias, James Dawkins, Natalie Bancroft, etc.
-			
-			I'm a very responsible artist who will hear what you need and deliver in a timely matter, always serving the music and doing my very best to exceed your expectations.
-			
-			All you need to send me is an mp3 or wav file of your song and any indications/directions/references you have on drums. I will provide you with the multitrack WAV files and a mixdown of the drums + your song.
-			
-			I can deliver in 24-48hrs upon your request.
-			
-			I'm truly looking forward to making some music with you!";
+			Send me an email through 'Contact' button above and I'll get back to you asap.";
 
 		// * Professional Services
-		$bio_text2 = 
-			"TERMS OF SERVICE
-
-			After receiving the song or/and music charts, I'll record one draft within 48hrs. After that, I'll allow 2 more revisions every 48hrs until the final multitrack take.";
+		$bio_text2 = "";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional on-demand drummer based in Buenos Aires, Argentina";
+		$bio_text4 = "18 years of experience in the audio production/songwriting field";
 
 		/**
 		 * ! IMMAGINE
@@ -98,7 +86,7 @@ class SinglePersonSeeder5 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_2462.jpg';
+		 $image_name = 'IMG-3235.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -108,15 +96,15 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['Drummer']; // ! obbligatorio ! 
+		$categories = ['Topliner','Vocalist','Producer','Songwriter']; // ! obbligatorio !
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Funk','Jazz','Pop','Pop-Rock','R&B','Soul'];  
+		$genres = ['Chill','Electric Pop','Electronic','Folk','Gospel','Indie Pop'];  
 
 		// % OFFERS % 
 
-		$offers = ['collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','writing','live exhibition']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -262,7 +250,7 @@ class SinglePersonSeeder5 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !

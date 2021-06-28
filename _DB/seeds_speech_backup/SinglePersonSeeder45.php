@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder5 extends Seeder
+class SinglePersonSeeder45 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder5 extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Matias';
-		$surname 	= 'Menarguez';
+		$name 		= 'Lori';
+		$surname 	= 'Peters';
 
 		// % PROFILE % 
 
-		$work_town		= 'Buenos Aires, Argentina';
-		$work_address 	= 'Fray Justo Sta. María de Oro 2686, C1428 CABA';
-		$phone 			= '+54 11 3140-5576';
+		$work_town		= 'Chicago, IL, USA';
+		$work_address 	= '3481 S. Dr Martin L King Jr Dr, Chicago, IL 60616, United States';
+		$phone 			= '+1 31 2949 1111';
 
 		/**
 		 * ! TESTO
@@ -64,32 +64,24 @@ class SinglePersonSeeder5 extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Hi! My name is Matias Menarguez, I'm a professional drummer from Buenos Aires, Argentina. I've been playing drums and Jazz music for more than 17 years now, but I have also developed myself as a session drummer and got to work with a great variety of artists and music genres. I always do my best to serve the music, and I'd love to work with you.
+			"Previously a member of Multi-Platinum & Gold selling, two-time GRAMMY® Award-nominated artist, Skillet. Performed on several #1 hit singles. Over 30 years of drumming experience including studio recording, live performance, worldwide touring, & drum instruction. My mission is to always serve the song as one great producer once told me. Let’s rock.
 
-			Professional on-demand drummer based in Buenos Aires, Argentina.
-			I've pursued a career in music 17 years ago, since then I have focused mainly on Jazz music but developed in different musical genres. Studied with Mark Guiliana, Greg Hutchinson, Daniel \"Pipi\" Piazzolla, among many others.
+			We own & operate our studio located on the Great Lakes between Chicago and Milwaukee. It's here where we have the capability to professionally record & edit live drums. My husband, Chris, grew up in Seattle playing piano & guitar. He engineers, comps, & edits all of my drum tracks. Our main focus right now is tracking live drums for rock, pop/rock, & alternative style music. That's definitely my niche and the style I feel most comfortable playing.
 			
-			You can check my work on iTunes / Spotify / YouTube with Olvide San Telmo, Joyce, Perceptual trio, The Soho Rentals, Ankar, Belen Iglesias, James Dawkins, Natalie Bancroft, etc.
+			Also, my very first album with Skillet was a live worship record called ARDENT Worship. I've also played on other worship albums and enjoy that style of music too. When I hear something I think I can add value to I can just feel it. \"You either have it or you don't.\" That's what a great producer once told me. You can't teach \"feel\". Rock music is in my bones!
 			
-			I'm a very responsible artist who will hear what you need and deliver in a timely matter, always serving the music and doing my very best to exceed your expectations.
+			I'd be honored to lay down a groove that serves YOUR song. I'm excited about the potential and opportunity to create something with you. If I feel like my style of playing doesn't fit then I'll be happy to let you know up front. I'm open to your thoughts and ideas. Let's lay it down, finish it, and get it out there to your listeners!
 			
-			All you need to send me is an mp3 or wav file of your song and any indications/directions/references you have on drums. I will provide you with the multitrack WAV files and a mixdown of the drums + your song.
-			
-			I can deliver in 24-48hrs upon your request.
-			
-			I'm truly looking forward to making some music with you!";
+			Send me a note through the contact button above.";
 
 		// * Professional Services
-		$bio_text2 = 
-			"TERMS OF SERVICE
-
-			After receiving the song or/and music charts, I'll record one draft within 48hrs. After that, I'll allow 2 more revisions every 48hrs until the final multitrack take.";
+		$bio_text2 = "";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional on-demand drummer based in Buenos Aires, Argentina";
+		$bio_text4 = "Two-time GRAMMY® Award-nominated artist, over 30 years of drumming experience";
 
 		/**
 		 * ! IMMAGINE
@@ -98,7 +90,7 @@ class SinglePersonSeeder5 extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_2462.jpg';
+		 $image_name = 'E17BF3EE-9A28-405A-B636-1B81BE792268.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -108,15 +100,15 @@ class SinglePersonSeeder5 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['Drummer']; // ! obbligatorio ! 
+		$categories = ['drummer','percussionist']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['Blues','Funk','Jazz','Pop','Pop-Rock','R&B','Soul'];  
+		$genres = ['Heavy Rock','Pop Rock','Rock'];  
 
 		// % OFFERS % 
 
-		$offers = ['collaboration','recording']; // ! obbligatorio !
+		$offers = ['recording','arrangement','live exhibition','teaching']; // ! obbligatorio !
 
 		// % MESSAGES % 
 
@@ -262,7 +254,7 @@ class SinglePersonSeeder5 extends Seeder
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
 				'rev_subject' => "All amazing", // ! obbligatorio !
-				'rev_text'    => "Amazing singer! Delivered what I wanted, and more!",
+				'rev_text'    => "Amazing! Delivered what I wanted, and more!",
 			],
 			[
 				'rev_vote'    => 5,  // ! obbligatorio !
