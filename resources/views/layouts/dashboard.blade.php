@@ -58,12 +58,15 @@
         {{-- JUMBOTRON DASHBOARD --}}
         @include('partials.jumbo_dashboard')
 
-
+            {{-- navbar nascosta dentro hamburger --}}
             <div class="pos-f-t">
                 <nav class="navbar navbar-light col-12 col-sm-12 d-md-none bg-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <div class="container">
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
                 </nav>
                 <div class="collapse d-md-none" id="navbarToggleExternalContent">
                     <div class="bar_under_jumbo container-fluid dashboard_nav">
@@ -74,86 +77,91 @@
                                     <a class="dashboard_nav_link" href="{{ route('dashboard') }}">Dashboard</a>
                                     <a class="dashboard_nav_link" href="{{ route('admin.messages.index') }}">Messages</a>
                                     <a class="dashboard_nav_link" href="{{ route('admin.reviews.index') }}">Reviews</a>
-                                    <a class="dashboard_nav_link" href="route('admin.statistics')">Statistics</a>  
+                                    <a class="dashboard_nav_link" href="{{route('statistics')}}">Statistics</a>  
+                                    @if ($is_any_contract)
+                                        {{-- CHECK YOUR SPONSORSHIPS --}}
+                                        <a class="dashboard_nav_link" href="{{ route('my_sponsorships') }}">Sponsorships</a>	
+                                    @endif	
                                 </div>
-                                
-                                {{-- NUOVA PARTE BOTTONI A DESTRA --}}
-                                @if ($my_profile)
-                                    {{-- EDIT PROFILE BUTTON --}}
-                                    <a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
-                                
-                                    {{-- MODAL BUTTON -------------------------------------------------------------}}
-                                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">Delete Profile</button>
-                                    {{----------------------------------------------------------------------------}}
-                                @else
-                                    {{-- CREATE PROFILE BUTTON --}}
-                                    <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
-                                @endif
-                                @if (!$is_active_sponsorship && $my_profile)
-                                    {{-- SPONSOR YOUR PROFILE --}}
-                                    <a class="btn btn-sponsor" href="{{ route('admin.sponsorships.index') }}">Sponsor Profile</a>
-                                @endif
-                                @if ($is_any_contract)
-                                    {{-- CHECK YOUR SPONSORSHIPS --}}
-                                    <a class="btn btn-primary my-color" href="{{ route('my_sponsorships') }}">Check Sponsorships</a>	
+
+                                @if (request()->is('admin/dashboard'))
+                                    {{-- NUOVA PARTE BOTTONI A DESTRA --}}
+                                    @if ($my_profile)
+                                        {{-- EDIT PROFILE BUTTON --}}
+                                        <a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
+                                    
+                                        {{-- MODAL BUTTON -------------------------------------------------------------}}
+                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">Delete Profile</button>
+                                        {{----------------------------------------------------------------------------}}
+                                    @else
+                                        {{-- CREATE PROFILE BUTTON --}}
+                                        <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
+                                    @endif
+                                    @if (!$is_active_sponsorship && $my_profile)
+                                        {{-- SPONSOR YOUR PROFILE --}}
+                                        <a class="btn btn-sponsor" href="{{ route('admin.sponsorships.index') }}">Sponsor Profile</a>
+                                    @endif
+                                    
                                 @endif
                             </nav>
                         </div>
                     </div>
                 </div>
             </div>
-
+            {{-- fine navbar nascosta nell'hamburger --}}
 
 
         {{-- PROVA NAVBAR SOTTO AL JUMBO AL POSTO DELLA NAV A SX --}}
         <div class="bar_under_jumbo d-none d-md-block container-fluid dashboard_nav">
             <div class="container">
-                <nav class="nav flex-column justify-content-between flex-md-row to_page_link">
+                <nav class="nav flex-column {{-- justify-content-between --}} flex-md-row to_page_link">
                     {{-- VALUTARE SE USARE O TOGLIERE BORDO PER ROTTA ATTIVA --}}
-                    {{-- @if (request()->is('admin/dashboard')) --}}
                     <div class="link_box nav flex-column flex-sm-column flex-md-row">
                         <a class="dashboard_nav_link" href="{{ route('dashboard') }}">Dashboard</a>
-    
+                        
                         {{-- LINK MY PROFILE RIMOSSO -> MY PROFILE INSERITO IN DASHBOARD --}}
                         {{-- @if ($my_profile)
                             <a class="dashboard_nav_link" href="{{ route('admin.profiles.show', $my_profile->slug) }}">My Profile</a>   
-                        @else
+                            @else
                             <a class="btn btn-primary my-color btn_create" href="{{ route('admin.profiles.create') }}">Create your Profile</a>
-                        @endif --}}
+                            @endif --}}
                         <a class="dashboard_nav_link" href="{{ route('admin.messages.index') }}">Messages</a>
                         <a class="dashboard_nav_link" href="{{ route('admin.reviews.index') }}">Reviews</a>
-                        <a class="dashboard_nav_link" href="{{-- route('admin.statistics') --}}">Statistics</a>  
+                        <a class="dashboard_nav_link" href="{{route('statistics')}}">Statistics</a> 
+                        <a class="dashboard_nav_link" href="{{ route('my_sponsorships') }}">Sponsorships</a>	
                     </div>
-                    
-                    
-                    {{-- NUOVA PARTE BOTTONI A DESTRA --}}
-                    {{-- <div class="btn_box nav flex-column flex-md-row"> --}}
-                        @if ($my_profile)
-                            {{-- EDIT PROFILE BUTTON --}}
-                            <a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
-                            {{-- DELETE PROFILE BUTTON --}}
-                            {{-- ORIGINAL BUTTON ----------------------------------------------------------}}
-                            {{-- <form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-block">Delete your Profile</button>
-                            </form> --}}
-                            {{-- MODAL BUTTON -------------------------------------------------------------}}
-                            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">Delete Profile</button>
-                            {{----------------------------------------------------------------------------}}
-                        @else
-                            {{-- CREATE PROFILE BUTTON --}}
-                            <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
-                        @endif
-                        @if (!$is_active_sponsorship && $my_profile)
-                            {{-- SPONSOR YOUR PROFILE --}}
-                            <a class="btn btn-sponsor" href="{{ route('admin.sponsorships.index') }}">Sponsor Profile</a>
-                        @endif
-                        @if ($is_any_contract)
-                            {{-- CHECK YOUR SPONSORSHIPS --}}
-                            <a class="btn btn-primary my-color" href="{{ route('my_sponsorships') }}">Check Sponsorships</a>	
-                        @endif
-                    {{-- </div> --}}
+                        
+                        
+                    @if (request()->is('admin/dashboard'))
+                        {{-- NUOVA PARTE BOTTONI A DESTRA --}}
+                        <div class="btn_box nav flex-column flex-sm-column flex-md-row md-block">
+                            @if ($my_profile)
+                                {{-- EDIT PROFILE BUTTON --}}
+                                <a type="button" class="btn btn-primary my-color" href="{{ route('admin.profiles.edit',$my_profile->slug) }}">Edit Profile</a>
+                                {{-- DELETE PROFILE BUTTON --}}
+                                {{-- ORIGINAL BUTTON ----------------------------------------------------------}}
+                                {{-- <form class="d-inline-block btn-block" action="{{ route('admin.profiles.destroy',$my_profile->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-block">Delete your Profile</button>
+                                </form> --}}
+                                {{-- MODAL BUTTON -------------------------------------------------------------}}
+                                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">Delete Profile</button>
+                                {{----------------------------------------------------------------------------}}
+                            @else
+                                {{-- CREATE PROFILE BUTTON --}}
+                                <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
+                            @endif
+                            @if (!$is_active_sponsorship && $my_profile)
+                                {{-- SPONSOR YOUR PROFILE --}}
+                                <a class="btn btn-sponsor" href="{{ route('admin.sponsorships.index') }}">Sponsor Profile</a>
+                            @endif
+                            {{-- @if ($is_any_contract)
+                                {{-------- CHECK YOUR SPONSORSHIPS ------------
+                                <a class="btn btn-primary my-color" href="{{ route('my_sponsorships') }}">Check Sponsorships</a>	
+                            @endif --}}
+                        </div>
+                    @endif
                 </nav>
             </div>
         </div>

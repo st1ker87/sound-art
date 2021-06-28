@@ -40,7 +40,7 @@
 								</div>
 								<div class="msg_obj">{{ $review->rev_subject}}</div>
 							@if ($review->rev_text)
-								<div class="msg_txt">{{ $review->rev_text}}</div> 
+								<div class="msg_txt limit">{{ $review->rev_text}}</div> 
 							@endif
 						</div>
 					</div>

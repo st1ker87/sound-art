@@ -59,9 +59,13 @@
 @media screen and (max-width: 1200px) {
     
     .to_page_link {
+        justify-content: space-around;
         .link_box {
             margin: 0 auto;
         }
+        /* .btn_box {
+            width: 100%;
+        } */
     }
     // .bar_under_jumbo {
     //     .btn_box {
@@ -74,6 +78,9 @@
     .bar_under_jumbo .container .dashboard_nav_link {
             line-height: 5vh;
         
+    }
+    .bar_under_jumbo .container .to_page_link .btn_box .btn {
+        margin: 10px 0;
     }
     .bar_under_jumbo .container .to_page_link .btn {
         margin: 10px 0;

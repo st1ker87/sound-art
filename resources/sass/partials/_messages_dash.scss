@@ -27,7 +27,6 @@
     }
     .msg_obj {
         overflow: hidden;
-
         color: $primaryBlack;
         font-weight: 800;
         font-size: 1.2em;
@@ -36,11 +35,9 @@
     }
     .msg_txt {
         // display: block;
-        max-height: 1.5rem;
+        
         max-width: 992px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        
     }
     .msg_delete {
         position: absolute;
@@ -50,6 +47,12 @@
             font-size: 1.5em;
         }
     }
+}
+.limit {
+    max-height: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .rev_vote {

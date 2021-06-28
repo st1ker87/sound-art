@@ -55,12 +55,12 @@
 				
 				{{-- redirect with() [success] --}}
 				@if (session()->has('status'))
-				<div class="alert alert-success col-12">
-					{{ session()->get('status') }}
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+					<div class="alert alert-success col-12">
+						{{ session()->get('status') }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 				@endif
 				{{-- transaction result with() [success] --}}
 				@if (session()->has('transaction_feedbak'))
@@ -105,7 +105,7 @@
 							</div>
 							<div class="msg_sender_mail">{{ $message->msg_sender_email}}</div>
 							<div class="msg_obj">{{ $message->msg_subject}}</div>
-							<div class="msg_txt">{{ $message->msg_text}}</div>
+							<div class="msg_txt limit">{{ $message->msg_text}}</div>
 							{{-- DELETE --}}
 							{{-- ORIGINAL BUTTON ----------------------------------------------------------}}
 							{{-- <form class="d-inline-block msg_delete" action="{{ route('admin.messages.destroy',$message->id) }}" method="post">
