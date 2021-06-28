@@ -38,6 +38,7 @@ const app = new Vue({
 		showCategoryPannel : false,
 		showGenrePannel : false,
 		showVotePannel : false,
+		showAuthPannel : false,
 		humburger : false,
 
 		/*BUTTONS IN PAGINA SEARCH*/
@@ -96,6 +97,9 @@ const app = new Vue({
 			this.showVotePannel = !this.showVotePannel;
 			this.showCategoryPannel = false;
 			this.showGenrePannel = false;
+		},
+		showAuth: function() {
+			this.showAuthPannel = !this.showAuthPannel;
 		},
 		setCategory: function (category) {
 			if(category === 'No filter') {
@@ -376,6 +380,11 @@ const app = new Vue({
 			});
 			return;
 		},
+		addEventClickListenerAuth() {
+			document.addEventListener('click', () => {
+				this.showAuthPannel = false;
+			});
+		},
 		scrollSearch() {
 			let x = document.querySelector('.header-search');
 			let z = document.querySelector('.jumbotron-container-search');
@@ -394,6 +403,7 @@ const app = new Vue({
 		}
 	},
 	mounted() {
+		this.addEventClickListenerAuth();
 		var ulr_path = window.location.pathname;
 		if (ulr_path == '/') {
 			this.onlySponsorship = true,
