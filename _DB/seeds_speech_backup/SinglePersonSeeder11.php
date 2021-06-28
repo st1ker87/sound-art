@@ -16,7 +16,7 @@ use App\Review;
 use App\Contract;
 use App\Sponsorship;
 
-class SinglePersonSeeder extends Seeder
+class SinglePersonSeeder11 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,16 +25,16 @@ class SinglePersonSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * 
 	 * php artisan make:seeder SinglePersonSeederN (change N)
-	 * copy //////...//////
 	 * copy use ...
 	 * copy run(Faker $faker)
+	 * copy //////...//////
 	 * php artisan db:seed --class=SinglePersonSeederN (change N)
 	 * 
 	 */
@@ -45,14 +45,14 @@ class SinglePersonSeeder extends Seeder
 
 		// % USER % 
 
-		$name 		= 'Kate';
-		$surname 	= 'Glock';
+		$name 		= 'Elias';
+		$surname 	= 'Frost';
 
 		// % PROFILE % 
 
-		$work_town		= 'London, UK';
-		$work_address 	= '168A Grange Rd, London SE1 3BN';
-		$phone 			= '+44 378 922 25 66';
+		$work_town		= 'St Petersburg, Russia';
+		$work_address 	= 'Ulitsa Beringa, 27 к1, 1 этаж, St Petersburg, 199397';
+		$phone 			= '+7 812 498-91-98';
 
 		/**
 		 * ! TESTO
@@ -64,41 +64,37 @@ class SinglePersonSeeder extends Seeder
 
 		// * About me
 		$bio_text1 = 
-			"Professional touring singer/songwriter based out of London, from East European origin. I am lead vocalist with my band who have produced and released two successful albums. We've played throughout Europe including Download, Glastonbury, Reading & Leeds, and supported Deftones in Hellfest. 
+			"Hi there! I'm here to bring life into your songs or song ideas
+
+			I'm Elias Frost.
 			
-			I specialise in strong vocal delivery, using my own pro-level studio and equipment. Please listen to my vocal sample upload. I can provide vocals either processed, or raw (clean, clear, without delay/reverb) for mixing in your own studio.
+			If you wanted to transform your idea into a finished hit song - you got into the right place!
+			Toss a coin to your Elias and you'll get your track:
 			
-			Reviews:
+			Professionally arranged - I'll turn your song idea to a catchy song that everyone would sing and hum over and over again!
+			and (if you wish)
+			Mixed & Mastered (for CD or Streaming services)
 			
-			\"A pro from top to bottom! Such an easy going, down to earth, fun experience working with Kate!\"
+			I can also write lyrics if needed:)
 			
-			\"Kate's really blown me away when it comes to fast delivery with high quality. She gets the concept with the song in no time!\"
+			a few words about me:
+			I'm a skilled composer/songwriter/arranger, I've been writing music and songs for the theatre. I also made soundtracks for \"the Acrocat is Dreaming\" mobile game and currently working on music for \"The Princess of Love\" comic-book.
+			I'm pretty flexible with genres - I can do literally any, but I prefer Orchestral music, Rock/Metal, and Pop/Indie Pop... and some old-school techno and hip-hop.
 			
-			\"I am doing my best work with Kate!\"";
+			Please, Contact me for details:)
+			
+			Hope for a great collaboration with you!
+			
+			Send me a note through the contact button above.";
 
 		// * Professional Services
-		$bio_text2 = 
-			"All clients receive final WAVs in 24bit/44Khz format (all takes, adlibs, backing etc), as well as bounced pro-demo-level tracks that should only require minor mixing and mastering adjustments to release.
-			
-			Approximate overall costs are listed but do let me know if you have a specific budget to work with.
-			
-			TERMS & CONDITIONS:
-			
-			- No free demo's/samples/tests. If you're not entirely sure about my voice listen to the multiple samples, listen to our last album, send me your track and I'll honestly tell you if I think it could work.
-			
-			- One free revision, any other changes after are $100 per revision across all services
-			
-			- Every job requires a fully funded project before we begin.
-			
-			- All jobs are completed within approx 1-2 week period
-			
-			- You retain all rights to anything I produce for you. It's yours! Period! If you want to use my name as a vocalist that's fine.";
+		$bio_text2 = "";
 
 		// * Extra informations
 		$bio_text3 = "";
 
 		// * Preview text (for short presentation in Search Pages)
-		$bio_text4 = "Professional touring singer/songwriter based out of London, from East European origin.";
+		$bio_text4 = "I'm here to bring life into your songs or song ideas";
 
 		/**
 		 * ! IMMAGINE
@@ -107,7 +103,7 @@ class SinglePersonSeeder extends Seeder
 		 * !    >> tenere il nome orginale dell'immagine e inserirlo in $image_name (! solo il nome !)
 		 */
 
-		 $image_name = 'IMG_4960.jpg';
+		 $image_name = '0zQ1OkI0TI4.jpg';
 
 		/**
 		 * ! CATEGORIES, GENRES, OFFERS
@@ -117,15 +113,15 @@ class SinglePersonSeeder extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['lyricist','topliner','vocalist']; // ! obbligatorio !
+		$categories = ['Songwriter','Producer']; // ! obbligatorio ! 
 		
 		// % GENRES % 
 
-		$genres = ['classical','pop','chill'];
+		$genres = ['Folk','Hip Hop','Indie Pop','Pop','Rock','Soft Pop'];  
 
 		// % OFFERS % 
 
-		$offers = ['teaching','writing']; // ! obbligatorio !
+		$offers = ['recording','arrangement']; // ! obbligatorio !
 
 		// % MESSAGES % 
 

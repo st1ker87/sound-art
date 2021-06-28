@@ -1,3 +1,27 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                      SEED DATABASE - FINALE                        %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+--------------------------- seed INTERO database (SingleProfileSeeder)
+
+1. svuotamento db_sound_art (scatola rimane)
+2. aggiornamento /migrations/ >> /migrations_backup/ (14 file)
+3. aggiornamento /seeds/ >> /seeds_speech_backup/ (DatabaseSeeder.php, 4 {Tag}Seeder.php, SingleProfileSeeder{N}.php)
+4. controllo DatabaseSeeder.php (attivare quello che serve)
+5. php artisan migrate
+6. composer dump-autoload
+7. php artisan db:seed
+
+
+
+
+
+
+
+
+
+
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 %            ELENCO TABLE + MODEL + RELAZIONI + ipotesi CRUD         %
@@ -303,11 +327,6 @@ php artisan make:controller Admin/ContractController
 		'privateKey' => env('BT_PRIVATE_KEY'),		
     ],
 10. composer require braintree/braintree_php
-
-
-
-git fetch --all
-git reset --hard origin/master
 
 
 
