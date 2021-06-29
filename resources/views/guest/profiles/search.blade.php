@@ -76,8 +76,8 @@ else {
         <div class="row">
 
           {{-- FILTER --}}
-          <div class="col-lg-1 flex border-right">
-            <button>Filters</button>
+          <div class="col-lg-1 flex filters-btn-border">
+            <span>Filters</span>
           </div>
 
           <div id="filters-cnt" class="col-lg-10 filters-cnt">
@@ -139,7 +139,7 @@ else {
             <div class="reviews-pannel flex">
               <label for="number-of-views">Reviews:</label>
               <div class="input-cnt">
-                <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="number">
+                <input id="number-of-views" v-model="reviewNum_selected" type="number" placeholder="n" min="0" max="999">
               </div>
             </div>
   
