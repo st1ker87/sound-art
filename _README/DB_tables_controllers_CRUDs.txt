@@ -24,11 +24,13 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 %                       PRESENTAZIONE PROGETTO                       %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-INGREDIENTI DEL DISCORSO (cose che vanno dette così)
 
-# UNIVERSO SPANSO #
 
-secnario di mercato
+# UNIVERSO ESPANSO #
+
+INGREDIENTI DEL DISCORSO (cose che vanno sapute così)
+
+*secnario di mercato
 	problemi
 		dispersione domanda e offerta di professionalità musicale 
 	bisogni
@@ -40,64 +42,145 @@ secnario di mercato
 	contesti cominicativi
 		canali tradizionali offline
 		canali tradizionali online (Youtube, ...)
-		canale web innovativo >> marketpalce >> quello che offriamo noi!
+		canale web innovativo >> marketpalce web >> quello che offriamo noi!
 	soluzione
 		spazio web per unire efficacemente e dinamicamente domanda e offerta
+		fruibile da tutti i dispositivi
 
-marketplace
+*marketplace (definizione del progetto)
 	unisce domanda e offerta nell'industria musicale
-	altre cose da dire ...................
+	altre cose da sapere ...................
 
-ospite 
+*ospite (ex guest)
 	accede al sito in cerca di prestazioni professionali di qualità
 
-professionista
+*professionista (ex admin)
 	si iscrive alla piattaforma per essere visibile mostrando la propria REPUTAZIONE!! (stelle/review)
 	ha la possibilità di essere in evidenza tra gli altri
 
-business model
+*business model
 	maggiore visibilità ai professionisti che comprano sponsorship
 	sponsorchip di varia durata e tariffa
 
 
 # ELEVATOR PICH # 
 
+*PRELIMINARI
 
-*introduzione (alla luce dell'universo espanso)
+preparare su DB
+	10 sponsorhip attive (ultima creazione DB mattina 30 giugno)
+	[Mirela Nita] no sponsorship attiva!! (nel suo seeder: $is_active_contract = 0;)
 
-*HOME PAGE
+preparare su pc 
+	1 finestra browser con utente NON loggato (per es. incognito)
+	1 finestra browser con utente loggato [Mirela Nita]
+
+*INTRODUZIONE {30 sec}
+
+	due parole alla luce dell'universo espanso:
+		abbiamo soddisfatto una importante esigenza di mercato
+		fare incontrare domanda e offerta nell'industria musicale (mission)
+		MARKETPLACE web che risolve alla grande il bisogno di mercato
+
+*HOME PAGE [OSPITE] {3 min}
 
 	inizio pagina:
 		lasciamo vedere senza sottolienare, da jumbo fino a testo dinamico
 		(tenere in view testo dinamico)
 
 	gliglia profili: 
-		significato in evidenza
+		significato in evidenza: accennare
 	card: 
 		sommariamente categorie, REPUTAZIONE, offerta
 
 	resto: 
 		rapidamente scorrere fino al footer
+		pulsante more: usare!
 
-*SEARCH
+	responsiveness: 
+		citare e mostrare
+
+*SEARCH [OSPITE] {3 min}
 
 	prima ricerca semplice:
 		categore o generi
+		eseguire ricerca per categoria : singer || producer || guitarist || 
+		eseguire ricerca per genere    : chill 
+
+	atterraggio in search
+		perfezinamento ricerca: chill || singer
+		altri 2 campi filtro: citare e mostrare voto e # review (# review compreso tra 15 e 25)
+
+	aprire tutto fino a mostrare NON sponsorhip
+	andare a cercare profilo [Mirela Nita]
+
+*PROFILO [OSPITE] {3 min}
+
+	scelta singolo profilo [Mirela Nita]
+		mostrare bio, review
+		mostrare servizi offerti, generi musicali pro
+		pulsante scrivi messaggio: inviare messaggio minimale [Mirela Nita]
+		pulsante scrivi review	 : inviare review minimale [Mirela Nita]
+		link reviews: andare a vedere e tornare su con freccina
+
+	tornare in home page tramite Logo
+
+* DASHBOARD [PROFESSIONISTA] {3 min}
+
+	registrazione: citare solamente 
+	login: entrare [Mirela Nita]
+
+	dashboard [Mirela Nita]
+		menzionare presenza funzionalità in più
+		link messages: vedere messaggio appena ricevuto e cancellare
+		link reviews: vedere review appena ricevuta
+		pulsante edit profilo: aprire pagine edit e tornare indietro
+		pulsante delete profilo: citare sommariamente possibilità (aprire e chidere modal)
+
+	resto in dashboard [Mirela Nita]
+	
+* DASHBOARD STATISTICS [PROFESSIONISTA] {1 min}
+
+	link statistics [Mirela Nita]:
+		mostrare grafici e commentare
+
+	resto in dashboard [Mirela Nita]
+
+* SPONSORHIP [PROFESSIONISTA] {3 min}
+
+	sono in dashboard [Mirela Nita]
+
+	pulsante sponsorizza: mostrare le possibilità di acquisto
+	pulsante buy: mostrare procedura transazione fino a submit
+	link sponsorships: mostrare attiva e passate
+
+	tornare su home page da ospite
+	mostrare [Mirela Nita] in terza riga
+	ultimare spiegazione profili in evidenza
+
+****************************** {TOTLE 15 imn}
 
 
 
 
 
 
-.
-
-.
 
 
-.
 
 
-.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
