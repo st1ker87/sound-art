@@ -30,7 +30,7 @@ class GenreSeeder extends Seeder
 			'blues',
 			'progressive rock',
 			'folk',
-			'R&B',
+			'r&b',
 			'reggae',
 			'soul',
 			'funk',
