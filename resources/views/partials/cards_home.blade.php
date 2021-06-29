@@ -1,5 +1,6 @@
 {{-- CARDS --}}
 <section v-if="showCards" class="card-list">
+  <h3>In evidence</h3>
   <div class="container">
     <div id="myrow" class="row">
       <div v-for="(card, index) in displayProfiles[0]" :key="card.id" class="col-lg-3 col-md-4 col-sm-6">

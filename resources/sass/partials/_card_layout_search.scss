@@ -3,7 +3,12 @@
 
 .card-list {
     background-color: #eee;
-    padding-top: 7vw;
+    padding-top: 4rem;
+    & > h3 {
+        text-align: center;
+        margin-bottom: 4rem;
+        font-size: 3rem;
+    }
     .cards-575-cnt {
         display: none;
     }
@@ -116,4 +121,12 @@
 
 .no-results {
     text-align: center;
+}
+
+@media screen and (max-width: 450px) {
+    .card-list {
+        & > h3 {
+            font-size: 2rem;
+        }
+    }
 }
