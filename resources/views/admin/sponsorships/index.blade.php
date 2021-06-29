@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Sponsorships')
+@section('title','Sponsorship Shop')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
