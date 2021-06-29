@@ -8,16 +8,16 @@
 
 2. aggiornamento risorse 
 	/database/migrations/				>> 	/_DB/migrations_backup/ 			[14 file]
-	/database/seeds/					>> 	/_DB/seeds_people_backup/ 			[1x DatabaseSeeder.php, 4x {Tag}Seeder.php, Nx SingleProfileSeeder{N}.php]
+	/database/seeds/					>> 	/_DB/seeds_people_backup/ 			[1x DatabaseSeeder.php, 4x {Tag}Seeder.php, 60x SingleProfileSeeder{N}.php]
 	/storage/app/public/profile_image/ 	>> 	/_DB/storage_profile_image_backup/	[60 immagini]
 
 3. controllo DatabaseSeeder.php [attivare 64 seeder]
 
-5. php artisan migrate
+4. php artisan migrate
 
-6. composer dump-autoload
+5. composer dump-autoload
 
-7. php artisan db:seed
+6. php artisan db:seed
 
 ----------------------------------------------------------------------
 
