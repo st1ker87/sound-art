@@ -50,7 +50,7 @@ class SinglePersonSeeder21 extends Seeder
 
 		// % PROFILE % 
 
-		$work_town		= 'Ribeirão Preto, State of São Paulo, Brazil';
+		$work_town		= 'Ribeirão Preto, Brazil';
 		$work_address 	= 'R. José Aissum, 125 - Parque dos Bandeirantes, Ribeirão Preto - SP, 14090-370';
 		$phone 			= '+55 16 3618-1393';
 

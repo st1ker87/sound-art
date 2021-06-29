@@ -50,7 +50,7 @@ class SinglePersonSeeder19 extends Seeder
 
 		// % PROFILE % 
 
-		$work_town		= 'São Paulo, State of São Paulo, Brazil';
+		$work_town		= 'São Paulo, Brazil';
 		$work_address 	= 'Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200';
 		$phone 			= '+55 11 3149-5959';
 
