@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Your Message Box')
+@section('title','Messages')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
