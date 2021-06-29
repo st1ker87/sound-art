@@ -238,7 +238,7 @@ const app = new Vue({
 												if (y > 3) break;
 												else {
 													let titleTextCnt = document.createElement('span');
-													if(y < categoriesLength - 1 && y < 4) {
+													if(y < categoriesLength - 1 && y < 3) {
 														titleTextCnt.innerHTML = '<span>' + currentArray[i]['categories'][y].toUpperCase() + '<span>' + ' /&nbsp' + '</span>' + '</span>';  
 													}
 													else {
