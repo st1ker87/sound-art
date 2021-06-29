@@ -1,4 +1,8 @@
 /**
+ * # QUESTO FILE È IMPORTATO DA app.js #
+ */
+
+/**
  * PROFILE CREATION: UPLOADED IMAGE PREVIEW
  * 
  * admin/profiles/create.blade.php
