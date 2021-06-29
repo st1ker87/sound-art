@@ -4,7 +4,7 @@
 	<div class="container">
 		<nav class="navbar justify-content-around col-lg-6 col-md-12">
 			<a id="logo-link" class="navbar-brand" href="{{ url('/') }}">
-				<img id="logo" src="{{ asset('img/logo_small.png') }}" alt="Sound Art logo">
+				<img id="logo" src="{{ asset('img/logo_small.svg') }}" alt="Sound Art logo">
 			</a>
       		<ul class="navbar-nav">
 				<li class="nav-item">
