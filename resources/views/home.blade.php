@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-
+    <div class="torno_su" id="up"></div>
     <!-- Jumbotron -->
     <section class="jumbotron-container">
         <div class="container">
@@ -136,6 +136,12 @@
             <h3>Get started for free</h3>
             <a href="{{ route('dashboard') }}" class="btn btn-outline-dark btn-lg">Post your offers now</a>
     </section>
+
+    <a href="#up">
+      <div class="freccia_su" :class="{change_visibility: scrollPosition > scrollChange}">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </a>
 
 @endsection
 
