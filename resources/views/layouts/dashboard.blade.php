@@ -95,7 +95,7 @@
                                     {{----------------------------------------------------------------------------}}
                                 @else
                                     {{-- CREATE PROFILE BUTTON --}}
-                                    <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
+                                    <a class="btn btn-primary my-color" href="{{ route('admin.profiles.create') }}">Create Profile</a>
                                 @endif
                                 @if (!$is_active_sponsorship && $my_profile)
                                     {{-- SPONSOR YOUR PROFILE --}}
@@ -150,7 +150,7 @@
                                 {{----------------------------------------------------------------------------}}
                             @else
                                 {{-- CREATE PROFILE BUTTON --}}
-                                <a class="btn btn-primary" href="{{ route('admin.profiles.create') }}">Create Profile</a>
+                                <a class="btn btn-primary my-color" href="{{ route('admin.profiles.create') }}">Create Profile</a>
                             @endif
                             @if (!$is_active_sponsorship && $my_profile)
                                 {{-- SPONSOR YOUR PROFILE --}}

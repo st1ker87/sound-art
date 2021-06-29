@@ -50,11 +50,12 @@
 
 			<div class="d-flex">
 				<h2 class="mr-auto p-2">Your Sponsorships</h2>
-				@if (!$is_active_sponsorship && $my_profile)
+				{{-- PULSANTE SPOSTATO IN BASSO --}}
+				{{-- @if (!$is_active_sponsorship && $my_profile)
 					<div class="p-2">
 						<a class="btn btn-success btn-block" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
 					</div>
-				@endif
+				@endif --}}
 			</div>
 
 			@foreach ($my_contracts->sortByDesc('date_start') as $contract)
@@ -90,6 +91,12 @@
 				</div>
 
 			@endforeach
+
+			{{-- @if (!$is_active_sponsorship && $my_profile) --}}
+				<div class="p-2">
+					<a class="btn btn-success {{-- btn-block --}} sponsor_bottom" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
+				</div>
+			{{-- @endif --}}
 
         </div>
 	</div>

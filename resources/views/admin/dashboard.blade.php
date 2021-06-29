@@ -179,6 +179,8 @@
         	</div>
 		</div>
 	</section>
+@else 
+	<p class="empty_profile">Compile your profile to show your personal information here.</p>
 @endif
     {{--:class="{(scrollPosition > scrollChange) ? 'appear' : ''}" --}}
 {{-- <a href="#up">
