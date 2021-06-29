@@ -235,11 +235,11 @@ const app = new Vue({
 										if(currentArray[i].hasOwnProperty('categories')) {
 											let categoriesLength = currentArray[i]['categories'].length;
 											for (let y = 0; y < categoriesLength; y++) {
-												if (y > 2) break;
+												if (y > 3) break;
 												else {
 													let titleTextCnt = document.createElement('span');
-													if(y < categoriesLength - 1) {
-														titleTextCnt.innerHTML = '<span>' + currentArray[i]['categories'][y].toUpperCase() + '<span>' + '/' + '</span>' + '</span>';  
+													if(y < categoriesLength - 1 && y < 4) {
+														titleTextCnt.innerHTML = '<span>' + currentArray[i]['categories'][y].toUpperCase() + '<span>' + ' /&nbsp' + '</span>' + '</span>';  
 													}
 													else {
 														titleTextCnt.innerHTML = '<span>' + currentArray[i]['categories'][y].toUpperCase() + '</span>';
@@ -316,8 +316,8 @@ const app = new Vue({
 								for (let z = 0; z < genresLength; z++) {
 									if(z > 4) break;
 									let genresText = document.createElement('span');
-									if(z < genresLength - 1) {
-										genresText.innerHTML = currentArray[i]['genres'][z].toUpperCase() + '/';
+									if(z < (genresLength - 1) && (z < 4)) {
+										genresText.innerHTML = currentArray[i]['genres'][z].toUpperCase() + ' /&nbsp';
 									}
 									else {
 										genresText.innerHTML = currentArray[i]['genres'][z].toUpperCase();

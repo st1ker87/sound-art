@@ -78,6 +78,7 @@
         .provided-genres {
             height: 25%;
             padding-top: 1em;
+            overflow: hidden;
             h6 {
                 color: $darkGray;
                 text-transform: uppercase;
