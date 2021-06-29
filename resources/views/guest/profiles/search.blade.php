@@ -62,6 +62,8 @@ else {
 
 @section('content')
   <main>
+    <div class="torno_su" id="up"></div>
+
     {{-- jumbo con testi --}}
     <section class="jumbotron-container-search">
       <div class="jumbotron-title flex">
@@ -156,6 +158,12 @@ else {
     <section v-if="resultsNotFound" class="no-results">
       <p>You search did not return any results...</p>
     </section>
+
+    <a href="#up">
+      <div class="freccia_su" :class="{change_visibility: scrollPosition > scrollChange}">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </a>
   </main>
 
 @endsection

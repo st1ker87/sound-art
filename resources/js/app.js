@@ -48,7 +48,7 @@ const app = new Vue({
 
 		//scroll per nav bar (per ora solo in search.blade)
 		scrollPosition: null,
-		scrollChange: 400,
+		scrollChange: 1200,
 
 		//BASE URL CARDS
 		base_url : null,
@@ -78,6 +78,10 @@ const app = new Vue({
 		is_last_profile_group : null,
 	},
 	methods: {
+    //scroll! 
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+   }, //  fine scoll 
 		showHumburger : function() {
 			this.humburger = !this.humburger;
 		},
@@ -416,6 +420,7 @@ const app = new Vue({
 		}
 	},
 	mounted() {
+    window.addEventListener('scroll', this.updateScroll); //scroll
 		this.resultsNotFound = false;
 		this.addEventClickListenerAuth();
 		var ulr_path = window.location.pathname;

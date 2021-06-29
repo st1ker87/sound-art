@@ -92,7 +92,7 @@ class SinglePersonSeeder59 extends Seeder
 
 			Ambient sound design
 			
-			Contact me through the green button above and let's get to work.";
+			Contact me through the blue button above and let's get to work.";
 
 		// * Professional Services
 		$bio_text2 = "";

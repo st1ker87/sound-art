@@ -260,11 +260,8 @@ PERCHÉ QUESRO BBLOCCO SOTTO SI VEDE DISALLINEATO A SINISTRA RISPETTO A QUELLI S
 		</section>
 	@endif
 
-
-
-    {{--:class="{(scrollPosition > scrollChange) ? 'appear' : ''}" --}}
     <a href="#up">
-      <div class="freccia_su" >
+      <div class="freccia_su" :class="{change_visibility: scrollPosition > scrollChange}">
       <i class="fas fa-arrow-up"></i>
       </div>
     </a>
