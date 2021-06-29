@@ -51,25 +51,45 @@ $login_hover: #179687;
     transform: translate(-50%, -50%);
   }
 
+  // <div class="torno_su" id="up"></div> 
+
+  // mettere questa linea subito DOPO l'apertura del main in ogni pagina in cui si vuole
+  // tornare su con la freccia
 
   .torno_su {
     position: absolute;
     scroll-behavior: smooth;
     top: 0;
     bottom: 0;
-    color: blanchedalmond;
   }
+
+    // <a href="#up">
+    //   <div class="freccia_su" :class="{change_visibility: scrollPosition > scrollChange}">
+    //     <i class="fas fa-arrow-up"></i>
+    //   </div>
+    // </a>
+
+     // mettere questa linea subito PRIMA chiusura del main in ogni pagina in cui si vuole
+  // tornare su con la freccia
+
   .freccia_su {
-    // display: none;
+    visibility: hidden;
+    opacity:0;
+    transition:visibility 0.3s linear,opacity 0.3s linear;
     position: fixed;
     scroll-behavior: smooth;
-    bottom: -2px;
+    bottom: 50px;
     right: 50px;
-    background-color: $primaryDarkBlue;
+    background-color: rgba($color: #000, $alpha: 0.1);
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 15px 20px;
     i {
-      font-size: 18px;
+      font-size: 20px;
       color: white;
     }
+  }
+
+  .change_visibility {
+    visibility:visible;
+    opacity:1;
   }
