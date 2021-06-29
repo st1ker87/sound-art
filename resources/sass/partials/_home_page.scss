@@ -40,57 +40,62 @@
     background-size: cover;
     background-repeat: no-repeat;
     .jumbotron-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         width: 100%;
-        max-width: 450px;
+        max-width: 600px;
         color: $primaryWhite;
-        padding-top: 4vh;
+        margin-top: 7vw;
         h1 {
-            font-size: 4rem;
+            font-size: 5rem;
         }
         p {
             max-width: 60ch;
+            font-size: 1rem;
+            margin-top: 30px;
         }
         .search-cnt {
             position: relative;
+            margin-top: 30px;
             .search {
                 color: $primaryBlack;
-                left: 100%;
+                left: 24%;
                 top: -60%;
-                border: 1px solid black;
-                border-radius: 2em;
-                background-color: $primaryWhite;
+                border: 1px solid #eee;
+                border-radius: .5em;
+                background-color: $secondaryWhite;
                 ul {
                     padding: 0;
                     height: 25vh;
                     overflow: auto;
+                    background-color: $secondaryWhite;
                     li {
                         line-height: 30px;
+                        background-color: $secondaryWhite;
+                        input {
+                            color: $primaryDarkBlue;
+                            font-weight: bold;
+                            background-color: $secondaryWhite;
+                            &:hover {
+                              color: $primaryDarkBlue;
+                              background-color: $primaryWhite;
+                            }
+                          }
                     }
                 }
                 .categories-cnt ,
                 .genres-cnt {
                     width: 200px;
                     padding: 20px;
-                    background-color: $primaryWhite;
+                    background-color: $secondaryWhite;
+                    h5 {
+                        color: $primaryDarkBlue;
+                        font-weight: bold;
+                    }
                 }
                 .categories-cnt {
-                    border-radius: 2em 0 0 2em;
+                    border-radius: .5em 0 0 .5em;
                 }
                 .genres-cnt {
-                    border-radius: 0 2em 2em 0;
-                }
-                input {
-                    border: none;
-                    width: 100%;
-                    background-color: $primaryWhite;
-                    text-align: start;
-                    &:hover {
-                        background-color: $primaryGray;
-                    }
+                    border-radius: 0 .5em .5em 0;
                 }
             }
         }
@@ -304,6 +309,9 @@
         a {
             font-weight: 600;
         }
+    }
+    .get-started.discover {
+        display: none;
     }
 }
 
