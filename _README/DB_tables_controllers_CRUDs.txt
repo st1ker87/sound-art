@@ -75,14 +75,14 @@ preparare su pc
 	1 finestra browser con utente NON loggato (per es. incognito)
 	1 finestra browser con utente loggato [Mirela Nita]
 
-*INTRODUZIONE {30 sec}
+*INTRODUZIONE {1 min} ---SAL---
 
 	due parole alla luce dell'universo espanso:
 		abbiamo soddisfatto una importante esigenza di mercato
 		fare incontrare domanda e offerta nell'industria musicale (mission)
 		MARKETPLACE web che risolve alla grande il bisogno di mercato
 
-*HOME PAGE [OSPITE] {3 min}
+*HOME PAGE [OSPITE] {2 min} ---ENRICO---
 
 	inizio pagina:
 		lasciamo vedere senza sottolienare, da jumbo fino a testo dinamico
@@ -100,7 +100,7 @@ preparare su pc
 	responsiveness: 
 		citare e mostrare
 
-*SEARCH [OSPITE] {3 min}
+*SEARCH [OSPITE] {2 min} ---ENRICO---
 
 	prima ricerca semplice:
 		categore o generi
@@ -114,7 +114,7 @@ preparare su pc
 	aprire tutto fino a mostrare NON sponsorhip
 	andare a cercare profilo [Mirela Nita]
 
-*PROFILO [OSPITE] {3 min}
+*PROFILO [OSPITE] {3 min} ---YURI---
 
 	scelta singolo profilo [Mirela Nita]
 		mostrare bio, review
@@ -125,7 +125,7 @@ preparare su pc
 
 	tornare in home page tramite Logo
 
-* DASHBOARD [PROFESSIONISTA] {3 min}
+* DASHBOARD [PROFESSIONISTA] {3 min} ---STE---
 
 	registrazione: citare solamente 
 	login: entrare [Mirela Nita]
@@ -139,14 +139,14 @@ preparare su pc
 
 	resto in dashboard [Mirela Nita]
 	
-* DASHBOARD STATISTICS [PROFESSIONISTA] {1 min}
+* DASHBOARD STATISTICS [PROFESSIONISTA] {1 min} ---LEO---
 
 	link statistics [Mirela Nita]:
 		mostrare grafici e commentare
 
 	resto in dashboard [Mirela Nita]
 
-* SPONSORHIP [PROFESSIONISTA] {3 min}
+* SPONSORHIP [PROFESSIONISTA] {3 min} ---SAL---
 
 	sono in dashboard [Mirela Nita]
 
