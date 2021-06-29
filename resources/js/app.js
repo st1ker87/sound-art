@@ -165,6 +165,27 @@ const app = new Vue({
 				}, 500);
 			}, 3000);	
 		},
+		descriptionItem() {
+			const descriptionsItems = document.getElementsByClassName('description-item');
+			const descriptionImages = document.getElementsByClassName('description-img');
+			const itemsLength = descriptionsItems.length;
+			for(let i = 0; i < itemsLength; i++) {
+				show(descriptionsItems[i], descriptionImages[i]);
+				hide(descriptionsItems[i], descriptionImages[i]);
+			}
+			function show(hover, image) {
+				hover.addEventListener('mouseover', function() {
+					image.style.setProperty('opacity', '1');
+					image.style.setProperty('z-index', '3');
+				});
+			}
+			function hide(hover, image) {
+				hover.addEventListener('mouseout', function() {
+					image.style.setProperty('opacity', '0');
+					image.style.setProperty('z-index', '0');
+				});
+			}
+		},
 		btnSubmit() {
 			this.resultsNotFound = false;
 			this.showCategoryPannel = false;
@@ -434,6 +455,7 @@ const app = new Vue({
 			this.addEventClickListener();
 			this.base_url = 'profiles/search/';
 			this.wantToWork();
+			this.descriptionItem();
 		}	
 		if (ulr_path == '/profiles/search') {
 			this.onlySponsorship = false,

@@ -131,14 +131,18 @@
                     <article class="descriptions">
                         <h3>How SoundArt works:</h3>
                         <ol>
-                            <li>Describe your project in seconds</li>
-                            <li>Get free proposals from top professionals</li>
-                            <li>Hire a pro and get awesome sounding tracks</li>
+                            <li class="description-item">Describe your project in seconds</li>
+                            <li class="description-item">Get free proposals from top professionals</li>
+                            <li class="description-item">Hire a pro and get awesome sounding tracks</li>
                         </ol>
                     </article>
                 </div>
                 <div class="col-sm-12 col-md-6 relative-60 descriptions-images">
-                    <!-- Da completare -->
+                    <div class="hiw-img">
+                        <img class="description-img" src="{{asset('img/describe.png')}}" alt="">
+                        <img class="description-img" src="{{asset('img/reviews.png')}}" alt="">
+                        <img class="description-img" src="{{asset('img/hire-pro.png')}}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
