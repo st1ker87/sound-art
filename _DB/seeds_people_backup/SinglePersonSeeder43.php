@@ -96,7 +96,7 @@ class SinglePersonSeeder43 extends Seeder
 
 		// % CATEGORIES % 
 
-		$categories = ['guitarrist']; // ! obbligatorio ! . Arranger.
+		$categories = ['guitarist']; // ! obbligatorio ! . Arranger.
 		
 		// % GENRES % 
 

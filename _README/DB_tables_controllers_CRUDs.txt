@@ -21,9 +21,83 @@
 
 ----------------------------------------------------------------------
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                       PRESENTAZIONE PROGETTO                       %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+INGREDIENTI DEL DISCORSO (cose che vanno dette così)
+
+# UNIVERSO SPANSO #
+
+secnario di mercato
+	problemi
+		dispersione domanda e offerta di professionalità musicale 
+	bisogni
+		domanda 
+			trovare efficacemente professionisti
+		offerta
+			professionisti affermati ed emergenti che cercano visibilità
+			visibilità sia ad ampio raggio che mirata 
+	contesti cominicativi
+		canali tradizionali offline
+		canali tradizionali online (Youtube, ...)
+		canale web innovativo >> marketpalce >> quello che offriamo noi!
+	soluzione
+		spazio web per unire efficacemente e dinamicamente domanda e offerta
+
+marketplace
+	unisce domanda e offerta nell'industria musicale
+	altre cose da dire ...................
+
+ospite 
+	accede al sito in cerca di prestazioni professionali di qualità
+
+professionista
+	si iscrive alla piattaforma per essere visibile mostrando la propria REPUTAZIONE!! (stelle/review)
+	ha la possibilità di essere in evidenza tra gli altri
+
+business model
+	maggiore visibilità ai professionisti che comprano sponsorship
+	sponsorchip di varia durata e tariffa
+
+
+# ELEVATOR PICH # 
+
+
+*introduzione (alla luce dell'universo espanso)
+
+*HOME PAGE
+
+	inizio pagina:
+		lasciamo vedere senza sottolienare, da jumbo fino a testo dinamico
+		(tenere in view testo dinamico)
+
+	gliglia profili: 
+		significato in evidenza
+	card: 
+		sommariamente categorie, REPUTAZIONE, offerta
+
+	resto: 
+		rapidamente scorrere fino al footer
+
+*SEARCH
+
+	prima ricerca semplice:
+		categore o generi
 
 
 
+
+
+
+.
+
+.
+
+
+.
+
+
+.
 
 
 

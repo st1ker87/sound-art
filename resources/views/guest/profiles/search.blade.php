@@ -89,7 +89,7 @@ else {
                 <div class="categories-cnt">
                     <ul>
                       <li><input class="btn-no-filter" v-if="btnCategories != 'No filter'" v-on:click="setCategory($event.target.value)" type="button" value="No filter"></li>
-                        @foreach($categories as $category)
+                        @foreach($categories->sortBy('name') as $category)
                         <li>
                             <input v-on:click="setCategory($event.target.value)" type="button" value="{{ucwords($category->name)}}">
                         </li>
@@ -107,7 +107,7 @@ else {
                 <div class="categories-cnt">
                     <ul>
                       <li><input class="btn-no-filter" v-if="btnGeneres != 'No filter'" v-on:click="setGenre($event.target.value)" type="button" value="No filter"></li>
-                        @foreach($genres as $genre)
+                        @foreach($genres->sortBy('name') as $genre)
                         <li>
                             <input v-on:click="setGenre($event.target.value)" type="button" value="{{ucwords($genre->name)}}">
                         </li>
