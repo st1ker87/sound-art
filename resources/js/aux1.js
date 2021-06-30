@@ -1,5 +1,6 @@
 /**
  * # QUESTO FILE È IMPORTATO DA app.js #
+ * ( require('./aux1'); )
  */
 
 /**
