@@ -31,9 +31,7 @@
 	.modal-footer button {
 		margin-left: 5px;
 	}
-	.container {
-		margin-bottom: 20px;
-	}</style>
+</style>
 @endpush
 
 
@@ -169,9 +167,9 @@
         </div>
 	</div>
 </div>
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
-
 @include('partials.modal_profile_delete')
 
 

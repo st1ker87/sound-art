@@ -35,9 +35,6 @@
     	font-weight: 800;
 		color: gray;
 	}
-	.container {
-		margin-bottom: 20px;
-	}
 </style>
 @endpush
 
@@ -67,6 +64,7 @@
 		</div>
 	</div>
 </div>		
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
 @include('partials.modal_profile_delete')

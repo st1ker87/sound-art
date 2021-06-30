@@ -64,7 +64,7 @@
 					<div class="content">
 
 						<div class="highlight_text">{{ucwords($contract->sponsorship->name)}}</div>
-						<div>Contract id: {{$contract->id}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
+						<div>Contract id: {{$my_user->id}}.{{$contract->id}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
 
 						<p>
 							<table>
@@ -92,15 +92,16 @@
 
 			@endforeach
 
-			{{-- @if (!$is_active_sponsorship && $my_profile) --}}
+			@if (!$is_active_sponsorship && $my_profile)
 				<div class="d-flex justify-content-center p-2">
 					<a class="btn btn-success {{-- btn-block --}} sponsor_bottom" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
 				</div>
-			{{-- @endif --}}
+			@endif
 
         </div>
 	</div>
 </div>
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
 

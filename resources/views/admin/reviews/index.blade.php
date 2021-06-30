@@ -4,8 +4,25 @@
 
 @push('dashboard_head')
 <style>
-	.container {
-		margin-bottom: 20px;
+	.vertical_spacer {
+		margin-bottom: 24px;
+	}
+	.msg_delete,
+	.required_input_field {
+		color: #e3342f; /* $red */
+	}
+	.msg_delete:hover {
+		color: #d3231d; /* custom */
+	}
+	.modal-header,
+	.modal-footer {
+		border: none;
+	}
+	.modal-title {
+		color: #212949; /* $primaryDarkBlue */
+	}
+	.modal-footer button {
+		margin-left: 5px;
 	}
 </style>
 @endpush
@@ -61,6 +78,7 @@
 		</div>
 	</div>
 </div>
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
 @include('partials.modal_profile_delete')
