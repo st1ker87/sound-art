@@ -1,6 +1,6 @@
 /**
  * # QUESTO FILE È COMPILATO DA MIX #
- * (inserito in webpack.mix.js)
+ * ( inserito in webpack.mix.js )
  */
 
 /**
