@@ -180,7 +180,7 @@
           @if ($genres->isNotEmpty())
             <div class="fav_music">
               <div  class="genres">
-                <h2>My favorite music</h2>
+                <h2>My Genres</h2>
                 <hr>
                 @foreach($genres as $genre)
                   <span>{{ucwords($genre->name)}}</span>
