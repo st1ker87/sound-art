@@ -78,7 +78,7 @@ class SinglePersonSeeder55 extends Seeder
 			
 			I record at my studio in Amsterdam, The Netherlands. I will send you dry/uncompressed trumpet tracks, as well as a rough mix track if desired.
 			
-			Contact me through the green button above and let's get to work.";
+			Contact me through the blue button above and let's get to work.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -128,7 +128,7 @@ class SinglePersonSeeder55 extends Seeder
 
 		$min_number_of_past_contracts = 3; // less than max
 		$max_number_of_past_contracts = 9; // no limits
-		$is_active_contract = 1; // 1 or 0
+		$is_active_contract = 0; // 1 or 0
 
 
 	// #  MINIMAL EDIT END                                                                                              

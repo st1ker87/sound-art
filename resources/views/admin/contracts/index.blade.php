@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Your Sponsorship')
+@section('title','Sponsorships')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
@@ -49,7 +49,7 @@
     	<div class="col-12 col-md-10 col-lg-8 col-xl-7">
 
 			<div class="d-flex">
-				<h2 class="mr-auto p-2">Your Sponsorships</h2>
+				<h2 class="mr-auto p-2">Subscribed Sponsorships</h2>
 				{{-- PULSANTE SPOSTATO IN BASSO --}}
 				{{-- @if (!$is_active_sponsorship && $my_profile)
 					<div class="p-2">
@@ -64,7 +64,7 @@
 					<div class="content">
 
 						<div class="highlight_text">{{ucwords($contract->sponsorship->name)}}</div>
-						<div>Contract id: {{$contract->id}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
+						<div>Contract id: {{$my_user->id}}.{{$contract->id}} - Duration: {{$contract->sponsorship->hour_duration}} hours</div>
 
 						<p>
 							<table>
@@ -92,15 +92,16 @@
 
 			@endforeach
 
-			{{-- @if (!$is_active_sponsorship && $my_profile) --}}
-				<div class="p-2">
+			@if (!$is_active_sponsorship && $my_profile)
+				<div class="d-flex justify-content-center p-2">
 					<a class="btn btn-success {{-- btn-block --}} sponsor_bottom" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
 				</div>
-			{{-- @endif --}}
+			@endif
 
         </div>
 	</div>
 </div>
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
 
@@ -108,24 +109,5 @@
 
 
 @endsection
-
-
-
-
-
-{{-- <h2>MODEL: Contract, CRUD: index, AREA: admin - DETTAGLIO SINGOLO CONTRATTO MIO</h2>
-<h5>URL</h5>
-<p>url: http://localhost:8000/admin/sponsorship/list (get)</p>
-<h5>ALTRE TABELLE DISPONIBILI</h5>
-<p>dump($users) = @dump($users)</p>
-<p>dump($profiles) = @dump($profiles)</p>
-<p>dump($categories) = @dump($categories)</p>
-<p>dump($genres) = @dump($genres)</p>
-<p>dump($offers) = @dump($offers)</p>
-<p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p>
-<p>dump($sponsorships) = @dump($sponsorships)</p>
-<p>dump($contracts) = @dump($contracts)</p>
-@dd('') --}}
 
 

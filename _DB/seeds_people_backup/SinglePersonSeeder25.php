@@ -90,7 +90,7 @@ class SinglePersonSeeder25 extends Seeder
 			
 			Want to hear every song released I have played trumpet on? Check out my horn playlist here: https://open.spotify.com/playlist/76xhH7m1vilW1zwZCfEUCh?si=5rjZgvgzQEaSSlk5YNXBpw
 			
-			Contact me through the green button above and let's get to work.";
+			Contact me through the blue button above and let's get to work.";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -140,7 +140,7 @@ class SinglePersonSeeder25 extends Seeder
 
 		$min_number_of_past_contracts = 3; // less than max
 		$max_number_of_past_contracts = 9; // no limits
-		$is_active_contract = 1; // 1 or 0
+		$is_active_contract = 0; // 1 or 0
 
 
 	// #  MINIMAL EDIT END                                                                                              

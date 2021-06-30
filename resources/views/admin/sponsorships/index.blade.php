@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Sponsorships')
+@section('title','Sponsorship Shop')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
@@ -40,52 +40,36 @@
 
 @section('content')
 
-@foreach ($sponsorships as $sponsorship)
-	@if ($sponsorship->is_active)
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-10 col-lg-8 col-xl-7">
 
+			<div class="d-flex">
+				<h2 class="mr-auto p-2">Sponsorship Shop</h2>
+			</div>
 
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-12 col-md-10 col-lg-8 col-xl-7">
-
+			@foreach ($sponsorships as $sponsorship)
+				@if ($sponsorship->is_active)
 					<div class="msg_box">
 						<div class="content">
-
 							<h4>{{ucwords($sponsorship->name)}}</h4>
 							<p>Only €{{$sponsorship->price}}</p>
 							<div>{{$sponsorship->description}}</div>
 							<a class="btn btn-success btn-sm msg_delete" href="{{ route('sponsorship',$sponsorship->id) }}">Buy</a>
-
 						</div>
 					</div>
+				@endif
+			@endforeach
 
-				</div>
-			</div>
-		</div>		
-
-	@endif
-@endforeach
+		</div>
+	</div>
+</div>		
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
-
 @include('partials.modal_profile_delete')
 
 
 @endsection
 
-
-{{-- <h2>MODEL: Sponsorship, CRUD: index, AREA: admin - ELENCO SPONSORSHIP IN VENDITA</h2>
-<h5>URL</h5>
-<p>url: http://localhost:8000/admin/sponsorships (get)</p>
-<h5>ALTRE TABELLE DISPONIBILI</h5>
-<p>dump($users) = @dump($users)</p>
-<p>dump($profiles) = @dump($profiles)</p>
-<p>dump($categories) = @dump($categories)</p>
-<p>dump($genres) = @dump($genres)</p>
-<p>dump($offers) = @dump($offers)</p>
-<p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p>
-<p>dump($sponsorships) = @dump($sponsorships)</p>
-<p>dump($contracts) = @dump($contracts)</p>
-@dd('') --}}
 

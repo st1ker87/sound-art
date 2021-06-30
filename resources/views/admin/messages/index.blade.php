@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Your Message Box')
+@section('title','Messages')
 
 {{----------------------------------------------------------- 
 	AGGIUNTO IN layouts/dashboard.blade.php
@@ -88,7 +88,7 @@
 			{{-- FINE FEEDBACK MESSAGES --}}
 
 			<div class="d-flex">
-				<h2 class="mr-auto p-2">Your Message Box</h2>
+				<h2 class="mr-auto p-2">Messages</h2>
 			</div>
 
 			@if(count($my_user->messages)>0)
@@ -167,37 +167,13 @@
         </div>
 	</div>
 </div>
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
-
 @include('partials.modal_profile_delete')
 
 
 
 @endsection
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <h2>MODEL: Message, CRUD: index, AREA: admin - ELENCO MESSAGGI</h2>
-<h5>URL</h5>
-<p>url: http://localhost:8000/admin/messages (get)</p>
-<h5>ALTRE TABELLE DISPONIBILI</h5>
-<p>dump($users) = @dump($users)</p>
-<p>dump($profiles) = @dump($profiles)</p>
-<p>dump($categories) = @dump($categories)</p>
-<p>dump($genres) = @dump($genres)</p>
-<p>dump($offers) = @dump($offers)</p>
-<p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p> --}}
 

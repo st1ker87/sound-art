@@ -1,4 +1,9 @@
 /**
+ * # QUESTO FILE È IMPORTATO DA app.js #
+ * ( require('./aux1'); )
+ */
+
+/**
  * PROFILE CREATION: UPLOADED IMAGE PREVIEW
  * 
  * admin/profiles/create.blade.php

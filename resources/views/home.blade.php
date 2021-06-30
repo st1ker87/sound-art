@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-
+    <div class="torno_su" id="up"></div>
     <!-- Jumbotron -->
     <section class="jumbotron-container">
         <div class="container">
@@ -103,11 +103,24 @@
         </div>
     </section>
 
+    <section class="load_sect" :class="{load_visible : load_visible == true}">
+      <div class="middle">
+        <div class="bar bar1"></div>
+        <div class="bar bar2"></div>
+        <div class="bar bar3"></div>
+        <div class="bar bar4"></div>
+        <div class="bar bar5"></div>
+        <div class="bar bar6"></div>
+        <div class="bar bar7"></div>
+        <div class="bar bar8"></div>
+      </div>
+    </section>
+
     @include('partials.cards_home')
 
-    <!-- Get started -->
-    <section class="get-started">
-        <h3>Discover Artists</h3>
+    <!-- Discover -->
+    <section class="get-started discover">
+        <h3>Discover more artists</h3>
         <a href="{{ route('search') }}" class="btn btn-outline-dark btn-lg">Search for artists</a>
     </section>
     
@@ -118,14 +131,18 @@
                     <article class="descriptions">
                         <h3>How SoundArt works:</h3>
                         <ol>
-                            <li>Describe your project in seconds</li>
-                            <li>Get free proposals from top professionals</li>
-                            <li>Hire a pro and get awesome sounding tracks</li>
+                            <li class="description-item">Describe your project in seconds</li>
+                            <li class="description-item">Get free proposals from top professionals</li>
+                            <li class="description-item">Hire a pro and get awesome sounding tracks</li>
                         </ol>
                     </article>
                 </div>
                 <div class="col-sm-12 col-md-6 relative-60 descriptions-images">
-                    <!-- Da completare -->
+                    <div class="hiw-img">
+                        <img class="description-img" src="{{asset('img/describe.png')}}" alt="">
+                        <img class="description-img" src="{{asset('img/reviews.png')}}" alt="">
+                        <img class="description-img" src="{{asset('img/hire-pro.png')}}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -136,6 +153,12 @@
             <h3>Get started for free</h3>
             <a href="{{ route('dashboard') }}" class="btn btn-outline-dark btn-lg">Post your offers now</a>
     </section>
+
+    <a href="#up">
+      <div class="freccia_su" :class="{change_visibility: scrollPosition > scrollChange}">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </a>
 
 @endsection
 

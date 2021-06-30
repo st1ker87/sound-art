@@ -1,6 +1,31 @@
 @extends('layouts.dashboard')
 
-@section('title','Your Reviews')
+@section('title','Reviews')
+
+@push('dashboard_head')
+<style>
+	.vertical_spacer {
+		margin-bottom: 24px;
+	}
+	.msg_delete,
+	.required_input_field {
+		color: #e3342f; /* $red */
+	}
+	.msg_delete:hover {
+		color: #d3231d; /* custom */
+	}
+	.modal-header,
+	.modal-footer {
+		border: none;
+	}
+	.modal-title {
+		color: #212949; /* $primaryDarkBlue */
+	}
+	.modal-footer button {
+		margin-left: 5px;
+	}
+</style>
+@endpush
 
 @section('content')
 
@@ -17,8 +42,8 @@
 	<div class="row justify-content-center">
     	<div class="col-12 col-md-10 col-lg-8 col-xl-7">
 
-			<div class="d-flex justify-content-between align-items-center">
-				<h2>Your Reviews</h2>
+			<div class="d-flex">
+				<h2 class="mr-auto p-2">Reviews</h2>
 			</div>
 
 			@if(count($my_user->reviews)>0)
@@ -53,24 +78,11 @@
 		</div>
 	</div>
 </div>
+<div class="vertical_spacer"></div>
 
 {{-- INCLUDE MODAL DELETE PROFILE --}}
 @include('partials.modal_profile_delete')
 
 @endsection
 
-
-
-
-{{-- <h2>MODEL: Review, CRUD: index, AREA: admin - ELENCO REVIEW</h2>
-<h5>URL</h5>
-<p>url: http://localhost:8000/admin/reviews (get)</p>
-<h5>ALTRE TABELLE DISPONIBILI</h5>
-<p>dump($users) = @dump($users)</p>
-<p>dump($profiles) = @dump($profiles)</p>
-<p>dump($categories) = @dump($categories)</p>
-<p>dump($genres) = @dump($genres)</p>
-<p>dump($offers) = @dump($offers)</p>
-<p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p> --}}
 

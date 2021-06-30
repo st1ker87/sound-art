@@ -118,7 +118,7 @@ class SinglePersonSeeder57 extends Seeder
 
 		$min_number_of_past_contracts = 3; // less than max
 		$max_number_of_past_contracts = 9; // no limits
-		$is_active_contract = 1; // 1 or 0
+		$is_active_contract = 0; // 1 or 0
 
 
 	// #  MINIMAL EDIT END                                                                                              

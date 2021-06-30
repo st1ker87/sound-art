@@ -1,6 +1,6 @@
-{{-- @extends('layouts.dashboard')
+@extends('layouts.dashboard')
 
-@section('title','Dashboard')
+@section('title','Statistics')
 
 
 @section('content')
@@ -12,25 +12,48 @@
 
 @endphp
 
-<h1>Qui le statistiche di {{$my_user->name}}</h1>
+<div class="d-flex">
+	<h2 class="mr-auto p-2">Message Statistics</h2>
+</div>
+
+<div class="container">
+        <canvas id="myCanvas" style="width: 80%; height:50vh; background: lightgrey; margin: 20px 0 40px 0; "></canvas>
+    </div>
+    {{-- per ogni utente stampami i suoi messaggi --}}
+    <script>
+        // javascript normale
+        //codice che serve per creare il grafico charts.js
+        let myCanvas = document.getElementById("myCanvas").getContext('2d');
+        let month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        let n_messages = ["20","30","50","10","35","21","20","30","50","10","35","21"];
+        let chart = new Chart(myCanvas, {
+            type:'bar',
+            data: {
+                labels:month, 
+                datasets: [{
+                    label: "Messages",
+                    data: n_messages,
+                    backgroundColor: 'darkred'
+                }]
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            options: {
+            }
+        });
+    </script>
+
+{{-- INCLUDE MODAL DELETE PROFILE --}}
+@include('partials.modal_profile_delete')
 
 
-@endsection --}}
+@endsection
 
 
-{{-- <h5>TABELLE DISPONIBILI</h5>
-<p>$users = @dump($users)</p>
-<p>$profiles = @dump($profiles)</p>
-<p>$categories = @dump($categories)</p>
-<p>$genres = @dump($genres)</p>
-<p>$offers = @dump($offers)</p>
-<p>$messages = @dump($messages)</p>
-<p>$reviews = @dump($reviews)</p>
-<p>$contracts = @dump($contracts)</p>
-<p>$sponsorships = @dump($sponsorships)</p>
-@dd('') --}}
-
-@php
+{{-- @php
 
 	use App\Classes\IsNowInInterval;
 
@@ -57,10 +80,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Document</title>
-    <style>
-        /* body {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{-- <title>Document</title> --}}
+    {{-- <style> --}}
+        {{-- /* body {
             margin: 120px 100px 10px 100px;
             padding: 0;
             color:white;
@@ -72,16 +95,16 @@
             background-color: #222;
             border: #555652 1px solid;
             padding:10px;
-        } */
-    </style>
+        } */ --}}
+    {{-- </style>
 </head>
 <body>
     <div class="container">
         <canvas id="myCanvas" style="width: 100%; height:60v; background: orange; border: 1px solid yellow; margin-top: 10px; "></canvas>
-    </div>
+    </div> --}}
     {{-- per ogni utente stampami i suoi messaggi --}}
-    <script>
-        // javascript normale
+    {{-- <script> --}}
+        {{-- // javascript normale
         //codice che serve per creare il grafico charts.js
         let myCanvas = document.getElementById("myCanvas").getContext('2d');
         let month = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre",];
@@ -101,4 +124,4 @@
         });
     </script>
 </body>
-</html>
+</html> --}}

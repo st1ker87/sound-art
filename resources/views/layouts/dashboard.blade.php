@@ -3,6 +3,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    {{-- PER GRAFICI --}}
+    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,10 +20,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<!-- Scripts -->
-	@if (Route::currentRouteName() != 'sponsorship')
-		<script src="{{ asset('js/app.js') }}" defer></script>
+	@if ((Route::currentRouteName() != 'sponsorship') && (Route::currentRouteName() != 'statistics'))
+		<script type="application/javascript" src="{{ asset('js/app.js') }}" defer></script>		
+	@else
+		<script type="application/javascript" src="{{ asset('js/aux2.js') }}" defer></script>
 	@endif
-
+    @if (Route::currentRouteName() == 'statistics')
+    {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        
+    @endif
+	
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 

@@ -77,9 +77,7 @@ class SinglePersonSeeder52 extends Seeder
 			
 			* 10-15% artist royalty on any label releases.
 			
-			Click the green button and let's bring your project to life!
-			
-			Contact me through the green button above and let's get to work.";
+			Click the blue button and let's bring your project to life!";
 
 		// * Professional Services
 		$bio_text2 = "";
@@ -129,7 +127,7 @@ class SinglePersonSeeder52 extends Seeder
 
 		$min_number_of_past_contracts = 2; // less than max
 		$max_number_of_past_contracts = 6; // no limits
-		$is_active_contract = 1; // 1 or 0
+		$is_active_contract = 0; // 1 or 0
 
 
 	// #  MINIMAL EDIT END                                                                                              

@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use Illuminate\Support\Facades\Route;
 use DateTime;
 
 class DateDisplay {
@@ -18,8 +19,12 @@ class DateDisplay {
 		// create DateTime object
 		$_db_time = DateTime::createFromFormat('Y-m-d H:i:s', $_db_time);
 		// get string time
-		// return date_format($_db_time, 'l F j, Y, G:i:s'); 	// ! with seconds
-		return date_format($_db_time, 'l F j, Y, G:i');			// ! without seconds
+
+		// if ((Route::currentRouteName() == 'my_sponsorships')) 
+		// 	return date_format($_db_time, 'l F j, Y');			// ! without hour
+		
+		return date_format($_db_time, 'l F j, Y, G:i');			// ! with hour, without seconds
+		// return date_format($_db_time, 'l F j, Y, G:i:s'); 	// ! with hour and  seconds
     }
 }
 

@@ -48,7 +48,10 @@ const app = new Vue({
 
 		//scroll per nav bar (per ora solo in search.blade)
 		scrollPosition: null,
-		scrollChange: 400,
+		scrollChange: 1200,
+
+    //loader
+    load_visible: true,
 
 		//BASE URL CARDS
 		base_url : null,
@@ -78,6 +81,10 @@ const app = new Vue({
 		is_last_profile_group : null,
 	},
 	methods: {
+    //scroll! 
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+   }, //  fine scoll 
 		showHumburger : function() {
 			this.humburger = !this.humburger;
 		},
@@ -157,6 +164,27 @@ const app = new Vue({
 					startActive++;
 				}, 500);
 			}, 3000);	
+		},
+		descriptionItem() {
+			const descriptionsItems = document.getElementsByClassName('description-item');
+			const descriptionImages = document.getElementsByClassName('description-img');
+			const itemsLength = descriptionsItems.length;
+			for(let i = 0; i < itemsLength; i++) {
+				show(descriptionsItems[i], descriptionImages[i]);
+				hide(descriptionsItems[i], descriptionImages[i]);
+			}
+			function show(hover, image) {
+				hover.addEventListener('mouseover', function() {
+					image.style.setProperty('opacity', '1');
+					image.style.setProperty('z-index', '3');
+				});
+			}
+			function hide(hover, image) {
+				hover.addEventListener('mouseout', function() {
+					image.style.setProperty('opacity', '0');
+					image.style.setProperty('z-index', '0');
+				});
+			}
 		},
 		btnSubmit() {
 			this.resultsNotFound = false;
@@ -238,7 +266,7 @@ const app = new Vue({
 												if (y > 3) break;
 												else {
 													let titleTextCnt = document.createElement('span');
-													if(y < categoriesLength - 1 && y < 4) {
+													if(y < categoriesLength - 1 && y < 3) {
 														titleTextCnt.innerHTML = '<span>' + currentArray[i]['categories'][y].toUpperCase() + '<span>' + ' /&nbsp' + '</span>' + '</span>';  
 													}
 													else {
@@ -351,7 +379,7 @@ const app = new Vue({
 				}
 			})
 			.then((resp) => {
-				
+				this.load_visible = false;
 				this.iper_profiles = resp.data.results;
 				this.is_last_profile_group = resp.data.is_last_profile_group;
 				this.displayProfiles.push(this.iper_profiles);
@@ -413,25 +441,10 @@ const app = new Vue({
 			document.addEventListener('click', () => {
 				this.showAuthPannel = false;
 			});
-		},
-		scrollSearch() {
-			let x = document.querySelector('.header-search');
-			let z = document.querySelector('.jumbotron-container-search');
-			let y = document.querySelector('[class^=search-bar]');
-				window.addEventListener('scroll', function() {
-				if(window.scrollY > (x.offsetHeight + z.offsetHeight)) {
-					y.classList.remove('search-bar-white');
-					y.classList.add('search-bar-blue');
-				}
-				else {
-					y.classList.remove('search-bar-blue');
-					y.classList.add('search-bar-white');
-				}
-			});
-			
 		}
 	},
 	mounted() {
+    window.addEventListener('scroll', this.updateScroll); //scroll
 		this.resultsNotFound = false;
 		this.addEventClickListenerAuth();
 		var ulr_path = window.location.pathname;
@@ -442,13 +455,13 @@ const app = new Vue({
 			this.addEventClickListener();
 			this.base_url = 'profiles/search/';
 			this.wantToWork();
+			this.descriptionItem();
 		}	
 		if (ulr_path == '/profiles/search') {
 			this.onlySponsorship = false,
 			this.showCards = false,
 			this.searchDefault();
 			this.addEventClickListener();
-			this.scrollSearch();
 			this.base_url = 'search/';
 		}
 	},
