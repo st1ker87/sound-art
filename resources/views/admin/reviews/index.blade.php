@@ -2,6 +2,14 @@
 
 @section('title','Reviews')
 
+@push('dashboard_head')
+<style>
+	.container {
+		margin-bottom: 20px;
+	}
+</style>
+@endpush
+
 @section('content')
 
 @php
@@ -17,8 +25,8 @@
 	<div class="row justify-content-center">
     	<div class="col-12 col-md-10 col-lg-8 col-xl-7">
 
-			<div class="d-flex justify-content-between align-items-center">
-				<h2>Your Reviews</h2>
+			<div class="d-flex">
+				<h2 class="mr-auto p-2">Reviews</h2>
 			</div>
 
 			@if(count($my_user->reviews)>0)
@@ -59,18 +67,4 @@
 
 @endsection
 
-
-
-
-{{-- <h2>MODEL: Review, CRUD: index, AREA: admin - ELENCO REVIEW</h2>
-<h5>URL</h5>
-<p>url: http://localhost:8000/admin/reviews (get)</p>
-<h5>ALTRE TABELLE DISPONIBILI</h5>
-<p>dump($users) = @dump($users)</p>
-<p>dump($profiles) = @dump($profiles)</p>
-<p>dump($categories) = @dump($categories)</p>
-<p>dump($genres) = @dump($genres)</p>
-<p>dump($offers) = @dump($offers)</p>
-<p>dump($messages) = @dump($messages)</p>
-<p>dump($reviews) = @dump($reviews)</p> --}}
 

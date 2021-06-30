@@ -12,7 +12,10 @@
 
 @endphp
 
-<h1>Qui le statistiche di {{$my_user->name}}</h1>
+<div class="d-flex">
+	<h2 class="mr-auto p-2">Message Statistics</h2>
+</div>
+
 <div class="container">
         <canvas id="myCanvas" style="width: 80%; height:50vh; background: lightgrey; margin: 20px 0 40px 0; "></canvas>
     </div>
@@ -21,14 +24,14 @@
         // javascript normale
         //codice che serve per creare il grafico charts.js
         let myCanvas = document.getElementById("myCanvas").getContext('2d');
-        let month = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre",];
-        let n_messages = ["20","30","50","10","35","21","20","30","50","10","35","21",];
+        let month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        let n_messages = ["20","30","50","10","35","21","20","30","50","10","35","21"];
         let chart = new Chart(myCanvas, {
             type:'bar',
             data: {
                 labels:month, 
                 datasets: [{
-                    label: "messaggi",
+                    label: "Messages",
                     data: n_messages,
                     backgroundColor: 'darkred'
                 }]
@@ -43,20 +46,12 @@
         });
     </script>
 
+{{-- INCLUDE MODAL DELETE PROFILE --}}
+@include('partials.modal_profile_delete')
+
+
 @endsection
 
-
-{{-- <h5>TABELLE DISPONIBILI</h5>
-<p>$users = @dump($users)</p>
-<p>$profiles = @dump($profiles)</p>
-<p>$categories = @dump($categories)</p>
-<p>$genres = @dump($genres)</p>
-<p>$offers = @dump($offers)</p>
-<p>$messages = @dump($messages)</p>
-<p>$reviews = @dump($reviews)</p>
-<p>$contracts = @dump($contracts)</p>
-<p>$sponsorships = @dump($sponsorships)</p>
-@dd('') --}}
 
 {{-- @php
 
