@@ -190,7 +190,7 @@ class ProfileController extends Controller
 		foreach ($_array as $item) {
 			if (array_key_exists($_key,$item)) {
 				if ($_mode == 'contains') $condition = (in_array($_value,$item[$_key]));
-				if ($_mode == 'greater')  $condition = ($item[$_key] >= $_value);
+				if ($_mode == 'greater')  $condition = (round($item[$_key]) >= $_value);
 				if ($condition) $filtered_array[] = $item;
 			}
 		}
