@@ -42,6 +42,8 @@
 		}
 	}
 
+// $my_contracts = null;
+
 @endphp
 
 <div class="container">
@@ -50,13 +52,50 @@
 
 			<div class="d-flex">
 				<h2 class="mr-auto p-2">Subscribed Sponsorships</h2>
-				{{-- PULSANTE SPOSTATO IN BASSO --}}
-				{{-- @if (!$is_active_sponsorship && $my_profile)
-					<div class="p-2">
-						<a class="btn btn-success btn-block" href="{{ route('admin.sponsorships.index') }}">Sponsor your Profile</a>
-					</div>
-				@endif --}}
 			</div>
+
+			<!-- TODO IMPLEMENTARE RIASSUNTO SPESE SPONSORSHIP PER ADMIN --> 
+			{{-- @if ($my_contracts)
+			<section class="container main-show" id="about_me">
+				<div class="row">
+					<div  class="description col-sm-12 col-md-7 col-lg-7">
+		
+						COSE 1
+		
+					</div>
+					<div  class="offert col-sm-12 col-md-4 offset-md-1 col-lg-4 offest-lg-1">
+						  <div class="services">
+							  <div class="genres">
+								  <h2>Services Provided</h2>     
+								  <hr>
+									@foreach($my_user->offers as $offer)
+									  @if($loop->last)
+									  <span>{{ucwords($offer->name)}}</span>
+									  @else
+									  <span>{{ucwords($offer->name) . ','}}</span>
+									  @endif
+									@endforeach
+							  </div>
+						  </div>
+						  @if ($my_user->genres->isNotEmpty())
+							 <div class="fav_music">
+								<div  class="genres">
+									<h2>My Genres</h2>
+									<hr>
+									@foreach($my_user->genres as $genre)
+										<span>{{ucwords($genre->name)}}</span>
+									@endforeach
+								</div>
+							</div> 
+						@endif
+					</div>
+				</div>
+			</section>
+			@else 
+				<p class="empty_profile">Sponsor your profile to see your subscriptions here.</p>
+			@endif
+		 --}}
+
 
 			@foreach ($my_contracts->sortByDesc('date_start') as $contract)
 

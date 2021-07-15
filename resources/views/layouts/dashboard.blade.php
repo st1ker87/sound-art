@@ -37,6 +37,9 @@
 	<!-- Styles: single page addendum -->
 	@stack('dashboard_head')
 
+	<!-- favicon -->
+	<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
+
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <title>@yield('title') | Sound Art</title>
 </head>
